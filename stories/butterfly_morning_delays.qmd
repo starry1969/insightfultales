@@ -1,0 +1,45 @@
+---
+title: "🦋 The Butterfly Effect of Morning Delays (nycflights13)"
+format:
+  html:
+    toc: true
+    code-fold: true
+---
+
+```{r}
+#| message: false
+library(tidyverse)
+library(nycflights13)
+theme_set(theme_minimal(base_size = 13))
+```
+
+We explore whether **early morning departure delays (5–9 a.m.)** predict **afternoon delays (12–6 p.m.)** on the same day.
+
+```{r}
+period_of <- function(dep_time) {
+  h <- floor(dep_time / 100)
+  dplyr::case_when(
+    !is.na(h) & h >= 5  & h < 9  ~ "early_morning",
+    !is.na(h) & h >= 12 & h < 18 ~ "afternoon",
+    TRUE ~ NA_character_
+  )
+}
+
+daily <- flights |>
+  mutate(period = period_of(dep_time)) |>
+  group_by(year, month, day, period) |>
+  summarise(avg_dep_delay = mean(dep_delay, na.rm = TRUE), .groups="drop") |>
+  tidyr::pivot_wider(names_from = period, values_from = avg_dep_delay) |>
+  mutate(date = as.Date(sprintf("%04d-%02d-%02d", year, month, day))) |>
+  rename(delay_am = early_morning, delay_pm = afternoon) |>
+  filter(is.finite(delay_am), is.finite(delay_pm))
+
+daily |> 
+  ggplot(aes(delay_am, delay_pm)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(x = "Avg dep delay (5–9 a.m.)", y = "Avg dep delay (12–6 p.m.)",
+       title = "Morning delays propagate into the afternoon")
+```
+
+*Hint:* Enable GitHub Pages to publish this story live.
