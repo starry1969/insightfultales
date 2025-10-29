@@ -1,0 +1,24 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Insightful Tales"
+  description: "Where data finds its narrative — original visual and analytical stories built with Quarto."
+  favicon: images/favicon.png
+  open-graph: true
+  twitter-card: true
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - text: Stories
+        menu:
+          - href: stories/butterfly_morning_delays.qmd
+            text: "🦋 Butterfly Effect"
+          - href: stories/weather_memory.qmd
+            text: "🌦️ Weather Memory"
+format:
+  html:
+    theme: flatly
+    toc: true

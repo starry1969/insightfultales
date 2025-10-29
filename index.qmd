@@ -1,0 +1,17 @@
+---
+title: "Insightful Tales"
+page-layout: full
+---
+
+<section class="hero">
+  <h1>Insightful Tales</h1>
+  <p>Where data finds its narrative — original visual and analytical stories built with Quarto.</p>
+</section>
+
+## Featured Stories
+
+- [🦋 The Butterfly Effect of Morning Delays](stories/butterfly_morning_delays.qmd)
+- [🌦️ Weather Memory: Morning Weather → Afternoon Delays](stories/weather_memory.qmd)
+
+### About
+Insightful Tales is a data‑storytelling project. We pair clear narrative with reproducible analysis in R/Python.
