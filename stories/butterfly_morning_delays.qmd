@@ -1,45 +1,134 @@
 ---
 title: "🦋 The Butterfly Effect of Morning Delays (nycflights13)"
+description: "Do small morning delays snowball into larger afternoon delays on the same day?"
 format:
   html:
     toc: true
+    toc-depth: 2
     code-fold: true
+    number-sections: false
 ---
 
 ```{r}
 #| message: false
+#| warning: false
 library(tidyverse)
 library(nycflights13)
+library(broom)
 theme_set(theme_minimal(base_size = 13))
 ```
 
-We explore whether **early morning departure delays (5–9 a.m.)** predict **afternoon delays (12–6 p.m.)** on the same day.
+## Idea
+Airports are complex systems. If departures are delayed **early** (5–9 a.m.), do those delays **propagate** into the **afternoon** (12–6 p.m.) the *same day*?
+
+We’ll build a **daily panel** and look for same-day relationships, then examine **day-of-week** patterns and **within-day accumulation**.
+
+## Build the daily panel
 
 ```{r}
 period_of <- function(dep_time) {
   h <- floor(dep_time / 100)
-  dplyr::case_when(
-    !is.na(h) & h >= 5  & h < 9  ~ "early_morning",
-    !is.na(h) & h >= 12 & h < 18 ~ "afternoon",
+  case_when(
+    !is.na(h) & h >= 5  & h < 9  ~ "am_5_9",
+    !is.na(h) & h >= 12 & h < 18 ~ "pm_12_18",
     TRUE ~ NA_character_
   )
 }
 
 daily <- flights |>
   mutate(period = period_of(dep_time)) |>
+  filter(!is.na(period)) |>
   group_by(year, month, day, period) |>
-  summarise(avg_dep_delay = mean(dep_delay, na.rm = TRUE), .groups="drop") |>
-  tidyr::pivot_wider(names_from = period, values_from = avg_dep_delay) |>
-  mutate(date = as.Date(sprintf("%04d-%02d-%02d", year, month, day))) |>
-  rename(delay_am = early_morning, delay_pm = afternoon) |>
+  summarise(avg_dep_delay = mean(dep_delay, na.rm = TRUE), .groups = "drop") |>
+  pivot_wider(names_from = period, values_from = avg_dep_delay) |>
+  mutate(
+    date = as.Date(sprintf("%04d-%02d-%02d", year, month, day)),
+    wday = lubridate::wday(date, label = TRUE, week_start = 1)
+  ) |>
+  rename(delay_am = am_5_9, delay_pm = pm_12_18) |>
   filter(is.finite(delay_am), is.finite(delay_pm))
-
-daily |> 
-  ggplot(aes(delay_am, delay_pm)) +
-  geom_point(alpha = 0.6) +
-  geom_smooth(method = "lm", se = FALSE) +
-  labs(x = "Avg dep delay (5–9 a.m.)", y = "Avg dep delay (12–6 p.m.)",
-       title = "Morning delays propagate into the afternoon")
 ```
 
-*Hint:* Enable GitHub Pages to publish this story live.
+## Do morning delays predict afternoon delays?
+
+```{r}
+p_scatter <- daily |>
+  ggplot(aes(delay_am, delay_pm)) +
+  geom_point(alpha = 0.55) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(
+    x = "Avg departure delay (5–9 a.m., minutes)",
+    y = "Avg departure delay (12–6 p.m., minutes)",
+    title = "Morning delays are associated with worse afternoons (same day)"
+  )
+p_scatter
+```
+
+### Effect size (slope, R²)
+
+```{r}
+fit <- lm(delay_pm ~ delay_am, data = daily)
+broom::tidy(fit)
+broom::glance(fit) |> dplyr::select(r.squared, adj.r.squared)
+```
+
+**Interpretation.** A positive slope indicates **same-day propagation**: when the airport starts behind, it tends to **stay behind**.
+
+## Does it vary by weekday?
+
+```{r}
+p_wday <- daily |>
+  ggplot(aes(delay_am, delay_pm, color = wday)) +
+  geom_point(alpha = 0.45) +
+  geom_smooth(method = "lm", se = FALSE, linewidth = 0.8) +
+  labs(
+    title = "Propagation differs by weekday",
+    x = "Morning delay (5–9 a.m.)", y = "Afternoon delay (12–6 p.m.)",
+    color = "Weekday"
+  )
+p_wday
+```
+
+**Reading the plot.** Steeper lines imply **stronger carry-through** from morning to afternoon. If weekends look flatter, demand/traffic complexity may be lower.
+
+## Within-day accumulation pattern
+
+We check **hourly** averages to see if the day “drifts” upward after a bad start.
+
+```{r}
+hourly <- flights |>
+  mutate(hour = floor(dep_time/100)) |>
+  filter(!is.na(hour), hour >= 5, hour < 18) |>
+  group_by(year, month, day, hour) |>
+  summarise(avg_delay = mean(dep_delay, na.rm = TRUE), .groups="drop") |>
+  group_by(hour) |>
+  summarise(p50 = median(avg_delay, na.rm = TRUE),
+            p80 = quantile(avg_delay, 0.8, na.rm = TRUE),
+            p20 = quantile(avg_delay, 0.2, na.rm = TRUE))
+
+hourly |>
+  ggplot(aes(hour, p50)) +
+  geom_ribbon(aes(ymin = p20, ymax = p80), alpha = 0.15) +
+  geom_line(linewidth = 1) +
+  scale_x_continuous(breaks = seq(5,17,2)) +
+  labs(
+    title = "Median hourly delay with 20–80% band (5 a.m.–5 p.m.)",
+    x = "Hour of day (departure)", y = "Delay (minutes)"
+  )
+```
+
+**Takeaway.** If the band lifts after ~9–10 a.m., that suggests **accumulation**: early disruptions ripple forward as the schedule tightens.
+
+## Summary
+- **Yes:** Morning delays are **predictive** of afternoon delays the same day.  
+- The effect **varies by weekday** (operational mix matters).  
+- Hourly medians hint at **drift upward** after a rocky morning.
+
+**Questions to explore next:** Are certain **carriers** or **routes** better at dampening propagation? Do **turnaround times** or **gate constraints** explain differences?
+
+---
+
+<footer>
+**Story by Insightful Tales**  
+_Last rendered on: `r format(Sys.Date(), '%B %d, %Y')`_
+</footer>

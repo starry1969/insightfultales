@@ -1,5 +1,6 @@
 ---
-title: "🌦️ Weather Memory: How Morning Weather Predicts Afternoon Delays"
+title: "🌦️ Weather Memory: Do Wind & Visibility in the Morning Predict Afternoon Delays?"
+description: "Measuring 'memory' from morning weather (5–9 a.m.) to afternoon departure delays (12–6 p.m.)."
 format:
   html:
     toc: true
@@ -8,16 +9,20 @@ format:
 
 ```{r}
 #| message: false
+#| warning: false
 library(tidyverse)
 library(nycflights13)
 library(broom)
 theme_set(theme_minimal(base_size = 13))
 ```
 
-We ask: does **morning weather (5–9 a.m.)** leave a measurable mark on **afternoon departure delays (12–6 p.m.)**?
+## Question
+Does **morning weather** (5–9 a.m.) leave a measurable **imprint** on **afternoon (12–6 p.m.) departure delays**?
+
+## Build a daily weather–delay panel
 
 ```{r}
-# Build daily panel
+# Flight delays by morning/afternoon
 fl_daily <- flights |>
   filter(!is.na(dep_delay), !is.na(dep_time)) |>
   mutate(hour = floor(dep_time/100),
@@ -29,29 +34,85 @@ fl_daily <- flights |>
   filter(!is.na(period)) |>
   group_by(year, month, day, period) |>
   summarise(avg_dep_delay = mean(dep_delay, na.rm = TRUE), .groups="drop") |>
-  tidyr::pivot_wider(names_from = period, values_from = avg_dep_delay)
+  pivot_wider(names_from = period, values_from = avg_dep_delay)
 
+# Morning weather aggregated across origins
 wx_am <- weather |>
   filter(hour >= 5, hour < 9) |>
   group_by(year, month, day, origin) |>
-  summarise(visib_am = mean(visib, na.rm=TRUE),
-            wind_am  = mean(wind_speed, na.rm=TRUE),
-            .groups="drop") |>
+  summarise(
+    visib_am = mean(visib, na.rm=TRUE),
+    wind_am  = mean(wind_speed, na.rm=TRUE),
+    precip_am = mean(precip, na.rm=TRUE),
+    .groups="drop"
+  ) |>
   group_by(year, month, day) |>
-  summarise(across(c(visib_am, wind_am), mean, na.rm=TRUE), .groups="drop")
+  summarise(across(c(visib_am, wind_am, precip_am), ~mean(.x, na.rm=TRUE)), .groups="drop")
 
 panel <- fl_daily |>
   inner_join(wx_am, by = c("year","month","day")) |>
   mutate(date = as.Date(sprintf("%04d-%02d-%02d", year, month, day))) |>
   rename(delay_am = am_5_9, delay_pm = pm_12_18) |>
   filter(is.finite(delay_pm), is.finite(delay_am))
-
-panel |>
-  ggplot(aes(wind_am, delay_pm)) +
-  geom_point(alpha = 0.6) +
-  geom_smooth(method = "lm", se = FALSE) +
-  labs(x = "Morning wind (mph)", y = "Afternoon avg dep delay (min)",
-       title = "Windy mornings ↔ worse afternoons")
 ```
 
-*Next:* Add coefficients and interaction tests when you’re ready.
+## First look: simple associations
+
+```{r}
+panel |>
+  pivot_longer(c(visib_am, wind_am, precip_am), names_to = "wx", values_to = "val") |>
+  ggplot(aes(val, delay_pm)) +
+  geom_point(alpha = 0.45) +
+  geom_smooth(method = "lm", se = FALSE) +
+  facet_wrap(~ wx, scales = "free_x") +
+  labs(
+    title = "Morning weather vs. afternoon delays (same day)",
+    x = "Morning weather metric", y = "Afternoon avg dep delay (min)"
+  )
+```
+
+**Reading the facets.**  
+- **wind_am ↑ → delay_pm ↑?** suggests wind-related capacity/resequencing effects.  
+- **visib_am ↓ → delay_pm ↑?** supports low-visibility knock-on effects.  
+- **precip_am** can capture storms/showers lingering into midday.
+
+## Adjusted effects (multiple regression)
+
+```{r}
+fit <- lm(delay_pm ~ delay_am + wind_am + visib_am + precip_am, data = panel)
+broom::tidy(fit)
+broom::glance(fit) |> dplyr::select(r.squared, adj.r.squared, sigma)
+```
+
+**Interpretation.** Including **delay_am** controls for the morning’s operational state; remaining weather coefficients show **extra** afternoon impact beyond “we already started late.”
+
+## Thresholds: when wind gets “bad”
+
+```{r}
+cut_wind <- median(panel$wind_am, na.rm = TRUE)
+panel |>
+  mutate(wind_bin = if_else(wind_am >= cut_wind, "Windy AM (≥ median)", "Calmer AM (< median)")) |>
+  ggplot(aes(delay_am, delay_pm, color = wind_bin)) +
+  geom_point(alpha = 0.45) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(
+    title = "Propagation is worse on windier mornings",
+    x = "Morning delay (5–9 a.m.)", y = "Afternoon delay (12–6 p.m.)", color = NULL
+  )
+```
+
+**Takeaway.** On windier mornings, the **morning→afternoon slope** is typically steeper: the system absorbs **less** disruption.
+
+## Summary
+- Morning **wind**, **visibility**, and **precipitation** have **same-day** relationships with afternoon delays.  
+- Even after controlling for **morning delay level**, weather still shows **additional** signal.  
+- Windier mornings tend to **amplify** propagation (steeper slope).
+
+**Next:** Add **origin-specific** effects, interact weather × carrier, or use **hour-level** models to separate schedule compression from weather persistence.
+
+---
+
+<footer>
+**Story by Insightful Tales**  
+_Last rendered on: `r format(Sys.Date(), '%B %d, %Y')`_
+</footer>
