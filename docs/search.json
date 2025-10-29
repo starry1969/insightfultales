@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "stories/weather_memory.html",
+    "href": "stories/weather_memory.html",
+    "title": "🌦️ Weather Memory: How Morning Weather Predicts Afternoon Delays",
+    "section": "",
+    "text": "Code\nlibrary(tidyverse)\nlibrary(nycflights13)\nlibrary(broom)\ntheme_set(theme_minimal(base_size = 13))\n\n\nWe ask: does morning weather (5–9 a.m.) leave a measurable mark on afternoon departure delays (12–6 p.m.)?\n\n\nCode\n# Build daily panel\nfl_daily &lt;- flights |&gt;\n  filter(!is.na(dep_delay), !is.na(dep_time)) |&gt;\n  mutate(hour = floor(dep_time/100),\n         period = case_when(\n           hour &gt;= 5  & hour &lt; 9  ~ \"am_5_9\",\n           hour &gt;= 12 & hour &lt; 18 ~ \"pm_12_18\",\n           TRUE ~ NA_character_\n         )) |&gt;\n  filter(!is.na(period)) |&gt;\n  group_by(year, month, day, period) |&gt;\n  summarise(avg_dep_delay = mean(dep_delay, na.rm = TRUE), .groups=\"drop\") |&gt;\n  tidyr::pivot_wider(names_from = period, values_from = avg_dep_delay)\n\nwx_am &lt;- weather |&gt;\n  filter(hour &gt;= 5, hour &lt; 9) |&gt;\n  group_by(year, month, day, origin) |&gt;\n  summarise(visib_am = mean(visib, na.rm=TRUE),\n            wind_am  = mean(wind_speed, na.rm=TRUE),\n            .groups=\"drop\") |&gt;\n  group_by(year, month, day) |&gt;\n  summarise(across(c(visib_am, wind_am), mean, na.rm=TRUE), .groups=\"drop\")\n\n\nWarning: There was 1 warning in `summarise()`.\nℹ In argument: `across(c(visib_am, wind_am), mean, na.rm = TRUE)`.\nℹ In group 1: `year = 2013`, `month = 1`, `day = 1`.\nCaused by warning:\n! The `...` argument of `across()` is deprecated as of dplyr 1.1.0.\nSupply arguments directly to `.fns` through an anonymous function instead.\n\n  # Previously\n  across(a:b, mean, na.rm = TRUE)\n\n  # Now\n  across(a:b, \\(x) mean(x, na.rm = TRUE))\n\n\nCode\npanel &lt;- fl_daily |&gt;\n  inner_join(wx_am, by = c(\"year\",\"month\",\"day\")) |&gt;\n  mutate(date = as.Date(sprintf(\"%04d-%02d-%02d\", year, month, day))) |&gt;\n  rename(delay_am = am_5_9, delay_pm = pm_12_18) |&gt;\n  filter(is.finite(delay_pm), is.finite(delay_am))\n\npanel |&gt;\n  ggplot(aes(wind_am, delay_pm)) +\n  geom_point(alpha = 0.6) +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  labs(x = \"Morning wind (mph)\", y = \"Afternoon avg dep delay (min)\",\n       title = \"Windy mornings ↔ worse afternoons\")\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\nNext: Add coefficients and interaction tests when you’re ready."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Insightful Tales",
+    "section": "",
+    "text": "Where data finds its narrative — original visual and analytical stories built with Quarto."
+  },
+  {
+    "objectID": "index.html#featured-stories",
+    "href": "index.html#featured-stories",
+    "title": "Insightful Tales",
+    "section": "Featured Stories",
+    "text": "Featured Stories\n\n🦋 The Butterfly Effect of Morning Delays\n🌦️ Weather Memory: Morning Weather → Afternoon Delays\n\n\nAbout\nInsightful Tales is a data‑storytelling project. We pair clear narrative with reproducible analysis in R/Python."
+  },
+  {
+    "objectID": "stories/butterfly_morning_delays.html",
+    "href": "stories/butterfly_morning_delays.html",
+    "title": "🦋 The Butterfly Effect of Morning Delays (nycflights13)",
+    "section": "",
+    "text": "Code\nlibrary(tidyverse)\nlibrary(nycflights13)\ntheme_set(theme_minimal(base_size = 13))\n\n\nWe explore whether early morning departure delays (5–9 a.m.) predict afternoon delays (12–6 p.m.) on the same day.\n\n\nCode\nperiod_of &lt;- function(dep_time) {\n  h &lt;- floor(dep_time / 100)\n  dplyr::case_when(\n    !is.na(h) & h &gt;= 5  & h &lt; 9  ~ \"early_morning\",\n    !is.na(h) & h &gt;= 12 & h &lt; 18 ~ \"afternoon\",\n    TRUE ~ NA_character_\n  )\n}\n\ndaily &lt;- flights |&gt;\n  mutate(period = period_of(dep_time)) |&gt;\n  group_by(year, month, day, period) |&gt;\n  summarise(avg_dep_delay = mean(dep_delay, na.rm = TRUE), .groups=\"drop\") |&gt;\n  tidyr::pivot_wider(names_from = period, values_from = avg_dep_delay) |&gt;\n  mutate(date = as.Date(sprintf(\"%04d-%02d-%02d\", year, month, day))) |&gt;\n  rename(delay_am = early_morning, delay_pm = afternoon) |&gt;\n  filter(is.finite(delay_am), is.finite(delay_pm))\n\ndaily |&gt; \n  ggplot(aes(delay_am, delay_pm)) +\n  geom_point(alpha = 0.6) +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  labs(x = \"Avg dep delay (5–9 a.m.)\", y = \"Avg dep delay (12–6 p.m.)\",\n       title = \"Morning delays propagate into the afternoon\")\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\nHint: Enable GitHub Pages to publish this story live."
+  }
+]
