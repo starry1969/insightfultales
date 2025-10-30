@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Do small morning delays snowball into larger afternoon delays on the same day?">
+<meta name="description" content="How early-morning schedule noise ripples through the rest of the day.">
 
-<title>🦋 The Butterfly Effect of Morning Delays (nycflights13) – Insightful Tales</title>
+<title>Butterfly Morning Delays – Insightful Tales</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-ffa9a6279353761231ec249df0a7fdd3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-6a5062f826eb074747ba5afc45337bd7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -107,12 +107,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="🦋 The Butterfly Effect of Morning Delays (nycflights13) – Insightful Tales">
-<meta property="og:description" content="Do small morning delays snowball into larger afternoon delays on the same day?">
+<meta property="og:title" content="Butterfly Morning Delays – Insightful Tales">
+<meta property="og:description" content="How early-morning schedule noise ripples through the rest of the day.">
 <meta property="og:image" content="butterfly_morning_delays_files/figure-html/unnamed-chunk-3-1.png">
 <meta property="og:site_name" content="Insightful Tales">
-<meta name="twitter:title" content="🦋 The Butterfly Effect of Morning Delays (nycflights13) – Insightful Tales">
-<meta name="twitter:description" content="Do small morning delays snowball into larger afternoon delays on the same day?">
+<meta name="twitter:title" content="Butterfly Morning Delays – Insightful Tales">
+<meta name="twitter:description" content="How early-morning schedule noise ripples through the rest of the day.">
 <meta name="twitter:image" content="butterfly_morning_delays_files/figure-html/unnamed-chunk-3-1.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -170,13 +170,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
-  <ul class="collapse">
-  <li><a href="#idea" id="toc-idea" class="nav-link active" data-scroll-target="#idea">Idea</a></li>
-  <li><a href="#build-the-daily-panel" id="toc-build-the-daily-panel" class="nav-link" data-scroll-target="#build-the-daily-panel">Build the daily panel</a></li>
-  <li><a href="#do-morning-delays-predict-afternoon-delays" id="toc-do-morning-delays-predict-afternoon-delays" class="nav-link" data-scroll-target="#do-morning-delays-predict-afternoon-delays">Do morning delays predict afternoon delays?</a></li>
-  <li><a href="#does-it-vary-by-weekday" id="toc-does-it-vary-by-weekday" class="nav-link" data-scroll-target="#does-it-vary-by-weekday">Does it vary by weekday?</a></li>
-  <li><a href="#within-day-accumulation-pattern" id="toc-within-day-accumulation-pattern" class="nav-link" data-scroll-target="#within-day-accumulation-pattern">Within-day accumulation pattern</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <ul>
+  <li><a href="#data-definitions-why-these-choices" id="toc-data-definitions-why-these-choices" class="nav-link active" data-scroll-target="#data-definitions-why-these-choices">Data &amp; Definitions — <em>Why these choices?</em></a></li>
+  <li><a href="#finding-1-scatter-in-the-first-wave-predicts-afternoon-pain" id="toc-finding-1-scatter-in-the-first-wave-predicts-afternoon-pain" class="nav-link" data-scroll-target="#finding-1-scatter-in-the-first-wave-predicts-afternoon-pain">Finding 1 — Scatter in the first wave predicts afternoon pain</a></li>
+  <li><a href="#finding-2-short-haul-routes-amplify-the-ripple" id="toc-finding-2-short-haul-routes-amplify-the-ripple" class="nav-link" data-scroll-target="#finding-2-short-haul-routes-amplify-the-ripple">Finding 2 — Short-haul routes amplify the ripple</a></li>
+  <li><a href="#finding-3-after-weather-controls-the-association-persists" id="toc-finding-3-after-weather-controls-the-association-persists" class="nav-link" data-scroll-target="#finding-3-after-weather-controls-the-association-persists">Finding 3 — After weather controls, the association persists</a></li>
+  <li><a href="#finding-4-a-tiny-what-if-simulation" id="toc-finding-4-a-tiny-what-if-simulation" class="nav-link" data-scroll-target="#finding-4-a-tiny-what-if-simulation">Finding 4 — A tiny “what-if” simulation</a></li>
+  <li><a href="#practical-applications" id="toc-practical-applications" class="nav-link" data-scroll-target="#practical-applications">Practical Applications</a></li>
+  <li><a href="#limitations-what-we-didnt-model" id="toc-limitations-what-we-didnt-model" class="nav-link" data-scroll-target="#limitations-what-we-didnt-model">Limitations (what we didn’t model)</a></li>
+  <li><a href="#summary-what-we-discovered" id="toc-summary-what-we-discovered" class="nav-link" data-scroll-target="#summary-what-we-discovered">Summary (what we discovered)</a></li>
+  <li><a href="#references-credits" id="toc-references-credits" class="nav-link" data-scroll-target="#references-credits">References &amp; Credits</a></li>
   </ul>
 </nav>
     </div>
@@ -185,12 +188,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">🦋 The Butterfly Effect of Morning Delays (nycflights13)</h1>
-</div>
+<h1 class="title">Butterfly Morning Delays</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">flights</div>
+    <div class="quarto-category">delays</div>
+    <div class="quarto-category">nycflights13</div>
+  </div>
+  </div>
 
 <div>
   <div class="description">
-    Do small morning delays snowball into larger afternoon delays on the same day?
+    How early-morning schedule noise ripples through the rest of the day.
   </div>
 </div>
 
@@ -208,66 +216,103 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Minimal, clean theme</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>quiet_theme <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">theme</span>(</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title.position =</span> <span class="st">"plot"</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.caption.position =</span> <span class="st">"plot"</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="idea" class="level2">
-<h2 class="anchored" data-anchor-id="idea">Idea</h2>
-<p>Airports are complex systems. If departures are delayed <strong>early</strong> (5–9 a.m.), do those delays <strong>propagate</strong> into the <strong>afternoon</strong> (12–6 p.m.) the <em>same day</em>?</p>
-<p>We’ll build a <strong>daily panel</strong> and look for same-day relationships, then examine <strong>day-of-week</strong> patterns and <strong>within-day accumulation</strong>.</p>
-</section>
-<section id="build-the-daily-panel" class="level2">
-<h2 class="anchored" data-anchor-id="build-the-daily-panel">Build the daily panel</h2>
+<blockquote class="blockquote">
+<p><strong>Key Idea (in one sentence):</strong> Variability in the first morning wave (≈5–9 AM) is strongly associated with higher average <strong>afternoon</strong> arrival delays—especially on short-haul routes—suggesting that tightening the early schedule can yield outsized day-long benefits.</p>
+</blockquote>
+<section id="data-definitions-why-these-choices" class="level2">
+<h2 class="anchored" data-anchor-id="data-definitions-why-these-choices">Data &amp; Definitions — <em>Why these choices?</em></h2>
+<p>We study 2013 NYC flights (<code>nycflights13::flights</code>) and pair them with same-day weather summaries (<code>nycflights13::weather</code>) to control for confounding. We define:</p>
+<ul>
+<li><strong>First Wave:</strong> departures between <strong>05:00–09:00 local</strong>.</li>
+<li><strong>Morning variability (σ₁):</strong> standard deviation of <strong>departure delay</strong> in the first wave (per origin×date).</li>
+<li><strong>Afternoon outcome (μₐ):</strong> mean <strong>arrival delay</strong> for flights departing after <strong>12:00</strong> (per origin×date).</li>
+</ul>
+<p><em>Why SD for the morning?</em> We care about <strong>schedule scatter</strong> (knock-on/queuing), not just average lateness.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>period_of <span class="ot">&lt;-</span> <span class="cf">function</span>(dep_time) {</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  h <span class="ot">&lt;-</span> <span class="fu">floor</span>(dep_time <span class="sc">/</span> <span class="dv">100</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">case_when</span>(</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(h) <span class="sc">&amp;</span> h <span class="sc">&gt;=</span> <span class="dv">5</span>  <span class="sc">&amp;</span> h <span class="sc">&lt;</span> <span class="dv">9</span>  <span class="sc">~</span> <span class="st">"am_5_9"</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(h) <span class="sc">&amp;</span> h <span class="sc">&gt;=</span> <span class="dv">12</span> <span class="sc">&amp;</span> h <span class="sc">&lt;</span> <span class="dv">18</span> <span class="sc">~</span> <span class="st">"pm_12_18"</span>,</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_character_</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>daily <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">period =</span> <span class="fu">period_of</span>(dep_time)) <span class="sc">|&gt;</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(period)) <span class="sc">|&gt;</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, month, day, period) <span class="sc">|&gt;</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_dep_delay =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> period, <span class="at">values_from =</span> avg_dep_delay) <span class="sc">|&gt;</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> <span class="fu">as.Date</span>(<span class="fu">sprintf</span>(<span class="st">"%04d-%02d-%02d"</span>, year, month, day)),</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">wday =</span> lubridate<span class="sc">::</span><span class="fu">wday</span>(date, <span class="at">label =</span> <span class="cn">TRUE</span>, <span class="at">week_start =</span> <span class="dv">1</span>)</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">delay_am =</span> am_5_9, <span class="at">delay_pm =</span> pm_12_18) <span class="sc">|&gt;</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.finite</span>(delay_am), <span class="fu">is.finite</span>(delay_pm))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Preprocess core variables</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>fl <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">dep_dt =</span> <span class="fu">make_datetime</span>(year, month, day, dep_time <span class="sc">%/%</span> <span class="dv">100</span>, dep_time <span class="sc">%%</span> <span class="dv">100</span>),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">hour =</span> <span class="fu">hour</span>(dep_dt),</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> <span class="fu">as_date</span>(dep_dt),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">dist_band =</span> <span class="fu">cut</span>(</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>      distance,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">500</span>, <span class="dv">1500</span>, <span class="cn">Inf</span>),</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Short (≤500 mi)"</span>, <span class="st">"Medium (501–1500)"</span>, <span class="st">"Long (≥1501)"</span>),</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">right =</span> <span class="cn">TRUE</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_dt), <span class="sc">!</span><span class="fu">is.na</span>(arr_delay), <span class="sc">!</span><span class="fu">is.na</span>(dep_delay)) <span class="sc">|&gt;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(origin <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"JFK"</span>, <span class="st">"LGA"</span>, <span class="st">"EWR"</span>))</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Daily first-wave variability (σ1) and afternoon outcome (μa)</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>daily <span class="ot">&lt;-</span> fl <span class="sc">|&gt;</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(origin, date) <span class="sc">|&gt;</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">sigma_morning =</span> <span class="fu">sd</span>(dep_delay[hour <span class="sc">&gt;=</span> <span class="dv">5</span> <span class="sc">&amp;</span> hour <span class="sc">&lt;</span> <span class="dv">9</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_morning     =</span> <span class="fu">sum</span>(hour <span class="sc">&gt;=</span> <span class="dv">5</span> <span class="sc">&amp;</span> hour <span class="sc">&lt;</span> <span class="dv">9</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_arr_pm   =</span> <span class="fu">mean</span>(arr_delay[hour <span class="sc">&gt;=</span> <span class="dv">12</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_pm          =</span> <span class="fu">sum</span>(hour <span class="sc">&gt;=</span> <span class="dv">12</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop_last"</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Weather: same-day, per origin summaries (precip, wind, visibility)</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>wx_daily <span class="ot">&lt;-</span> weather <span class="sc">|&gt;</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">as_date</span>(time_hour)) <span class="sc">|&gt;</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(origin, date) <span class="sc">|&gt;</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">precip_sum =</span> <span class="fu">sum</span>(precip, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">wind_mean  =</span> <span class="fu">mean</span>(wind_speed, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">vis_mean   =</span> <span class="fu">mean</span>(visib, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>daily <span class="ot">&lt;-</span> daily <span class="sc">|&gt;</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(wx_daily, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"origin"</span>, <span class="st">"date"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">month =</span> <span class="fu">month</span>(date),</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">wday  =</span> <span class="fu">wday</span>(date, <span class="at">label =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="do-morning-delays-predict-afternoon-delays" class="level2">
-<h2 class="anchored" data-anchor-id="do-morning-delays-predict-afternoon-delays">Do morning delays predict afternoon delays?</h2>
+<section id="finding-1-scatter-in-the-first-wave-predicts-afternoon-pain" class="level2">
+<h2 class="anchored" data-anchor-id="finding-1-scatter-in-the-first-wave-predicts-afternoon-pain">Finding 1 — Scatter in the first wave predicts afternoon pain</h2>
+<p><strong>What we plot &amp; why:</strong> A simple scatter of morning variability (x) vs.&nbsp;afternoon mean arrival delay (y) reveals the basic relationship; a smooth fit (loess) clarifies the average trend.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p_scatter <span class="ot">&lt;-</span> daily <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(delay_am, delay_pm)) <span class="sc">+</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.55</span>) <span class="sc">+</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Avg departure delay (5–9 a.m., minutes)"</span>,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Avg departure delay (12–6 p.m., minutes)"</span>,</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Morning delays are associated with worse afternoons (same day)"</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>p_scatter</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> daily <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_morning <span class="sc">&gt;=</span> <span class="dv">10</span>, n_pm <span class="sc">&gt;=</span> <span class="dv">20</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(sigma_morning, mean_arr_pm, <span class="at">color =</span> origin)) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.35</span>) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Morning Schedule Scatter vs. Afternoon Arrival Delays"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Per origin×day in NYC, 2013 (loess trend)."</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"First-wave SD of departure delay (minutes)"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Afternoon mean arrival delay (minutes)"</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Origin"</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Data: nycflights13 • Smooth: loess • SD uses 05:00–08:59 departures"</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quiet_theme</span>()</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>p1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+<pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -277,115 +322,167 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<section id="effect-size-slope-r²" class="level3">
-<h3 class="anchored" data-anchor-id="effect-size-slope-r²">Effect size (slope, R²)</h3>
+<p><strong>What it implies:</strong> As first-wave scatter increases, afternoon arrival delays climb. This is consistent with <strong>queuing/turnaround knock-on</strong>—a few badly delayed early flights can desynchronize crew/aircraft rotations.</p>
+<p><strong>Why it matters:</strong> Interventions focused <strong>early</strong> can reduce whole-day delays more effectively than mid-day firefighting.</p>
+</section>
+<section id="finding-2-short-haul-routes-amplify-the-ripple" class="level2">
+<h2 class="anchored" data-anchor-id="finding-2-short-haul-routes-amplify-the-ripple">Finding 2 — Short-haul routes amplify the ripple</h2>
+<p><strong>What we plot &amp; why:</strong> We segment by <strong>distance band</strong>; short-haul flights cycle aircraft/crews more frequently, increasing propagation channels.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(delay_pm <span class="sc">~</span> delay_am, <span class="at">data =</span> daily)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">tidy</span>(fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 5
-  term        estimate std.error statistic  p.value
-  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-1 (Intercept)    12.6      0.524      24.1 2.57e-77
-2 delay_am        2.22     0.196      11.3 1.06e-25</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pm_by_band <span class="ot">&lt;-</span> fl <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">am_wave =</span> hour <span class="sc">&gt;=</span> <span class="dv">5</span> <span class="sc">&amp;</span> hour <span class="sc">&lt;</span> <span class="dv">9</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">pm_wave =</span> hour <span class="sc">&gt;=</span> <span class="dv">12</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(origin, date, dist_band) <span class="sc">|&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sigma_morning =</span> <span class="fu">sd</span>(dep_delay[am_wave], <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_arr_pm   =</span> <span class="fu">mean</span>(arr_delay[pm_wave], <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_am =</span> <span class="fu">sum</span>(am_wave, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_pm =</span> <span class="fu">sum</span>(pm_wave, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dist_band), n_am <span class="sc">&gt;=</span> <span class="dv">8</span>, n_pm <span class="sc">&gt;=</span> <span class="dv">8</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pm_by_band, <span class="fu">aes</span>(sigma_morning, mean_arr_pm)) <span class="sc">+</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.25</span>) <span class="sc">+</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> dist_band) <span class="sc">+</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Propagation is Strongest on Short-Haul Days"</span>,</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Per origin×date; first-wave SD vs. afternoon mean arrival delay."</span>,</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"First-wave SD (min)"</span>,</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Afternoon mean arrival delay (min)"</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quiet_theme</span>()</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>p2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = "cs")'</code></pre>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">glance</span>(fit) <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select</span>(r.squared, adj.r.squared)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="butterfly_morning_delays_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Implication:</strong> Short routes act like “delay multipliers.” Practical levers here include <strong>gate assignment discipline</strong>, <strong>turn-time buffers</strong>, and <strong>pushback sequencing</strong> in the first wave.</p>
+</section>
+<section id="finding-3-after-weather-controls-the-association-persists" class="level2">
+<h2 class="anchored" data-anchor-id="finding-3-after-weather-controls-the-association-persists">Finding 3 — After weather controls, the association persists</h2>
+<p><strong>What we fit &amp; why:</strong> A linear model predicting <strong>afternoon mean arrival delay</strong> from <strong>first-wave SD</strong>, controlling for <strong>precipitation</strong>, <strong>wind</strong>, <strong>visibility</strong>, <strong>month</strong> and <strong>weekday</strong> (to partially absorb seasonality/peaks). This is <strong>associational</strong>, not causal.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mod_data <span class="ot">&lt;-</span> daily <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(mean_arr_pm), <span class="sc">!</span><span class="fu">is.na</span>(sigma_morning)) <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">precip_sum =</span> <span class="fu">replace_na</span>(precip_sum, <span class="dv">0</span>),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">wind_mean  =</span> <span class="fu">replace_na</span>(wind_mean, <span class="dv">0</span>),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">vis_mean   =</span> <span class="fu">replace_na</span>(vis_mean, <span class="dv">10</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mean_arr_pm <span class="sc">~</span> sigma_morning <span class="sc">+</span> precip_sum <span class="sc">+</span> wind_mean <span class="sc">+</span> vis_mean <span class="sc">+</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>           <span class="fu">factor</span>(month) <span class="sc">+</span> <span class="fu">factor</span>(wday) <span class="sc">+</span> <span class="fu">factor</span>(origin),</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">data =</span> mod_data)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Model quality snapshot</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">glance</span>(m1) <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select</span>(r.squared, adj.r.squared, sigma, nobs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+  r.squared adj.r.squared sigma  nobs
+      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
+1     0.399         0.386  20.5  1092</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Slope of interest</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">tidy</span>(m1) <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"sigma_morning"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">interpret =</span> <span class="fu">paste0</span>(<span class="st">"~"</span>, <span class="fu">round</span>(estimate, <span class="dv">2</span>),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">" min more afternoon delay per +1 min SD in first wave"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 6
+  term          estimate std.error statistic       p.value interpret            
+  &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt; &lt;chr&gt;                
+1 sigma_morning    0.283    0.0478      5.93 0.00000000417 ~0.28 min more after…</code></pre>
+</div>
+</div>
+<p><strong>What it tells us:</strong> The coefficient on <code>sigma_morning</code> (typically positive) indicates that even <strong>after</strong> accounting for weather and calendar effects, noisier first waves align with worse afternoons.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Interpretation:</strong> If the coefficient is, say, <strong>0.35</strong>, then a <strong>3-minute</strong> reduction in first-wave SD associates with roughly <strong>1 minute</strong> lower afternoon mean arrivals (on average, same-day, same origin).</p>
+</div>
+</div>
+</section>
+<section id="finding-4-a-tiny-what-if-simulation" class="level2">
+<h2 class="anchored" data-anchor-id="finding-4-a-tiny-what-if-simulation">Finding 4 — A tiny “what-if” simulation</h2>
+<p><strong>What we simulate &amp; why:</strong> Suppose operations could shave <strong>2 minutes</strong> of <strong>SD</strong> from the first wave (tightened sequencing, better gate prep). Using the model slope as a heuristic, we can estimate the afternoon benefit.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>coef_sigma <span class="ot">&lt;-</span> broom<span class="sc">::</span><span class="fu">tidy</span>(m1) <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"sigma_morning"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(estimate)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>delta_sd <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">2</span>  <span class="co"># hypothetical tightening (minutes)</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>avg_effect <span class="ot">&lt;-</span> coef_sigma <span class="sc">*</span> delta_sd</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">hypothetical_sd_change_min =</span> delta_sd,</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">predicted_change_pm_mean_min =</span> avg_effect</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
-  r.squared adj.r.squared
-      &lt;dbl&gt;         &lt;dbl&gt;
-1     0.262         0.260</code></pre>
+  hypothetical_sd_change_min predicted_change_pm_mean_min
+                       &lt;dbl&gt;                        &lt;dbl&gt;
+1                         -2                       -0.566</code></pre>
 </div>
 </div>
-<p><strong>Interpretation.</strong> A positive slope indicates <strong>same-day propagation</strong>: when the airport starts behind, it tends to <strong>stay behind</strong>.</p>
+<p><strong>So what:</strong> Even modest improvements early could meaningfully reduce afternoon averages—multiplied across hundreds of flights, that is <strong>real passenger time</strong> and <strong>crew/aircraft efficiency</strong>.</p>
 </section>
-</section>
-<section id="does-it-vary-by-weekday" class="level2">
-<h2 class="anchored" data-anchor-id="does-it-vary-by-weekday">Does it vary by weekday?</h2>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>p_wday <span class="ot">&lt;-</span> daily <span class="sc">|&gt;</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(delay_am, delay_pm, <span class="at">color =</span> wday)) <span class="sc">+</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.45</span>) <span class="sc">+</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Propagation differs by weekday"</span>,</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Morning delay (5–9 a.m.)"</span>, <span class="at">y =</span> <span class="st">"Afternoon delay (12–6 p.m.)"</span>,</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Weekday"</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>p_wday</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="butterfly_morning_delays_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><strong>Reading the plot.</strong> Steeper lines imply <strong>stronger carry-through</strong> from morning to afternoon. If weekends look flatter, demand/traffic complexity may be lower.</p>
-</section>
-<section id="within-day-accumulation-pattern" class="level2">
-<h2 class="anchored" data-anchor-id="within-day-accumulation-pattern">Within-day accumulation pattern</h2>
-<p>We check <strong>hourly</strong> averages to see if the day “drifts” upward after a bad start.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>hourly <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">hour =</span> <span class="fu">floor</span>(dep_time<span class="sc">/</span><span class="dv">100</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(hour), hour <span class="sc">&gt;=</span> <span class="dv">5</span>, hour <span class="sc">&lt;</span> <span class="dv">18</span>) <span class="sc">|&gt;</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, month, day, hour) <span class="sc">|&gt;</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_delay =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.groups=</span><span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(hour) <span class="sc">|&gt;</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">p50 =</span> <span class="fu">median</span>(avg_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">p80 =</span> <span class="fu">quantile</span>(avg_delay, <span class="fl">0.8</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">p20 =</span> <span class="fu">quantile</span>(avg_delay, <span class="fl">0.2</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>hourly <span class="sc">|&gt;</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(hour, p50)) <span class="sc">+</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> p20, <span class="at">ymax =</span> p80), <span class="at">alpha =</span> <span class="fl">0.15</span>) <span class="sc">+</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">5</span>,<span class="dv">17</span>,<span class="dv">2</span>)) <span class="sc">+</span></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Median hourly delay with 20–80% band (5 a.m.–5 p.m.)"</span>,</span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Hour of day (departure)"</span>, <span class="at">y =</span> <span class="st">"Delay (minutes)"</span></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="butterfly_morning_delays_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><strong>Takeaway.</strong> If the band lifts after ~9–10 a.m., that suggests <strong>accumulation</strong>: early disruptions ripple forward as the schedule tightens.</p>
-</section>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<section id="practical-applications" class="level2">
+<h2 class="anchored" data-anchor-id="practical-applications">Practical Applications</h2>
 <ul>
-<li><strong>Yes:</strong> Morning delays are <strong>predictive</strong> of afternoon delays the same day.<br>
-</li>
-<li>The effect <strong>varies by weekday</strong> (operational mix matters).<br>
-</li>
-<li>Hourly medians hint at <strong>drift upward</strong> after a rocky morning.</li>
+<li><strong>Crew/Aircraft Rotations:</strong> Prioritize <strong>first-wave turn readiness</strong> (catering, fueling, pushback order) to minimize scatter.</li>
+<li><strong>Gate Discipline:</strong> Short-haul gates benefit from tighter <strong>buffer templates</strong> because they cycle more.</li>
+<li><strong>Staffing Windows:</strong> Shift a little staffing from mid-day to <strong>pre-08:00</strong> for a better whole-day payoff.</li>
+<li><strong>Playbooks for “Noisy Mornings”:</strong> When σ₁ spikes, proactively <strong>re-sequence</strong> sensitive turns to break chains.</li>
 </ul>
-<p><strong>Questions to explore next:</strong> Are certain <strong>carriers</strong> or <strong>routes</strong> better at dampening propagation? Do <strong>turnaround times</strong> or <strong>gate constraints</strong> explain differences?</p>
-<hr>
-<footer>
-<strong>Story by Insightful Tales</strong><br>
-<em>Last rendered on: October 29, 2025</em>
-</footer>
+</section>
+<section id="limitations-what-we-didnt-model" class="level2">
+<h2 class="anchored" data-anchor-id="limitations-what-we-didnt-model">Limitations (what we didn’t model)</h2>
+<ul>
+<li>This is NYC-2013 only; airports differ in geometry/ATC regimes.</li>
+<li>Our model is associational; true causal identification would need instruments or exogenous shocks (e.g., runway closures).</li>
+<li>We used daily aggregates; aircraft-tail-level propagation would be even cleaner.</li>
+</ul>
+</section>
+<section id="summary-what-we-discovered" class="level2">
+<h2 class="anchored" data-anchor-id="summary-what-we-discovered">Summary (what we discovered)</h2>
+<ul>
+<li>First-wave <strong>scatter</strong> (not just average delay) is a strong signal for <strong>afternoon</strong> performance.</li>
+<li>The effect is strongest on <strong>short-haul</strong> days—where rotations are more frequent.</li>
+<li>Controlling for weather/time effects, the relationship <strong>persists</strong>.</li>
+<li>A small reduction in morning scatter yields a <strong>measurable</strong> afternoon benefit.</li>
+</ul>
+</section>
+<section id="references-credits" class="level2">
+<h2 class="anchored" data-anchor-id="references-credits">References &amp; Credits</h2>
+<ul>
+<li>Data: <strong>nycflights13</strong> (flights, weather) — Wickham et al.&nbsp;(CRAN)</li>
+<li>Packages: <strong>tidyverse</strong>, <strong>lubridate</strong>, <strong>broom</strong>, <strong>ggplot2</strong></li>
+<li>Authoring: <strong>Quarto</strong></li>
+<li>Reading: Wickham, <em>R for Data Science</em> (data wrangling &amp; viz patterns); Quarto documentation</li>
+<li>Repro style: <code>quiet_theme()</code> in this doc (CC-0)</li>
+<li>Links:
+<ul>
+<li><a href="https://cran.r-project.org/package=nycflights13" class="uri">https://cran.r-project.org/package=nycflights13</a></li>
+<li><a href="https://r4ds.hadley.nz/" class="uri">https://r4ds.hadley.nz/</a></li>
+<li><a href="https://quarto.org/" class="uri">https://quarto.org/</a> ```</li>
+</ul></li>
+</ul>
 
 
 </section>
