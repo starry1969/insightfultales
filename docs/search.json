@@ -23,70 +23,70 @@
   {
     "objectID": "stories/butterfly_morning_delays.html",
     "href": "stories/butterfly_morning_delays.html",
-    "title": "Butterfly Morning Delays",
+    "title": "🦋 Butterfly Morning Delays",
     "section": "",
-    "text": "library(tidyverse)\nlibrary(lubridate)\nlibrary(nycflights13)\nlibrary(broom)\n\n# Minimal, clean theme\nquiet_theme &lt;- function() {\n  ggplot2::theme_minimal(base_size = 13) +\n    ggplot2::theme(\n      panel.grid.minor = element_blank(),\n      plot.title.position = \"plot\",\n      plot.caption.position = \"plot\",\n      strip.text = element_text(face = \"bold\")\n    )\n}"
+    "text": "This analysis uses open data (nycflights13) to demonstrate a novel, reproducible approach to understanding delay propagation within a single day. Unlike traditional performance summaries that emphasize average delay, we focus on variability — the “schedule chaos” that amplifies downstream disruption. To our knowledge, this formulation and visualization of same-day propagation using open data are unique to this project.\nlibrary(tidyverse)\nlibrary(lubridate)\nlibrary(nycflights13)\nlibrary(broom)\n\n# Minimal, clean theme\nquiet_theme &lt;- function() {\n  ggplot2::theme_minimal(base_size = 13) +\n    ggplot2::theme(\n      panel.grid.minor = element_blank(),\n      plot.title.position = \"plot\",\n      plot.caption.position = \"plot\",\n      strip.text = element_text(face = \"bold\")\n    )\n}"
   },
   {
     "objectID": "stories/butterfly_morning_delays.html#data-definitions-why-these-choices",
     "href": "stories/butterfly_morning_delays.html#data-definitions-why-these-choices",
-    "title": "Butterfly Morning Delays",
+    "title": "🦋 Butterfly Morning Delays",
     "section": "Data & Definitions — Why these choices?",
     "text": "Data & Definitions — Why these choices?\nWe study 2013 NYC flights (nycflights13::flights) and pair them with same-day weather summaries (nycflights13::weather) to control for confounding. We define:\n\nFirst Wave: departures between 05:00–09:00 local.\nMorning variability (σ₁): standard deviation of departure delay in the first wave (per origin×date).\nAfternoon outcome (μₐ): mean arrival delay for flights departing after 12:00 (per origin×date).\n\nWhy SD for the morning? We care about schedule scatter (knock-on/queuing), not just average lateness.\n\n# Preprocess core variables\nfl &lt;- flights |&gt;\n  mutate(\n    dep_dt = make_datetime(year, month, day, dep_time %/% 100, dep_time %% 100),\n    hour = hour(dep_dt),\n    date = as_date(dep_dt),\n    dist_band = cut(\n      distance,\n      breaks = c(0, 500, 1500, Inf),\n      labels = c(\"Short (≤500 mi)\", \"Medium (501–1500)\", \"Long (≥1501)\"),\n      right = TRUE\n    )\n  ) |&gt;\n  filter(!is.na(dep_dt), !is.na(arr_delay), !is.na(dep_delay)) |&gt;\n  filter(origin %in% c(\"JFK\", \"LGA\", \"EWR\"))\n\n# Daily first-wave variability (σ1) and afternoon outcome (μa)\ndaily &lt;- fl |&gt;\n  group_by(origin, date) |&gt;\n  summarise(\n    sigma_morning = sd(dep_delay[hour &gt;= 5 & hour &lt; 9], na.rm = TRUE),\n    n_morning     = sum(hour &gt;= 5 & hour &lt; 9, na.rm = TRUE),\n    mean_arr_pm   = mean(arr_delay[hour &gt;= 12], na.rm = TRUE),\n    n_pm          = sum(hour &gt;= 12, na.rm = TRUE),\n    .groups = \"drop_last\"\n  ) |&gt;\n  ungroup()\n\n# Weather: same-day, per origin summaries (precip, wind, visibility)\nwx_daily &lt;- weather |&gt;\n  mutate(date = as_date(time_hour)) |&gt;\n  group_by(origin, date) |&gt;\n  summarise(\n    precip_sum = sum(precip, na.rm = TRUE),\n    wind_mean  = mean(wind_speed, na.rm = TRUE),\n    vis_mean   = mean(visib, na.rm = TRUE),\n    .groups = \"drop\"\n  )\n\ndaily &lt;- daily |&gt;\n  left_join(wx_daily, by = c(\"origin\", \"date\")) |&gt;\n  mutate(\n    month = month(date),\n    wday  = wday(date, label = TRUE)\n  )"
   },
   {
     "objectID": "stories/butterfly_morning_delays.html#finding-1-scatter-in-the-first-wave-predicts-afternoon-pain",
     "href": "stories/butterfly_morning_delays.html#finding-1-scatter-in-the-first-wave-predicts-afternoon-pain",
-    "title": "Butterfly Morning Delays",
+    "title": "🦋 Butterfly Morning Delays",
     "section": "Finding 1 — Scatter in the first wave predicts afternoon pain",
     "text": "Finding 1 — Scatter in the first wave predicts afternoon pain\nWhat we plot & why: A simple scatter of morning variability (x) vs. afternoon mean arrival delay (y) reveals the basic relationship; a smooth fit (loess) clarifies the average trend.\n\np1 &lt;- daily |&gt;\n  filter(n_morning &gt;= 10, n_pm &gt;= 20) |&gt;\n  ggplot(aes(sigma_morning, mean_arr_pm, color = origin)) +\n  geom_point(alpha = 0.35) +\n  geom_smooth(se = FALSE) +\n  labs(\n    title = \"Morning Schedule Scatter vs. Afternoon Arrival Delays\",\n    subtitle = \"Per origin×day in NYC, 2013 (loess trend).\",\n    x = \"First-wave SD of departure delay (minutes)\",\n    y = \"Afternoon mean arrival delay (minutes)\",\n    color = \"Origin\",\n    caption = \"Data: nycflights13 • Smooth: loess • SD uses 05:00–08:59 departures\"\n  ) +\n  quiet_theme()\np1\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\nWhat it implies: As first-wave scatter increases, afternoon arrival delays climb. This is consistent with queuing/turnaround knock-on—a few badly delayed early flights can desynchronize crew/aircraft rotations.\nWhy it matters: Interventions focused early can reduce whole-day delays more effectively than mid-day firefighting."
   },
   {
     "objectID": "stories/butterfly_morning_delays.html#finding-2-short-haul-routes-amplify-the-ripple",
     "href": "stories/butterfly_morning_delays.html#finding-2-short-haul-routes-amplify-the-ripple",
-    "title": "Butterfly Morning Delays",
+    "title": "🦋 Butterfly Morning Delays",
     "section": "Finding 2 — Short-haul routes amplify the ripple",
     "text": "Finding 2 — Short-haul routes amplify the ripple\nWhat we plot & why: We segment by distance band; short-haul flights cycle aircraft/crews more frequently, increasing propagation channels.\n\npm_by_band &lt;- fl |&gt;\n  mutate(am_wave = hour &gt;= 5 & hour &lt; 9,\n         pm_wave = hour &gt;= 12) |&gt;\n  group_by(origin, date, dist_band) |&gt;\n  summarise(\n    sigma_morning = sd(dep_delay[am_wave], na.rm = TRUE),\n    mean_arr_pm   = mean(arr_delay[pm_wave], na.rm = TRUE),\n    n_am = sum(am_wave, na.rm = TRUE),\n    n_pm = sum(pm_wave, na.rm = TRUE),\n    .groups = \"drop\"\n  ) |&gt;\n  filter(!is.na(dist_band), n_am &gt;= 8, n_pm &gt;= 8)\n\np2 &lt;- ggplot(pm_by_band, aes(sigma_morning, mean_arr_pm)) +\n  geom_point(alpha = 0.25) +\n  geom_smooth(se = FALSE) +\n  facet_wrap(~ dist_band) +\n  labs(\n    title = \"Propagation is Strongest on Short-Haul Days\",\n    subtitle = \"Per origin×date; first-wave SD vs. afternoon mean arrival delay.\",\n    x = \"First-wave SD (min)\",\n    y = \"Afternoon mean arrival delay (min)\"\n  ) +\n  quiet_theme()\np2\n\n`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = \"cs\")'\n\n\n\n\n\n\n\n\n\nImplication: Short routes act like “delay multipliers.” Practical levers here include gate assignment discipline, turn-time buffers, and pushback sequencing in the first wave."
   },
   {
     "objectID": "stories/butterfly_morning_delays.html#finding-3-after-weather-controls-the-association-persists",
     "href": "stories/butterfly_morning_delays.html#finding-3-after-weather-controls-the-association-persists",
-    "title": "Butterfly Morning Delays",
+    "title": "🦋 Butterfly Morning Delays",
     "section": "Finding 3 — After weather controls, the association persists",
     "text": "Finding 3 — After weather controls, the association persists\nWhat we fit & why: A linear model predicting afternoon mean arrival delay from first-wave SD, controlling for precipitation, wind, visibility, month and weekday (to partially absorb seasonality/peaks). This is associational, not causal.\n\nmod_data &lt;- daily |&gt;\n  filter(!is.na(mean_arr_pm), !is.na(sigma_morning)) |&gt;\n  mutate(\n    precip_sum = replace_na(precip_sum, 0),\n    wind_mean  = replace_na(wind_mean, 0),\n    vis_mean   = replace_na(vis_mean, 10)\n  )\n\nm1 &lt;- lm(mean_arr_pm ~ sigma_morning + precip_sum + wind_mean + vis_mean +\n           factor(month) + factor(wday) + factor(origin),\n         data = mod_data)\n\n# Model quality snapshot\nbroom::glance(m1) |&gt; dplyr::select(r.squared, adj.r.squared, sigma, nobs)\n\n# A tibble: 1 × 4\n  r.squared adj.r.squared sigma  nobs\n      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;\n1     0.399         0.386  20.5  1092\n\n# Slope of interest\nbroom::tidy(m1) |&gt;\n  filter(term == \"sigma_morning\") |&gt;\n  mutate(interpret = paste0(\"~\", round(estimate, 2),\n                            \" min more afternoon delay per +1 min SD in first wave\"))\n\n# A tibble: 1 × 6\n  term          estimate std.error statistic       p.value interpret            \n  &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt; &lt;chr&gt;                \n1 sigma_morning    0.283    0.0478      5.93 0.00000000417 ~0.28 min more after…\n\n\nWhat it tells us: The coefficient on sigma_morning (typically positive) indicates that even after accounting for weather and calendar effects, noisier first waves align with worse afternoons.\n\n\n\n\n\n\nNote\n\n\n\nInterpretation: If the coefficient is, say, 0.35, then a 3-minute reduction in first-wave SD associates with roughly 1 minute lower afternoon mean arrivals (on average, same-day, same origin)."
   },
   {
     "objectID": "stories/butterfly_morning_delays.html#finding-4-a-tiny-what-if-simulation",
     "href": "stories/butterfly_morning_delays.html#finding-4-a-tiny-what-if-simulation",
-    "title": "Butterfly Morning Delays",
+    "title": "🦋 Butterfly Morning Delays",
     "section": "Finding 4 — A tiny “what-if” simulation",
     "text": "Finding 4 — A tiny “what-if” simulation\nWhat we simulate & why: Suppose operations could shave 2 minutes of SD from the first wave (tightened sequencing, better gate prep). Using the model slope as a heuristic, we can estimate the afternoon benefit.\n\ncoef_sigma &lt;- broom::tidy(m1) |&gt;\n  filter(term == \"sigma_morning\") |&gt;\n  pull(estimate)\n\ndelta_sd &lt;- -2  # hypothetical tightening (minutes)\navg_effect &lt;- coef_sigma * delta_sd\n\ntibble(\n  hypothetical_sd_change_min = delta_sd,\n  predicted_change_pm_mean_min = avg_effect\n)\n\n# A tibble: 1 × 2\n  hypothetical_sd_change_min predicted_change_pm_mean_min\n                       &lt;dbl&gt;                        &lt;dbl&gt;\n1                         -2                       -0.566\n\n\nSo what: Even modest improvements early could meaningfully reduce afternoon averages—multiplied across hundreds of flights, that is real passenger time and crew/aircraft efficiency."
   },
   {
     "objectID": "stories/butterfly_morning_delays.html#practical-applications",
     "href": "stories/butterfly_morning_delays.html#practical-applications",
-    "title": "Butterfly Morning Delays",
+    "title": "🦋 Butterfly Morning Delays",
     "section": "Practical Applications",
     "text": "Practical Applications\n\nCrew/Aircraft Rotations: Prioritize first-wave turn readiness (catering, fueling, pushback order) to minimize scatter.\nGate Discipline: Short-haul gates benefit from tighter buffer templates because they cycle more.\nStaffing Windows: Shift a little staffing from mid-day to pre-08:00 for a better whole-day payoff.\nPlaybooks for “Noisy Mornings”: When σ₁ spikes, proactively re-sequence sensitive turns to break chains."
   },
   {
     "objectID": "stories/butterfly_morning_delays.html#limitations-what-we-didnt-model",
     "href": "stories/butterfly_morning_delays.html#limitations-what-we-didnt-model",
-    "title": "Butterfly Morning Delays",
+    "title": "🦋 Butterfly Morning Delays",
     "section": "Limitations (what we didn’t model)",
     "text": "Limitations (what we didn’t model)\n\nThis is NYC-2013 only; airports differ in geometry/ATC regimes.\nOur model is associational; true causal identification would need instruments or exogenous shocks (e.g., runway closures).\nWe used daily aggregates; aircraft-tail-level propagation would be even cleaner."
   },
   {
     "objectID": "stories/butterfly_morning_delays.html#summary-what-we-discovered",
     "href": "stories/butterfly_morning_delays.html#summary-what-we-discovered",
-    "title": "Butterfly Morning Delays",
+    "title": "🦋 Butterfly Morning Delays",
     "section": "Summary (what we discovered)",
     "text": "Summary (what we discovered)\n\nFirst-wave scatter (not just average delay) is a strong signal for afternoon performance.\nThe effect is strongest on short-haul days—where rotations are more frequent.\nControlling for weather/time effects, the relationship persists.\nA small reduction in morning scatter yields a measurable afternoon benefit."
   },
   {
     "objectID": "stories/butterfly_morning_delays.html#references-credits",
     "href": "stories/butterfly_morning_delays.html#references-credits",
-    "title": "Butterfly Morning Delays",
+    "title": "🦋 Butterfly Morning Delays",
     "section": "References & Credits",
     "text": "References & Credits\n\nData: nycflights13 (flights, weather) — Wickham et al. (CRAN)\nPackages: tidyverse, lubridate, broom, ggplot2\nAuthoring: Quarto\nReading: Wickham, R for Data Science (data wrangling & viz patterns); Quarto documentation\nRepro style: quiet_theme() in this doc (CC-0)\nLinks:\n\nhttps://cran.r-project.org/package=nycflights13\nhttps://r4ds.hadley.nz/\nhttps://quarto.org/ ```"
   }

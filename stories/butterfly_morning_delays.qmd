@@ -1,5 +1,5 @@
 ---
-title: "Butterfly Morning Delays"
+title: "🦋 Butterfly Morning Delays"
 description: "How early-morning schedule noise ripples through the rest of the day."
 categories: ["flights", "delays", "nycflights13"]
 format:
@@ -10,6 +10,10 @@ format:
     anchor-sections: true
 execute:
   freeze: auto
+---
+
+> *This analysis uses open data (`nycflights13`) to demonstrate a novel, reproducible approach to understanding delay propagation within a single day. Unlike traditional performance summaries that emphasize average delay, we focus on variability — the “schedule chaos” that amplifies downstream disruption. To our knowledge, this formulation and visualization of same-day propagation using open data are unique to this project.*
+
 ---
 
 ```{r}
@@ -32,15 +36,15 @@ quiet_theme <- function() {
 }
 ```
 
-> **Key Idea (in one sentence):** Variability in the first morning wave (≈5–9 AM) is strongly associated with higher average **afternoon** arrival delays—especially on short-haul routes—suggesting that tightening the early schedule can yield outsized day-long benefits.
+> **Key Idea:** Variability in the first morning wave (≈5–9 AM) is strongly associated with higher average **afternoon** arrival delays—especially on short-haul routes—suggesting that tightening the early schedule can yield outsized day-long benefits.
 
 ## Data & Definitions — *Why these choices?*
 
 We study 2013 NYC flights (`nycflights13::flights`) and pair them with same-day weather summaries (`nycflights13::weather`) to control for confounding. We define:
 
-- **First Wave:** departures between **05:00–09:00 local**.
-- **Morning variability (σ₁):** standard deviation of **departure delay** in the first wave (per origin×date).
-- **Afternoon outcome (μₐ):** mean **arrival delay** for flights departing after **12:00** (per origin×date).
+-   **First Wave:** departures between **05:00–09:00 local**.
+-   **Morning variability (σ₁):** standard deviation of **departure delay** in the first wave (per origin×date).
+-   **Afternoon outcome (μₐ):** mean **arrival delay** for flights departing after **12:00** (per origin×date).
 
 *Why SD for the morning?* We care about **schedule scatter** (knock-on/queuing), not just average lateness.
 
@@ -207,33 +211,32 @@ tibble(
 
 ## Practical Applications
 
-- **Crew/Aircraft Rotations:** Prioritize **first-wave turn readiness** (catering, fueling, pushback order) to minimize scatter.
-- **Gate Discipline:** Short-haul gates benefit from tighter **buffer templates** because they cycle more.
-- **Staffing Windows:** Shift a little staffing from mid-day to **pre-08:00** for a better whole-day payoff.
-- **Playbooks for “Noisy Mornings”:** When σ₁ spikes, proactively **re-sequence** sensitive turns to break chains.
+-   **Crew/Aircraft Rotations:** Prioritize **first-wave turn readiness** (catering, fueling, pushback order) to minimize scatter.
+-   **Gate Discipline:** Short-haul gates benefit from tighter **buffer templates** because they cycle more.
+-   **Staffing Windows:** Shift a little staffing from mid-day to **pre-08:00** for a better whole-day payoff.
+-   **Playbooks for “Noisy Mornings”:** When σ₁ spikes, proactively **re-sequence** sensitive turns to break chains.
 
 ## Limitations (what we didn’t model)
 
-- This is NYC-2013 only; airports differ in geometry/ATC regimes.
-- Our model is associational; true causal identification would need instruments or exogenous shocks (e.g., runway closures).
-- We used daily aggregates; aircraft-tail-level propagation would be even cleaner.
+-   This is NYC-2013 only; airports differ in geometry/ATC regimes.
+-   Our model is associational; true causal identification would need instruments or exogenous shocks (e.g., runway closures).
+-   We used daily aggregates; aircraft-tail-level propagation would be even cleaner.
 
 ## Summary (what we discovered)
 
-- First-wave **scatter** (not just average delay) is a strong signal for **afternoon** performance.
-- The effect is strongest on **short-haul** days—where rotations are more frequent.
-- Controlling for weather/time effects, the relationship **persists**.
-- A small reduction in morning scatter yields a **measurable** afternoon benefit.
+-   First-wave **scatter** (not just average delay) is a strong signal for **afternoon** performance.
+-   The effect is strongest on **short-haul** days—where rotations are more frequent.
+-   Controlling for weather/time effects, the relationship **persists**.
+-   A small reduction in morning scatter yields a **measurable** afternoon benefit.
 
 ## References & Credits
 
-- Data: **nycflights13** (flights, weather) — Wickham et al. (CRAN)
-- Packages: **tidyverse**, **lubridate**, **broom**, **ggplot2**
-- Authoring: **Quarto**
-- Reading: Wickham, *R for Data Science* (data wrangling & viz patterns); Quarto documentation
-- Repro style: `quiet_theme()` in this doc (CC-0)
-- Links:
-  - <https://cran.r-project.org/package=nycflights13>
-  - <https://r4ds.hadley.nz/>
-  - <https://quarto.org/>
-```
+-   Data: **nycflights13** (flights, weather) — Wickham et al. (CRAN)
+-   Packages: **tidyverse**, **lubridate**, **broom**, **ggplot2**
+-   Authoring: **Quarto**
+-   Reading: Wickham, *R for Data Science* (data wrangling & viz patterns); Quarto documentation
+-   Repro style: `quiet_theme()` in this doc (CC-0)
+-   Links:
+    -   <https://cran.r-project.org/package=nycflights13>
+    -   <https://r4ds.hadley.nz/>
+    -   <https://quarto.org/> \`\`\`
