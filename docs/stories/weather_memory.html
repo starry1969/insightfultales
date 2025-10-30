@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Measuring ‘memory’ from morning weather (5–9 a.m.) to afternoon departure delays (12–6 p.m.).">
 
-<title>🌦️ Weather Memory: How Morning Weather Predicts Afternoon Delays – Insightful Tales</title>
+<title>🌦️ Weather Memory: Do Wind &amp; Visibility in the Morning Predict Afternoon Delays? – Insightful Tales</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -106,13 +107,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="🌦️ Weather Memory: How Morning Weather Predicts Afternoon Delays – Insightful Tales">
-<meta property="og:description" content="Where data finds its narrative — original visual and analytical stories built with Quarto.">
-<meta property="og:image" content="weather_memory_files/figure-html/unnamed-chunk-2-1.png">
+<meta property="og:title" content="🌦️ Weather Memory: Do Wind &amp; Visibility in the Morning Predict Afternoon Delays? – Insightful Tales">
+<meta property="og:description" content="Measuring ‘memory’ from morning weather (5–9 a.m.) to afternoon departure delays (12–6 p.m.).">
+<meta property="og:image" content="weather_memory_files/figure-html/unnamed-chunk-3-1.png">
 <meta property="og:site_name" content="Insightful Tales">
-<meta name="twitter:title" content="🌦️ Weather Memory: How Morning Weather Predicts Afternoon Delays – Insightful Tales">
-<meta name="twitter:description" content="Where data finds its narrative — original visual and analytical stories built with Quarto.">
-<meta name="twitter:image" content="weather_memory_files/figure-html/unnamed-chunk-2-1.png">
+<meta name="twitter:title" content="🌦️ Weather Memory: Do Wind &amp; Visibility in the Morning Predict Afternoon Delays? – Insightful Tales">
+<meta name="twitter:description" content="Measuring ‘memory’ from morning weather (5–9 a.m.) to afternoon departure delays (12–6 p.m.).">
+<meta name="twitter:image" content="weather_memory_files/figure-html/unnamed-chunk-3-1.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -165,17 +166,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#question" id="toc-question" class="nav-link active" data-scroll-target="#question">Question</a></li>
+  <li><a href="#build-a-daily-weatherdelay-panel" id="toc-build-a-daily-weatherdelay-panel" class="nav-link" data-scroll-target="#build-a-daily-weatherdelay-panel">Build a daily weather–delay panel</a></li>
+  <li><a href="#first-look-simple-associations" id="toc-first-look-simple-associations" class="nav-link" data-scroll-target="#first-look-simple-associations">First look: simple associations</a></li>
+  <li><a href="#adjusted-effects-multiple-regression" id="toc-adjusted-effects-multiple-regression" class="nav-link" data-scroll-target="#adjusted-effects-multiple-regression">Adjusted effects (multiple regression)</a></li>
+  <li><a href="#thresholds-when-wind-gets-bad" id="toc-thresholds-when-wind-gets-bad" class="nav-link" data-scroll-target="#thresholds-when-wind-gets-bad">Thresholds: when wind gets “bad”</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">🌦️ Weather Memory: How Morning Weather Predicts Afternoon Delays</h1>
+<h1 class="title">🌦️ Weather Memory: Do Wind &amp; Visibility in the Morning Predict Afternoon Delays?</h1>
 </div>
 
+<div>
+  <div class="description">
+    Measuring ‘memory’ from morning weather (5–9 a.m.) to afternoon departure delays (12–6 p.m.).
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -199,11 +216,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<p>We ask: does <strong>morning weather (5–9 a.m.)</strong> leave a measurable mark on <strong>afternoon departure delays (12–6 p.m.)</strong>?</p>
+<section id="question" class="level2">
+<h2 class="anchored" data-anchor-id="question">Question</h2>
+<p>Does <strong>morning weather</strong> (5–9 a.m.) leave a measurable <strong>imprint</strong> on <strong>afternoon (12–6 p.m.) departure delays</strong>?</p>
+</section>
+<section id="build-a-daily-weatherdelay-panel" class="level2">
+<h2 class="anchored" data-anchor-id="build-a-daily-weatherdelay-panel">Build a daily weather–delay panel</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build daily panel</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Flight delays by morning/afternoon</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>fl_daily <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_delay), <span class="sc">!</span><span class="fu">is.na</span>(dep_time)) <span class="sc">|&gt;</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">hour =</span> <span class="fu">floor</span>(dep_time<span class="sc">/</span><span class="dv">100</span>),</span>
@@ -215,45 +237,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(period)) <span class="sc">|&gt;</span></span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, month, day, period) <span class="sc">|&gt;</span></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_dep_delay =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.groups=</span><span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> period, <span class="at">values_from =</span> avg_dep_delay)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> period, <span class="at">values_from =</span> avg_dep_delay)</span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>wx_am <span class="ot">&lt;-</span> weather <span class="sc">|&gt;</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(hour <span class="sc">&gt;=</span> <span class="dv">5</span>, hour <span class="sc">&lt;</span> <span class="dv">9</span>) <span class="sc">|&gt;</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, month, day, origin) <span class="sc">|&gt;</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">visib_am =</span> <span class="fu">mean</span>(visib, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>            <span class="at">wind_am  =</span> <span class="fu">mean</span>(wind_speed, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups=</span><span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, month, day) <span class="sc">|&gt;</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(visib_am, wind_am), mean, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="at">.groups=</span><span class="st">"drop"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Morning weather aggregated across origins</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>wx_am <span class="ot">&lt;-</span> weather <span class="sc">|&gt;</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(hour <span class="sc">&gt;=</span> <span class="dv">5</span>, hour <span class="sc">&lt;</span> <span class="dv">9</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, month, day, origin) <span class="sc">|&gt;</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">visib_am =</span> <span class="fu">mean</span>(visib, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">wind_am  =</span> <span class="fu">mean</span>(wind_speed, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">precip_am =</span> <span class="fu">mean</span>(precip, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups=</span><span class="st">"drop"</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, month, day) <span class="sc">|&gt;</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(visib_am, wind_am, precip_am), <span class="sc">~</span><span class="fu">mean</span>(.x, <span class="at">na.rm=</span><span class="cn">TRUE</span>)), <span class="at">.groups=</span><span class="st">"drop"</span>)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>panel <span class="ot">&lt;-</span> fl_daily <span class="sc">|&gt;</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(wx_am, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"year"</span>,<span class="st">"month"</span>,<span class="st">"day"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">as.Date</span>(<span class="fu">sprintf</span>(<span class="st">"%04d-%02d-%02d"</span>, year, month, day))) <span class="sc">|&gt;</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">delay_am =</span> am_5_9, <span class="at">delay_pm =</span> pm_12_18) <span class="sc">|&gt;</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.finite</span>(delay_pm), <span class="fu">is.finite</span>(delay_am))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: There was 1 warning in `summarise()`.
-ℹ In argument: `across(c(visib_am, wind_am), mean, na.rm = TRUE)`.
-ℹ In group 1: `year = 2013`, `month = 1`, `day = 1`.
-Caused by warning:
-! The `...` argument of `across()` is deprecated as of dplyr 1.1.0.
-Supply arguments directly to `.fns` through an anonymous function instead.
-
-  # Previously
-  across(a:b, mean, na.rm = TRUE)
-
-  # Now
-  across(a:b, \(x) mean(x, na.rm = TRUE))</code></pre>
 </div>
+</section>
+<section id="first-look-simple-associations" class="level2">
+<h2 class="anchored" data-anchor-id="first-look-simple-associations">First look: simple associations</h2>
+<div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>panel <span class="ot">&lt;-</span> fl_daily <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(wx_am, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"year"</span>,<span class="st">"month"</span>,<span class="st">"day"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">as.Date</span>(<span class="fu">sprintf</span>(<span class="st">"%04d-%02d-%02d"</span>, year, month, day))) <span class="sc">|&gt;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">delay_am =</span> am_5_9, <span class="at">delay_pm =</span> pm_12_18) <span class="sc">|&gt;</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.finite</span>(delay_pm), <span class="fu">is.finite</span>(delay_am))</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>panel <span class="sc">|&gt;</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(wind_am, delay_pm)) <span class="sc">+</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Morning wind (mph)"</span>, <span class="at">y =</span> <span class="st">"Afternoon avg dep delay (min)"</span>,</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Windy mornings ↔ worse afternoons"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>panel <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(visib_am, wind_am, precip_am), <span class="at">names_to =</span> <span class="st">"wx"</span>, <span class="at">values_to =</span> <span class="st">"val"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(val, delay_pm)) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.45</span>) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> wx, <span class="at">scales =</span> <span class="st">"free_x"</span>) <span class="sc">+</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Morning weather vs. afternoon delays (same day)"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Morning weather metric"</span>, <span class="at">y =</span> <span class="st">"Afternoon avg dep delay (min)"</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
@@ -261,14 +282,94 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="weather_memory_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="weather_memory_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p><em>Next:</em> Add coefficients and interaction tests when you’re ready.</p>
+<p><strong>Reading the facets.</strong><br>
+- <strong>wind_am ↑ → delay_pm ↑?</strong> suggests wind-related capacity/resequencing effects.<br>
+- <strong>visib_am ↓ → delay_pm ↑?</strong> supports low-visibility knock-on effects.<br>
+- <strong>precip_am</strong> can capture storms/showers lingering into midday.</p>
+</section>
+<section id="adjusted-effects-multiple-regression" class="level2">
+<h2 class="anchored" data-anchor-id="adjusted-effects-multiple-regression">Adjusted effects (multiple regression)</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(delay_pm <span class="sc">~</span> delay_am <span class="sc">+</span> wind_am <span class="sc">+</span> visib_am <span class="sc">+</span> precip_am, <span class="at">data =</span> panel)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">tidy</span>(fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 5
+  term        estimate std.error statistic  p.value
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept)   27.7       2.54      10.9  4.15e-24
+2 delay_am       1.68      0.186      8.99 1.43e-17
+3 wind_am        0.245     0.106      2.31 2.15e- 2
+4 visib_am      -1.96      0.269     -7.28 2.09e-12
+5 precip_am     95.2      30.8        3.09 2.15e- 3</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">glance</span>(fit) <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select</span>(r.squared, adj.r.squared, sigma)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  r.squared adj.r.squared sigma
+      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;
+1     0.411         0.404  8.91</code></pre>
+</div>
+</div>
+<p><strong>Interpretation.</strong> Including <strong>delay_am</strong> controls for the morning’s operational state; remaining weather coefficients show <strong>extra</strong> afternoon impact beyond “we already started late.”</p>
+</section>
+<section id="thresholds-when-wind-gets-bad" class="level2">
+<h2 class="anchored" data-anchor-id="thresholds-when-wind-gets-bad">Thresholds: when wind gets “bad”</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>cut_wind <span class="ot">&lt;-</span> <span class="fu">median</span>(panel<span class="sc">$</span>wind_am, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>panel <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">wind_bin =</span> <span class="fu">if_else</span>(wind_am <span class="sc">&gt;=</span> cut_wind, <span class="st">"Windy AM (≥ median)"</span>, <span class="st">"Calmer AM (&lt; median)"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(delay_am, delay_pm, <span class="at">color =</span> wind_bin)) <span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.45</span>) <span class="sc">+</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Propagation is worse on windier mornings"</span>,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Morning delay (5–9 a.m.)"</span>, <span class="at">y =</span> <span class="st">"Afternoon delay (12–6 p.m.)"</span>, <span class="at">color =</span> <span class="cn">NULL</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="weather_memory_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Takeaway.</strong> On windier mornings, the <strong>morning→afternoon slope</strong> is typically steeper: the system absorbs <strong>less</strong> disruption.</p>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<ul>
+<li>Morning <strong>wind</strong>, <strong>visibility</strong>, and <strong>precipitation</strong> have <strong>same-day</strong> relationships with afternoon delays.<br>
+</li>
+<li>Even after controlling for <strong>morning delay level</strong>, weather still shows <strong>additional</strong> signal.<br>
+</li>
+<li>Windier mornings tend to <strong>amplify</strong> propagation (steeper slope).</li>
+</ul>
+<p><strong>Next:</strong> Add <strong>origin-specific</strong> effects, interact weather × carrier, or use <strong>hour-level</strong> models to separate schedule compression from weather persistence.</p>
+<hr>
+<footer>
+<strong>Story by Insightful Tales</strong><br>
+<em>Last rendered on: October 29, 2025</em>
+</footer>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
