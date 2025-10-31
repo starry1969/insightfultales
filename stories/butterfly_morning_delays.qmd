@@ -14,7 +14,7 @@ execute:
 
 > *This analysis uses open data (`nycflights13`) to demonstrate a novel, reproducible approach to understanding delay propagation within a single day. Unlike traditional performance summaries that emphasize average delay, we focus on variability — the “schedule chaos” that amplifies downstream disruption. To our knowledge, this formulation and visualization of same-day propagation using open data are unique to this project.*
 
----
+------------------------------------------------------------------------
 
 ```{r}
 #| message: false

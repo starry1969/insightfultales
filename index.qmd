@@ -10,6 +10,7 @@ page-layout: full
 
 ## Featured Stories
 
+- [🧭 The Geography of Luck](stories/geography_of_luck.qmd)
 - [🦋 The Butterfly Effect of Morning Delays](stories/butterfly_morning_delays.qmd)
 - [🌦️ Weather Memory: Morning Weather → Afternoon Delays](stories/weather_memory.qmd)
 

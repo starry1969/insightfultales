@@ -18,7 +18,7 @@
     "href": "index.html#featured-stories",
     "title": "Insightful Tales",
     "section": "Featured Stories",
-    "text": "Featured Stories\n\n🦋 The Butterfly Effect of Morning Delays\n🌦️ Weather Memory: Morning Weather → Afternoon Delays\n\n\nAbout\nInsightful Tales is a data‑storytelling project. We pair clear narrative with reproducible analysis in R/Python."
+    "text": "Featured Stories\n\n🧭 The Geography of Luck\n🦋 The Butterfly Effect of Morning Delays\n🌦️ Weather Memory: Morning Weather → Afternoon Delays\n\n\nAbout\nInsightful Tales is a data‑storytelling project. We pair clear narrative with reproducible analysis in R/Python."
   },
   {
     "objectID": "stories/butterfly_morning_delays.html",
@@ -180,5 +180,89 @@
     "title": "🌦 Weather Memory",
     "section": "Gentle call to curiosity",
     "text": "Gentle call to curiosity\nWhat other forms of memory might our systems hold?"
+  },
+  {
+    "objectID": "stories/geography_of_luck.html",
+    "href": "stories/geography_of_luck.html",
+    "title": "🧭 The Geography of Luck",
+    "section": "",
+    "text": "“Where the sun sits higher, shadows of inequality grow shorter — but never quite disappear.”"
+  },
+  {
+    "objectID": "stories/geography_of_luck.html#premise",
+    "href": "stories/geography_of_luck.html#premise",
+    "title": "🧭 The Geography of Luck",
+    "section": "1. Premise",
+    "text": "1. Premise\nIf you were to spin a globe and stop it at random, the odds of landing somewhere prosperous are not uniform. Latitude has long acted as the silent architect of opportunity — shaping climate, agriculture, disease, and, through them, destiny.\nThis story asks: Does geography still rule luck in the 21st century?"
+  },
+  {
+    "objectID": "stories/geography_of_luck.html#data-sources",
+    "href": "stories/geography_of_luck.html#data-sources",
+    "title": "🧭 The Geography of Luck",
+    "section": "2. Data Sources",
+    "text": "2. Data Sources\nWe combine multiple open datasets (2020 snapshot for a clean cross-section):\n\n\n\n\n\n\n\n\nTheme\nSource\nIndicator\n\n\n\n\nEconomic output\nWorld Bank\nGDP per capita (constant USD, NY.GDP.PCAP.KD)\n\n\nHealth\nWorld Bank\nLife expectancy at birth (SP.DYN.LE00.IN)\n\n\nGeography\nNatural Earth\nCountry boundaries + ISO3 (for joins)"
+  },
+  {
+    "objectID": "stories/geography_of_luck.html#first-glance-the-shape-of-prosperity",
+    "href": "stories/geography_of_luck.html#first-glance-the-shape-of-prosperity",
+    "title": "🧭 The Geography of Luck",
+    "section": "3. First Glance — The Shape of Prosperity",
+    "text": "3. First Glance — The Shape of Prosperity\n\n\nCode\n# GDP vs |latitude|\nggplot(wb, aes(abs_lat, gdp)) +\n  geom_point(aes(color = region), alpha = .7, size = 2, show.legend = FALSE) +\n  geom_smooth(method = \"loess\", se = FALSE, color = \"black\") +\n  scale_y_log10(labels = label_dollar()) +\n  labs(title = \"The Geography of Luck\",\n       subtitle = \"GDP per capita (log scale) vs. absolute latitude, 2020 (World Bank)\",\n       x = \"Absolute Latitude (°)\", y = \"GDP per capita (2015 USD, log scale)\")\n\n\n\n\n\n\n\n\n\nReading: Prosperity tends to rise away from the equator, plateau in the mid‑latitudes, and soften again near the poles — a climatic parabola of fortune."
+  },
+  {
+    "objectID": "stories/geography_of_luck.html#beyond-wealth-life-and-happiness",
+    "href": "stories/geography_of_luck.html#beyond-wealth-life-and-happiness",
+    "title": "The Geography of Luck",
+    "section": "4. Beyond Wealth — Life and Happiness",
+    "text": "4. Beyond Wealth — Life and Happiness\npivot_longer(data, c(life, gdp), names_to=\"metric\", values_to=\"value\") %&gt;%\nggplot(aes(abs_lat, value, color=metric)) +\ngeom_smooth(se=FALSE) +\nfacet_wrap(~metric, scales=\"free_y\", ncol=1) +\nlabs(title=\"Latitude vs. Life Expectancy and Wealth\",\nx=\"Absolute Latitude (°)\", y=NULL)\nLife expectancy follows a similar contour, though the happiest nations (per external data) often lie closer to mild climates — the Goldilocks zones of Earth."
+  },
+  {
+    "objectID": "stories/geography_of_luck.html#exceptions-when-geography-loses",
+    "href": "stories/geography_of_luck.html#exceptions-when-geography-loses",
+    "title": "The Geography of Luck",
+    "section": "5. Exceptions — When Geography Loses",
+    "text": "5. Exceptions — When Geography Loses\nWe fit a simple model and look for outliers: nations richer or healthier than their latitude predicts.\nmodel &lt;- lm(gdp ~ abs_lat, data=data)\ndata$resid &lt;- resid(model)\ntop &lt;- data %&gt;% slice_max(resid, n=10) %&gt;% select(country, region, resid)\nknitr::kable(top, digits=0, caption=\"Top 10 'Lucky Defiers' — outperforming their latitude\")\n\nInterpretation:\nSingapore, Qatar, and Chile appear as bright anomalies — proof that policy, trade, and education can rewrite the geography of luck."
+  },
+  {
+    "objectID": "stories/geography_of_luck.html#temporal-echo",
+    "href": "stories/geography_of_luck.html#temporal-echo",
+    "title": "The Geography of Luck",
+    "section": "6. Temporal Echo",
+    "text": "6. Temporal Echo\nIf you later fetch historical World Bank data (1980–2020), you can show whether latitude’s influence is weakening:\nhistorical &lt;- WDI(indicator=\"NY.GDP.PCAP.KD\", start=1980, end=2020)\nhistorical &lt;- historical %&gt;% group_by(year) %&gt;%\nsummarize(r = cor(abs(latitude), log(gdp), use=\"complete.obs\"))\nggplot(historical, aes(year, r)) + geom_line() +\nlabs(title=\"Correlation of Latitude and GDP over Time\",\ny=\"r (correlation)\", x=\"Year\")\nIf the line falls over time, it tells a quiet story of progress: the world slowly unbinding itself from geography."
+  },
+  {
+    "objectID": "stories/geography_of_luck.html#reflection",
+    "href": "stories/geography_of_luck.html#reflection",
+    "title": "🧭 The Geography of Luck",
+    "section": "7. Reflection",
+    "text": "7. Reflection\n\nThe sun may rise for everyone, but it still shines longer for some.\n\nLatitude once dictated agriculture, disease, and labor. Today, it still whispers through economies — a relic of environmental inheritance.\nYet each bright outlier on the map is a defiance of fate: policy and ingenuity turning geography into geography’s undoing."
+  },
+  {
+    "objectID": "stories/geography_of_luck.html#technical-appendix",
+    "href": "stories/geography_of_luck.html#technical-appendix",
+    "title": "🧭 The Geography of Luck",
+    "section": "8. Technical Appendix",
+    "text": "8. Technical Appendix\n\nPackages: WDI, rnaturalearth, sf, tidyverse, janitor, scales\n\nYear: 2020 snapshot (World Bank)\n\nTransforms: log10(GDP per capita); residuals from lm(gdp_log ~ abs_lat)\n\nCRS: EPSG:4326 (WGS84)\n\nReproducibility: Set a specific year for comparability; extend to multi‑year to track weakening/strengthening latitude effects.\n\n\n\nCode\n# Time evolution — correlation weakening/strengthening over time (1980–2023)\nhist &lt;- WDI(indicator = c(gdp = \"NY.GDP.PCAP.KD\"),\n            start = 1980, end = 2023, extra = TRUE) |&gt;\n  janitor::clean_names() |&gt;\n  dplyr::filter(region != \"Aggregates\") |&gt;\n  dplyr::mutate(\n    # make sure latitude is numeric before abs()\n    latitude = suppressWarnings(readr::parse_number(as.character(latitude))),\n    abs_lat  = abs(latitude),\n    gdp_log  = log10(gdp)\n  ) |&gt;\n  dplyr::group_by(year) |&gt;\n  dplyr::summarize(\n    r_lat_gdp = cor(abs_lat, gdp_log, use = \"complete.obs\"),\n    .groups = \"drop\"\n  )\n\nggplot(hist, aes(year, r_lat_gdp)) +\n  geom_line() +\n  labs(\n    title = \"Latitude–Wealth Correlation Over Time\",\n    x = \"Year\", y = \"Correlation r (|lat| vs log GDP per capita)\"\n  )"
+  },
+  {
+    "objectID": "stories/geography_of_luck.html#beyond-wealth-life-follows-latitude",
+    "href": "stories/geography_of_luck.html#beyond-wealth-life-follows-latitude",
+    "title": "🧭 The Geography of Luck",
+    "section": "4. Beyond Wealth — Life Follows Latitude",
+    "text": "4. Beyond Wealth — Life Follows Latitude\n\n\nCode\n# Life expectancy vs |latitude|\nwb |&gt; ggplot(aes(abs_lat, life)) +\n  geom_point(alpha = .6, size = 2, color = \"#555\") +\n  geom_smooth(method = \"loess\", se = FALSE, color = \"#111\") +\n  labs(title = \"Latitude vs. Life Expectancy\",\n       subtitle = \"Life expectancy at birth vs. absolute latitude, 2020\",\n       x = \"Absolute Latitude (°)\", y = \"Years\")\n\n\n\n\n\n\n\n\n\nReading: Health shadows wealth: life expectancy arcs with latitude, but with notable outliers."
+  },
+  {
+    "objectID": "stories/geography_of_luck.html#exceptions-when-geography-loses-residuals",
+    "href": "stories/geography_of_luck.html#exceptions-when-geography-loses-residuals",
+    "title": "🧭 The Geography of Luck",
+    "section": "5. Exceptions — When Geography Loses (Residuals)",
+    "text": "5. Exceptions — When Geography Loses (Residuals)\nWe fit a simple model of wealth on latitude and look for countries that outperform what geography alone would predict.\n\n\nCode\n# Fit on complete cases only, then join residuals back by iso3c\nwb_cc &lt;- wb |&gt; dplyr::filter(is.finite(gdp_log), is.finite(abs_lat), !is.na(iso3c))\nmodel_simple &lt;- lm(gdp_log ~ abs_lat, data = wb_cc)\nres_tbl &lt;- tibble::tibble(iso3c = wb_cc$iso3c, resid_gdp_lat = unname(resid(model_simple)))\n\nwb &lt;- wb |&gt; dplyr::left_join(res_tbl, by = \"iso3c\") |&gt;\n  dplyr::mutate(luck_index = as.numeric(scale(resid_gdp_lat)))\n\n# Top/bottom outperformers by residuals (ignore NA)\nout_top &lt;- wb |&gt; dplyr::filter(!is.na(resid_gdp_lat)) |&gt;\n  dplyr::slice_max(resid_gdp_lat, n = 10) |&gt;\n  dplyr::select(country, region, resid_gdp_lat)\n\nout_bot &lt;- wb |&gt; dplyr::filter(!is.na(resid_gdp_lat)) |&gt;\n  dplyr::slice_min(resid_gdp_lat, n = 10) |&gt;\n  dplyr::select(country, region, resid_gdp_lat)\n\nknitr::kable(out_top, digits = 2, caption = \"Top 10 'Lucky Defiers' — richer than latitude alone predicts (log residual)\")\n\n\n\nTop 10 ‘Lucky Defiers’ — richer than latitude alone predicts (log residual)\n\n\ncountry\nregion\nresid_gdp_lat\n\n\n\n\nSingapore\nEast Asia & Pacific\n1.42\n\n\nCayman Islands\nLatin America & Caribbean\n1.18\n\n\nBermuda\nNorth America\n1.06\n\n\nBrunei Darussalam\nEast Asia & Pacific\n1.05\n\n\nMonaco\nEurope & Central Asia\n1.05\n\n\nQatar\nMiddle East & North Africa\n0.95\n\n\nGuam\nEast Asia & Pacific\n0.93\n\n\nVirgin Islands (U.S.)\nLatin America & Caribbean\n0.88\n\n\nHong Kong SAR, China\nEast Asia & Pacific\n0.86\n\n\nUnited Arab Emirates\nMiddle East & North Africa\n0.82\n\n\n\n\n\n\n\nCode\nknitr::kable(out_bot, digits = 2, caption = \"Bottom 10 — poorer than latitude alone predicts (log residual)\")\n\n\n\nBottom 10 — poorer than latitude alone predicts (log residual)\n\n\ncountry\nregion\nresid_gdp_lat\n\n\n\n\nAfghanistan\nSouth Asia\n-1.26\n\n\nKyrgyz Republic\nEurope & Central Asia\n-1.10\n\n\nSyrian Arab Republic\nMiddle East & North Africa\n-1.09\n\n\nMadagascar\nSub-Saharan Africa\n-1.09\n\n\nMozambique\nSub-Saharan Africa\n-1.05\n\n\nTajikistan\nEurope & Central Asia\n-0.99\n\n\nBurundi\nSub-Saharan Africa\n-0.99\n\n\nUkraine\nEurope & Central Asia\n-0.92\n\n\nLesotho\nSub-Saharan Africa\n-0.91\n\n\nNiger\nSub-Saharan Africa\n-0.86\n\n\n\n\n\n\nInterpretation: High‑performers often pair trade centrality, education, or resource rents with policy stability. Under‑performers frequently face governance or conflict frictions."
+  },
+  {
+    "objectID": "stories/geography_of_luck.html#optional-map-the-luck-index-residual-choropleth",
+    "href": "stories/geography_of_luck.html#optional-map-the-luck-index-residual-choropleth",
+    "title": "🧭 The Geography of Luck",
+    "section": "6. Optional Map — The Luck Index (Residual Choropleth)",
+    "text": "6. Optional Map — The Luck Index (Residual Choropleth)\nA choropleth map of the residuals (“luck index”) highlights countries that over‑ or under‑perform relative to their absolute latitude.\n\n\nCode\n# Luck-index choropleth (guarded)\nif (isTRUE(has_ne)) {\n  # Merge residuals back to geometry\n  map_dat &lt;- dat |&gt; dplyr::left_join(wb |&gt; dplyr::select(iso3c, resid_gdp_lat), by = c(\"iso_a3\" = \"iso3c\"))\n\n  # Breaks for a symmetric diverging map around zero residual\n  brks &lt;- c(-Inf, -0.6, -0.3, -0.15, 0, 0.15, 0.3, 0.6, Inf)\n  map_dat$res_bin &lt;- cut(map_dat$resid_gdp_lat, breaks = brks, include.lowest = TRUE)\n\n  # Plot\n  ggplot(map_dat) +\n    geom_sf(aes(fill = res_bin), color = \"white\", size = 0.1) +\n    scale_fill_brewer(type = \"div\", palette = \"RdBu\", direction = -1, na.value = \"#e5e7eb\",\n                      name = \"Luck index\n(GDP~vs~|lat| residual)\") +\n    labs(title = \"Outperformers and Underperformers — Geography of Luck\",\n         subtitle = \"Residuals from log(GDP per capita) ~ absolute latitude, 2020\",\n         caption = \"Data: World Bank (WDI), Natural Earth. Negative = underperforming latitude; positive = outperforming.\") +\n    theme(legend.position = \"right\")\n} else {\n  message(\"Optional map disabled: install.packages(c('sf','rnaturalearth','rnaturalearthdata')) to enable the choropleth.\")\n}\n\n\n\n\n\n\n\n\n\nHow to read: Blue shades underperform their latitude (negative residuals); red shades outperform (positive residuals). Neutral grays are missing data."
   }
 ]

@@ -14,6 +14,8 @@ website:
         text: Home
       - text: Stories
         menu:
+          - href: stories/geography_of_luck.qmd
+            text: "🧭 Geography of Luck"
           - href: stories/butterfly_morning_delays.qmd
             text: "🦋 Butterfly Effect"
           - href: stories/weather_memory.qmd
