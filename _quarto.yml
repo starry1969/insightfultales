@@ -9,10 +9,14 @@ website:
   open-graph: true
   twitter-card: true
   navbar:
+  logo: images/logo.png
     left:
-      - href: index.qmd
-        text: Home
-      - text: Stories
+      - text: Home
+        href: index.qmd
+      - text: "Stories"
+        href: stories/
+      - text: "About"
+        href: about.qmd
         menu:
           - href: stories/geography_of_luck.qmd
             text: "🧭 Geography of Luck"
@@ -20,7 +24,11 @@ website:
             text: "🦋 Butterfly Effect"
           - href: stories/weather_memory.qmd
             text: "🌦️ Weather Memory"
+  page-footer:
+    left: "© 2025 Insightful Tales"
+    right: "Made with ❤️ and Quarto"
 format:
   html:
     theme: flatly
+    css: styles.css
     toc: true

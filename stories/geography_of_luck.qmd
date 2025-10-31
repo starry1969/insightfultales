@@ -8,7 +8,7 @@ format:
     code-fold: show
     smooth-scroll: true
     df-print: paged
-execute:
+execute:“Where the sun sits higher, shadows of ineq
   warning: false
   message: false
   echo: true
@@ -28,7 +28,7 @@ This story asks: *Does geography still rule luck in the 21st century?*
 We combine multiple open datasets (2020 snapshot for a clean cross-section):
 
 | Theme | Source | Indicator |
-|--------------------:|:--------------------|:-----------------------------|
+|---:|:---|:---|
 | Economic output | World Bank | GDP per capita (constant USD, `NY.GDP.PCAP.KD`) |
 | Health | World Bank | Life expectancy at birth (`SP.DYN.LE00.IN`) |
 | Geography | Natural Earth | Country boundaries + ISO3 (for joins) |

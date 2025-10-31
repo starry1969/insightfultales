@@ -1,0 +1,6 @@
+---
+title: "About Insightful Tales"
+---
+
+🦋 **Insightful Tales** is a creative data storytelling project that transforms datasets into visual, narrative insights.\
+Every story is built from data — but told like literature, not statistics.
