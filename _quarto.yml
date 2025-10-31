@@ -9,7 +9,7 @@ website:
   open-graph: true
   twitter-card: true
   navbar:
-  logo: images/logo.png
+    logo: images/logo.png
     left:
       - text: Home
         href: index.qmd
