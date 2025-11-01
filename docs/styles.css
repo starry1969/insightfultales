@@ -1,10 +1,39 @@
-:root { --brand:#2b5876; --brand2:#1f3b73; }
+/* Brand color variables */
+:root {
+  --brand: #2b5876;
+  --brand2: #1f3b73;
+  --bs-navbar-brand-height: 3.75rem; /* ~60px; adjust for logo size */
+}
+
+/* Navbar styling */
 .navbar-brand { 
-    font-weight:800;
+  font-weight: 800;
 }
-.navbar-brand img {
-  height: 120px;        /* controls logo size */
+
+.navbar .navbar-brand img {
+  height: var(--bs-navbar-brand-height) !important;
+  max-height: var(--bs-navbar-brand-height) !important;
+  width: auto;
 }
-h1,h2 { scroll-margin-top: 80px; }
-a { text-decoration: none; }
-section.hero { background: linear-gradient(135deg,var(--brand2),var(--brand)); color:#fff; border-radius:14px; padding:2rem 1.25rem; }
+
+/* Optional: give navbar breathing room */
+.navbar {
+  min-height: calc(var(--bs-navbar-brand-height) + 12px);
+}
+
+/* Headings and links */
+h1, h2 {
+  scroll-margin-top: 80px;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Hero section gradient background */
+section.hero {
+  background: linear-gradient(135deg, var(--brand2), var(--brand));
+  color: #fff;
+  border-radius: 14px;
+  padding: 2rem 1.25rem;
+}
