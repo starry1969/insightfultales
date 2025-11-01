@@ -9,6 +9,7 @@ website:
   open-graph: true
   twitter-card: true
   navbar:
+    title: false                # <— turn off brand text
     logo: images/logo.png
     left:
       - text: Home
