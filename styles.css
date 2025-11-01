@@ -1,8 +1,12 @@
-/* Brand color variables */
+/* =========================================
+   Insightful Tales — Unified Stylesheet
+   ========================================= */
+
+/* Brand color variables + lifted Bootstrap cap */
 :root {
   --brand: #2b5876;
   --brand2: #1f3b73;
-  --bs-navbar-brand-height: 3.75rem; /* ~60px; adjust for logo size */
+  --bs-navbar-brand-height: 5rem; /* ~80px, adjust freely */
 }
 
 /* Navbar styling */
@@ -10,18 +14,23 @@
   font-weight: 800;
 }
 
-.navbar .navbar-brand img {
+/* Force logo image to honor our chosen height */
+.navbar .navbar-brand img,
+.navbar .navbar-brand .navbar-logo,
+.navbar-brand img,
+img.navbar-logo {
   height: var(--bs-navbar-brand-height) !important;
   max-height: var(--bs-navbar-brand-height) !important;
-  width: auto;
+  width: auto !important;
+  display: inline-block !important;
 }
 
-/* Optional: give navbar breathing room */
+/* Optional: extra vertical space for the navbar */
 .navbar {
   min-height: calc(var(--bs-navbar-brand-height) + 12px);
 }
 
-/* Headings and links */
+/* Headings and link styling */
 h1, h2 {
   scroll-margin-top: 80px;
 }
@@ -36,4 +45,15 @@ section.hero {
   color: #fff;
   border-radius: 14px;
   padding: 2rem 1.25rem;
+}
+
+/* =========================================
+   Optional: Responsive adjustments
+   ========================================= */
+
+/* Slightly shrink logo on smaller screens */
+@media (max-width: 768px) {
+  :root {
+    --bs-navbar-brand-height: 3.5rem;
+  }
 }
