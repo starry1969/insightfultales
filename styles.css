@@ -66,7 +66,7 @@ a {
 /* Hide the browser's built-in marker */
 details.story > summary::-webkit-details-marker,
 details.dataset > summary::-webkit-details-marker {
-  display: none;
+
 }
 
 /* Add our custom arrow instead */
@@ -96,4 +96,4 @@ details.dataset[open] > summary::before {
 details.story > summary:hover,
 details.dataset > summary:hover {
   color: var(--brand2, #1f3b73);
-}
+} 
