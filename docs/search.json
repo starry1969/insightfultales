@@ -168,6 +168,13 @@
     "text": "References & Credits\n\nData: nycflights13 (flights, weather) — Wickham et al. (CRAN)\nPackages: tidyverse, lubridate, broom, ggplot2\nAuthoring: Quarto\nReading: Wickham, R for Data Science (data wrangling & viz patterns); Quarto documentation\nRepro style: quiet_theme() in this doc (CC-0)\nLinks:\n\nhttps://cran.r-project.org/package=nycflights13\nhttps://r4ds.hadley.nz/\nhttps://quarto.org/ ```"
   },
   {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Insightful Tales",
+    "section": "",
+    "text": "🦋 Insightful Tales is a creative data storytelling project that transforms datasets into visual, narrative insights.\nEvery story is built from data — but told like literature, not statistics."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Insightful Tales",
