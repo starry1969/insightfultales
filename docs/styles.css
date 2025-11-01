@@ -4,8 +4,8 @@
 
 /* --- Tokens --- */
 :root {
-  --nav-logo-h: 6rem;              /* pick your size */
-  --bs-navbar-brand-height: 7rem;  /* align Bootstrap token, just in case */
+  --nav-logo-h: 3rem;              /* pick your size */
+  --bs-navbar-brand-height: 4rem;  /* align Bootstrap token, just in case */
   --brand:  #2b5876;
   --brand2: #1f3b73;
   
