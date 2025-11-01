@@ -58,12 +58,6 @@ a {
   --bs-navbar-brand-height: 7rem;  /* align Bootstrap token, just in case */
 }
 
-/* Keep the bar tall enough to fit the bigger logo */
-.navbar { 
-  min-height: calc(var(--nav-logo-h) + 0.75rem);
-}
-
-
 
 details.story {
   margin: 0.5rem 0 0.75rem;
