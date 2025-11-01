@@ -1,5 +1,8 @@
 :root { --brand:#2b5876; --brand2:#1f3b73; }
-.navbar-brand { font-weight:800; }
+.navbar-brand { 
+    font-weight:800;
+    height: 60px
+}
 h1,h2 { scroll-margin-top: 80px; }
 a { text-decoration: none; }
 section.hero { background: linear-gradient(135deg,var(--brand2),var(--brand)); color:#fff; border-radius:14px; padding:2rem 1.25rem; }
