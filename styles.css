@@ -76,22 +76,7 @@ details.dataset > summary {
   padding-left: 1.5rem;
 }
 
-details.story > summary::before,
-details.dataset > summary::before {
-  content: "▶";
-  position: absolute;
-  left: 0;
-  top: 0.4rem;
-  color: var(--brand, #2b5876);
-  font-size: 0.9rem;
-  transition: transform 0.25s ease;
-}
 
-/* Rotate arrow when open */
-details.story[open] > summary::before,
-details.dataset[open] > summary::before {
-  transform: rotate(90deg);
-}
 
 details.story > summary:hover,
 details.dataset > summary:hover {
