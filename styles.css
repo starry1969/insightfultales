@@ -51,13 +51,25 @@ a {
   :root { --nav-logo-h: 6rem; } /* shrink logo on mobile */
 }
 
-
 /* Make the logo actually grow, defeating Bootstrap/Quarto caps */
 :root {
   --nav-logo-h: 6rem;              /* pick your size */
   --bs-navbar-brand-height: 7rem;  /* align Bootstrap token, just in case */
 }
 
+/* Keep the bar tall enough to fit the bigger logo */
+.navbar { 
+  min-height: calc(var(--nav-logo-h) + 0.75rem);
+}
+
+
+/* If you have light/dark duplicates, apply to both */
+.navbar-logo.light-content,
+.navbar-logo.dark-content {
+  height: var(--nav-logo-h) !important;
+  max-height: var(--nav-logo-h) !important;
+  width: auto !important;
+}
 
 details.story {
   margin: 0.5rem 0 0.75rem;
