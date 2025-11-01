@@ -62,6 +62,14 @@ a {
   min-height: calc(var(--nav-logo-h) + 0.75rem);
 }
 
+/* If you have light/dark duplicates, apply to both */
+.navbar-logo.light-content,
+.navbar-logo.dark-content {
+  height: var(--nav-logo-h) !important;
+  max-height: var(--nav-logo-h) !important;
+  width: auto !important;
+}
+
 details.story {
   margin: 0.5rem 0 0.75rem;
   border: 1px solid rgba(0,0,0,.06);
