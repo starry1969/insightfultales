@@ -17,6 +17,10 @@
   display: none; /* or opacity: 0 !important; */
 }
 
+.navbar-brand .navbar-title {
+  display: none !important;
+}
+
 /* --- Navbar / Branding --- */
 .navbar-brand { 
   font-weight: 800;
