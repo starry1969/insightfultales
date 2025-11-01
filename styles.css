@@ -1,6 +1,12 @@
 /* ================================
    Insightful Tales — Minimal CSS
    ================================ */
+section.hero { margin-top: 1rem; }
+
+---
+title: "Insightful Tales"
+page-layout: full
+---
 
 /* --- Tokens --- */
 :root {
@@ -18,9 +24,13 @@
   font-weight: 800;
 }
 
-.navbar-brand .navbar-logo {
-  height: var(--nav-logo-h);
-  width: auto;
+/* ensure the actual <img> grows; beat theme caps */
+.navbar .navbar-brand > img.navbar-logo,
+.navbar-brand img.navbar-logo,
+img.navbar-logo {
+  height: var(--nav-logo-h) !important;
+  max-height: var(--nav-logo-h) !important;
+  width: auto !important;
   display: inline-block;
 }
 
@@ -28,7 +38,7 @@
   min-height: calc(var(--nav-logo-h) + 0.75rem);
 }
 
-/* Hide the dark-mode duplicate logo (Quarto emits .dark-content) */
+/* Hide the dark-mode duplicate logo */
 .navbar-logo.dark-content { 
   display: none !important;
 }
@@ -52,44 +62,24 @@ a {
 
 /* --- Small screens --- */
 @media (max-width: 768px) {
-  :root { --nav-logo-h: 6rem; } /* shrink logo on mobile */
+  :root {
+    --nav-logo-h: 6rem;              /* smaller logo on mobile */
+    --bs-navbar-brand-height: 6rem;
+  }
 }
 
-/* Keep the bar tall enough to fit the bigger logo */
-.navbar { 
-  min-height: calc(var(--nav-logo-h) + 0.75rem);
-}
+/* --- Stories <details> styling --- */
+details.story > summary a,
+details.dataset > summary a { color: inherit; text-decoration: none; }
+details.story > summary a:hover,
+details.dataset > summary a:hover { text-decoration: underline; }
 
-/* If you have light/dark duplicates, apply to both */
-.navbar-logo.light-content,
-.navbar-logo.dark-content {
-  height: var(--nav-logo-h) !important;
-  max-height: var(--nav-logo-h) !important;
-  width: auto !important;
+details.story > summary,
+details.dataset > summary { position: relative; padding-left: 1.5rem; }
+details.story > summary::before,
+details.dataset > summary::before {
+  content: "▶"; position: absolute; left: 0; top: 0.4rem;
+  color: var(--brand,#2b5876); font-size: .9rem; transition: transform .25s;
 }
-
-details.story {
-  margin: 0.5rem 0 0.75rem;
-  border: 1px solid rgba(0,0,0,.06);
-  border-radius: 10px;
-  padding: 0.25rem 0.75rem 0.5rem;
-  background: rgba(255,255,255,.5);
-  transition: all 0.25s ease;
-}
-details.story > summary {
-  cursor: pointer;
-  font-weight: 650;
-  padding: 0.5rem 0;
-  list-style: none;
-}
-details.story > summary a {
-  color: inherit;
-  text-decoration: none;
-}
-details.story > summary a:hover {
-  text-decoration: underline;
-}
-details.story[open] {
-  border-color: rgba(0,0,0,.12);
-  background: rgba(0,0,0,.02);
-}
+details.story[open] > summary::before,
+details.dataset[open] > summary::before { transform: rotate(90deg); }
