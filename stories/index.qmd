@@ -49,28 +49,10 @@ Using Lahman’s database, this story blends sport, sociology, and technology to
 
 <details class="story">
 
-<summary>💰 <strong>The Wealth of Nations, Revisited</strong> — Gapminder Tales</summary>
-
-A visual narrative on global progress and paradox:\
-who truly caught up, who stalled, and what it means when GDP rises but well-being lags behind.
-
-</details>
-
-<details class="story">
-
 <summary>🛰️ <strong>Planetary Pulse</strong> — Reading Earth from Orbit</summary>
 
 Satellite imagery meets storytelling.\
 From greening deserts to vanishing glaciers, this piece turns NASA’s pixels into a planetary diary of change.
-
-</details>
-
-<details class="story">
-
-<summary>🚇 <strong>London in Motion</strong> — The Pulse of a City</summary>
-
-Every entry, exit, and delay tells a story of urban life.\
-This narrative transforms Transport for London data into a living map of rhythm, pressure, and resilience.
 
 </details>
 
