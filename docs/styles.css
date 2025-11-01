@@ -1,12 +1,6 @@
 /* ================================
    Insightful Tales — Minimal CSS
    ================================ */
-section.hero { margin-top: 1rem; }
-
----
-title: "Insightful Tales"
-page-layout: full
----
 
 /* --- Tokens --- */
 :root {

@@ -2,7 +2,6 @@
 title: "Insightful Tales"
 page-layout: full
 ---
-
 <section class="hero">
 
 <p>Where data finds its narrative — original visual and analytical stories built with Quarto.</p>
