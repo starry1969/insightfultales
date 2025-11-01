@@ -13,10 +13,6 @@
   --bs-navbar-brand-height: 6rem;
 }
 
-.quarto-title > h1.title {
-  display: none; /* or opacity: 0 !important; */
-}
-
 .navbar-brand .navbar-title {
   display: none !important;
 }

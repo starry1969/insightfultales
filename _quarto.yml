@@ -11,6 +11,8 @@ website:
   navbar:
     logo: images/logo.png
     left:
+      - text: "Home"
+        href: index.qmd    
       - text: "Stories"
         href: stories/index.qmd
       - text: "About"
