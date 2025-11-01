@@ -1,0 +1,15 @@
+---
+title: "Contact"
+---
+
+## 📬 Get in Touch
+
+I'd love to hear from readers, researchers, or collaborators interested in data storytelling, visualization, or related projects.
+
+-   💡 **Feedback or story ideas?** Drop a note below.\
+-   🧠 **Collaboration inquiries?** I’m open to cross-disciplinary data projects.
+
+👉 \[LinkedIn Profile\](https://www.linkedin.com/in/joseph-schaffer-a6270138\
+👉 [GitHub Repository](https://github.com/starry1969/insightfultales)
+
+Or email me directly: `joseph [at] insightfultales [dot] com`

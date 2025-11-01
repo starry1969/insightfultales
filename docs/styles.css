@@ -1,70 +1,107 @@
-/* =========================================
-   Insightful Tales — Unified Stylesheet
-   ========================================= */
-   
-/* Hide the dark-mode duplicate logo */
+/* ================================
+   Insightful Tales — Minimal CSS
+   ================================ */
 
-/* TEMP */
-body { outline: 3px solid lime !important; }
-
-
-.navbar-logo.dark-content {
-  display: none !important;
-}
-
-
-/* Brand color variables + lifted Bootstrap cap */
+/* --- Tokens --- */
 :root {
-  --brand: #2b5876;
+  --nav-logo-h: 19rem;  /* <-- adjust this for logo size */
+  --brand:  #2b5876;
   --brand2: #1f3b73;
-  --bs-navbar-brand-height: 5rem; /* ~80px, adjust freely */
 }
 
-/* Navbar styling */
+/* --- Navbar / Branding --- */
 .navbar-brand { 
   font-weight: 800;
 }
 
-/* Force logo image to honor our chosen height */
-.navbar .navbar-brand img,
-.navbar .navbar-brand .navbar-logo,
-.navbar-brand img,
-img.navbar-logo {
-  height: var(--bs-navbar-brand-height) !important;
-  max-height: var(--bs-navbar-brand-height) !important;
-  width: auto !important;
-  display: inline-block !important;
+.navbar-brand .navbar-logo {
+  height: var(--nav-logo-h);
+  width: auto;
+  display: inline-block;
 }
 
-/* Optional: extra vertical space for the navbar */
-.navbar {
-  min-height: calc(var(--bs-navbar-brand-height) + 12px);
+.navbar { 
+  min-height: calc(var(--nav-logo-h) + 0.75rem);
 }
 
-/* Headings and link styling */
-h1, h2 {
-  scroll-margin-top: 80px;
+/* Hide the dark-mode duplicate logo (Quarto emits .dark-content) */
+.navbar-logo.dark-content { 
+  display: none !important;
 }
 
-a {
+/* --- Headings / Links --- */
+h1, h2 { 
+  scroll-margin-top: calc(var(--nav-logo-h) + 1rem);
+}
+
+a { 
   text-decoration: none;
 }
 
-/* Hero section gradient background */
-section.hero {
+/* --- Hero section --- */
+.hero {
   background: linear-gradient(135deg, var(--brand2), var(--brand));
   color: #fff;
   border-radius: 14px;
   padding: 2rem 1.25rem;
 }
 
-/* =========================================
-   Optional: Responsive adjustments
-   ========================================= */
-
-/* Slightly shrink logo on smaller screens */
+/* --- Small screens --- */
 @media (max-width: 768px) {
-  :root {
-    --bs-navbar-brand-height: 3.5rem;
-  }
+  :root { --nav-logo-h: 6rem; } /* shrink logo on mobile */
+}
+
+
+/* Make the logo actually grow, defeating Bootstrap/Quarto caps */
+:root {
+  --nav-logo-h: 6rem;              /* pick your size */
+  --bs-navbar-brand-height: 7rem;  /* align Bootstrap token, just in case */
+}
+
+.navbar .navbar-brand > img.navbar-logo,
+.navbar-brand img.navbar-logo,
+img.navbar-logo {
+  height: var(--nav-logo-h) !important;
+  max-height: var(--nav-logo-h) !important;
+  width: auto !important;
+  display: inline-block;
+}
+
+/* Keep the bar tall enough to fit the bigger logo */
+.navbar { 
+  min-height: calc(var(--nav-logo-h) + 0.75rem);
+}
+
+/* If you have light/dark duplicates, apply to both */
+.navbar-logo.light-content,
+.navbar-logo.dark-content {
+  height: var(--nav-logo-h) !important;
+  max-height: var(--nav-logo-h) !important;
+  width: auto !important;
+}
+
+details.story {
+  margin: 0.5rem 0 0.75rem;
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 10px;
+  padding: 0.25rem 0.75rem 0.5rem;
+  background: rgba(255,255,255,.5);
+  transition: all 0.25s ease;
+}
+details.story > summary {
+  cursor: pointer;
+  font-weight: 650;
+  padding: 0.5rem 0;
+  list-style: none;
+}
+details.story > summary a {
+  color: inherit;
+  text-decoration: none;
+}
+details.story > summary a:hover {
+  text-decoration: underline;
+}
+details.story[open] {
+  border-color: rgba(0,0,0,.12);
+  background: rgba(0,0,0,.02);
 }

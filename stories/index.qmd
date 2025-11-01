@@ -1,0 +1,79 @@
+---
+title: "Stories"
+description: "Narrative analyses and visual explorations — where datasets reveal their human side."
+---
+
+## 📖 Stories of Data and Discovery
+
+Welcome to **Insightful Tales**, a growing library of original, data-driven stories.\
+Each project starts from an open dataset and ends as a narrative — something to be read, seen, and felt.
+
+Click any story below to explore its full tale.
+
+------------------------------------------------------------------------
+
+<details class="story">
+
+<summary>🧭 <a href="geography_of_luck.html"><strong>Geography of Luck</strong></a> — The Latitude Lottery</summary>
+
+Airports closer to the poles face harsher weather — but does geography itself decide punctuality?\
+This story measures how latitude quietly skews flight reliability, uncovering patterns of chance, climate, and coordination.
+
+</details>
+
+<details class="story">
+
+<summary>🦋 <a href="butterfly_morning_delays.html"><strong>Butterfly Morning Delays</strong></a> — Small Causes, Wide Ripples</summary>
+
+A delay at dawn can echo across an entire air-traffic network.\
+Using NYC flight data, this tale visualizes how minute perturbations evolve into widespread effects — a modern butterfly effect.
+
+</details>
+
+<details class="story">
+
+<summary>🌦️ <a href="weather_memory.html"><strong>Weather Memory</strong></a> — How the Sky Remembers</summary>
+
+Does weather have “momentum”?\
+By correlating daily anomalies, this piece explores how temperature and precipitation persist — revealing the hidden inertia of the atmosphere.
+
+</details>
+
+<details class="story">
+
+<summary>⚾ <strong>Baseball Zeitgeist</strong> — A Century of Swings</summary>
+
+Using Lahman’s database, this story blends sport, sociology, and technology to show how America’s game mirrors its evolving spirit — from dead-ball grit to data-driven power.
+
+</details>
+
+<details class="story">
+
+<summary>🛰️ <strong>Planetary Pulse</strong> — Reading Earth from Orbit</summary>
+
+Satellite imagery meets storytelling.\
+From greening deserts to vanishing glaciers, this piece turns NASA’s pixels into a planetary diary of change.
+
+</details>
+
+<details class="story">
+
+<summary>🕹️ <strong>The Hype Curve</strong> — Life and Death of a Game</summary>
+
+Steam data visualized as cultural heartbeat:\
+how trends surge, communities form, and nostalgia revives titles long thought dormant.
+
+</details>
+
+<details class="story">
+
+<summary>🌆 <strong>Lights and Lives</strong> — Cities from Space</summary>
+
+Night-light data reveals how urban sprawl, inequality, and energy intersect.\
+A story told not in words but in luminous patterns across the Earth’s surface.
+
+</details>
+
+------------------------------------------------------------------------
+
+> 🪶 *These stories are not reports — they’re reflections. Each dataset holds a narrative, waiting for you to find the signal in the noise.*
