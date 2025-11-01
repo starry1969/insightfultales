@@ -3,6 +3,11 @@
    ========================================= */
    
 /* Hide the dark-mode duplicate logo */
+
+/* TEMP */
+body { outline: 3px solid lime !important; }
+
+
 .navbar-logo.dark-content {
   display: none !important;
 }
