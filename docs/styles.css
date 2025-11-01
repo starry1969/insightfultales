@@ -63,17 +63,37 @@ a {
 }
 
 /* --- Stories <details> styling --- */
-details.story > summary a,
-details.dataset > summary a { color: inherit; text-decoration: none; }
-details.story > summary a:hover,
-details.dataset > summary a:hover { text-decoration: underline; }
+/* Hide the browser's built-in marker */
+details.story > summary::-webkit-details-marker,
+details.dataset > summary::-webkit-details-marker {
+  display: none;
+}
 
+/* Add our custom arrow instead */
 details.story > summary,
-details.dataset > summary { position: relative; padding-left: 1.5rem; }
+details.dataset > summary {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
 details.story > summary::before,
 details.dataset > summary::before {
-  content: "▶"; position: absolute; left: 0; top: 0.4rem;
-  color: var(--brand,#2b5876); font-size: .9rem; transition: transform .25s;
+  content: "▶";
+  position: absolute;
+  left: 0;
+  top: 0.4rem;
+  color: var(--brand, #2b5876);
+  font-size: 0.9rem;
+  transition: transform 0.25s ease;
 }
+
+/* Rotate arrow when open */
 details.story[open] > summary::before,
-details.dataset[open] > summary::before { transform: rotate(90deg); }
+details.dataset[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+details.story > summary:hover,
+details.dataset > summary:hover {
+  color: var(--brand2, #1f3b73);
+}
