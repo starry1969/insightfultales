@@ -8,6 +8,9 @@
   --bs-navbar-brand-height: 7rem;  /* align Bootstrap token, just in case */
   --brand:  #2b5876;
   --brand2: #1f3b73;
+  
+  /* some themes read this token */
+  --bs-navbar-brand-height: 6rem;
 }
 
 /* --- Navbar / Branding --- */
