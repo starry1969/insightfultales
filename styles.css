@@ -1,7 +1,9 @@
 :root { --brand:#2b5876; --brand2:#1f3b73; }
 .navbar-brand { 
     font-weight:800;
-    height: 60px;
+}
+.navbar-brand img {
+  height: 120px;        /* controls logo size */
 }
 h1,h2 { scroll-margin-top: 80px; }
 a { text-decoration: none; }
