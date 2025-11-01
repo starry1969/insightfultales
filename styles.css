@@ -63,7 +63,11 @@ a {
 }
 
 /* --- Stories <details> styling --- */
-
+/* Hide the browser's built-in marker */
+details.story > summary::-webkit-details-marker,
+details.dataset > summary::-webkit-details-marker {
+  display: none;
+}
 
 /* Add our custom arrow instead */
 details.story > summary,
