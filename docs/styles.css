@@ -1,6 +1,12 @@
 /* =========================================
    Insightful Tales — Unified Stylesheet
    ========================================= */
+   
+/* Hide the dark-mode duplicate logo */
+.navbar-logo.dark-content {
+  display: none !important;
+}
+
 
 /* Brand color variables + lifted Bootstrap cap */
 :root {
