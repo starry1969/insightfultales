@@ -58,3 +58,11 @@ a {
   --bs-navbar-brand-height: 7rem;  /* align Bootstrap token, just in case */
 }
 
+.navbar .navbar-brand > img.navbar-logo,
+.navbar-brand img.navbar-logo,
+img.navbar-logo {
+  height: var(--nav-logo-h) !important;
+  max-height: var(--nav-logo-h) !important;
+  width: auto !important;
+  display: inline-block;
+}
