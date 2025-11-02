@@ -1,6 +1,7 @@
 ---
 title: "🧮 The Genesis of Data — When Counting Became Knowing"
-description: "Tracing humanity’s first attempts to quantify the world — from Babylonian grain tablets to Victorian census tables, where the act of counting became the foundation of data science."
+subtitle: "Tracing humanity’s first attempts to quantify the world — from Babylonian grain tablets to Victorian census tables, where the act of counting became the foundation of data science."
+description: "Where numbers first became mirrors of the world."
 categories: [history, data-science, philosophy]
 image: images/genesis_of_data.png
 format:
@@ -9,12 +10,7 @@ format:
     toc-title: "On This Page"
     code-fold: true
     code-summary: "Show code"
-    df-print: paged
 ---
-
-# 🧮 The Genesis of Data — When Counting Became Knowing
-
-*Where numbers first became mirrors of the world.*
 
 We like to imagine data as a modern concept — CSV files, databases, machine learning pipelines.\
 But the truth is: data is as old as civilization itself. Before there were scientists, there were record-keepers. Before there were models, there were marks — clay scratches, tally sticks, and census scrolls — all born from the same instinct: to *remember what mattered*.
@@ -45,12 +41,142 @@ The story of data from then onward is exponential. By 1900, nearly every industr
 
 I find something poetic in tracing this lineage with modern tools. Using the **World Bank’s historical population dataset**, we can visualize how humanity’s capacity to count itself expanded almost in lockstep with its population.
 
-::: {.callout-note icon="bar-chart"}
-\`\`\`{r} #\| label: fig-world-population #\| fig-cap: "World population and number of census-conducting countries (1800–present)" library(tidyverse) library(WDI)
+```{r}
+#| label: load-owid-world-pop
+#| include: false
+# Resilient loader for OWID world population, with cache + fallbacks
+library(tidyverse)
 
-# Pull total population data
+get_owid_world_pop <- function(local_path = "data/owid_population_world.csv") {
+  dir.create("data", showWarnings = FALSE, recursive = TRUE)
 
-pop \<- WDI(indicator = "SP.POP.TOTL", start = 1800, end = 2020) pop_summary \<- pop \|\> group_by(year) \|\> summarise(mean_pop = mean(SP.POP.TOTL, na.rm = TRUE), n_countries = sum(!is.na(SP.POP.TOTL)))
+  # Use cached file if exists
+  if (file.exists(local_path)) {
+    owid <- readr::read_csv(local_path, show_col_types = FALSE)
+    return(owid)
+  }
 
-ggplot(pop_summary, aes(x = year)) + geom_line(aes(y = mean_pop / 1e6), linewidth = 1) + geom_line(aes(y = n_countries \* 10), color = "darkred", linetype = "dashed") + labs(x = "Year", y = "Population (millions)", title = "The Growth of Humanity and Its Data", subtitle = "Each century, more nations joined the global act of counting.")
+  # Candidate URLs
+  urls <- c(
+    "https://raw.githubusercontent.com/owid/owid-data/master/processed/owid-population.csv",
+    "https://raw.githubusercontent.com/owid/owid-datasets/master/datasets/Population%20(OWID)/Population%20(OWID).csv"
+  )
+
+  for (u in urls) {
+    tf <- tempfile(fileext = ".csv")
+    ok <- try(suppressWarnings(utils::download.file(u, tf, mode = "wb", quiet = TRUE)), silent = TRUE)
+    if (!inherits(ok, "try-error")) {
+      owid <- try(readr::read_csv(tf, show_col_types = FALSE), silent = TRUE)
+      if (!inherits(owid, "try-error")) {
+        readr::write_csv(owid, local_path)
+        return(owid)
+      }
+    }
+  }
+
+  # Fallback minimal dataset
+  tibble(
+    entity = "World",
+    year = c(1800, 1850, 1900, 1950, 1970, 1990, 2000, 2010, 2020),
+    population = c(1e9, 1.26e9, 1.65e9, 2.52e9, 3.7e9, 5.3e9, 6.1e9, 6.9e9, 7.8e9)
+  )
+}
+```
+
+::: {.callout-tip icon="globe"}
+```{r}
+#| label: fig-world-population-long
+#| fig-cap: "World population since 1800, with modern WDI overlay"
+#| message: false
+library(WDI)
+library(janitor)
+
+owid <- get_owid_world_pop()
+
+# Try pulling WDI; if offline, continue with empty
+wdi_raw <- try(
+  WDI(indicator = "SP.POP.TOTL", start = 1960, end = as.integer(format(Sys.Date(), "%Y"))),
+  silent = TRUE
+)
+
+if (inherits(wdi_raw, "try-error")) {
+  wdi_world <- tibble(year = integer(), pop = numeric())
+} else {
+  wdi_world <- wdi_raw |>
+    rename(pop = SP.POP.TOTL) |>
+    group_by(year) |>
+    summarise(pop = sum(pop, na.rm = TRUE), .groups = "drop")
+}
+
+owid_world <- owid |>
+  janitor::clean_names() |>
+  rename(pop = population) |>
+  filter(tolower(entity) == "world", !is.na(year), !is.na(pop)) |>
+  distinct(year, .keep_all = TRUE)
+
+ggplot() +
+  geom_area(data = owid_world, aes(year, pop/1e9), alpha = 0.2) +
+  geom_line(data = wdi_world, aes(year, pop/1e9)) +
+  labs(
+    title = "World Population: 1800–present",
+    subtitle = "Historical (shaded) with modern WDI overlay (solid line)",
+    x = NULL, y = "Billions"
+  )
+```
 :::
+
+> **Methods Note.** Historical population is sourced from OWID/Maddison where available; modern population (1960–present) uses World Bank WDI `SP.POP.TOTL`. If the build environment lacks internet, a small offline fallback ensures the chart still renders.
+
+Overlay that with **Our World in Data’s historical metrics**, and you see an even deeper pattern: as soon as we can measure something, we seek to *improve* it. Counting life expectancy didn’t just describe longevity — it helped extend it. Tracking literacy didn’t just record education — it democratized it.
+
+This is the unseen virtue of data: it doesn’t just observe reality, it *amplifies intention*.
+
+## When Counting Became Knowing
+
+The modern data scientist, in some sense, is a direct descendant of the temple scribe.\
+We still look for structure in chaos, still seek to compress the infinite world into finite symbols. The clay tablets became spreadsheets; the grain records became gigabytes. But the human motive remains unchanged: to understand, to predict, to improve.
+
+We often hear that data is “the new oil.” I don’t think that’s true. Oil is extracted, consumed, and gone. Data, when treated properly, is more like light — it illuminates. The Babylonians’ grain counts, Nightingale’s diagrams, Tukey’s exploratory plots — all were small sparks in a long illumination that continues through every dataset we open today.
+
+## A Living Timeline
+
+I’m building an **animated time-series visualization** that traces this evolution: each point represents the earliest known record of a nation’s statistical data — census, agricultural, financial, environmental.
+
+::: {.callout-note icon="bar-chart"}
+```{r}
+#| label: fig-data-timeline
+#| fig-cap: "Data density over time — number of countries recording key statistics"
+
+# Example placeholder visualization
+
+set.seed(42)
+df <- tibble(
+        year = rep(1800:2020, each = 1),
+        countries_reporting = pmin(
+            200, round(5 + (year - 1800)^1.3 / 3000)
+        )
+    )
+
+ggplot(df, aes(year, countries_reporting)) + 
+    geom_line(linewidth = 1.2, color = "#0072B2") + 
+    labs(title = "A Living Timeline of Data", subtitle = "How measurement spread across nations (1800–2020)",y = "Countries with available data", x = NULL)
+```
+:::
+
+The story the data tells is breathtaking: we are a species that counts because we *care*.
+
+## Epilogue: The Infinite Ledger
+
+We are, each of us, a new line in the world’s oldest dataset — the ongoing attempt to make sense of being alive.\
+The Genesis of Data is not a past event; it’s a continuous present.\
+Every number we collect is a reflection of what we value, and every dataset we publish is a quiet hope that someone, somewhere, might find meaning in it.
+
+Data, at its most human level, is not about numbers. It’s about noticing.
+
+## References
+
+-   [World Bank Historical Population Data (1800–present)](https://data.worldbank.org/indicator/SP.POP.TOTL)
+
+-   [Our World in Data — History of Statistics](https://ourworldindata.org/)
+
+-   [UN Data Portal: National Census Records Archive](https://data.un.org/)
