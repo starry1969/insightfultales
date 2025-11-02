@@ -273,7 +273,7 @@ ggplotly(p_scatter2, tooltip = c("text", "x", "y")) %>%
   layout(
     margin = list(t = 100),  # more top room
     title = list(
-      text = "Today vs. yesterday precipitation (point size = today's mean delay)",
+      text = "<b>Today vs. yesterday precipitation (point size = today's mean delay)</b>",
       font = list(size = 12),
       x = 0.5, xanchor = "center"
     )
