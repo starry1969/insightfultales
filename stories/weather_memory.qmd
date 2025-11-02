@@ -1,29 +1,25 @@
 ---
 title: "🌦 Weather Memory"
-description: "Do flight delays 'remember' yesterday's weather? Evidence from nycflights13."
+subtitle: "Do flight delays 'remember' yesterday's weather? Evidence from nycflights13."
+description: "Bad weather can disrupt schedules, but does the pain linger after skies clear? This short data story explores whether today's flight delays still carry the fingerprint of yesterday's weather — a simple form of system memory."
 format:
   html:
     toc: true
-    toc-depth: 2
-    df-print: paged
-    code-fold: true
-    code-tools: true
-    smooth-scroll: true
+    toc-depth: 3
+    code-copy: true
+    anchor-sections: true
 execute:
-  echo: true
-  message: false
   warning: false
+  message: false
+  echo: true
   freeze: auto
 ---
-
-*Bad weather can disrupt schedules, but does the pain linger after skies clear? This short data story explores whether today's flight delays still carry the fingerprint of yesterday's weather — a simple form of system "memory."*
 
 ## Goal & approach
 
 **Goal.** Test whether *yesterday's* weather helps predict *today's* flight delays at NYC airports, beyond the effect of *today's* weather.
 
-**Method (high level).**
-1) Join flights with hourly weather, aggregate to a **daily** panel by airport; 2) create **lagged weather** features (yesterday's precip, wind, visibility); 3) model today's mean departure delay using both **today** and **yesterday** weather plus calendar controls; 4) visualize the patterns and airport differences; 5) run a small **what‑if** experiment.
+**Method (high level).** 1) Join flights with hourly weather, aggregate to a **daily** panel by airport; 2) create **lagged weather** features (yesterday's precip, wind, visibility, temperature); 3) model today's mean departure delay using both **today** and **yesterday** weather plus calendar controls; 4) visualize the patterns and airport differences; 5) run a small **what-if** experiment.
 
 ### Setup
 
@@ -35,8 +31,7 @@ library(broom)
 library(gt)
 library(scales)
 library(modelr)
-# For interactivity
-library(plotly)
+library(plotly)  # interactivity
 
 # Use site-wide theme if present; otherwise a quiet fallback
 quiet_theme <- if (exists("quiet_theme")) quiet_theme else function() {
@@ -55,71 +50,63 @@ quiet_theme <- if (exists("quiet_theme")) quiet_theme else function() {
 
 **Goal →** Create a tidy daily dataset by airport (JFK/LGA/EWR) with delay outcomes and weather inputs.
 
-**Method →**
-- Define **cancellations** as flights with missing `dep_time`.
-- Compute **daily mean departure delay** among *non‑cancelled* flights and **cancellation rate** per day × origin.
-- Aggregate hourly weather to **daily** by origin: sum precipitation (mm), mean wind speed, mean visibility, plus rainfall indicator.
-- Create **lagged** (prior‑day) weather features within each origin.
-
 ```{r}
 # Flights (2013) → daily outcomes by origin
 fl_daily <- flights %>%
-  mutate(date = make_date(year, month, day),
-         cancelled = is.na(dep_time)) %>%
+  mutate(
+    date = make_date(year, month, day),
+    cancelled = is.na(dep_time)
+  ) %>%
   group_by(origin, date) %>%
   summarise(
-    n_flights = n(),
-    cancel_rate = mean(cancelled),
+    n_flights      = n(),
+    cancel_rate    = mean(cancelled),
     mean_dep_delay = mean(dep_delay[!cancelled], na.rm = TRUE),
     .groups = "drop"
   )
 
 # Weather (hourly) → daily inputs by origin
 wx_daily <- weather %>%
-  mutate(date = make_date(year(time_hour), month(time_hour), day(time_hour))) %>%
+  mutate(date = as_date(time_hour)) %>%
   group_by(origin, date) %>%
   summarise(
-    precip_mm = sum(replace_na(precip, 0)),      # sum daily precip
-    wind_mean = mean(wind_speed, na.rm = TRUE),  # m/s
-    visib_mean = mean(visib, na.rm = TRUE),      # miles
-    temp_mean = mean(temp, na.rm = TRUE),        # °F
-    rain_day = as.integer(sum(replace_na(precip,0)) > 0),
+    precip_in = sum(replace_na(precip, 0)),      # inches
+    wind_mph  = mean(wind_speed, na.rm = TRUE),  # mph
+    visib_mi  = mean(visib, na.rm = TRUE),       # miles
+    temp_F    = mean(temp, na.rm = TRUE),        # °F
     .groups = "drop"
+  ) %>%
+  mutate(
+    precip_mm = precip_in * 25.4,                # convert to mm
+    rain_day  = as.integer(precip_in > 0)
   )
 
-# Merge and create lags per-airport
+# Join and create 1-day lags per-airport
 panel_daily <- fl_daily %>%
   inner_join(wx_daily, by = c("origin","date")) %>%
   arrange(origin, date) %>%
   group_by(origin) %>%
   mutate(
     precip_mm_lag1 = lag(precip_mm, 1),
-    wind_mean_lag1 = lag(wind_mean, 1),
-    visib_mean_lag1 = lag(visib_mean, 1),
-    temp_mean_lag1 = lag(temp_mean, 1),
-    rain_yday = lag(rain_day, 1),
-    dow = wday(date, label = TRUE, abbr = TRUE),
+    wind_mph_lag1  = lag(wind_mph, 1),
+    visib_mi_lag1  = lag(visib_mi, 1),
+    temp_F_lag1    = lag(temp_F, 1),
+    rain_yday      = lag(rain_day, 1),
+    dow   = wday(date, label = TRUE, abbr = TRUE),
     month = month(date, label = TRUE, abbr = TRUE)
   ) %>%
   ungroup()
 
 # Keep rows with both today and lagged weather present
 panel_model <- panel_daily %>%
-  drop_na(mean_dep_delay, precip_mm, wind_mean, visib_mean,
-          precip_mm_lag1, wind_mean_lag1, visib_mean_lag1)
-
-nrow(panel_model); glimpse(panel_model)
+  drop_na(
+    mean_dep_delay,
+    precip_mm, wind_mph, visib_mi, temp_F,
+    precip_mm_lag1, wind_mph_lag1, visib_mi_lag1, temp_F_lag1
+  )
 ```
 
-**Result →** A daily per‑airport panel with delays, weather, and 1‑day lags.
-
-**Meaning →** We can now ask whether yesterday’s weather adds signal about today’s delays.
-
 ## First look: does delay rise with yesterday’s rain?
-
-**Goal →** Visualize the simple relationship between **yesterday’s precipitation** and **today’s average delay**.
-
-**Method →** Scatter with a smooth trend; keep airport facets; annotate heavy‑rain days.
 
 ```{r}
 p_scatter <- panel_model %>%
@@ -127,80 +114,55 @@ p_scatter <- panel_model %>%
   geom_point(alpha = 0.4, size = 1) +
   geom_smooth(method = "loess", se = TRUE) +
   facet_wrap(~ origin, nrow = 1) +
-  labs(title = "Weather memory: yesterday's rain vs. today's mean departure delay",
-       x = "Yesterday's precipitation (mm)",
-       y = "Today's mean departure delay (minutes)",
-       caption = "Dots are daily airport means in 2013; line = loess trend.") +
+  labs(
+    title = "Weather memory: yesterday's rain vs. today's mean departure delay",
+    x = "Yesterday's precipitation (mm)",
+    y = "Today's mean departure delay (minutes)",
+    caption = "Dots are daily airport means in 2013; line = loess trend."
+  ) +
   quiet_theme()
 
 p_scatter
 ```
 
 ```{r}
-# Interactive hover with date/origin
-subplot <- ggplotly(p_scatter, tooltip = c("x","y"))
+subplot <- ggplotly(p_scatter, tooltip = c("x", "y")) %>%
+  layout(title = list(text = "Weather memory: Yesterday's rain vs. today's delays"))
+
 subplot
 ```
 
-**Result →** The trendline shows how average delay tends to move with prior‑day rain.
-
-**Meaning →** A positive slope suggests a *memory* effect: disruptions may spill into the next day via aircraft/crew rotations, ramp recovery, or knock‑on schedule shifts.
-
 ## Today vs. yesterday: contrasting weather states
 
-**Goal →** Compare **today’s** and **yesterday’s** weather simultaneously.
-
-**Method →** Show a 2‑D density of (yesterday rain, today rain) colored by typical delay; overlay contours.
-
 ```{r}
-# Robust decile binning avoids duplicate breakpoints
-grid_delay <- panel_model %>%
-  mutate(
-    lag_bin = dplyr::ntile(precip_mm_lag1, 10),
-    tod_bin = dplyr::ntile(precip_mm, 10)
-  ) %>%
-  group_by(lag_bin, tod_bin) %>%
-  summarise(mean_delay = mean(mean_dep_delay, na.rm = TRUE), n = n(), .groups = "drop")
-
-p_contrast <- panel_model %>%
-  ggplot(aes(x = precip_mm_lag1, y = precip_mm)) +
-  stat_density_2d(aes(z = mean_dep_delay, fill = after_stat(density)), geom = "raster", contour = FALSE, alpha = 0.6) +
-  geom_density_2d(color = "white", alpha = 0.6) +
+p_contrast <- ggplot(panel_model, aes(precip_mm_lag1, precip_mm)) +
+  stat_summary_2d(aes(z = mean_dep_delay), bins = 20) +
   facet_wrap(~ origin, nrow = 1) +
-  labs(title = "Contrasting today vs. yesterday precipitation",
-       subtitle = "Contours show joint density; background density helps locate common states",
-       x = "Yesterday precipitation (mm)", y = "Today precipitation (mm)",
-       caption = "Where both days are rainy, delays tend to be larger; memory adds when today is dry but yesterday was wet.") +
+  labs(
+    title = "Today vs yesterday precipitation (colored by mean delay)",
+    x = "Yesterday precip (mm)", y = "Today precip (mm)", fill = "Mean delay (min)"
+  ) +
   quiet_theme()
 
 p_contrast
 ```
 
-**Result →** We see where (dry→wet, wet→dry, wet→wet) states fall and how often they occur.
-
-**Meaning →** If delays remain elevated on *wet→dry* transitions, that’s evidence of a memory effect beyond same‑day weather.
-
 ## Modeling: does yesterday’s weather matter after controls?
-
-**Goal →** Estimate the partial effect of **yesterday’s** weather on **today’s** mean delays.
-
-**Method →** Linear regression with airport fixed effects and calendar controls. Predictors include: yesterday & today precipitation, wind, visibility, temperature, plus day‑of‑week and month.
 
 ```{r}
 model_full <- lm(
-  mean_dep_delay ~ precip_mm_lag1 + wind_mean_lag1 + visib_mean_lag1 + temp_mean_lag1 +
-    precip_mm + wind_mean + visib_mean + temp_mean +
-    origin + dow + month,
+  mean_dep_delay ~ precip_mm_lag1 + wind_mph_lag1 + visib_mi_lag1 + temp_F_lag1 +
+    precip_mm + wind_mph + visib_mi + temp_F + origin + dow + month,
   data = panel_model
 )
 
 tidy_coefs <- broom::tidy(model_full, conf.int = TRUE) %>%
-  filter(term %in% c("precip_mm_lag1","wind_mean_lag1","visib_mean_lag1","temp_mean_lag1")) %>%
+  filter(term %in% c("precip_mm_lag1","wind_mph_lag1","visib_mi_lag1","temp_F_lag1")) %>%
   mutate(term = recode(term,
     precip_mm_lag1 = "Yesterday precip (mm)",
-    wind_mean_lag1 = "Yesterday wind (m/s)",
-    visib_mean_lag1 = "Yesterday visibility (mi)",
-    temp_mean_lag1 = "Yesterday temperature (°F)"
+    wind_mph_lag1  = "Yesterday wind (mph)",
+    visib_mi_lag1  = "Yesterday visibility (mi)",
+    temp_F_lag1    = "Yesterday temperature (°F)"
   ))
 
 gt_tbl <- tidy_coefs %>%
@@ -221,22 +183,14 @@ gt_tbl <- tidy_coefs %>%
 gt_tbl
 ```
 
-**Result →** A compact table of how lagged weather relates to today’s mean delay after controlling for today’s weather and calendar factors.
-
-**Meaning →** Significant positive coefficients on **yesterday precipitation** (or wind) support a weather‑memory story.
-
-### Airport where memory is strongest
-
-**Goal →** Identify which airport shows the largest lag effect.
-
-**Method →** Fit the same model separately by origin and plot the **yesterday‑precip** coefficient with confidence intervals.
+## Airport where memory is strongest
 
 ```{r}
 by_airport <- panel_model %>%
   group_by(origin) %>%
   group_modify(~ broom::tidy(lm(
-      mean_dep_delay ~ precip_mm_lag1 + wind_mean_lag1 + visib_mean_lag1 + temp_mean_lag1 +
-        precip_mm + wind_mean + visib_mean + temp_mean + dow + month,
+      mean_dep_delay ~ precip_mm_lag1 + wind_mph_lag1 + visib_mi_lag1 + temp_F_lag1 +
+        precip_mm + wind_mph + visib_mi + temp_F + dow + month,
       data = .x
     ), conf.int = TRUE)) %>%
   ungroup() %>%
@@ -257,15 +211,7 @@ p_airport <- by_airport %>%
 p_airport
 ```
 
-**Result →** A simple rank of airports by lag‑precip effect.
-
-**Meaning →** Operational practices and schedules differ: some hubs recover faster; others show more spillover.
-
 ## Cancellation link: does yesterday’s rain raise today’s cancels?
-
-**Goal →** Quantify association between yesterday’s precipitation and **today’s cancellation rate.**
-
-**Method →** Compute Pearson correlation overall and by airport.
 
 ```{r}
 cor_overall <- panel_model %>%
@@ -278,18 +224,9 @@ cor_by_airport <- panel_model %>%
 cor_overall; cor_by_airport
 ```
 
-**Result →** A quick diagnostic of whether prior‑day rain aligns with more cancellations today.
-
-**Meaning →** If positive, that’s further evidence of lingering disruption.
-
-## What‑if: set yesterday’s rain to zero
-
-**Goal →** Estimate how much better on‑time performance would be **if yesterday had been dry**.
-
-**Method →** Use the fitted model to predict today’s mean delay twice — with observed features, and with `precip_mm_lag1 = 0` — and compare. Convert to **on‑time rate** using a 15‑minute threshold on the mean (approximation).
+## What-if: set yesterday’s rain to zero
 
 ```{r}
-# Helper to predict with modified lag rain
 pred_obs <- augment(model_full, data = panel_model) %>% select(origin, date, .fitted)
 
 pred_counterf <- panel_model %>%
@@ -313,17 +250,13 @@ p_whatif <- what_if %>%
   ggplot(aes(x = ontime_gain_pct)) +
   geom_histogram(bins = 30, alpha = 0.7) +
   facet_wrap(~ origin, nrow = 1) +
-  labs(title = "What‑if yesterday were dry: implied on‑time rate improvement",
+  labs(title = "What-if yesterday were dry: implied on-time rate improvement",
        x = "Percentage points (counterfactual − observed)", y = "Days",
-       caption = "Back‑of‑envelope: converts minutes to on‑time share via a 15‑minute threshold on the mean.") +
+       caption = "Back-of-envelope: converts minutes to on-time share via a 15-minute threshold on the mean.") +
   quiet_theme()
 
 p_whatif
 ```
-
-**Result →** A distribution of daily improvements if yesterday’s rain had been zero.
-
-**Meaning →** Even modest positive mass above zero implies tangible gains from faster recovery practices after storms.
 
 ## Bonus: Today vs. Yesterday on a joint scatter (hoverable)
 
@@ -336,7 +269,16 @@ p_scatter2 <- panel_model %>%
        x = "Yesterday (mm)", y = "Today (mm)") +
   quiet_theme()
 
-ggplotly(p_scatter2, tooltip = c("text", "x", "y"))
+ggplotly(p_scatter2, tooltip = c("text", "x", "y")) %>%
+  layout(
+    margin = list(t = 100),  # more top room
+    title = list(
+      text = "Today vs. yesterday precipitation (point size = today's mean delay)",
+      font = list(size = 12),
+      x = 0.5, xanchor = "center"
+    )
+  )
+
 ```
 
 ## Story beats (journalist style)
@@ -351,22 +293,22 @@ ggplotly(p_scatter2, tooltip = c("text", "x", "y"))
 
 ## Practical implications
 
-- **Scheduling & rotations:** Build buffers the day *after* major weather events; rotate slack where the lag effect is strongest.
-- **Maintenance & de‑icing ops:** Staff for spillover demand on *wet→dry* transitions.
-- **Passenger comms:** Proactive alerts for potential residual delays the day after storms.
+-   **Scheduling & rotations:** Build buffers the day *after* major weather events; rotate slack where the lag effect is strongest.
+-   **Maintenance & de-icing ops:** Staff for spillover demand on *wet→dry* transitions.
+-   **Passenger comms:** Proactive alerts for potential residual delays the day after storms.
 
 ## Limitations
 
-- We use **means** of delays; distributional effects (e.g., big tails) are not fully captured.
-- Only **1‑day** memory is modeled; longer lags may matter.
-- Weather aggregation is **daily**; within‑day timing (e.g., late‑night rain) could drive stronger effects.
-- Linear models are a simplification; non‑linearities and interactions (e.g., wind × visibility) are likely.
+-   We use **means** of delays; distributional effects (e.g., big tails) are not fully captured.
+-   Only **1-day** memory is modeled; longer lags may matter.
+-   Weather aggregation is **daily**; within-day timing (e.g., late-night rain) could drive stronger effects.
+-   Linear models are a simplification; non-linearities and interactions (e.g., wind × visibility) are likely.
 
 ## References & Credits
 
-- Data: `nycflights13` (Hadley Wickham et al.) — CRAN: <https://CRAN.R-project.org/package=nycflights13>
-- Packages: `tidyverse`, `lubridate`, `broom`, `gt`, `plotly`, `modelr`.
-- Theme: falls back to a quiet minimal style if your site’s `quiet_theme()` is not available.
+-   Data: `nycflights13` (Hadley Wickham et al.) — CRAN: <https://CRAN.R-project.org/package=nycflights13>
+-   Packages: `tidyverse`, `lubridate`, `broom`, `gt`, `plotly`, `modelr`.
+-   Theme: falls back to a quiet minimal style if your site’s `quiet_theme()` is not available.
 
 ## Gentle call to curiosity
 
