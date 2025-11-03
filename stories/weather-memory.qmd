@@ -281,7 +281,7 @@ ggplotly(p_scatter2, tooltip = c("text", "x", "y")) %>%
 
 ```
 
-## Story beats (journalist style)
+## Story beats
 
 **We asked:** Do storms leave a *hangover* in the schedule?
 

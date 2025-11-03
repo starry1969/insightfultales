@@ -15,7 +15,6 @@ website:
       - text: "🏠 Home"
         href: index.qmd    
       - text: "📖 Stories"
-        href: stories/index.qmd
         menu: 
           - href: stories/geography-of-luck.qmd
             text: "🧭 Geography of Luck"
@@ -24,7 +23,6 @@ website:
           - href: stories/weather-memory.qmd
             text: "🌦️ Weather Memory"
       - text: "🏛️ Historical"
-        href: data-science/index.qmd
         menu: 
           - href: data-science/genesis-of-data.qmd
             text: "🧮 Genesis of Data"

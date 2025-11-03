@@ -70,11 +70,11 @@
     "text": "Bonus: Today vs. Yesterday on a joint scatter (hoverable)\n\np_scatter2 &lt;- panel_model %&gt;%\n  ggplot(aes(x = precip_mm_lag1, y = precip_mm, size = mean_dep_delay, text = paste(date, origin))) +\n  geom_point(alpha = 0.5) +\n  facet_wrap(~ origin) +\n  labs(title = \"Today vs. yesterday precipitation (point size = today's mean delay)\",\n       x = \"Yesterday (mm)\", y = \"Today (mm)\") +\n  quiet_theme()\n\nggplotly(p_scatter2, tooltip = c(\"text\", \"x\", \"y\")) %&gt;%\n  layout(\n    margin = list(t = 100),  # more top room\n    title = list(\n      text = \"&lt;b&gt;Today vs. yesterday precipitation (point size = today's mean delay)&lt;/b&gt;\",\n      font = list(size = 12),\n      x = 0.5, xanchor = \"center\"\n    )\n  )"
   },
   {
-    "objectID": "stories/weather-memory.html#story-beats-journalist-style",
-    "href": "stories/weather-memory.html#story-beats-journalist-style",
+    "objectID": "stories/weather-memory.html#story-beats",
+    "href": "stories/weather-memory.html#story-beats",
     "title": "🌦 Weather Memory",
-    "section": "Story beats (journalist style)",
-    "text": "Story beats (journalist style)\nWe asked: Do storms leave a hangover in the schedule?\nWe did: Calculated daily delays by airport, then compared them to both today’s and yesterday’s precipitation, wind, visibility, and temperature.\nWe found: Yesterday’s weather often remains a statistically meaningful predictor of today’s delays, even when we control for today’s weather and calendar effects.\nWhy it matters: Recovery is a process. Aircraft and crews are networked; disruptions propagate and decay, sometimes over more than one day."
+    "section": "Story beats",
+    "text": "Story beats\nWe asked: Do storms leave a hangover in the schedule?\nWe did: Calculated daily delays by airport, then compared them to both today’s and yesterday’s precipitation, wind, visibility, and temperature.\nWe found: Yesterday’s weather often remains a statistically meaningful predictor of today’s delays, even when we control for today’s weather and calendar effects.\nWhy it matters: Recovery is a process. Aircraft and crews are networked; disruptions propagate and decay, sometimes over more than one day."
   },
   {
     "objectID": "stories/weather-memory.html#practical-implications",
