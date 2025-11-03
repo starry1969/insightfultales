@@ -1,7 +1,23 @@
 ---
 title: "Insightful Tales"
-page-layout: full
+description: "Where stories become narrative."
+google-analytics: "G-J2NWNXP0DY"
+format:
+  html:
+    page-layout: full
+    toc: true
+    toc-depth: 3
+    code-fold: show
+    smooth-scroll: true
+    df-print: paged
+    anchor-sections: true
+execute:
+  warning: false
+  message: false
+  echo: true
+  freeze: auto
 ---
+
 <section class="hero">
 
 <p>Where data finds its narrative — original visual and analytical stories built with Quarto.</p>
