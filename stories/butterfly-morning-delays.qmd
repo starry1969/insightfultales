@@ -1,14 +1,20 @@
 ---
 title: "🦋 Butterfly Morning Delays"
-description: "How early-morning schedule noise ripples through the rest of the day."
+subtitle: "How early-morning schedule noise ripples through the rest of the day."
+description: "A story about cause and consequence in motion — how a stormy sunrise or a missed departure can reshape an entire day of air travel."
 categories: ["flights", "delays", "nycflights13"]
 format:
   html:
     toc: true
     toc-depth: 3
-    code-copy: true
+    code-fold: show
+    smooth-scroll: true
+    df-print: paged
     anchor-sections: true
 execute:
+  warning: false
+  message: false
+  echo: true
   freeze: auto
 ---
 

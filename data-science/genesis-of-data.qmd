@@ -7,9 +7,16 @@ image: images/genesis_of_data.png
 format:
   html:
     toc: true
-    toc-title: "On This Page"
-    code-fold: true
-    code-summary: "Show code"
+    toc-depth: 3
+    code-fold: show
+    smooth-scroll: true
+    df-print: paged
+    anchor-sections: true
+execute:
+  warning: false
+  message: false
+  echo: true
+  freeze: auto
 ---
 
 We like to imagine data as a modern concept — CSV files, databases, machine learning pipelines. But the truth is: data is as old as civilization itself. Before there were scientists, there were record-keepers. Before there were models, there were marks — clay scratches, tally sticks, and census scrolls — all born from the same instinct: to *remember what mattered*.
