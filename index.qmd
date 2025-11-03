@@ -112,7 +112,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>✈️ <strong>nycflights13</strong> — Delays, Weather, and the Rhythm of Motion</summary>
+<summary>✈️ <a href="datasets/nycflights13-the-dataset-that-took-off.html"><strong>nycflights13:</strong> The DataSet That Took Off</a></summary>
 
 **What it is:** All flights departing NYC in 2013, linked to weather, airlines, and airports.\
 **Why it’s worthy:** Rich joins (flights ⇄ weather ⇄ carriers) + time series + networks.\

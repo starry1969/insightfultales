@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="A richly detailed dataset of all 336,776 flights departing New York City in 2013 — curated by Hadley Wickham and the tidyverse team from U.S. Bureau of Transportation Statistics data. It’s one of the most iconic datasets in modern data science, built to teach real-world data wrangling, visualization, and relational joins through an engaging, tangible subject: air travel.">
 
-<title>About Insightful Tales – Insightful Tales</title>
+<title>✈️ nycflights13: The Dataset That Took Off – Insightful Tales</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,28 +21,63 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./images/favicon.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ffa9a6279353761231ec249df0a7fdd3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-ffa9a6279353761231ec249df0a7fdd3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,14 +105,15 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="About Insightful Tales – Insightful Tales">
-<meta property="og:description" content="Where data finds its narrative — original visual and analytical stories built with Quarto.">
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="✈️ nycflights13: The Dataset That Took Off – Insightful Tales">
+<meta property="og:description" content="A richly detailed dataset of all 336,776 flights departing New York City in 2013 — curated by Hadley Wickham and the tidyverse team from U.S. Bureau of Transportation Statistics data. It’s one of the most iconic datasets in modern data science, built to teach real-world data wrangling, visualization, and relational joins through an engaging, tangible subject: air travel.">
 <meta property="og:site_name" content="Insightful Tales">
-<meta name="twitter:title" content="About Insightful Tales – Insightful Tales">
-<meta name="twitter:description" content="Where data finds its narrative — original visual and analytical stories built with Quarto.">
+<meta name="twitter:title" content="✈️ nycflights13: The Dataset That Took Off – Insightful Tales">
+<meta name="twitter:description" content="A richly detailed dataset of all 336,776 flights departing New York City in 2013 — curated by Hadley Wickham and the tidyverse team from U.S. Bureau of Transportation Statistics data. It’s one of the most iconic datasets in modern data science, built to teach real-world data wrangling, visualization, and relational joins through an engaging, tangible subject: air travel.">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -87,11 +124,11 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/logo.png" alt="" class="navbar-logo light-content">
-    <img src="./images/logo.png" alt="" class="navbar-logo dark-content">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/logo.png" alt="" class="navbar-logo light-content">
+    <img src="../images/logo.png" alt="" class="navbar-logo dark-content">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Insightful Tales</span>
     </a>
   </div>
@@ -102,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">🏠 Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -111,15 +148,15 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-stories">    
         <li>
-    <a class="dropdown-item" href="./stories/geography-of-luck.html">
+    <a class="dropdown-item" href="../stories/geography-of-luck.html">
  <span class="dropdown-text">🧭 Geography of Luck</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./stories/butterfly-morning-delays.html">
+    <a class="dropdown-item" href="../stories/butterfly-morning-delays.html">
  <span class="dropdown-text">🦋 Butterfly Effect</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./stories/weather-memory.html">
+    <a class="dropdown-item" href="../stories/weather-memory.html">
  <span class="dropdown-text">🌦️ Weather Memory</span></a>
   </li>  
     </ul>
@@ -130,7 +167,7 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-historical">    
         <li>
-    <a class="dropdown-item" href="./data-science/genesis-of-data.html">
+    <a class="dropdown-item" href="../data-science/genesis-of-data.html">
  <span class="dropdown-text">🧮 Genesis of Data</span></a>
   </li>  
     </ul>
@@ -141,17 +178,17 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-datasets">    
         <li>
-    <a class="dropdown-item" href="./datasets/nycflights13-the-dataset-that-took-off.html">
+    <a class="dropdown-item" href="../datasets/nycflights13-the-dataset-that-took-off.html">
  <span class="dropdown-text">✈️ nycflights13: The Dataset That Took Off</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
+    <a class="nav-link" href="../about.html"> 
 <span class="menu-text">💡 About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./contact.html"> 
+    <a class="nav-link" href="../contact.html"> 
 <span class="menu-text">💬 Contact</span></a>
   </li>  
 </ul>
@@ -165,17 +202,46 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#a-dataset-born-in-the-skies-above-new-york" id="toc-a-dataset-born-in-the-skies-above-new-york" class="nav-link active" data-scroll-target="#a-dataset-born-in-the-skies-above-new-york">🗽 A Dataset Born in the Skies Above New York</a></li>
+  <li><a href="#the-origins-a-teaching-tool-with-real-world-grit" id="toc-the-origins-a-teaching-tool-with-real-world-grit" class="nav-link" data-scroll-target="#the-origins-a-teaching-tool-with-real-world-grit">🧭 The Origins: A Teaching Tool With Real-World Grit</a></li>
+  <li><a href="#a-dataset-of-relationships" id="toc-a-dataset-of-relationships" class="nav-link" data-scroll-target="#a-dataset-of-relationships">🧩 A Dataset of Relationships</a></li>
+  <li><a href="#why-2013" id="toc-why-2013" class="nav-link" data-scroll-target="#why-2013">🧮 Why 2013?</a></li>
+  <li><a href="#from-raw-data-to-a-clean-package" id="toc-from-raw-data-to-a-clean-package" class="nav-link" data-scroll-target="#from-raw-data-to-a-clean-package">🌦️ From Raw Data to a Clean Package</a></li>
+  <li><a href="#joining-the-tidyverse" id="toc-joining-the-tidyverse" class="nav-link" data-scroll-target="#joining-the-tidyverse">📦 Joining the tidyverse</a></li>
+  <li><a href="#why-it-matters" id="toc-why-it-matters" class="nav-link" data-scroll-target="#why-it-matters">🌍 Why It Matters</a>
+  <ul class="collapse">
+  <li><a href="#structure-at-a-glance" id="toc-structure-at-a-glance" class="nav-link" data-scroll-target="#structure-at-a-glance">🔧 Structure at a Glance</a></li>
+  <li><a href="#legacy-and-influence" id="toc-legacy-and-influence" class="nav-link" data-scroll-target="#legacy-and-influence">📘 Legacy and Influence</a></li>
+  <li><a href="#in-the-end" id="toc-in-the-end" class="nav-link" data-scroll-target="#in-the-end">✈️ In the End</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">📚 References</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About Insightful Tales</h1>
-</div>
+<h1 class="title">✈️ nycflights13: The Dataset That Took Off</h1>
+<p class="subtitle lead">How one year of New York flights became one of the most famous datasets in data science</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">History of Data Science</div>
+    <div class="quarto-category">Transportation &amp; Infrastructure</div>
+    <div class="quarto-category">Education &amp; Methodology</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    A richly detailed dataset of all 336,776 flights departing New York City in 2013 — curated by Hadley Wickham and the tidyverse team from U.S. Bureau of Transportation Statistics data. It’s one of the most iconic datasets in modern data science, built to teach real-world data wrangling, visualization, and relational joins through an engaging, tangible subject: air travel.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -190,10 +256,157 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>🦋 <strong>Insightful Tales</strong> is a creative data storytelling project that transforms datasets into visual, narrative insights.<br>
-Every story is built from data — but told like literature, not statistics.</p>
+<section id="a-dataset-born-in-the-skies-above-new-york" class="level2">
+<h2 class="anchored" data-anchor-id="a-dataset-born-in-the-skies-above-new-york">🗽 A Dataset Born in the Skies Above New York</h2>
+<p>In 2013, nearly <strong>337,000 flights</strong> departed from New York City’s three major airports — JFK, LaGuardia (LGA), and Newark (EWR).<br>
+Each of those flights left behind a trace: departure times, delays, destinations, aircraft numbers, even weather conditions at takeoff.</p>
+<p>Years later, these traces would find their way into a small, elegantly crafted R package called <strong><code>nycflights13</code></strong>, and that package would go on to become one of the <strong>most iconic learning tools in modern data science</strong>.</p>
+</section>
+<section id="the-origins-a-teaching-tool-with-real-world-grit" class="level2">
+<h2 class="anchored" data-anchor-id="the-origins-a-teaching-tool-with-real-world-grit">🧭 The Origins: A Teaching Tool With Real-World Grit</h2>
+<p>The story begins with <strong>Hadley Wickham</strong>, the statistician and software developer who spearheaded much of the <em>tidyverse</em> — a family of R packages that revolutionized how data is handled and visualized.</p>
+<p>In the early 2010s, Wickham was building resources to help people <em>learn data science by doing</em>, not by reading about artificially perfect examples. Real data is messy, relational, and full of missing values — and that’s exactly what students and practitioners need to experience.</p>
+<p>So instead of another toy dataset, Wickham turned to the <strong>U.S. Department of Transportation’s Bureau of Transportation Statistics (BTS)</strong>, which publishes open flight-on-time data.<br>
+From this raw source — hundreds of thousands of records across dozens of fields — he curated a <strong>single-year extract</strong>: all flights departing from the New York City area during 2013.</p>
+<p>Then, he went further.</p>
+<p>He bundled in extra context:</p>
+<ul>
+<li><p><strong>Airlines</strong>, mapping carrier codes to their full names.</p></li>
+<li><p><strong>Airports</strong>, with geographic coordinates and time zones.</p></li>
+<li><p><strong>Planes</strong>, including tail numbers, manufacturers, and years built.</p></li>
+<li><p><strong>Weather</strong>, hourly reports from each NYC airport.</p></li>
+</ul>
+<p>The result wasn’t just a dataset — it was a <em>miniature world</em> of interlocking tables, ready to teach real-world data relationships.</p>
+</section>
+<section id="a-dataset-of-relationships" class="level2">
+<h2 class="anchored" data-anchor-id="a-dataset-of-relationships">🧩 A Dataset of Relationships</h2>
+<p>Unlike simpler datasets like <em>iris</em> or <em>mtcars</em>, <code>nycflights13</code> is <strong>relational</strong> — meaning its tables connect through shared keys:</p>
+<ul>
+<li><p>Flights ↔︎ Airlines (via carrier code)</p></li>
+<li><p>Flights ↔︎ Airports (via origin and destination codes)</p></li>
+<li><p>Flights ↔︎ Planes (via tail number)</p></li>
+<li><p>Flights ↔︎ Weather (via origin + date + hour)</p></li>
+</ul>
+<p>This structure was intentional. It allows learners to practice joining, grouping, filtering, and summarizing — the bread and butter of data science — within a single coherent story: <em>why do some flights arrive late, and what factors might explain it?</em></p>
+<p>Wickham described this as “a dataset that lets you learn the grammar of data manipulation using real noise, not just clean textbook numbers.”</p>
+</section>
+<section id="why-2013" class="level2">
+<h2 class="anchored" data-anchor-id="why-2013">🧮 Why 2013?</h2>
+<p>The year <strong>2013</strong> wasn’t random — it was chosen for <strong>completeness and modern relevance</strong>.<br>
+By 2014, most of that year’s data had been validated and publicly available through the BTS’s <em>On-Time Performance</em> database. It also represented a year with consistent reporting across all major U.S. carriers.</p>
+<p>2013 was far enough into the modern airline data era (with GPS and electronic filing) to be reliable, yet recent enough to feel relevant for today’s analyses.</p>
+</section>
+<section id="from-raw-data-to-a-clean-package" class="level2">
+<h2 class="anchored" data-anchor-id="from-raw-data-to-a-clean-package">🌦️ From Raw Data to a Clean Package</h2>
+<p>To transform the messy BTS export into something usable, Wickham and the tidyverse team wrote R scripts to:</p>
+<ul>
+<li><p>Parse CSVs from the <strong>RITA</strong> (Research and Innovative Technology Administration) portal.</p></li>
+<li><p>Filter for flights with valid NYC origins.</p></li>
+<li><p>Clean up time variables (like <code>dep_time</code> and <code>arr_time</code>) into numeric or datetime forms.</p></li>
+<li><p>Normalize column names for clarity and consistency.</p></li>
+<li><p>Add weather data from the <strong>NOAA Integrated Surface Database</strong> (ISD).</p></li>
+</ul>
+<p>The result was a compact, easily loadable dataset: one command, <code>library(nycflights13)</code>, and the world of 2013’s New York skies appears at your fingertips.</p>
+</section>
+<section id="joining-the-tidyverse" class="level2">
+<h2 class="anchored" data-anchor-id="joining-the-tidyverse">📦 Joining the tidyverse</h2>
+<p>When it was first released in <strong>2014</strong>, <code>nycflights13</code> joined the ecosystem of demonstration datasets used in the new generation of R tutorials, books, and courses — particularly <em>R for Data Science</em>, first published in 2017.</p>
+<p>By packaging the dataset, Wickham made it instantly reproducible and accessible:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"nycflights13"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>It quickly became the standard dataset for teaching <strong>data wrangling (<code>dplyr</code>)</strong>, <strong>tidying (<code>tidyr</code>)</strong>, and <strong>visualization (<code>ggplot2</code>)</strong>.<br>
+</p>
+<p>Today, it appears in classrooms, Coursera courses, Kaggle tutorials, and research introductions worldwide.</p>
+</section>
+<section id="why-it-matters" class="level2">
+<h2 class="anchored" data-anchor-id="why-it-matters">🌍 Why It Matters</h2>
+<p><code>nycflights13</code> endures because it’s a <em>microcosm of real life</em>.<br>
+It captures delay frustrations, winter weather, airline competition, and the randomness of human systems.<br>
+It also shows how separate data sources — flights, airports, weather, and aircraft — interconnect to form a coherent story.</p>
+<p>It’s not about New York flights alone; it’s about <strong>how we understand and model the world through data</strong>.</p>
+<p>In the same way the <em>iris</em> dataset taught generations of statisticians about classification, <em>nycflights13</em> has taught generations of data scientists about structure, relationships, and storytelling.</p>
+<section id="structure-at-a-glance" class="level3">
+<h3 class="anchored" data-anchor-id="structure-at-a-glance">🔧 Structure at a Glance</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Table</th>
+<th>Description</th>
+<th>Rows</th>
+<th>Key columns</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>flights</code></td>
+<td>Every NYC departure in 2013</td>
+<td>336,776</td>
+<td><code>year</code>, <code>month</code>, <code>day</code>, <code>dep_time</code>, <code>arr_time</code>, <code>carrier</code>, <code>tailnum</code>, <code>origin</code>, <code>dest</code></td>
+</tr>
+<tr class="even">
+<td><code>airlines</code></td>
+<td>Carrier codes and full names</td>
+<td>16</td>
+<td><code>carrier</code></td>
+</tr>
+<tr class="odd">
+<td><code>airports</code></td>
+<td>All airports in the dataset</td>
+<td>1,458</td>
+<td><code>faa</code></td>
+</tr>
+<tr class="even">
+<td><code>planes</code></td>
+<td>Aircraft manufacturing info</td>
+<td>3,322</td>
+<td><code>tailnum</code></td>
+</tr>
+<tr class="odd">
+<td><code>weather</code></td>
+<td>Hourly conditions for each airport</td>
+<td>26,115</td>
+<td><code>origin</code>, <code>year</code>, <code>month</code>, <code>day</code>, <code>hour</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="legacy-and-influence" class="level3">
+<h3 class="anchored" data-anchor-id="legacy-and-influence">📘 Legacy and Influence</h3>
+<p>The dataset’s success inspired a wave of similar projects:</p>
+<ul>
+<li><strong><code>fivethirtyeight</code></strong> — datasets from FiveThirtyEight journalism pieces.<strong><code>gapminder</code></strong> — Hans Rosling’s world development data.<strong><code>palmerpenguins</code></strong> — a modern, ecological replacement for <em>iris</em>.</li>
+</ul>
+<p>But <em>nycflights13</em> remains unique in how it captures an entire real-world system, cleanly and reproducibly, in just a few megabytes.<br>
+It’s still maintained under the <strong>tidyverse organization on GitHub</strong>, ensuring compatibility with modern R versions.</p>
+<p>For many, it was the <em>first real dataset they ever analyzed</em> — and it’s still the one they remember.</p>
+</section>
+<section id="in-the-end" class="level3">
+<h3 class="anchored" data-anchor-id="in-the-end">✈️ In the End</h3>
+<p><code>nycflights13</code> is not just about flights.<br>
+It’s about the <em>journey</em> of data — from messy public records to a structured, teachable story.<br>
+It’s about curiosity, reproducibility, and accessibility.<br>
+And like the air traffic over New York, it continues to connect learners all over the world — one tidy join at a time.</p>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">📚 References</h3>
+<ol type="1">
+<li><p>Wickham, H. (2014). <em>nycflights13: Flights that departed NYC in 2013.</em> R package version 0.1.</p></li>
+<li><p>CRAN R Project. <em>nycflights13 package documentation.</em> https://cran.r-project.org/web/packages/nycflights13/</p></li>
+<li><p>Bureau of Transportation Statistics (BTS). <em>On-Time Performance Data.</em> https://transtats.bts.gov/DL_SelectFields.asp?T able_ID=236</p></li>
+<li><p>NOAA National Centers for Environmental Information. <em>Integrated Surface Database (ISD).</em></p></li>
+<li><p>Wickham, H., &amp; Grolemund, G. (2017). <em>R for Data Science.</em> O’Reilly Media.</p></li>
+<li><p>Tidyverse Team. <em>nycflights13 source code repository.</em> <a href="https://github.com/tidyverse/nycflights13?utm_source=chatgpt.com">https://github.com/tidyverse/nycflights13</a></p></li>
+</ol>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -614,4 +827,5 @@ Every story is built from data — but told like literature, not statistics.</p>
 
 
 
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

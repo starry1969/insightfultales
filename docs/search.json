@@ -193,7 +193,42 @@
     "href": "index.html#featured-datasets-where-stories-begin",
     "title": "Insightful Tales",
     "section": "📚 Featured Datasets — Where Stories Begin",
-    "text": "📚 Featured Datasets — Where Stories Begin\nEach of these datasets offers more than numbers—they’re story engines. Click to expand.\n\n\n\n✈️ nycflights13 — Delays, Weather, and the Rhythm of Motion\n\nWhat it is: All flights departing NYC in 2013, linked to weather, airlines, and airports.\nWhy it’s worthy: Rich joins (flights ⇄ weather ⇄ carriers) + time series + networks.\nStory sparks: Morning fog as nationwide dominoes; how buffer time beats chronic delay; the “geography of luck” in departure times.\n\n\n\n\n🌍 gapminder — Development in Motion\n\nWhat it is: Country-level health, wealth, and population over time.\nWhy it’s worthy: Long horizons + comparable units = clean cross-country narratives.\nStory sparks: Convergence vs. divergence; health gains without wealth; “late bloomers” that flip the script.\n\n\n\n\n⚾ Lahman Baseball Database — The Game as a Mirror of Culture\n\nWhat it is: Player/team stats from the 19th century to now.\nWhy it’s worthy: Deep history, rule changes, moneyball eras—quant + culture.\nStory sparks: Expansion, integration, and the long-ball epochs; globalization in surnames and birthplaces.\n\n\n\n\n🌦️ NOAA Daily Weather — Memory of the Sky\n\nWhat it is: Decades of daily observations for thousands of stations (GHCN).\nWhy it’s worthy: Local variability meets climate trends; perfect for “weather memory” ideas.\nStory sparks: How yesterday biases today (humans & grids); asymmetries in extremes.\n\n\n\n\n🚇 Transport for London (TfL) — Motion of a Metropolis\n\nWhat it is: Open ridership, delays, closures, and more from London Underground.\nWhy it’s worthy: Network effects + peak waves = emergent patterns.\nStory sparks: Fragility maps; how small failures ripple; the true “rush” in rush hour.\n\n\n\n\n🛍️ UCI Online Retail — Human Behavior in Transactions\n\nWhat it is: Line-item invoices for a UK e-commerce retailer (2010–2011).\nWhy it’s worthy: Basket analysis, seasonality, long-tail dynamics.\nStory sparks: Product co-occurrence graphs; rare combos that drive profit; return behavior arcs.\n\n\n\n\n💰 FRED Economic Data — The Pulse of Economies\n\nWhat it is: US/international macro time series (inflation, jobs, rates).\nWhy it’s worthy: High-frequency, consequential, and composable.\nStory sparks: Recession “fingerprints”; sectoral divergence; policy shock timelines.\n\n\n\n\n🛰️ NASA MODIS / Earth Observatory — A Planet in Pixels\n\nWhat it is: Satellite observations (vegetation, fires, aerosols, ice).\nWhy it’s worthy: Visual storytelling + measurable change.\nStory sparks: Greening/ browning cycles; fire seasons as migrating fronts; glacier retreat as lived time.\n\n\n\n\n🕹️ Steam Games — Collective Taste in the Wild\n\nWhat it is: Game metadata, reviews, tags, and (often) playtime stats.\nWhy it’s worthy: Social proof, hype cycles, networked preference landscapes.\nStory sparks: Genre constellations; the life cycle of hits; price elasticity vs. review sentiment.\n\n\n\n\n🌆 Global Urban Footprint — Cities from Space\n\nWhat it is: High-resolution, satellite-derived urban extent worldwide.\nWhy it’s worthy: Comparable geometry of cities across cultures and terrains.\nStory sparks: Edge growth vs. infill; coastal constraints; night-lights vs. census discrepancies."
+    "text": "📚 Featured Datasets — Where Stories Begin\nEach of these datasets offers more than numbers—they’re story engines. Click to expand.\n\n\n\n✈️ nycflights13: The DataSet That Took Off\n\nWhat it is: All flights departing NYC in 2013, linked to weather, airlines, and airports.\nWhy it’s worthy: Rich joins (flights ⇄ weather ⇄ carriers) + time series + networks.\nStory sparks: Morning fog as nationwide dominoes; how buffer time beats chronic delay; the “geography of luck” in departure times.\n\n\n\n\n🌍 gapminder — Development in Motion\n\nWhat it is: Country-level health, wealth, and population over time.\nWhy it’s worthy: Long horizons + comparable units = clean cross-country narratives.\nStory sparks: Convergence vs. divergence; health gains without wealth; “late bloomers” that flip the script.\n\n\n\n\n⚾ Lahman Baseball Database — The Game as a Mirror of Culture\n\nWhat it is: Player/team stats from the 19th century to now.\nWhy it’s worthy: Deep history, rule changes, moneyball eras—quant + culture.\nStory sparks: Expansion, integration, and the long-ball epochs; globalization in surnames and birthplaces.\n\n\n\n\n🌦️ NOAA Daily Weather — Memory of the Sky\n\nWhat it is: Decades of daily observations for thousands of stations (GHCN).\nWhy it’s worthy: Local variability meets climate trends; perfect for “weather memory” ideas.\nStory sparks: How yesterday biases today (humans & grids); asymmetries in extremes.\n\n\n\n\n🚇 Transport for London (TfL) — Motion of a Metropolis\n\nWhat it is: Open ridership, delays, closures, and more from London Underground.\nWhy it’s worthy: Network effects + peak waves = emergent patterns.\nStory sparks: Fragility maps; how small failures ripple; the true “rush” in rush hour.\n\n\n\n\n🛍️ UCI Online Retail — Human Behavior in Transactions\n\nWhat it is: Line-item invoices for a UK e-commerce retailer (2010–2011).\nWhy it’s worthy: Basket analysis, seasonality, long-tail dynamics.\nStory sparks: Product co-occurrence graphs; rare combos that drive profit; return behavior arcs.\n\n\n\n\n💰 FRED Economic Data — The Pulse of Economies\n\nWhat it is: US/international macro time series (inflation, jobs, rates).\nWhy it’s worthy: High-frequency, consequential, and composable.\nStory sparks: Recession “fingerprints”; sectoral divergence; policy shock timelines.\n\n\n\n\n🛰️ NASA MODIS / Earth Observatory — A Planet in Pixels\n\nWhat it is: Satellite observations (vegetation, fires, aerosols, ice).\nWhy it’s worthy: Visual storytelling + measurable change.\nStory sparks: Greening/ browning cycles; fire seasons as migrating fronts; glacier retreat as lived time.\n\n\n\n\n🕹️ Steam Games — Collective Taste in the Wild\n\nWhat it is: Game metadata, reviews, tags, and (often) playtime stats.\nWhy it’s worthy: Social proof, hype cycles, networked preference landscapes.\nStory sparks: Genre constellations; the life cycle of hits; price elasticity vs. review sentiment.\n\n\n\n\n🌆 Global Urban Footprint — Cities from Space\n\nWhat it is: High-resolution, satellite-derived urban extent worldwide.\nWhy it’s worthy: Comparable geometry of cities across cultures and terrains.\nStory sparks: Edge growth vs. infill; coastal constraints; night-lights vs. census discrepancies."
+  },
+  {
+    "objectID": "data-science/index.html",
+    "href": "data-science/index.html",
+    "title": "🏛️ Historical & Foundational Stories",
+    "section": "",
+    "text": "Click any story below to explore its full tale."
+  },
+  {
+    "objectID": "data-science/index.html#origins-evolution-of-data",
+    "href": "data-science/index.html#origins-evolution-of-data",
+    "title": "🏛️ Historical & Foundational Stories",
+    "section": "🧬 Origins & Evolution of Data",
+    "text": "🧬 Origins & Evolution of Data\nEvery number begins as a story — of invention, intention, and evolution. These tales uncover how data came alive and began shaping the world we know.\n\n\n🧮 The Genesis of Data — When Counting Became Knowing\n\nAcross millennia, from ancient inscriptions to industrial records, the urge to measure became the first step toward our modern data revolution.\n\n\n\n💫 These tales aren’t about statistics — they’re about discovery. Within every dataset lies meaning, waiting to be uncovered."
+  },
+  {
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Contact",
+    "section": "",
+    "text": "I’d love to hear from readers, researchers, or collaborators interested in data storytelling, visualization, or related projects.\n\n💡 Feedback or story ideas? Drop a note below.\n\n🧠 Collaboration inquiries? I’m open to cross-disciplinary data projects.\n\n👉 [LinkedIn Profile](https://www.linkedin.com/in/joseph-schaffer-a6270138\n👉 GitHub Repository\nOr email me directly: joseph [at] insightfultales [dot] com"
+  },
+  {
+    "objectID": "contact.html#get-in-touch",
+    "href": "contact.html#get-in-touch",
+    "title": "Contact",
+    "section": "",
+    "text": "I’d love to hear from readers, researchers, or collaborators interested in data storytelling, visualization, or related projects.\n\n💡 Feedback or story ideas? Drop a note below.\n\n🧠 Collaboration inquiries? I’m open to cross-disciplinary data projects.\n\n👉 [LinkedIn Profile](https://www.linkedin.com/in/joseph-schaffer-a6270138\n👉 GitHub Repository\nOr email me directly: joseph [at] insightfultales [dot] com"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Insightful Tales",
+    "section": "",
+    "text": "🦋 Insightful Tales is a creative data storytelling project that transforms datasets into visual, narrative insights.\nEvery story is built from data — but told like literature, not statistics."
   },
   {
     "objectID": "data-science/genesis-of-data.html",
@@ -252,39 +287,60 @@
     "text": "References\n\nWorld Bank Historical Population Data (1800–present)\nOur World in Data — History of Statistics\nUN Data Portal: National Census Records Archive"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About Insightful Tales",
+    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html",
+    "href": "datasets/nycflights13-the-dataset-that-took-off.html",
+    "title": "✈️ nycflights13: The Dataset That Took Off",
     "section": "",
-    "text": "🦋 Insightful Tales is a creative data storytelling project that transforms datasets into visual, narrative insights.\nEvery story is built from data — but told like literature, not statistics."
+    "text": "In 2013, nearly 337,000 flights departed from New York City’s three major airports — JFK, LaGuardia (LGA), and Newark (EWR).\nEach of those flights left behind a trace: departure times, delays, destinations, aircraft numbers, even weather conditions at takeoff.\nYears later, these traces would find their way into a small, elegantly crafted R package called nycflights13, and that package would go on to become one of the most iconic learning tools in modern data science."
   },
   {
-    "objectID": "contact.html",
-    "href": "contact.html",
-    "title": "Contact",
+    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#a-dataset-born-in-the-skies-above-new-york",
+    "href": "datasets/nycflights13-the-dataset-that-took-off.html#a-dataset-born-in-the-skies-above-new-york",
+    "title": "✈️ nycflights13: The Dataset That Took Off",
     "section": "",
-    "text": "I’d love to hear from readers, researchers, or collaborators interested in data storytelling, visualization, or related projects.\n\n💡 Feedback or story ideas? Drop a note below.\n\n🧠 Collaboration inquiries? I’m open to cross-disciplinary data projects.\n\n👉 [LinkedIn Profile](https://www.linkedin.com/in/joseph-schaffer-a6270138\n👉 GitHub Repository\nOr email me directly: joseph [at] insightfultales [dot] com"
+    "text": "In 2013, nearly 337,000 flights departed from New York City’s three major airports — JFK, LaGuardia (LGA), and Newark (EWR).\nEach of those flights left behind a trace: departure times, delays, destinations, aircraft numbers, even weather conditions at takeoff.\nYears later, these traces would find their way into a small, elegantly crafted R package called nycflights13, and that package would go on to become one of the most iconic learning tools in modern data science."
   },
   {
-    "objectID": "contact.html#get-in-touch",
-    "href": "contact.html#get-in-touch",
-    "title": "Contact",
-    "section": "",
-    "text": "I’d love to hear from readers, researchers, or collaborators interested in data storytelling, visualization, or related projects.\n\n💡 Feedback or story ideas? Drop a note below.\n\n🧠 Collaboration inquiries? I’m open to cross-disciplinary data projects.\n\n👉 [LinkedIn Profile](https://www.linkedin.com/in/joseph-schaffer-a6270138\n👉 GitHub Repository\nOr email me directly: joseph [at] insightfultales [dot] com"
+    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#the-origins-a-teaching-tool-with-real-world-grit",
+    "href": "datasets/nycflights13-the-dataset-that-took-off.html#the-origins-a-teaching-tool-with-real-world-grit",
+    "title": "✈️ nycflights13: The Dataset That Took Off",
+    "section": "🧭 The Origins: A Teaching Tool With Real-World Grit",
+    "text": "🧭 The Origins: A Teaching Tool With Real-World Grit\nThe story begins with Hadley Wickham, the statistician and software developer who spearheaded much of the tidyverse — a family of R packages that revolutionized how data is handled and visualized.\nIn the early 2010s, Wickham was building resources to help people learn data science by doing, not by reading about artificially perfect examples. Real data is messy, relational, and full of missing values — and that’s exactly what students and practitioners need to experience.\nSo instead of another toy dataset, Wickham turned to the U.S. Department of Transportation’s Bureau of Transportation Statistics (BTS), which publishes open flight-on-time data.\nFrom this raw source — hundreds of thousands of records across dozens of fields — he curated a single-year extract: all flights departing from the New York City area during 2013.\nThen, he went further.\nHe bundled in extra context:\n\nAirlines, mapping carrier codes to their full names.\nAirports, with geographic coordinates and time zones.\nPlanes, including tail numbers, manufacturers, and years built.\nWeather, hourly reports from each NYC airport.\n\nThe result wasn’t just a dataset — it was a miniature world of interlocking tables, ready to teach real-world data relationships."
   },
   {
-    "objectID": "data-science/index.html",
-    "href": "data-science/index.html",
-    "title": "🏛️ Historical & Foundational Stories",
-    "section": "",
-    "text": "Click any story below to explore its full tale."
+    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#a-dataset-of-relationships",
+    "href": "datasets/nycflights13-the-dataset-that-took-off.html#a-dataset-of-relationships",
+    "title": "✈️ nycflights13: The Dataset That Took Off",
+    "section": "🧩 A Dataset of Relationships",
+    "text": "🧩 A Dataset of Relationships\nUnlike simpler datasets like iris or mtcars, nycflights13 is relational — meaning its tables connect through shared keys:\n\nFlights ↔︎ Airlines (via carrier code)\nFlights ↔︎ Airports (via origin and destination codes)\nFlights ↔︎ Planes (via tail number)\nFlights ↔︎ Weather (via origin + date + hour)\n\nThis structure was intentional. It allows learners to practice joining, grouping, filtering, and summarizing — the bread and butter of data science — within a single coherent story: why do some flights arrive late, and what factors might explain it?\nWickham described this as “a dataset that lets you learn the grammar of data manipulation using real noise, not just clean textbook numbers.”"
   },
   {
-    "objectID": "data-science/index.html#origins-evolution-of-data",
-    "href": "data-science/index.html#origins-evolution-of-data",
-    "title": "🏛️ Historical & Foundational Stories",
-    "section": "🧬 Origins & Evolution of Data",
-    "text": "🧬 Origins & Evolution of Data\nEvery number begins as a story — of invention, intention, and evolution. These tales uncover how data came alive and began shaping the world we know.\n\n\n🧮 The Genesis of Data — When Counting Became Knowing\n\nAcross millennia, from ancient inscriptions to industrial records, the urge to measure became the first step toward our modern data revolution.\n\n\n\n💫 These tales aren’t about statistics — they’re about discovery. Within every dataset lies meaning, waiting to be uncovered."
+    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#why-2013",
+    "href": "datasets/nycflights13-the-dataset-that-took-off.html#why-2013",
+    "title": "✈️ nycflights13: The Dataset That Took Off",
+    "section": "🧮 Why 2013?",
+    "text": "🧮 Why 2013?\nThe year 2013 wasn’t random — it was chosen for completeness and modern relevance.\nBy 2014, most of that year’s data had been validated and publicly available through the BTS’s On-Time Performance database. It also represented a year with consistent reporting across all major U.S. carriers.\n2013 was far enough into the modern airline data era (with GPS and electronic filing) to be reliable, yet recent enough to feel relevant for today’s analyses."
+  },
+  {
+    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#from-raw-data-to-a-clean-package",
+    "href": "datasets/nycflights13-the-dataset-that-took-off.html#from-raw-data-to-a-clean-package",
+    "title": "✈️ nycflights13: The Dataset That Took Off",
+    "section": "🌦️ From Raw Data to a Clean Package",
+    "text": "🌦️ From Raw Data to a Clean Package\nTo transform the messy BTS export into something usable, Wickham and the tidyverse team wrote R scripts to:\n\nParse CSVs from the RITA (Research and Innovative Technology Administration) portal.\nFilter for flights with valid NYC origins.\nClean up time variables (like dep_time and arr_time) into numeric or datetime forms.\nNormalize column names for clarity and consistency.\nAdd weather data from the NOAA Integrated Surface Database (ISD).\n\nThe result was a compact, easily loadable dataset: one command, library(nycflights13), and the world of 2013’s New York skies appears at your fingertips."
+  },
+  {
+    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#joining-the-tidyverse",
+    "href": "datasets/nycflights13-the-dataset-that-took-off.html#joining-the-tidyverse",
+    "title": "✈️ nycflights13: The Dataset That Took Off",
+    "section": "📦 Joining the tidyverse",
+    "text": "📦 Joining the tidyverse\nWhen it was first released in 2014, nycflights13 joined the ecosystem of demonstration datasets used in the new generation of R tutorials, books, and courses — particularly R for Data Science, first published in 2017.\nBy packaging the dataset, Wickham made it instantly reproducible and accessible:\ninstall.packages(\"nycflights13\")\nlibrary(nycflights13)\nIt quickly became the standard dataset for teaching data wrangling (dplyr), tidying (tidyr), and visualization (ggplot2).\n\nToday, it appears in classrooms, Coursera courses, Kaggle tutorials, and research introductions worldwide."
+  },
+  {
+    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#why-it-matters",
+    "href": "datasets/nycflights13-the-dataset-that-took-off.html#why-it-matters",
+    "title": "✈️ nycflights13: The Dataset That Took Off",
+    "section": "🌍 Why It Matters",
+    "text": "🌍 Why It Matters\nnycflights13 endures because it’s a microcosm of real life.\nIt captures delay frustrations, winter weather, airline competition, and the randomness of human systems.\nIt also shows how separate data sources — flights, airports, weather, and aircraft — interconnect to form a coherent story.\nIt’s not about New York flights alone; it’s about how we understand and model the world through data.\nIn the same way the iris dataset taught generations of statisticians about classification, nycflights13 has taught generations of data scientists about structure, relationships, and storytelling.\n\n🔧 Structure at a Glance\n\n\n\n\n\n\n\n\n\nTable\nDescription\nRows\nKey columns\n\n\n\n\nflights\nEvery NYC departure in 2013\n336,776\nyear, month, day, dep_time, arr_time, carrier, tailnum, origin, dest\n\n\nairlines\nCarrier codes and full names\n16\ncarrier\n\n\nairports\nAll airports in the dataset\n1,458\nfaa\n\n\nplanes\nAircraft manufacturing info\n3,322\ntailnum\n\n\nweather\nHourly conditions for each airport\n26,115\norigin, year, month, day, hour\n\n\n\n\n\n📘 Legacy and Influence\nThe dataset’s success inspired a wave of similar projects:\n\nfivethirtyeight — datasets from FiveThirtyEight journalism pieces.gapminder — Hans Rosling’s world development data.palmerpenguins — a modern, ecological replacement for iris.\n\nBut nycflights13 remains unique in how it captures an entire real-world system, cleanly and reproducibly, in just a few megabytes.\nIt’s still maintained under the tidyverse organization on GitHub, ensuring compatibility with modern R versions.\nFor many, it was the first real dataset they ever analyzed — and it’s still the one they remember.\n\n\n✈️ In the End\nnycflights13 is not just about flights.\nIt’s about the journey of data — from messy public records to a structured, teachable story.\nIt’s about curiosity, reproducibility, and accessibility.\nAnd like the air traffic over New York, it continues to connect learners all over the world — one tidy join at a time.\n\n\n📚 References\n\nWickham, H. (2014). nycflights13: Flights that departed NYC in 2013. R package version 0.1.\nCRAN R Project. nycflights13 package documentation. https://cran.r-project.org/web/packages/nycflights13/\nBureau of Transportation Statistics (BTS). On-Time Performance Data. https://transtats.bts.gov/DL_SelectFields.asp?T able_ID=236\nNOAA National Centers for Environmental Information. Integrated Surface Database (ISD).\nWickham, H., & Grolemund, G. (2017). R for Data Science. O’Reilly Media.\nTidyverse Team. nycflights13 source code repository. https://github.com/tidyverse/nycflights13"
   },
   {
     "objectID": "stories/butterfly-morning-delays.html",

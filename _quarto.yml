@@ -26,6 +26,10 @@ website:
         menu: 
           - href: data-science/genesis-of-data.qmd
             text: "🧮 Genesis of Data"
+      - text: "📊 Datasets"
+        menu: 
+          - href: datasets/nycflights13-the-dataset-that-took-off.qmd
+            text: "✈️ nycflights13: The Dataset That Took Off"
       - text: "💡 About"
         href: about.qmd
       - text: "💬 Contact"
