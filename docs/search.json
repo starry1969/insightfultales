@@ -105,109 +105,130 @@
     "text": "🕊️💫🔍 Gentle call to curiosity\nWhat other forms of memory might our systems hold?"
   },
   {
-    "objectID": "stories/geography-of-luck.html",
-    "href": "stories/geography-of-luck.html",
-    "title": "🧭 The Geography of Luck",
+    "objectID": "stories/butterfly-morning-delays.html",
+    "href": "stories/butterfly-morning-delays.html",
+    "title": "🦋 Butterfly Morning Delays",
     "section": "",
-    "text": "“Where the sun sits higher, shadows of inequality grow shorter — but never quite disappear.”"
+    "text": "This analysis uses open data (nycflights13) to demonstrate a novel, reproducible approach to understanding delay propagation within a single day. Unlike traditional performance summaries that emphasize average delay, we focus on variability — the “schedule chaos” that amplifies downstream disruption. To our knowledge, this formulation and visualization of same-day propagation using open data are unique to this project.\nCode\nlibrary(tidyverse)\nlibrary(lubridate)\nlibrary(nycflights13)\nlibrary(broom)\n\n# Minimal, clean theme\nquiet_theme &lt;- function() {\n  ggplot2::theme_minimal(base_size = 13) +\n    ggplot2::theme(\n      panel.grid.minor = element_blank(),\n      plot.title.position = \"plot\",\n      plot.caption.position = \"plot\",\n      strip.text = element_text(face = \"bold\")\n    )\n}"
   },
   {
-    "objectID": "stories/geography-of-luck.html#premise",
-    "href": "stories/geography-of-luck.html#premise",
-    "title": "🧭 The Geography of Luck",
-    "section": "💡 Premise",
-    "text": "💡 Premise\nIf you were to spin a globe and stop it at random, the odds of landing somewhere prosperous are not uniform. Latitude has long acted as the silent architect of opportunity — shaping climate, agriculture, disease, and, through them, destiny.\nThis story asks: Does geography still rule luck in the 21st century?"
+    "objectID": "stories/butterfly-morning-delays.html#data-definitions-why-these-choices",
+    "href": "stories/butterfly-morning-delays.html#data-definitions-why-these-choices",
+    "title": "🦋 Butterfly Morning Delays",
+    "section": "📊 Data & Definitions — Why these choices?",
+    "text": "📊 Data & Definitions — Why these choices?\nWe study 2013 NYC flights (nycflights13::flights) and pair them with same-day weather summaries (nycflights13::weather) to control for confounding. We define:\n\nFirst Wave: departures between 05:00–09:00 local.\nMorning variability (σ₁): standard deviation of departure delay in the first wave (per origin×date).\nAfternoon outcome (μₐ): mean arrival delay for flights departing after 12:00 (per origin×date).\n\nWhy SD for the morning? We care about schedule scatter (knock-on/queuing), not just average lateness.\n\n\nCode\n# Preprocess core variables\nfl &lt;- flights |&gt;\n  mutate(\n    dep_dt = make_datetime(year, month, day, dep_time %/% 100, dep_time %% 100),\n    hour = hour(dep_dt),\n    date = as_date(dep_dt),\n    dist_band = cut(\n      distance,\n      breaks = c(0, 500, 1500, Inf),\n      labels = c(\"Short (≤500 mi)\", \"Medium (501–1500)\", \"Long (≥1501)\"),\n      right = TRUE\n    )\n  ) |&gt;\n  filter(!is.na(dep_dt), !is.na(arr_delay), !is.na(dep_delay)) |&gt;\n  filter(origin %in% c(\"JFK\", \"LGA\", \"EWR\"))\n\n# Daily first-wave variability (σ1) and afternoon outcome (μa)\ndaily &lt;- fl |&gt;\n  group_by(origin, date) |&gt;\n  summarise(\n    sigma_morning = sd(dep_delay[hour &gt;= 5 & hour &lt; 9], na.rm = TRUE),\n    n_morning     = sum(hour &gt;= 5 & hour &lt; 9, na.rm = TRUE),\n    mean_arr_pm   = mean(arr_delay[hour &gt;= 12], na.rm = TRUE),\n    n_pm          = sum(hour &gt;= 12, na.rm = TRUE),\n    .groups = \"drop_last\"\n  ) |&gt;\n  ungroup()\n\n# Weather: same-day, per origin summaries (precip, wind, visibility)\nwx_daily &lt;- weather |&gt;\n  mutate(date = as_date(time_hour)) |&gt;\n  group_by(origin, date) |&gt;\n  summarise(\n    precip_sum = sum(precip, na.rm = TRUE),\n    wind_mean  = mean(wind_speed, na.rm = TRUE),\n    vis_mean   = mean(visib, na.rm = TRUE),\n    .groups = \"drop\"\n  )\n\ndaily &lt;- daily |&gt;\n  left_join(wx_daily, by = c(\"origin\", \"date\")) |&gt;\n  mutate(\n    month = month(date),\n    wday  = wday(date, label = TRUE)\n  )"
   },
   {
-    "objectID": "stories/geography-of-luck.html#data-sources",
-    "href": "stories/geography-of-luck.html#data-sources",
-    "title": "🧭 The Geography of Luck",
-    "section": "🌐 Data Sources",
-    "text": "🌐 Data Sources\nWe combine multiple open datasets (2020 snapshot for a clean cross-section):\n\n\n\n\n\n\n\n\nTheme\nSource\nIndicator\n\n\n\n\nEconomic output\nWorld Bank\nGDP per capita (constant USD, NY.GDP.PCAP.KD)\n\n\nHealth\nWorld Bank\nLife expectancy at birth (SP.DYN.LE00.IN)\n\n\nGeography\nNatural Earth\nCountry boundaries + ISO3 (for joins)"
+    "objectID": "stories/butterfly-morning-delays.html#scatter-in-the-first-wave-predicts-afternoon-pain",
+    "href": "stories/butterfly-morning-delays.html#scatter-in-the-first-wave-predicts-afternoon-pain",
+    "title": "🦋 Butterfly Morning Delays",
+    "section": "🌊📈😣 Scatter in the first wave predicts afternoon pain",
+    "text": "🌊📈😣 Scatter in the first wave predicts afternoon pain\nWhat we plot & why: A simple scatter of morning variability (x) vs. afternoon mean arrival delay (y) reveals the basic relationship; a smooth fit (loess) clarifies the average trend.\n\n\nCode\np1 &lt;- daily |&gt;\n  filter(n_morning &gt;= 10, n_pm &gt;= 20) |&gt;\n  ggplot(aes(sigma_morning, mean_arr_pm, color = origin)) +\n  geom_point(alpha = 0.35) +\n  geom_smooth(se = FALSE) +\n  labs(\n    title = \"Morning Schedule Scatter vs. Afternoon Arrival Delays\",\n    subtitle = \"Per origin×day in NYC, 2013 (loess trend).\",\n    x = \"First-wave SD of departure delay (minutes)\",\n    y = \"Afternoon mean arrival delay (minutes)\",\n    color = \"Origin\",\n    caption = \"Data: nycflights13 • Smooth: loess • SD uses 05:00–08:59 departures\"\n  ) +\n  quiet_theme()\np1\n\n\n\n\n\n\n\n\n\nWhat it implies: As first-wave scatter increases, afternoon arrival delays climb. This is consistent with queuing/turnaround knock-on—a few badly delayed early flights can desynchronize crew/aircraft rotations.\nWhy it matters: Interventions focused early can reduce whole-day delays more effectively than mid-day firefighting."
   },
   {
-    "objectID": "stories/geography-of-luck.html#first-glance-the-shape-of-prosperity",
-    "href": "stories/geography-of-luck.html#first-glance-the-shape-of-prosperity",
-    "title": "🧭 The Geography of Luck",
-    "section": "🌱 First Glance — The Shape of Prosperity",
-    "text": "🌱 First Glance — The Shape of Prosperity\n\n\nCode\n# GDP vs |latitude|\nggplot(wb, aes(abs_lat, gdp)) +\n  geom_point(aes(color = region), alpha = .7, size = 2, show.legend = FALSE) +\n  geom_smooth(method = \"loess\", se = FALSE, color = \"black\") +\n  scale_y_log10(labels = label_dollar()) +\n  labs(title = \"The Geography of Luck\",\n       subtitle = \"GDP per capita (log scale) vs. absolute latitude, 2020 (World Bank)\",\n       x = \"Absolute Latitude (°)\", y = \"GDP per capita (2015 USD, log scale)\")\n\n\n\n\n\n\n\n\n\nReading: Prosperity tends to rise away from the equator, plateau in the mid‑latitudes, and soften again near the poles — a climatic parabola of fortune."
+    "objectID": "stories/butterfly-morning-delays.html#short-haul-routes-amplify-the-ripple",
+    "href": "stories/butterfly-morning-delays.html#short-haul-routes-amplify-the-ripple",
+    "title": "🦋 Butterfly Morning Delays",
+    "section": "✈️🔁🌊 Short-haul routes amplify the ripple",
+    "text": "✈️🔁🌊 Short-haul routes amplify the ripple\nWhat we plot & why: We segment by distance band; short-haul flights cycle aircraft/crews more frequently, increasing propagation channels.\n\n\nCode\npm_by_band &lt;- fl |&gt;\n  mutate(am_wave = hour &gt;= 5 & hour &lt; 9,\n         pm_wave = hour &gt;= 12) |&gt;\n  group_by(origin, date, dist_band) |&gt;\n  summarise(\n    sigma_morning = sd(dep_delay[am_wave], na.rm = TRUE),\n    mean_arr_pm   = mean(arr_delay[pm_wave], na.rm = TRUE),\n    n_am = sum(am_wave, na.rm = TRUE),\n    n_pm = sum(pm_wave, na.rm = TRUE),\n    .groups = \"drop\"\n  ) |&gt;\n  filter(!is.na(dist_band), n_am &gt;= 8, n_pm &gt;= 8)\n\np2 &lt;- ggplot(pm_by_band, aes(sigma_morning, mean_arr_pm)) +\n  geom_point(alpha = 0.25) +\n  geom_smooth(se = FALSE) +\n  facet_wrap(~ dist_band) +\n  labs(\n    title = \"Propagation is Strongest on Short-Haul Days\",\n    subtitle = \"Per origin×date; first-wave SD vs. afternoon mean arrival delay.\",\n    x = \"First-wave SD (min)\",\n    y = \"Afternoon mean arrival delay (min)\"\n  ) +\n  quiet_theme()\np2\n\n\n\n\n\n\n\n\n\nImplication: Short routes act like “delay multipliers.” Practical levers here include gate assignment discipline, turn-time buffers, and pushback sequencing in the first wave."
   },
   {
-    "objectID": "stories/geography-of-luck.html#beyond-wealth-life-follows-latitude",
-    "href": "stories/geography-of-luck.html#beyond-wealth-life-follows-latitude",
-    "title": "🧭 The Geography of Luck",
-    "section": "💰 Beyond Wealth — Life Follows Latitude",
-    "text": "💰 Beyond Wealth — Life Follows Latitude\n\n\nCode\n# Life expectancy vs |latitude|\nwb |&gt; ggplot(aes(abs_lat, life)) +\n  geom_point(alpha = .6, size = 2, color = \"#555\") +\n  geom_smooth(method = \"loess\", se = FALSE, color = \"#111\") +\n  labs(title = \"Latitude vs. Life Expectancy\",\n       subtitle = \"Life expectancy at birth vs. absolute latitude, 2020\",\n       x = \"Absolute Latitude (°)\", y = \"Years\")\n\n\n\n\n\n\n\n\n\nReading: Health shadows wealth: life expectancy arcs with latitude, but with notable outliers."
+    "objectID": "stories/butterfly-morning-delays.html#after-weather-controls-the-association-persists",
+    "href": "stories/butterfly-morning-delays.html#after-weather-controls-the-association-persists",
+    "title": "🦋 Butterfly Morning Delays",
+    "section": "🌦️📈 After weather controls, the association persists",
+    "text": "🌦️📈 After weather controls, the association persists\nWhat we fit & why: A linear model predicting afternoon mean arrival delay from first-wave SD, controlling for precipitation, wind, visibility, month and weekday (to partially absorb seasonality/peaks). This is associational, not causal.\n\n\nCode\nmod_data &lt;- daily |&gt;\n  filter(!is.na(mean_arr_pm), !is.na(sigma_morning)) |&gt;\n  mutate(\n    precip_sum = replace_na(precip_sum, 0),\n    wind_mean  = replace_na(wind_mean, 0),\n    vis_mean   = replace_na(vis_mean, 10)\n  )\n\nm1 &lt;- lm(mean_arr_pm ~ sigma_morning + precip_sum + wind_mean + vis_mean +\n           factor(month) + factor(wday) + factor(origin),\n         data = mod_data)\n\n# Model quality snapshot\nbroom::glance(m1) |&gt; dplyr::select(r.squared, adj.r.squared, sigma, nobs)\n\n\n\n  \n\n\n\nCode\n# Slope of interest\nbroom::tidy(m1) |&gt;\n  filter(term == \"sigma_morning\") |&gt;\n  mutate(interpret = paste0(\"~\", round(estimate, 2),\n                            \" min more afternoon delay per +1 min SD in first wave\"))\n\n\n\n  \n\n\n\nWhat it tells us: The coefficient on sigma_morning (typically positive) indicates that even after accounting for weather and calendar effects, noisier first waves align with worse afternoons.\n\n\n\n\n\n\nNote\n\n\n\nInterpretation: If the coefficient is, say, 0.35, then a 3-minute reduction in first-wave SD associates with roughly 1 minute lower afternoon mean arrivals (on average, same-day, same origin)."
   },
   {
-    "objectID": "stories/geography-of-luck.html#exceptions-when-geography-loses-residuals",
-    "href": "stories/geography-of-luck.html#exceptions-when-geography-loses-residuals",
-    "title": "🧭 The Geography of Luck",
-    "section": "🌍 Exceptions — When Geography Loses (Residuals)",
-    "text": "🌍 Exceptions — When Geography Loses (Residuals)\nWe fit a simple model of wealth on latitude and look for countries that outperform what geography alone would predict.\n\n\nCode\n# Fit on complete cases only, then join residuals back by iso3c\nwb_cc &lt;- wb |&gt; dplyr::filter(is.finite(gdp_log), is.finite(abs_lat), !is.na(iso3c))\nmodel_simple &lt;- lm(gdp_log ~ abs_lat, data = wb_cc)\nres_tbl &lt;- tibble::tibble(iso3c = wb_cc$iso3c, resid_gdp_lat = unname(resid(model_simple)))\n\nwb &lt;- wb |&gt; dplyr::left_join(res_tbl, by = \"iso3c\") |&gt;\n  dplyr::mutate(luck_index = as.numeric(scale(resid_gdp_lat)))\n\n# Top/bottom outperformers by residuals (ignore NA)\nout_top &lt;- wb |&gt; dplyr::filter(!is.na(resid_gdp_lat)) |&gt;\n  dplyr::slice_max(resid_gdp_lat, n = 10) |&gt;\n  dplyr::select(country, region, resid_gdp_lat)\n\nout_bot &lt;- wb |&gt; dplyr::filter(!is.na(resid_gdp_lat)) |&gt;\n  dplyr::slice_min(resid_gdp_lat, n = 10) |&gt;\n  dplyr::select(country, region, resid_gdp_lat)\n\nknitr::kable(out_top, digits = 2, caption = \"Top 10 'Lucky Defiers' — richer than latitude alone predicts (log residual)\")\n\n\n\nTop 10 ‘Lucky Defiers’ — richer than latitude alone predicts (log residual)\n\n\ncountry\nregion\nresid_gdp_lat\n\n\n\n\nSingapore\nEast Asia & Pacific\n1.42\n\n\nCayman Islands\nLatin America & Caribbean\n1.18\n\n\nBermuda\nNorth America\n1.06\n\n\nBrunei Darussalam\nEast Asia & Pacific\n1.05\n\n\nMonaco\nEurope & Central Asia\n1.05\n\n\nQatar\nMiddle East & North Africa\n0.95\n\n\nGuam\nEast Asia & Pacific\n0.93\n\n\nVirgin Islands (U.S.)\nLatin America & Caribbean\n0.88\n\n\nHong Kong SAR, China\nEast Asia & Pacific\n0.86\n\n\nUnited Arab Emirates\nMiddle East & North Africa\n0.82\n\n\n\n\n\n\n\nCode\nknitr::kable(out_bot, digits = 2, caption = \"Bottom 10 — poorer than latitude alone predicts (log residual)\")\n\n\n\nBottom 10 — poorer than latitude alone predicts (log residual)\n\n\ncountry\nregion\nresid_gdp_lat\n\n\n\n\nAfghanistan\nSouth Asia\n-1.26\n\n\nKyrgyz Republic\nEurope & Central Asia\n-1.10\n\n\nSyrian Arab Republic\nMiddle East & North Africa\n-1.09\n\n\nMadagascar\nSub-Saharan Africa\n-1.09\n\n\nMozambique\nSub-Saharan Africa\n-1.05\n\n\nTajikistan\nEurope & Central Asia\n-0.99\n\n\nBurundi\nSub-Saharan Africa\n-0.99\n\n\nUkraine\nEurope & Central Asia\n-0.92\n\n\nLesotho\nSub-Saharan Africa\n-0.91\n\n\nNiger\nSub-Saharan Africa\n-0.86\n\n\n\n\n\n\nInterpretation: High‑performers often pair trade centrality, education, or resource rents with policy stability. Under‑performers frequently face governance or conflict frictions."
+    "objectID": "stories/butterfly-morning-delays.html#a-tiny-what-if-simulation",
+    "href": "stories/butterfly-morning-delays.html#a-tiny-what-if-simulation",
+    "title": "🦋 Butterfly Morning Delays",
+    "section": "💭 A tiny “what-if” simulation",
+    "text": "💭 A tiny “what-if” simulation\nWhat we simulate & why: Suppose operations could shave 2 minutes of SD from the first wave (tightened sequencing, better gate prep). Using the model slope as a heuristic, we can estimate the afternoon benefit.\n\n\nCode\ncoef_sigma &lt;- broom::tidy(m1) |&gt;\n  filter(term == \"sigma_morning\") |&gt;\n  pull(estimate)\n\ndelta_sd &lt;- -2  # hypothetical tightening (minutes)\navg_effect &lt;- coef_sigma * delta_sd\n\ntibble(\n  hypothetical_sd_change_min = delta_sd,\n  predicted_change_pm_mean_min = avg_effect\n)\n\n\n\n  \n\n\n\nSo what: Even modest improvements early could meaningfully reduce afternoon averages—multiplied across hundreds of flights, that is real passenger time and crew/aircraft efficiency."
   },
   {
-    "objectID": "stories/geography-of-luck.html#optional-map-the-luck-index-residual-choropleth",
-    "href": "stories/geography-of-luck.html#optional-map-the-luck-index-residual-choropleth",
-    "title": "🧭 The Geography of Luck",
-    "section": "🗺️ Optional Map — The Luck Index (Residual Choropleth)",
-    "text": "🗺️ Optional Map — The Luck Index (Residual Choropleth)\nA choropleth map of the residuals (“luck index”) highlights countries that over‑ or under‑perform relative to their absolute latitude.\n\n\nCode\n# Luck-index choropleth (guarded)\nif (isTRUE(has_ne)) {\n  # Merge residuals back to geometry\n  map_dat &lt;- dat |&gt; dplyr::left_join(wb |&gt; dplyr::select(iso3c, resid_gdp_lat), by = c(\"iso_a3\" = \"iso3c\"))\n\n  # Breaks for a symmetric diverging map around zero residual\n  brks &lt;- c(-Inf, -0.6, -0.3, -0.15, 0, 0.15, 0.3, 0.6, Inf)\n  map_dat$res_bin &lt;- cut(map_dat$resid_gdp_lat, breaks = brks, include.lowest = TRUE)\n\n  # Plot\n  ggplot(map_dat) +\n    geom_sf(aes(fill = res_bin), color = \"white\", size = 0.1) +\n    scale_fill_brewer(type = \"div\", palette = \"RdBu\", direction = -1, na.value = \"#e5e7eb\",\n                      name = \"Luck index\n(GDP~vs~|lat| residual)\") +\n    labs(title = \"Outperformers and Underperformers — Geography of Luck\",\n         subtitle = \"Residuals from log(GDP per capita) ~ absolute latitude, 2020\",\n         caption = \"Data: World Bank (WDI), Natural Earth. Negative = underperforming latitude; positive = outperforming.\") +\n    theme(legend.position = \"right\")\n} else {\n  message(\"Optional map disabled: install.packages(c('sf','rnaturalearth','rnaturalearthdata')) to enable the choropleth.\")\n}\n\n\n\n\n\n\n\n\n\nHow to read: Blue shades underperform their latitude (negative residuals); red shades outperform (positive residuals). Neutral grays are missing data."
+    "objectID": "stories/butterfly-morning-delays.html#practical-applications",
+    "href": "stories/butterfly-morning-delays.html#practical-applications",
+    "title": "🦋 Butterfly Morning Delays",
+    "section": "🧰 Practical Applications",
+    "text": "🧰 Practical Applications\n\nCrew/Aircraft Rotations: Prioritize first-wave turn readiness (catering, fueling, pushback order) to minimize scatter.\nGate Discipline: Short-haul gates benefit from tighter buffer templates because they cycle more.\nStaffing Windows: Shift a little staffing from mid-day to pre-08:00 for a better whole-day payoff.\nPlaybooks for “Noisy Mornings”: When σ₁ spikes, proactively re-sequence sensitive turns to break chains."
   },
   {
-    "objectID": "stories/geography-of-luck.html#reflection",
-    "href": "stories/geography-of-luck.html#reflection",
-    "title": "🧭 The Geography of Luck",
-    "section": "💭 Reflection",
-    "text": "💭 Reflection\n\nThe sun may rise for everyone, but it still shines longer for some.\n\nLatitude once dictated agriculture, disease, and labor. Today, it still whispers through economies — a relic of environmental inheritance.\nYet each bright outlier on the map is a defiance of fate: policy and ingenuity turning geography into geography’s undoing."
+    "objectID": "stories/butterfly-morning-delays.html#limitations-what-we-didnt-model",
+    "href": "stories/butterfly-morning-delays.html#limitations-what-we-didnt-model",
+    "title": "🦋 Butterfly Morning Delays",
+    "section": "🚧 Limitations (what we didn’t model)",
+    "text": "🚧 Limitations (what we didn’t model)\n\nThis is NYC-2013 only; airports differ in geometry/ATC regimes.\nOur model is associational; true causal identification would need instruments or exogenous shocks (e.g., runway closures).\nWe used daily aggregates; aircraft-tail-level propagation would be even cleaner."
   },
   {
-    "objectID": "stories/geography-of-luck.html#technical-appendix",
-    "href": "stories/geography-of-luck.html#technical-appendix",
-    "title": "🧭 The Geography of Luck",
-    "section": "⚙️ Technical Appendix",
-    "text": "⚙️ Technical Appendix\n\nPackages: WDI, rnaturalearth, sf, tidyverse, janitor, scales\n\nYear: 2020 snapshot (World Bank)\n\nTransforms: log10(GDP per capita); residuals from lm(gdp_log ~ abs_lat)\n\nCRS: EPSG:4326 (WGS84)\n\nReproducibility: Set a specific year for comparability; extend to multi‑year to track weakening/strengthening latitude effects.\n\n\n\nCode\n# Time evolution — correlation weakening/strengthening over time (1980–2023)\nhist &lt;- WDI(indicator = c(gdp = \"NY.GDP.PCAP.KD\"),\n            start = 1980, end = 2023, extra = TRUE) |&gt;\n  janitor::clean_names() |&gt;\n  dplyr::filter(region != \"Aggregates\") |&gt;\n  dplyr::mutate(\n    # make sure latitude is numeric before abs()\n    latitude = suppressWarnings(readr::parse_number(as.character(latitude))),\n    abs_lat  = abs(latitude),\n    gdp_log  = log10(gdp)\n  ) |&gt;\n  dplyr::group_by(year) |&gt;\n  dplyr::summarize(\n    r_lat_gdp = cor(abs_lat, gdp_log, use = \"complete.obs\"),\n    .groups = \"drop\"\n  )\n\nggplot(hist, aes(year, r_lat_gdp)) +\n  geom_line() +\n  labs(\n    title = \"Latitude–Wealth Correlation Over Time\",\n    x = \"Year\", y = \"Correlation r (|lat| vs log GDP per capita)\"\n  )"
+    "objectID": "stories/butterfly-morning-delays.html#summary-what-we-discovered",
+    "href": "stories/butterfly-morning-delays.html#summary-what-we-discovered",
+    "title": "🦋 Butterfly Morning Delays",
+    "section": "📋 Summary (what we discovered)",
+    "text": "📋 Summary (what we discovered)\n\nFirst-wave scatter (not just average delay) is a strong signal for afternoon performance.\nThe effect is strongest on short-haul days—where rotations are more frequent.\nControlling for weather/time effects, the relationship persists.\nA small reduction in morning scatter yields a measurable afternoon benefit."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Insightful Tales",
+    "objectID": "stories/butterfly-morning-delays.html#references-credits",
+    "href": "stories/butterfly-morning-delays.html#references-credits",
+    "title": "🦋 Butterfly Morning Delays",
+    "section": "📚 References & Credits",
+    "text": "📚 References & Credits\n\nData: nycflights13 (flights, weather) — Wickham et al. (CRAN)\nPackages: tidyverse, lubridate, broom, ggplot2\nAuthoring: Quarto\nReading: Wickham, R for Data Science (data wrangling & viz patterns); Quarto documentation\nRepro style: quiet_theme() in this doc (CC-0)\nLinks:\n\nhttps://cran.r-project.org/package=nycflights13\nhttps://r4ds.hadley.nz/\nhttps://quarto.org/ ```"
+  },
+  {
+    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html",
+    "href": "datasets/nycflights13-the-dataset-that-took-off.html",
+    "title": "✈️ nycflights13: The Dataset That Took Off",
     "section": "",
-    "text": "Where data finds its narrative — original visual and analytical stories built with Quarto."
+    "text": "In 2013, nearly 337,000 flights departed from New York City’s three major airports — JFK, LaGuardia (LGA), and Newark (EWR).\nEach of those flights left behind a trace: departure times, delays, destinations, aircraft numbers, even weather conditions at takeoff.\nYears later, these traces would find their way into a small, elegantly crafted R package called nycflights13, and that package would go on to become one of the most iconic learning tools in modern data science."
   },
   {
-    "objectID": "index.html#featured-stories",
-    "href": "index.html#featured-stories",
-    "title": "Insightful Tales",
-    "section": "✨ Featured Stories",
-    "text": "✨ Featured Stories\nEach story turns data into narrative — click to explore.\n\n\n🧭 Geography of Luck — The Latitude Lottery\n\nAirports closer to the poles face harsher weather — but does geography itself decide punctuality?\nThis story measures how latitude quietly skews flight reliability, uncovering patterns of chance, climate, and coordination.\n\n\n\n🦋 Butterfly Morning Delays — Small Causes, Wide Ripples\n\nA delay at dawn can echo across an entire air-traffic network.\nUsing NYC flight data, this tale visualizes how minute perturbations evolve into widespread effects — a modern butterfly effect.\n\n\n\n🌦️ Weather Memory — How the Sky Remembers\n\nDoes weather have “momentum”?\nBy correlating daily anomalies, this piece explores how temperature and precipitation persist — revealing the hidden inertia of the atmosphere.\n\n\n\n⚾ Baseball Zeitgeist — A Century of Swings\n\nUsing Lahman’s database, this story blends sport, sociology, and technology to show how America’s game mirrors its evolving spirit — from dead-ball grit to data-driven power.\n\n\n\n💰 The Wealth of Nations, Revisited — Gapminder Tales\n\nA visual narrative on global progress and paradox:\nwho truly caught up, who stalled, and what it means when GDP rises but well-being lags behind.\n\n\n\n🛰️ Planetary Pulse — Reading Earth from Orbit\n\nSatellite imagery meets storytelling.\nFrom greening deserts to vanishing glaciers, this piece turns NASA’s pixels into a planetary diary of change.\n\n\n\n🚇 London in Motion — The Pulse of a City\n\nEvery entry, exit, and delay tells a story of urban life.\nThis narrative transforms Transport for London data into a living map of rhythm, pressure, and resilience.\n\n\n\n🕹️ The Hype Curve — Life and Death of a Game\n\nSteam data visualized as cultural heartbeat:\nhow trends surge, communities form, and nostalgia revives titles long thought dormant.\n\n\n\n🌆 Lights and Lives — Cities from Space\n\nNight-light data reveals how urban sprawl, inequality, and energy intersect.\nA story told not in words but in luminous patterns across the Earth’s surface."
-  },
-  {
-    "objectID": "index.html#origins-evolution-of-data",
-    "href": "index.html#origins-evolution-of-data",
-    "title": "Insightful Tales",
-    "section": "🧬 Origins & Evolution of Data",
-    "text": "🧬 Origins & Evolution of Data\nEvery number has an origin story. These tales uncover how data was born, who shaped it, and how it came to define the modern world.\n\n\n🧮 The Genesis of Data — When Counting Became Knowing\n\nFrom ancient tablets to industrial ledgers, the human instinct to measure the world laid the groundwork for today’s data revolution."
-  },
-  {
-    "objectID": "index.html#featured-datasets-where-stories-begin",
-    "href": "index.html#featured-datasets-where-stories-begin",
-    "title": "Insightful Tales",
-    "section": "📚 Featured Datasets — Where Stories Begin",
-    "text": "📚 Featured Datasets — Where Stories Begin\nEach of these datasets offers more than numbers—they’re story engines. Click to expand.\n\n\n\n✈️ nycflights13: The DataSet That Took Off\n\nWhat it is: All flights departing NYC in 2013, linked to weather, airlines, and airports.\nWhy it’s worthy: Rich joins (flights ⇄ weather ⇄ carriers) + time series + networks.\nStory sparks: Morning fog as nationwide dominoes; how buffer time beats chronic delay; the “geography of luck” in departure times.\n\n\n\n\n🌍 gapminder — Development in Motion\n\nWhat it is: Country-level health, wealth, and population over time.\nWhy it’s worthy: Long horizons + comparable units = clean cross-country narratives.\nStory sparks: Convergence vs. divergence; health gains without wealth; “late bloomers” that flip the script.\n\n\n\n\n⚾ Lahman Baseball Database — The Game as a Mirror of Culture\n\nWhat it is: Player/team stats from the 19th century to now.\nWhy it’s worthy: Deep history, rule changes, moneyball eras—quant + culture.\nStory sparks: Expansion, integration, and the long-ball epochs; globalization in surnames and birthplaces.\n\n\n\n\n🌦️ NOAA Daily Weather — Memory of the Sky\n\nWhat it is: Decades of daily observations for thousands of stations (GHCN).\nWhy it’s worthy: Local variability meets climate trends; perfect for “weather memory” ideas.\nStory sparks: How yesterday biases today (humans & grids); asymmetries in extremes.\n\n\n\n\n🚇 Transport for London (TfL) — Motion of a Metropolis\n\nWhat it is: Open ridership, delays, closures, and more from London Underground.\nWhy it’s worthy: Network effects + peak waves = emergent patterns.\nStory sparks: Fragility maps; how small failures ripple; the true “rush” in rush hour.\n\n\n\n\n🛍️ UCI Online Retail — Human Behavior in Transactions\n\nWhat it is: Line-item invoices for a UK e-commerce retailer (2010–2011).\nWhy it’s worthy: Basket analysis, seasonality, long-tail dynamics.\nStory sparks: Product co-occurrence graphs; rare combos that drive profit; return behavior arcs.\n\n\n\n\n💰 FRED Economic Data — The Pulse of Economies\n\nWhat it is: US/international macro time series (inflation, jobs, rates).\nWhy it’s worthy: High-frequency, consequential, and composable.\nStory sparks: Recession “fingerprints”; sectoral divergence; policy shock timelines.\n\n\n\n\n🛰️ NASA MODIS / Earth Observatory — A Planet in Pixels\n\nWhat it is: Satellite observations (vegetation, fires, aerosols, ice).\nWhy it’s worthy: Visual storytelling + measurable change.\nStory sparks: Greening/ browning cycles; fire seasons as migrating fronts; glacier retreat as lived time.\n\n\n\n\n🕹️ Steam Games — Collective Taste in the Wild\n\nWhat it is: Game metadata, reviews, tags, and (often) playtime stats.\nWhy it’s worthy: Social proof, hype cycles, networked preference landscapes.\nStory sparks: Genre constellations; the life cycle of hits; price elasticity vs. review sentiment.\n\n\n\n\n🌆 Global Urban Footprint — Cities from Space\n\nWhat it is: High-resolution, satellite-derived urban extent worldwide.\nWhy it’s worthy: Comparable geometry of cities across cultures and terrains.\nStory sparks: Edge growth vs. infill; coastal constraints; night-lights vs. census discrepancies."
-  },
-  {
-    "objectID": "data-science/index.html",
-    "href": "data-science/index.html",
-    "title": "🏛️ Historical & Foundational Stories",
+    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#a-dataset-born-in-the-skies-above-new-york",
+    "href": "datasets/nycflights13-the-dataset-that-took-off.html#a-dataset-born-in-the-skies-above-new-york",
+    "title": "✈️ nycflights13: The Dataset That Took Off",
     "section": "",
-    "text": "Click any story below to explore its full tale."
+    "text": "In 2013, nearly 337,000 flights departed from New York City’s three major airports — JFK, LaGuardia (LGA), and Newark (EWR).\nEach of those flights left behind a trace: departure times, delays, destinations, aircraft numbers, even weather conditions at takeoff.\nYears later, these traces would find their way into a small, elegantly crafted R package called nycflights13, and that package would go on to become one of the most iconic learning tools in modern data science."
   },
   {
-    "objectID": "data-science/index.html#origins-evolution-of-data",
-    "href": "data-science/index.html#origins-evolution-of-data",
-    "title": "🏛️ Historical & Foundational Stories",
-    "section": "🧬 Origins & Evolution of Data",
-    "text": "🧬 Origins & Evolution of Data\nEvery number begins as a story — of invention, intention, and evolution. These tales uncover how data came alive and began shaping the world we know.\n\n\n🧮 The Genesis of Data — When Counting Became Knowing\n\nAcross millennia, from ancient inscriptions to industrial records, the urge to measure became the first step toward our modern data revolution.\n\n\n\n💫 These tales aren’t about statistics — they’re about discovery. Within every dataset lies meaning, waiting to be uncovered."
+    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#the-origins-a-teaching-tool-with-real-world-grit",
+    "href": "datasets/nycflights13-the-dataset-that-took-off.html#the-origins-a-teaching-tool-with-real-world-grit",
+    "title": "✈️ nycflights13: The Dataset That Took Off",
+    "section": "🧭 The Origins: A Teaching Tool With Real-World Grit",
+    "text": "🧭 The Origins: A Teaching Tool With Real-World Grit\nThe story begins with Hadley Wickham, the statistician and software developer who spearheaded much of the tidyverse — a family of R packages that revolutionized how data is handled and visualized.\nIn the early 2010s, Wickham was building resources to help people learn data science by doing, not by reading about artificially perfect examples. Real data is messy, relational, and full of missing values — and that’s exactly what students and practitioners need to experience.\nSo instead of another toy dataset, Wickham turned to the U.S. Department of Transportation’s Bureau of Transportation Statistics (BTS), which publishes open flight-on-time data.\nFrom this raw source — hundreds of thousands of records across dozens of fields — he curated a single-year extract: all flights departing from the New York City area during 2013.\nThen, he went further.\nHe bundled in extra context:\n\nAirlines, mapping carrier codes to their full names.\nAirports, with geographic coordinates and time zones.\nPlanes, including tail numbers, manufacturers, and years built.\nWeather, hourly reports from each NYC airport.\n\nThe result wasn’t just a dataset — it was a miniature world of interlocking tables, ready to teach real-world data relationships."
+  },
+  {
+    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#a-dataset-of-relationships",
+    "href": "datasets/nycflights13-the-dataset-that-took-off.html#a-dataset-of-relationships",
+    "title": "✈️ nycflights13: The Dataset That Took Off",
+    "section": "🧩 A Dataset of Relationships",
+    "text": "🧩 A Dataset of Relationships\nUnlike simpler datasets like iris or mtcars, nycflights13 is relational — meaning its tables connect through shared keys:\n\nFlights ↔︎ Airlines (via carrier code)\nFlights ↔︎ Airports (via origin and destination codes)\nFlights ↔︎ Planes (via tail number)\nFlights ↔︎ Weather (via origin + date + hour)\n\nThis structure was intentional. It allows learners to practice joining, grouping, filtering, and summarizing — the bread and butter of data science — within a single coherent story: why do some flights arrive late, and what factors might explain it?\nWickham described this as “a dataset that lets you learn the grammar of data manipulation using real noise, not just clean textbook numbers.”"
+  },
+  {
+    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#why-2013",
+    "href": "datasets/nycflights13-the-dataset-that-took-off.html#why-2013",
+    "title": "✈️ nycflights13: The Dataset That Took Off",
+    "section": "🧮 Why 2013?",
+    "text": "🧮 Why 2013?\nThe year 2013 wasn’t random — it was chosen for completeness and modern relevance.\nBy 2014, most of that year’s data had been validated and publicly available through the BTS’s On-Time Performance database. It also represented a year with consistent reporting across all major U.S. carriers.\n2013 was far enough into the modern airline data era (with GPS and electronic filing) to be reliable, yet recent enough to feel relevant for today’s analyses."
+  },
+  {
+    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#from-raw-data-to-a-clean-package",
+    "href": "datasets/nycflights13-the-dataset-that-took-off.html#from-raw-data-to-a-clean-package",
+    "title": "✈️ nycflights13: The Dataset That Took Off",
+    "section": "🌦️ From Raw Data to a Clean Package",
+    "text": "🌦️ From Raw Data to a Clean Package\nTo transform the messy BTS export into something usable, Wickham and the tidyverse team wrote R scripts to:\n\nParse CSVs from the RITA (Research and Innovative Technology Administration) portal.\nFilter for flights with valid NYC origins.\nClean up time variables (like dep_time and arr_time) into numeric or datetime forms.\nNormalize column names for clarity and consistency.\nAdd weather data from the NOAA Integrated Surface Database (ISD).\n\nThe result was a compact, easily loadable dataset: one command, library(nycflights13), and the world of 2013’s New York skies appears at your fingertips."
+  },
+  {
+    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#joining-the-tidyverse",
+    "href": "datasets/nycflights13-the-dataset-that-took-off.html#joining-the-tidyverse",
+    "title": "✈️ nycflights13: The Dataset That Took Off",
+    "section": "📦 Joining the tidyverse",
+    "text": "📦 Joining the tidyverse\nWhen it was first released in 2014, nycflights13 joined the ecosystem of demonstration datasets used in the new generation of R tutorials, books, and courses — particularly R for Data Science, first published in 2017.\nBy packaging the dataset, Wickham made it instantly reproducible and accessible:\ninstall.packages(\"nycflights13\")\nlibrary(nycflights13)\nIt quickly became the standard dataset for teaching data wrangling (dplyr), tidying (tidyr), and visualization (ggplot2).\n\nToday, it appears in classrooms, Coursera courses, Kaggle tutorials, and research introductions worldwide."
+  },
+  {
+    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#why-it-matters",
+    "href": "datasets/nycflights13-the-dataset-that-took-off.html#why-it-matters",
+    "title": "✈️ nycflights13: The Dataset That Took Off",
+    "section": "🌍 Why It Matters",
+    "text": "🌍 Why It Matters\nnycflights13 endures because it’s a microcosm of real life.\nIt captures delay frustrations, winter weather, airline competition, and the randomness of human systems.\nIt also shows how separate data sources — flights, airports, weather, and aircraft — interconnect to form a coherent story.\nIt’s not about New York flights alone; it’s about how we understand and model the world through data.\nIn the same way the iris dataset taught generations of statisticians about classification, nycflights13 has taught generations of data scientists about structure, relationships, and storytelling.\n\n🔧 Structure at a Glance\n\n\n\n\n\n\n\n\n\nTable\nDescription\nRows\nKey columns\n\n\n\n\nflights\nEvery NYC departure in 2013\n336,776\nyear, month, day, dep_time, arr_time, carrier, tailnum, origin, dest\n\n\nairlines\nCarrier codes and full names\n16\ncarrier\n\n\nairports\nAll airports in the dataset\n1,458\nfaa\n\n\nplanes\nAircraft manufacturing info\n3,322\ntailnum\n\n\nweather\nHourly conditions for each airport\n26,115\norigin, year, month, day, hour\n\n\n\n\n\n📘 Legacy and Influence\nThe dataset’s success inspired a wave of similar projects:\n\nfivethirtyeight — datasets from FiveThirtyEight journalism pieces.gapminder — Hans Rosling’s world development data.palmerpenguins — a modern, ecological replacement for iris.\n\nBut nycflights13 remains unique in how it captures an entire real-world system, cleanly and reproducibly, in just a few megabytes.\nIt’s still maintained under the tidyverse organization on GitHub, ensuring compatibility with modern R versions.\nFor many, it was the first real dataset they ever analyzed — and it’s still the one they remember.\n\n\n✈️ In the End\nnycflights13 is not just about flights.\nIt’s about the journey of data — from messy public records to a structured, teachable story.\nIt’s about curiosity, reproducibility, and accessibility.\nAnd like the air traffic over New York, it continues to connect learners all over the world — one tidy join at a time.\n\n\n📚 References\n\nWickham, H. (2014). nycflights13: Flights that departed NYC in 2013. R package version 0.1.\nCRAN R Project. nycflights13 package documentation. https://cran.r-project.org/web/packages/nycflights13/\nBureau of Transportation Statistics (BTS). On-Time Performance Data. https://transtats.bts.gov/DL_SelectFields.asp?T able_ID=236\nNOAA National Centers for Environmental Information. Integrated Surface Database (ISD).\nWickham, H., & Grolemund, G. (2017). R for Data Science. O’Reilly Media.\nTidyverse Team. nycflights13 source code repository. https://github.com/tidyverse/nycflights13"
   },
   {
     "objectID": "contact.html",
@@ -287,143 +308,94 @@
     "text": "📚 References\n\nWorld Bank Historical Population Data (1800–present)\nOur World in Data — History of Statistics\nUN Data Portal: National Census Records Archive"
   },
   {
-    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html",
-    "href": "datasets/nycflights13-the-dataset-that-took-off.html",
-    "title": "✈️ nycflights13: The Dataset That Took Off",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Insightful Tales",
     "section": "",
-    "text": "In 2013, nearly 337,000 flights departed from New York City’s three major airports — JFK, LaGuardia (LGA), and Newark (EWR).\nEach of those flights left behind a trace: departure times, delays, destinations, aircraft numbers, even weather conditions at takeoff.\nYears later, these traces would find their way into a small, elegantly crafted R package called nycflights13, and that package would go on to become one of the most iconic learning tools in modern data science."
+    "text": "Where data finds its narrative — original visual and analytical stories built with Quarto."
   },
   {
-    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#a-dataset-born-in-the-skies-above-new-york",
-    "href": "datasets/nycflights13-the-dataset-that-took-off.html#a-dataset-born-in-the-skies-above-new-york",
-    "title": "✈️ nycflights13: The Dataset That Took Off",
+    "objectID": "index.html#featured-stories",
+    "href": "index.html#featured-stories",
+    "title": "Insightful Tales",
+    "section": "✨ Featured Stories",
+    "text": "✨ Featured Stories\nEach story turns data into narrative — click to explore.\n\n\n🧭 Geography of Luck — The Latitude Lottery\n\nAirports closer to the poles face harsher weather — but does geography itself decide punctuality?\nThis story measures how latitude quietly skews flight reliability, uncovering patterns of chance, climate, and coordination.\n\n\n\n🦋 Butterfly Morning Delays — Small Causes, Wide Ripples\n\nA delay at dawn can echo across an entire air-traffic network.\nUsing NYC flight data, this tale visualizes how minute perturbations evolve into widespread effects — a modern butterfly effect.\n\n\n\n🌦️ Weather Memory — How the Sky Remembers\n\nDoes weather have “momentum”?\nBy correlating daily anomalies, this piece explores how temperature and precipitation persist — revealing the hidden inertia of the atmosphere.\n\n\n\n⚾ Baseball Zeitgeist — A Century of Swings\n\nUsing Lahman’s database, this story blends sport, sociology, and technology to show how America’s game mirrors its evolving spirit — from dead-ball grit to data-driven power.\n\n\n\n💰 The Wealth of Nations, Revisited — Gapminder Tales\n\nA visual narrative on global progress and paradox:\nwho truly caught up, who stalled, and what it means when GDP rises but well-being lags behind.\n\n\n\n🛰️ Planetary Pulse — Reading Earth from Orbit\n\nSatellite imagery meets storytelling.\nFrom greening deserts to vanishing glaciers, this piece turns NASA’s pixels into a planetary diary of change.\n\n\n\n🚇 London in Motion — The Pulse of a City\n\nEvery entry, exit, and delay tells a story of urban life.\nThis narrative transforms Transport for London data into a living map of rhythm, pressure, and resilience.\n\n\n\n🕹️ The Hype Curve — Life and Death of a Game\n\nSteam data visualized as cultural heartbeat:\nhow trends surge, communities form, and nostalgia revives titles long thought dormant.\n\n\n\n🌆 Lights and Lives — Cities from Space\n\nNight-light data reveals how urban sprawl, inequality, and energy intersect.\nA story told not in words but in luminous patterns across the Earth’s surface."
+  },
+  {
+    "objectID": "index.html#origins-evolution-of-data",
+    "href": "index.html#origins-evolution-of-data",
+    "title": "Insightful Tales",
+    "section": "🧬 Origins & Evolution of Data",
+    "text": "🧬 Origins & Evolution of Data\nEvery number has an origin story. These tales uncover how data was born, who shaped it, and how it came to define the modern world.\n\n\n🧮 The Genesis of Data — When Counting Became Knowing\n\nFrom ancient tablets to industrial ledgers, the human instinct to measure the world laid the groundwork for today’s data revolution."
+  },
+  {
+    "objectID": "index.html#featured-datasets-where-stories-begin",
+    "href": "index.html#featured-datasets-where-stories-begin",
+    "title": "Insightful Tales",
+    "section": "📚 Featured Datasets — Where Stories Begin",
+    "text": "📚 Featured Datasets — Where Stories Begin\nEach of these datasets offers more than numbers—they’re story engines. Click to expand.\n\n\n\n✈️ nycflights13: The DataSet That Took Off\n\nWhat it is: All flights departing NYC in 2013, linked to weather, airlines, and airports.\nWhy it’s worthy: Rich joins (flights ⇄ weather ⇄ carriers) + time series + networks.\nStory sparks: Morning fog as nationwide dominoes; how buffer time beats chronic delay; the “geography of luck” in departure times.\n\n\n\n\n🌍 gapminder — Development in Motion\n\nWhat it is: Country-level health, wealth, and population over time.\nWhy it’s worthy: Long horizons + comparable units = clean cross-country narratives.\nStory sparks: Convergence vs. divergence; health gains without wealth; “late bloomers” that flip the script.\n\n\n\n\n⚾ Lahman Baseball Database — The Game as a Mirror of Culture\n\nWhat it is: Player/team stats from the 19th century to now.\nWhy it’s worthy: Deep history, rule changes, moneyball eras—quant + culture.\nStory sparks: Expansion, integration, and the long-ball epochs; globalization in surnames and birthplaces.\n\n\n\n\n🌦️ NOAA Daily Weather — Memory of the Sky\n\nWhat it is: Decades of daily observations for thousands of stations (GHCN).\nWhy it’s worthy: Local variability meets climate trends; perfect for “weather memory” ideas.\nStory sparks: How yesterday biases today (humans & grids); asymmetries in extremes.\n\n\n\n\n🚇 Transport for London (TfL) — Motion of a Metropolis\n\nWhat it is: Open ridership, delays, closures, and more from London Underground.\nWhy it’s worthy: Network effects + peak waves = emergent patterns.\nStory sparks: Fragility maps; how small failures ripple; the true “rush” in rush hour.\n\n\n\n\n🛍️ UCI Online Retail — Human Behavior in Transactions\n\nWhat it is: Line-item invoices for a UK e-commerce retailer (2010–2011).\nWhy it’s worthy: Basket analysis, seasonality, long-tail dynamics.\nStory sparks: Product co-occurrence graphs; rare combos that drive profit; return behavior arcs.\n\n\n\n\n💰 FRED Economic Data — The Pulse of Economies\n\nWhat it is: US/international macro time series (inflation, jobs, rates).\nWhy it’s worthy: High-frequency, consequential, and composable.\nStory sparks: Recession “fingerprints”; sectoral divergence; policy shock timelines.\n\n\n\n\n🛰️ NASA MODIS / Earth Observatory — A Planet in Pixels\n\nWhat it is: Satellite observations (vegetation, fires, aerosols, ice).\nWhy it’s worthy: Visual storytelling + measurable change.\nStory sparks: Greening/ browning cycles; fire seasons as migrating fronts; glacier retreat as lived time.\n\n\n\n\n🕹️ Steam Games — Collective Taste in the Wild\n\nWhat it is: Game metadata, reviews, tags, and (often) playtime stats.\nWhy it’s worthy: Social proof, hype cycles, networked preference landscapes.\nStory sparks: Genre constellations; the life cycle of hits; price elasticity vs. review sentiment.\n\n\n\n\n🌆 Global Urban Footprint — Cities from Space\n\nWhat it is: High-resolution, satellite-derived urban extent worldwide.\nWhy it’s worthy: Comparable geometry of cities across cultures and terrains.\nStory sparks: Edge growth vs. infill; coastal constraints; night-lights vs. census discrepancies."
+  },
+  {
+    "objectID": "stories/geography-of-luck.html",
+    "href": "stories/geography-of-luck.html",
+    "title": "🧭 The Geography of Luck",
     "section": "",
-    "text": "In 2013, nearly 337,000 flights departed from New York City’s three major airports — JFK, LaGuardia (LGA), and Newark (EWR).\nEach of those flights left behind a trace: departure times, delays, destinations, aircraft numbers, even weather conditions at takeoff.\nYears later, these traces would find their way into a small, elegantly crafted R package called nycflights13, and that package would go on to become one of the most iconic learning tools in modern data science."
+    "text": "“Where the sun sits higher, shadows of inequality grow shorter — but never quite disappear.”"
   },
   {
-    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#the-origins-a-teaching-tool-with-real-world-grit",
-    "href": "datasets/nycflights13-the-dataset-that-took-off.html#the-origins-a-teaching-tool-with-real-world-grit",
-    "title": "✈️ nycflights13: The Dataset That Took Off",
-    "section": "🧭 The Origins: A Teaching Tool With Real-World Grit",
-    "text": "🧭 The Origins: A Teaching Tool With Real-World Grit\nThe story begins with Hadley Wickham, the statistician and software developer who spearheaded much of the tidyverse — a family of R packages that revolutionized how data is handled and visualized.\nIn the early 2010s, Wickham was building resources to help people learn data science by doing, not by reading about artificially perfect examples. Real data is messy, relational, and full of missing values — and that’s exactly what students and practitioners need to experience.\nSo instead of another toy dataset, Wickham turned to the U.S. Department of Transportation’s Bureau of Transportation Statistics (BTS), which publishes open flight-on-time data.\nFrom this raw source — hundreds of thousands of records across dozens of fields — he curated a single-year extract: all flights departing from the New York City area during 2013.\nThen, he went further.\nHe bundled in extra context:\n\nAirlines, mapping carrier codes to their full names.\nAirports, with geographic coordinates and time zones.\nPlanes, including tail numbers, manufacturers, and years built.\nWeather, hourly reports from each NYC airport.\n\nThe result wasn’t just a dataset — it was a miniature world of interlocking tables, ready to teach real-world data relationships."
+    "objectID": "stories/geography-of-luck.html#premise",
+    "href": "stories/geography-of-luck.html#premise",
+    "title": "🧭 The Geography of Luck",
+    "section": "💡 Premise",
+    "text": "💡 Premise\nIf you were to spin a globe and stop it at random, the odds of landing somewhere prosperous are not uniform. Latitude has long acted as the silent architect of opportunity — shaping climate, agriculture, disease, and, through them, destiny.\nThis story asks: Does geography still rule luck in the 21st century?"
   },
   {
-    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#a-dataset-of-relationships",
-    "href": "datasets/nycflights13-the-dataset-that-took-off.html#a-dataset-of-relationships",
-    "title": "✈️ nycflights13: The Dataset That Took Off",
-    "section": "🧩 A Dataset of Relationships",
-    "text": "🧩 A Dataset of Relationships\nUnlike simpler datasets like iris or mtcars, nycflights13 is relational — meaning its tables connect through shared keys:\n\nFlights ↔︎ Airlines (via carrier code)\nFlights ↔︎ Airports (via origin and destination codes)\nFlights ↔︎ Planes (via tail number)\nFlights ↔︎ Weather (via origin + date + hour)\n\nThis structure was intentional. It allows learners to practice joining, grouping, filtering, and summarizing — the bread and butter of data science — within a single coherent story: why do some flights arrive late, and what factors might explain it?\nWickham described this as “a dataset that lets you learn the grammar of data manipulation using real noise, not just clean textbook numbers.”"
+    "objectID": "stories/geography-of-luck.html#data-sources",
+    "href": "stories/geography-of-luck.html#data-sources",
+    "title": "🧭 The Geography of Luck",
+    "section": "🌐 Data Sources",
+    "text": "🌐 Data Sources\nWe combine multiple open datasets (2020 snapshot for a clean cross-section):\n\n\n\n\n\n\n\n\nTheme\nSource\nIndicator\n\n\n\n\nEconomic output\nWorld Bank\nGDP per capita (constant USD, NY.GDP.PCAP.KD)\n\n\nHealth\nWorld Bank\nLife expectancy at birth (SP.DYN.LE00.IN)\n\n\nGeography\nNatural Earth\nCountry boundaries + ISO3 (for joins)"
   },
   {
-    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#why-2013",
-    "href": "datasets/nycflights13-the-dataset-that-took-off.html#why-2013",
-    "title": "✈️ nycflights13: The Dataset That Took Off",
-    "section": "🧮 Why 2013?",
-    "text": "🧮 Why 2013?\nThe year 2013 wasn’t random — it was chosen for completeness and modern relevance.\nBy 2014, most of that year’s data had been validated and publicly available through the BTS’s On-Time Performance database. It also represented a year with consistent reporting across all major U.S. carriers.\n2013 was far enough into the modern airline data era (with GPS and electronic filing) to be reliable, yet recent enough to feel relevant for today’s analyses."
+    "objectID": "stories/geography-of-luck.html#first-glance-the-shape-of-prosperity",
+    "href": "stories/geography-of-luck.html#first-glance-the-shape-of-prosperity",
+    "title": "🧭 The Geography of Luck",
+    "section": "🌱 First Glance — The Shape of Prosperity",
+    "text": "🌱 First Glance — The Shape of Prosperity\n\n\nCode\n# GDP vs |latitude|\nggplot(wb, aes(abs_lat, gdp)) +\n  geom_point(aes(color = region), alpha = .7, size = 2, show.legend = FALSE) +\n  geom_smooth(method = \"loess\", se = FALSE, color = \"black\") +\n  scale_y_log10(labels = label_dollar()) +\n  labs(title = \"The Geography of Luck\",\n       subtitle = \"GDP per capita (log scale) vs. absolute latitude, 2020 (World Bank)\",\n       x = \"Absolute Latitude (°)\", y = \"GDP per capita (2015 USD, log scale)\")\n\n\n\n\n\n\n\n\n\nReading: Prosperity tends to rise away from the equator, plateau in the mid‑latitudes, and soften again near the poles — a climatic parabola of fortune."
   },
   {
-    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#from-raw-data-to-a-clean-package",
-    "href": "datasets/nycflights13-the-dataset-that-took-off.html#from-raw-data-to-a-clean-package",
-    "title": "✈️ nycflights13: The Dataset That Took Off",
-    "section": "🌦️ From Raw Data to a Clean Package",
-    "text": "🌦️ From Raw Data to a Clean Package\nTo transform the messy BTS export into something usable, Wickham and the tidyverse team wrote R scripts to:\n\nParse CSVs from the RITA (Research and Innovative Technology Administration) portal.\nFilter for flights with valid NYC origins.\nClean up time variables (like dep_time and arr_time) into numeric or datetime forms.\nNormalize column names for clarity and consistency.\nAdd weather data from the NOAA Integrated Surface Database (ISD).\n\nThe result was a compact, easily loadable dataset: one command, library(nycflights13), and the world of 2013’s New York skies appears at your fingertips."
+    "objectID": "stories/geography-of-luck.html#beyond-wealth-life-follows-latitude",
+    "href": "stories/geography-of-luck.html#beyond-wealth-life-follows-latitude",
+    "title": "🧭 The Geography of Luck",
+    "section": "💰 Beyond Wealth — Life Follows Latitude",
+    "text": "💰 Beyond Wealth — Life Follows Latitude\n\n\nCode\n# Life expectancy vs |latitude|\nwb |&gt; ggplot(aes(abs_lat, life)) +\n  geom_point(alpha = .6, size = 2, color = \"#555\") +\n  geom_smooth(method = \"loess\", se = FALSE, color = \"#111\") +\n  labs(title = \"Latitude vs. Life Expectancy\",\n       subtitle = \"Life expectancy at birth vs. absolute latitude, 2020\",\n       x = \"Absolute Latitude (°)\", y = \"Years\")\n\n\n\n\n\n\n\n\n\nReading: Health shadows wealth: life expectancy arcs with latitude, but with notable outliers."
   },
   {
-    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#joining-the-tidyverse",
-    "href": "datasets/nycflights13-the-dataset-that-took-off.html#joining-the-tidyverse",
-    "title": "✈️ nycflights13: The Dataset That Took Off",
-    "section": "📦 Joining the tidyverse",
-    "text": "📦 Joining the tidyverse\nWhen it was first released in 2014, nycflights13 joined the ecosystem of demonstration datasets used in the new generation of R tutorials, books, and courses — particularly R for Data Science, first published in 2017.\nBy packaging the dataset, Wickham made it instantly reproducible and accessible:\ninstall.packages(\"nycflights13\")\nlibrary(nycflights13)\nIt quickly became the standard dataset for teaching data wrangling (dplyr), tidying (tidyr), and visualization (ggplot2).\n\nToday, it appears in classrooms, Coursera courses, Kaggle tutorials, and research introductions worldwide."
+    "objectID": "stories/geography-of-luck.html#exceptions-when-geography-loses-residuals",
+    "href": "stories/geography-of-luck.html#exceptions-when-geography-loses-residuals",
+    "title": "🧭 The Geography of Luck",
+    "section": "🌍 Exceptions — When Geography Loses (Residuals)",
+    "text": "🌍 Exceptions — When Geography Loses (Residuals)\nWe fit a simple model of wealth on latitude and look for countries that outperform what geography alone would predict.\n\n\nCode\n# Fit on complete cases only, then join residuals back by iso3c\nwb_cc &lt;- wb |&gt; dplyr::filter(is.finite(gdp_log), is.finite(abs_lat), !is.na(iso3c))\nmodel_simple &lt;- lm(gdp_log ~ abs_lat, data = wb_cc)\nres_tbl &lt;- tibble::tibble(iso3c = wb_cc$iso3c, resid_gdp_lat = unname(resid(model_simple)))\n\nwb &lt;- wb |&gt; dplyr::left_join(res_tbl, by = \"iso3c\") |&gt;\n  dplyr::mutate(luck_index = as.numeric(scale(resid_gdp_lat)))\n\n# Top/bottom outperformers by residuals (ignore NA)\nout_top &lt;- wb |&gt; dplyr::filter(!is.na(resid_gdp_lat)) |&gt;\n  dplyr::slice_max(resid_gdp_lat, n = 10) |&gt;\n  dplyr::select(country, region, resid_gdp_lat)\n\nout_bot &lt;- wb |&gt; dplyr::filter(!is.na(resid_gdp_lat)) |&gt;\n  dplyr::slice_min(resid_gdp_lat, n = 10) |&gt;\n  dplyr::select(country, region, resid_gdp_lat)\n\nknitr::kable(out_top, digits = 2, caption = \"Top 10 'Lucky Defiers' — richer than latitude alone predicts (log residual)\")\n\n\n\nTop 10 ‘Lucky Defiers’ — richer than latitude alone predicts (log residual)\n\n\ncountry\nregion\nresid_gdp_lat\n\n\n\n\nSingapore\nEast Asia & Pacific\n1.42\n\n\nCayman Islands\nLatin America & Caribbean\n1.18\n\n\nBermuda\nNorth America\n1.06\n\n\nBrunei Darussalam\nEast Asia & Pacific\n1.05\n\n\nMonaco\nEurope & Central Asia\n1.05\n\n\nQatar\nMiddle East & North Africa\n0.95\n\n\nGuam\nEast Asia & Pacific\n0.93\n\n\nVirgin Islands (U.S.)\nLatin America & Caribbean\n0.88\n\n\nHong Kong SAR, China\nEast Asia & Pacific\n0.86\n\n\nUnited Arab Emirates\nMiddle East & North Africa\n0.82\n\n\n\n\n\n\n\nCode\nknitr::kable(out_bot, digits = 2, caption = \"Bottom 10 — poorer than latitude alone predicts (log residual)\")\n\n\n\nBottom 10 — poorer than latitude alone predicts (log residual)\n\n\ncountry\nregion\nresid_gdp_lat\n\n\n\n\nAfghanistan\nSouth Asia\n-1.26\n\n\nKyrgyz Republic\nEurope & Central Asia\n-1.10\n\n\nSyrian Arab Republic\nMiddle East & North Africa\n-1.09\n\n\nMadagascar\nSub-Saharan Africa\n-1.09\n\n\nMozambique\nSub-Saharan Africa\n-1.05\n\n\nTajikistan\nEurope & Central Asia\n-0.99\n\n\nBurundi\nSub-Saharan Africa\n-0.99\n\n\nUkraine\nEurope & Central Asia\n-0.92\n\n\nLesotho\nSub-Saharan Africa\n-0.91\n\n\nNiger\nSub-Saharan Africa\n-0.86\n\n\n\n\n\n\nInterpretation: High‑performers often pair trade centrality, education, or resource rents with policy stability. Under‑performers frequently face governance or conflict frictions."
   },
   {
-    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#why-it-matters",
-    "href": "datasets/nycflights13-the-dataset-that-took-off.html#why-it-matters",
-    "title": "✈️ nycflights13: The Dataset That Took Off",
-    "section": "🌍 Why It Matters",
-    "text": "🌍 Why It Matters\nnycflights13 endures because it’s a microcosm of real life.\nIt captures delay frustrations, winter weather, airline competition, and the randomness of human systems.\nIt also shows how separate data sources — flights, airports, weather, and aircraft — interconnect to form a coherent story.\nIt’s not about New York flights alone; it’s about how we understand and model the world through data.\nIn the same way the iris dataset taught generations of statisticians about classification, nycflights13 has taught generations of data scientists about structure, relationships, and storytelling.\n\n🔧 Structure at a Glance\n\n\n\n\n\n\n\n\n\nTable\nDescription\nRows\nKey columns\n\n\n\n\nflights\nEvery NYC departure in 2013\n336,776\nyear, month, day, dep_time, arr_time, carrier, tailnum, origin, dest\n\n\nairlines\nCarrier codes and full names\n16\ncarrier\n\n\nairports\nAll airports in the dataset\n1,458\nfaa\n\n\nplanes\nAircraft manufacturing info\n3,322\ntailnum\n\n\nweather\nHourly conditions for each airport\n26,115\norigin, year, month, day, hour\n\n\n\n\n\n📘 Legacy and Influence\nThe dataset’s success inspired a wave of similar projects:\n\nfivethirtyeight — datasets from FiveThirtyEight journalism pieces.gapminder — Hans Rosling’s world development data.palmerpenguins — a modern, ecological replacement for iris.\n\nBut nycflights13 remains unique in how it captures an entire real-world system, cleanly and reproducibly, in just a few megabytes.\nIt’s still maintained under the tidyverse organization on GitHub, ensuring compatibility with modern R versions.\nFor many, it was the first real dataset they ever analyzed — and it’s still the one they remember.\n\n\n✈️ In the End\nnycflights13 is not just about flights.\nIt’s about the journey of data — from messy public records to a structured, teachable story.\nIt’s about curiosity, reproducibility, and accessibility.\nAnd like the air traffic over New York, it continues to connect learners all over the world — one tidy join at a time.\n\n\n📚 References\n\nWickham, H. (2014). nycflights13: Flights that departed NYC in 2013. R package version 0.1.\nCRAN R Project. nycflights13 package documentation. https://cran.r-project.org/web/packages/nycflights13/\nBureau of Transportation Statistics (BTS). On-Time Performance Data. https://transtats.bts.gov/DL_SelectFields.asp?T able_ID=236\nNOAA National Centers for Environmental Information. Integrated Surface Database (ISD).\nWickham, H., & Grolemund, G. (2017). R for Data Science. O’Reilly Media.\nTidyverse Team. nycflights13 source code repository. https://github.com/tidyverse/nycflights13"
+    "objectID": "stories/geography-of-luck.html#optional-map-the-luck-index-residual-choropleth",
+    "href": "stories/geography-of-luck.html#optional-map-the-luck-index-residual-choropleth",
+    "title": "🧭 The Geography of Luck",
+    "section": "🗺️ Optional Map — The Luck Index (Residual Choropleth)",
+    "text": "🗺️ Optional Map — The Luck Index (Residual Choropleth)\nA choropleth map of the residuals (“luck index”) highlights countries that over‑ or under‑perform relative to their absolute latitude.\n\n\nCode\n# Luck-index choropleth (guarded)\nif (isTRUE(has_ne)) {\n  # Merge residuals back to geometry\n  map_dat &lt;- dat |&gt; dplyr::left_join(wb |&gt; dplyr::select(iso3c, resid_gdp_lat), by = c(\"iso_a3\" = \"iso3c\"))\n\n  # Breaks for a symmetric diverging map around zero residual\n  brks &lt;- c(-Inf, -0.6, -0.3, -0.15, 0, 0.15, 0.3, 0.6, Inf)\n  map_dat$res_bin &lt;- cut(map_dat$resid_gdp_lat, breaks = brks, include.lowest = TRUE)\n\n  # Plot\n  ggplot(map_dat) +\n    geom_sf(aes(fill = res_bin), color = \"white\", size = 0.1) +\n    scale_fill_brewer(type = \"div\", palette = \"RdBu\", direction = -1, na.value = \"#e5e7eb\",\n                      name = \"Luck index\n(GDP~vs~|lat| residual)\") +\n    labs(title = \"Outperformers and Underperformers — Geography of Luck\",\n         subtitle = \"Residuals from log(GDP per capita) ~ absolute latitude, 2020\",\n         caption = \"Data: World Bank (WDI), Natural Earth. Negative = underperforming latitude; positive = outperforming.\") +\n    theme(legend.position = \"right\")\n} else {\n  message(\"Optional map disabled: install.packages(c('sf','rnaturalearth','rnaturalearthdata')) to enable the choropleth.\")\n}\n\n\n\n\n\n\n\n\n\nHow to read: Blue shades underperform their latitude (negative residuals); red shades outperform (positive residuals). Neutral grays are missing data."
   },
   {
-    "objectID": "stories/butterfly-morning-delays.html",
-    "href": "stories/butterfly-morning-delays.html",
-    "title": "🦋 Butterfly Morning Delays",
-    "section": "",
-    "text": "This analysis uses open data (nycflights13) to demonstrate a novel, reproducible approach to understanding delay propagation within a single day. Unlike traditional performance summaries that emphasize average delay, we focus on variability — the “schedule chaos” that amplifies downstream disruption. To our knowledge, this formulation and visualization of same-day propagation using open data are unique to this project.\nCode\nlibrary(tidyverse)\nlibrary(lubridate)\nlibrary(nycflights13)\nlibrary(broom)\n\n# Minimal, clean theme\nquiet_theme &lt;- function() {\n  ggplot2::theme_minimal(base_size = 13) +\n    ggplot2::theme(\n      panel.grid.minor = element_blank(),\n      plot.title.position = \"plot\",\n      plot.caption.position = \"plot\",\n      strip.text = element_text(face = \"bold\")\n    )\n}"
+    "objectID": "stories/geography-of-luck.html#reflection",
+    "href": "stories/geography-of-luck.html#reflection",
+    "title": "🧭 The Geography of Luck",
+    "section": "💭 Reflection",
+    "text": "💭 Reflection\n\nThe sun may rise for everyone, but it still shines longer for some.\n\nLatitude once dictated agriculture, disease, and labor. Today, it still whispers through economies — a relic of environmental inheritance.\nYet each bright outlier on the map is a defiance of fate: policy and ingenuity turning geography into geography’s undoing."
   },
   {
-    "objectID": "stories/butterfly-morning-delays.html#data-definitions-why-these-choices",
-    "href": "stories/butterfly-morning-delays.html#data-definitions-why-these-choices",
-    "title": "🦋 Butterfly Morning Delays",
-    "section": "📊 Data & Definitions — Why these choices?",
-    "text": "📊 Data & Definitions — Why these choices?\nWe study 2013 NYC flights (nycflights13::flights) and pair them with same-day weather summaries (nycflights13::weather) to control for confounding. We define:\n\nFirst Wave: departures between 05:00–09:00 local.\nMorning variability (σ₁): standard deviation of departure delay in the first wave (per origin×date).\nAfternoon outcome (μₐ): mean arrival delay for flights departing after 12:00 (per origin×date).\n\nWhy SD for the morning? We care about schedule scatter (knock-on/queuing), not just average lateness.\n\n\nCode\n# Preprocess core variables\nfl &lt;- flights |&gt;\n  mutate(\n    dep_dt = make_datetime(year, month, day, dep_time %/% 100, dep_time %% 100),\n    hour = hour(dep_dt),\n    date = as_date(dep_dt),\n    dist_band = cut(\n      distance,\n      breaks = c(0, 500, 1500, Inf),\n      labels = c(\"Short (≤500 mi)\", \"Medium (501–1500)\", \"Long (≥1501)\"),\n      right = TRUE\n    )\n  ) |&gt;\n  filter(!is.na(dep_dt), !is.na(arr_delay), !is.na(dep_delay)) |&gt;\n  filter(origin %in% c(\"JFK\", \"LGA\", \"EWR\"))\n\n# Daily first-wave variability (σ1) and afternoon outcome (μa)\ndaily &lt;- fl |&gt;\n  group_by(origin, date) |&gt;\n  summarise(\n    sigma_morning = sd(dep_delay[hour &gt;= 5 & hour &lt; 9], na.rm = TRUE),\n    n_morning     = sum(hour &gt;= 5 & hour &lt; 9, na.rm = TRUE),\n    mean_arr_pm   = mean(arr_delay[hour &gt;= 12], na.rm = TRUE),\n    n_pm          = sum(hour &gt;= 12, na.rm = TRUE),\n    .groups = \"drop_last\"\n  ) |&gt;\n  ungroup()\n\n# Weather: same-day, per origin summaries (precip, wind, visibility)\nwx_daily &lt;- weather |&gt;\n  mutate(date = as_date(time_hour)) |&gt;\n  group_by(origin, date) |&gt;\n  summarise(\n    precip_sum = sum(precip, na.rm = TRUE),\n    wind_mean  = mean(wind_speed, na.rm = TRUE),\n    vis_mean   = mean(visib, na.rm = TRUE),\n    .groups = \"drop\"\n  )\n\ndaily &lt;- daily |&gt;\n  left_join(wx_daily, by = c(\"origin\", \"date\")) |&gt;\n  mutate(\n    month = month(date),\n    wday  = wday(date, label = TRUE)\n  )"
-  },
-  {
-    "objectID": "stories/butterfly-morning-delays.html#scatter-in-the-first-wave-predicts-afternoon-pain",
-    "href": "stories/butterfly-morning-delays.html#scatter-in-the-first-wave-predicts-afternoon-pain",
-    "title": "🦋 Butterfly Morning Delays",
-    "section": "🌊📈😣 Scatter in the first wave predicts afternoon pain",
-    "text": "🌊📈😣 Scatter in the first wave predicts afternoon pain\nWhat we plot & why: A simple scatter of morning variability (x) vs. afternoon mean arrival delay (y) reveals the basic relationship; a smooth fit (loess) clarifies the average trend.\n\n\nCode\np1 &lt;- daily |&gt;\n  filter(n_morning &gt;= 10, n_pm &gt;= 20) |&gt;\n  ggplot(aes(sigma_morning, mean_arr_pm, color = origin)) +\n  geom_point(alpha = 0.35) +\n  geom_smooth(se = FALSE) +\n  labs(\n    title = \"Morning Schedule Scatter vs. Afternoon Arrival Delays\",\n    subtitle = \"Per origin×day in NYC, 2013 (loess trend).\",\n    x = \"First-wave SD of departure delay (minutes)\",\n    y = \"Afternoon mean arrival delay (minutes)\",\n    color = \"Origin\",\n    caption = \"Data: nycflights13 • Smooth: loess • SD uses 05:00–08:59 departures\"\n  ) +\n  quiet_theme()\np1\n\n\n\n\n\n\n\n\n\nWhat it implies: As first-wave scatter increases, afternoon arrival delays climb. This is consistent with queuing/turnaround knock-on—a few badly delayed early flights can desynchronize crew/aircraft rotations.\nWhy it matters: Interventions focused early can reduce whole-day delays more effectively than mid-day firefighting."
-  },
-  {
-    "objectID": "stories/butterfly-morning-delays.html#short-haul-routes-amplify-the-ripple",
-    "href": "stories/butterfly-morning-delays.html#short-haul-routes-amplify-the-ripple",
-    "title": "🦋 Butterfly Morning Delays",
-    "section": "✈️🔁🌊 Short-haul routes amplify the ripple",
-    "text": "✈️🔁🌊 Short-haul routes amplify the ripple\nWhat we plot & why: We segment by distance band; short-haul flights cycle aircraft/crews more frequently, increasing propagation channels.\n\n\nCode\npm_by_band &lt;- fl |&gt;\n  mutate(am_wave = hour &gt;= 5 & hour &lt; 9,\n         pm_wave = hour &gt;= 12) |&gt;\n  group_by(origin, date, dist_band) |&gt;\n  summarise(\n    sigma_morning = sd(dep_delay[am_wave], na.rm = TRUE),\n    mean_arr_pm   = mean(arr_delay[pm_wave], na.rm = TRUE),\n    n_am = sum(am_wave, na.rm = TRUE),\n    n_pm = sum(pm_wave, na.rm = TRUE),\n    .groups = \"drop\"\n  ) |&gt;\n  filter(!is.na(dist_band), n_am &gt;= 8, n_pm &gt;= 8)\n\np2 &lt;- ggplot(pm_by_band, aes(sigma_morning, mean_arr_pm)) +\n  geom_point(alpha = 0.25) +\n  geom_smooth(se = FALSE) +\n  facet_wrap(~ dist_band) +\n  labs(\n    title = \"Propagation is Strongest on Short-Haul Days\",\n    subtitle = \"Per origin×date; first-wave SD vs. afternoon mean arrival delay.\",\n    x = \"First-wave SD (min)\",\n    y = \"Afternoon mean arrival delay (min)\"\n  ) +\n  quiet_theme()\np2\n\n\n\n\n\n\n\n\n\nImplication: Short routes act like “delay multipliers.” Practical levers here include gate assignment discipline, turn-time buffers, and pushback sequencing in the first wave."
-  },
-  {
-    "objectID": "stories/butterfly-morning-delays.html#after-weather-controls-the-association-persists",
-    "href": "stories/butterfly-morning-delays.html#after-weather-controls-the-association-persists",
-    "title": "🦋 Butterfly Morning Delays",
-    "section": "🌦️📈 After weather controls, the association persists",
-    "text": "🌦️📈 After weather controls, the association persists\nWhat we fit & why: A linear model predicting afternoon mean arrival delay from first-wave SD, controlling for precipitation, wind, visibility, month and weekday (to partially absorb seasonality/peaks). This is associational, not causal.\n\n\nCode\nmod_data &lt;- daily |&gt;\n  filter(!is.na(mean_arr_pm), !is.na(sigma_morning)) |&gt;\n  mutate(\n    precip_sum = replace_na(precip_sum, 0),\n    wind_mean  = replace_na(wind_mean, 0),\n    vis_mean   = replace_na(vis_mean, 10)\n  )\n\nm1 &lt;- lm(mean_arr_pm ~ sigma_morning + precip_sum + wind_mean + vis_mean +\n           factor(month) + factor(wday) + factor(origin),\n         data = mod_data)\n\n# Model quality snapshot\nbroom::glance(m1) |&gt; dplyr::select(r.squared, adj.r.squared, sigma, nobs)\n\n\n\n  \n\n\n\nCode\n# Slope of interest\nbroom::tidy(m1) |&gt;\n  filter(term == \"sigma_morning\") |&gt;\n  mutate(interpret = paste0(\"~\", round(estimate, 2),\n                            \" min more afternoon delay per +1 min SD in first wave\"))\n\n\n\n  \n\n\n\nWhat it tells us: The coefficient on sigma_morning (typically positive) indicates that even after accounting for weather and calendar effects, noisier first waves align with worse afternoons.\n\n\n\n\n\n\nNote\n\n\n\nInterpretation: If the coefficient is, say, 0.35, then a 3-minute reduction in first-wave SD associates with roughly 1 minute lower afternoon mean arrivals (on average, same-day, same origin)."
-  },
-  {
-    "objectID": "stories/butterfly-morning-delays.html#a-tiny-what-if-simulation",
-    "href": "stories/butterfly-morning-delays.html#a-tiny-what-if-simulation",
-    "title": "🦋 Butterfly Morning Delays",
-    "section": "💭 A tiny “what-if” simulation",
-    "text": "💭 A tiny “what-if” simulation\nWhat we simulate & why: Suppose operations could shave 2 minutes of SD from the first wave (tightened sequencing, better gate prep). Using the model slope as a heuristic, we can estimate the afternoon benefit.\n\n\nCode\ncoef_sigma &lt;- broom::tidy(m1) |&gt;\n  filter(term == \"sigma_morning\") |&gt;\n  pull(estimate)\n\ndelta_sd &lt;- -2  # hypothetical tightening (minutes)\navg_effect &lt;- coef_sigma * delta_sd\n\ntibble(\n  hypothetical_sd_change_min = delta_sd,\n  predicted_change_pm_mean_min = avg_effect\n)\n\n\n\n  \n\n\n\nSo what: Even modest improvements early could meaningfully reduce afternoon averages—multiplied across hundreds of flights, that is real passenger time and crew/aircraft efficiency."
-  },
-  {
-    "objectID": "stories/butterfly-morning-delays.html#practical-applications",
-    "href": "stories/butterfly-morning-delays.html#practical-applications",
-    "title": "🦋 Butterfly Morning Delays",
-    "section": "🧰 Practical Applications",
-    "text": "🧰 Practical Applications\n\nCrew/Aircraft Rotations: Prioritize first-wave turn readiness (catering, fueling, pushback order) to minimize scatter.\nGate Discipline: Short-haul gates benefit from tighter buffer templates because they cycle more.\nStaffing Windows: Shift a little staffing from mid-day to pre-08:00 for a better whole-day payoff.\nPlaybooks for “Noisy Mornings”: When σ₁ spikes, proactively re-sequence sensitive turns to break chains."
-  },
-  {
-    "objectID": "stories/butterfly-morning-delays.html#limitations-what-we-didnt-model",
-    "href": "stories/butterfly-morning-delays.html#limitations-what-we-didnt-model",
-    "title": "🦋 Butterfly Morning Delays",
-    "section": "🚧 Limitations (what we didn’t model)",
-    "text": "🚧 Limitations (what we didn’t model)\n\nThis is NYC-2013 only; airports differ in geometry/ATC regimes.\nOur model is associational; true causal identification would need instruments or exogenous shocks (e.g., runway closures).\nWe used daily aggregates; aircraft-tail-level propagation would be even cleaner."
-  },
-  {
-    "objectID": "stories/butterfly-morning-delays.html#summary-what-we-discovered",
-    "href": "stories/butterfly-morning-delays.html#summary-what-we-discovered",
-    "title": "🦋 Butterfly Morning Delays",
-    "section": "📋 Summary (what we discovered)",
-    "text": "📋 Summary (what we discovered)\n\nFirst-wave scatter (not just average delay) is a strong signal for afternoon performance.\nThe effect is strongest on short-haul days—where rotations are more frequent.\nControlling for weather/time effects, the relationship persists.\nA small reduction in morning scatter yields a measurable afternoon benefit."
-  },
-  {
-    "objectID": "stories/butterfly-morning-delays.html#references-credits",
-    "href": "stories/butterfly-morning-delays.html#references-credits",
-    "title": "🦋 Butterfly Morning Delays",
-    "section": "📚 References & Credits",
-    "text": "📚 References & Credits\n\nData: nycflights13 (flights, weather) — Wickham et al. (CRAN)\nPackages: tidyverse, lubridate, broom, ggplot2\nAuthoring: Quarto\nReading: Wickham, R for Data Science (data wrangling & viz patterns); Quarto documentation\nRepro style: quiet_theme() in this doc (CC-0)\nLinks:\n\nhttps://cran.r-project.org/package=nycflights13\nhttps://r4ds.hadley.nz/\nhttps://quarto.org/ ```"
-  },
-  {
-    "objectID": "stories/index.html",
-    "href": "stories/index.html",
-    "title": "Stories",
-    "section": "",
-    "text": "Welcome to Insightful Tales, a growing library of original, data-driven stories.\nEach project starts from an open dataset and ends as a narrative — something to be read, seen, and felt.\nClick any story below to explore its full tale.\n\n\n\n🧭 Geography of Luck — The Latitude Lottery\n\nAirports closer to the poles face harsher weather — but does geography itself decide punctuality?\nThis story measures how latitude quietly skews flight reliability, uncovering patterns of chance, climate, and coordination.\n\n\n\n🦋 Butterfly Morning Delays — Small Causes, Wide Ripples\n\nA delay at dawn can echo across an entire air-traffic network.\nUsing NYC flight data, this tale visualizes how minute perturbations evolve into widespread effects — a modern butterfly effect.\n\n\n\n🌦️ Weather Memory — How the Sky Remembers\n\nDoes weather have “momentum”?\nBy correlating daily anomalies, this piece explores how temperature and precipitation persist — revealing the hidden inertia of the atmosphere.\n\n\n\n⚾ Baseball Zeitgeist — A Century of Swings\n\nUsing Lahman’s database, this story blends sport, sociology, and technology to show how America’s game mirrors its evolving spirit — from dead-ball grit to data-driven power.\n\n\n\n🛰️ Planetary Pulse — Reading Earth from Orbit\n\nSatellite imagery meets storytelling.\nFrom greening deserts to vanishing glaciers, this piece turns NASA’s pixels into a planetary diary of change.\n\n\n\n🕹️ The Hype Curve — Life and Death of a Game\n\nSteam data visualized as cultural heartbeat:\nhow trends surge, communities form, and nostalgia revives titles long thought dormant.\n\n\n\n🌆 Lights and Lives — Cities from Space\n\nNight-light data reveals how urban sprawl, inequality, and energy intersect.\nA story told not in words but in luminous patterns across the Earth’s surface.\n\n\n\n🪶 These stories are not reports — they’re reflections. Each dataset holds a narrative, waiting for you to find the signal in the noise."
-  },
-  {
-    "objectID": "stories/index.html#stories-of-data-and-discovery",
-    "href": "stories/index.html#stories-of-data-and-discovery",
-    "title": "Stories",
-    "section": "",
-    "text": "Welcome to Insightful Tales, a growing library of original, data-driven stories.\nEach project starts from an open dataset and ends as a narrative — something to be read, seen, and felt.\nClick any story below to explore its full tale.\n\n\n\n🧭 Geography of Luck — The Latitude Lottery\n\nAirports closer to the poles face harsher weather — but does geography itself decide punctuality?\nThis story measures how latitude quietly skews flight reliability, uncovering patterns of chance, climate, and coordination.\n\n\n\n🦋 Butterfly Morning Delays — Small Causes, Wide Ripples\n\nA delay at dawn can echo across an entire air-traffic network.\nUsing NYC flight data, this tale visualizes how minute perturbations evolve into widespread effects — a modern butterfly effect.\n\n\n\n🌦️ Weather Memory — How the Sky Remembers\n\nDoes weather have “momentum”?\nBy correlating daily anomalies, this piece explores how temperature and precipitation persist — revealing the hidden inertia of the atmosphere.\n\n\n\n⚾ Baseball Zeitgeist — A Century of Swings\n\nUsing Lahman’s database, this story blends sport, sociology, and technology to show how America’s game mirrors its evolving spirit — from dead-ball grit to data-driven power.\n\n\n\n🛰️ Planetary Pulse — Reading Earth from Orbit\n\nSatellite imagery meets storytelling.\nFrom greening deserts to vanishing glaciers, this piece turns NASA’s pixels into a planetary diary of change.\n\n\n\n🕹️ The Hype Curve — Life and Death of a Game\n\nSteam data visualized as cultural heartbeat:\nhow trends surge, communities form, and nostalgia revives titles long thought dormant.\n\n\n\n🌆 Lights and Lives — Cities from Space\n\nNight-light data reveals how urban sprawl, inequality, and energy intersect.\nA story told not in words but in luminous patterns across the Earth’s surface.\n\n\n\n🪶 These stories are not reports — they’re reflections. Each dataset holds a narrative, waiting for you to find the signal in the noise."
+    "objectID": "stories/geography-of-luck.html#technical-appendix",
+    "href": "stories/geography-of-luck.html#technical-appendix",
+    "title": "🧭 The Geography of Luck",
+    "section": "⚙️ Technical Appendix",
+    "text": "⚙️ Technical Appendix\n\nPackages: WDI, rnaturalearth, sf, tidyverse, janitor, scales\n\nYear: 2020 snapshot (World Bank)\n\nTransforms: log10(GDP per capita); residuals from lm(gdp_log ~ abs_lat)\n\nCRS: EPSG:4326 (WGS84)\n\nReproducibility: Set a specific year for comparability; extend to multi‑year to track weakening/strengthening latitude effects.\n\n\n\nCode\n# Time evolution — correlation weakening/strengthening over time (1980–2023)\nhist &lt;- WDI(indicator = c(gdp = \"NY.GDP.PCAP.KD\"),\n            start = 1980, end = 2023, extra = TRUE) |&gt;\n  janitor::clean_names() |&gt;\n  dplyr::filter(region != \"Aggregates\") |&gt;\n  dplyr::mutate(\n    # make sure latitude is numeric before abs()\n    latitude = suppressWarnings(readr::parse_number(as.character(latitude))),\n    abs_lat  = abs(latitude),\n    gdp_log  = log10(gdp)\n  ) |&gt;\n  dplyr::group_by(year) |&gt;\n  dplyr::summarize(\n    r_lat_gdp = cor(abs_lat, gdp_log, use = \"complete.obs\"),\n    .groups = \"drop\"\n  )\n\nggplot(hist, aes(year, r_lat_gdp)) +\n  geom_line() +\n  labs(\n    title = \"Latitude–Wealth Correlation Over Time\",\n    x = \"Year\", y = \"Correlation r (|lat| vs log GDP per capita)\"\n  )"
   }
 ]
