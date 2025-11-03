@@ -128,11 +128,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="🌦 Weather Memory – Insightful Tales">
 <meta property="og:description" content="Bad weather can disrupt schedules, but does the pain linger after skies clear? This short data story explores whether today’s flight delays still carry the fingerprint of yesterday’s weather — a simple form of system memory.">
-<meta property="og:image" content="weather-memory_files/figure-html/unnamed-chunk-3-1.png">
+<meta property="og:image" content="https://www.insightfultales.com/stories/weather-memory_files/figure-html/unnamed-chunk-3-1.png">
 <meta property="og:site_name" content="Insightful Tales">
+<meta property="og:image:height" content="960">
+<meta property="og:image:width" content="1344">
 <meta name="twitter:title" content="🌦 Weather Memory – Insightful Tales">
 <meta name="twitter:description" content="Bad weather can disrupt schedules, but does the pain linger after skies clear? This short data story explores whether today’s flight delays still carry the fingerprint of yesterday’s weather — a simple form of system memory.">
-<meta name="twitter:image" content="weather-memory_files/figure-html/unnamed-chunk-3-1.png">
+<meta name="twitter:image" content="https://www.insightfultales.com/stories/weather-memory_files/figure-html/unnamed-chunk-3-1.png">
+<meta name="twitter:image-height" content="960">
+<meta name="twitter:image-width" content="1344">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -164,6 +168,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li class="nav-item">
     <a class="nav-link" href="../stories/index.html"> 
 <span class="menu-text">Stories</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../data-science/index.html"> 
+<span class="menu-text">🏛️ Historical</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../about.html"> 
@@ -1163,7 +1171,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/www\.insightfultales\.com");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

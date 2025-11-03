@@ -1,15 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.insightfultales.com/data-science/index.html</loc>
-    <lastmod>2025-11-03T14:35:07.425Z</lastmod>
+    <loc>https://www.insightfultales.com/stories/weather-memory.html</loc>
+    <lastmod>2025-11-02T21:06:07.807Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.insightfultales.com/stories/geography-of-luck.html</loc>
+    <lastmod>2025-11-01T00:27:52.391Z</lastmod>
   </url>
   <url>
     <loc>https://www.insightfultales.com/index.html</loc>
-    <lastmod>2025-11-03T14:30:29.831Z</lastmod>
+    <lastmod>2025-11-03T14:43:35.480Z</lastmod>
   </url>
   <url>
     <loc>https://www.insightfultales.com/data-science/genesis-of-data.html</loc>
     <lastmod>2025-11-03T03:29:22.933Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.insightfultales.com/about.html</loc>
+    <lastmod>2025-10-31T23:52:17.658Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.insightfultales.com/contact.html</loc>
+    <lastmod>2025-11-01T03:55:04.080Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.insightfultales.com/data-science/index.html</loc>
+    <lastmod>2025-11-03T14:35:07.425Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.insightfultales.com/stories/butterfly-morning-delays.html</loc>
+    <lastmod>2025-10-31T03:24:23.653Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.insightfultales.com/stories/index.html</loc>
+    <lastmod>2025-11-01T04:51:50.292Z</lastmod>
   </url>
 </urlset>
