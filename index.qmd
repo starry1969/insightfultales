@@ -8,13 +8,13 @@ page-layout: full
 
 </section>
 
-## ✨ Featured Stories
+## <span aria-hidden="true">✨</span> Featured Stories
 
 Each story turns data into narrative — click to explore.
 
 <details class="story">
 
-<summary>🧭 <a href="stories/geography-of-luck.html"><strong>Geography of Luck</strong></a> — The Latitude Lottery</summary>
+<summary><span aria-hidden="true">🧭</span> <a href="stories/geography-of-luck.html"><strong>Geography of Luck</strong></a> — The Latitude Lottery</summary>
 
 Airports closer to the poles face harsher weather — but does geography itself decide punctuality?\
 This story measures how latitude quietly skews flight reliability, uncovering patterns of chance, climate, and coordination.
@@ -23,7 +23,7 @@ This story measures how latitude quietly skews flight reliability, uncovering pa
 
 <details class="story">
 
-<summary>🦋 <a href="stories/butterfly-morning-delays.html"><strong>Butterfly Morning Delays</strong></a> — Small Causes, Wide Ripples</summary>
+<summary><span aria-hidden="true">🦋</span> <a href="stories/butterfly-morning-delays.html"><strong>Butterfly Morning Delays</strong></a> — Small Causes, Wide Ripples</summary>
 
 A delay at dawn can echo across an entire air-traffic network.\
 Using NYC flight data, this tale visualizes how minute perturbations evolve into widespread effects — a modern butterfly effect.
@@ -41,7 +41,7 @@ By correlating daily anomalies, this piece explores how temperature and precipit
 
 <details class="story">
 
-<summary>⚾ <strong>Baseball Zeitgeist</strong> — A Century of Swings</summary>
+<summary><span aria-hidden="true">⚾</span> <strong>Baseball Zeitgeist</strong> — A Century of Swings</summary>
 
 Using Lahman’s database, this story blends sport, sociology, and technology to show how America’s game mirrors its evolving spirit — from dead-ball grit to data-driven power.
 
@@ -49,7 +49,7 @@ Using Lahman’s database, this story blends sport, sociology, and technology to
 
 <details class="story">
 
-<summary>💰 <strong>The Wealth of Nations, Revisited</strong> — Gapminder Tales</summary>
+<summary><span aria-hidden="true">💰</span> <strong>The Wealth of Nations, Revisited</strong> — Gapminder Tales</summary>
 
 A visual narrative on global progress and paradox:\
 who truly caught up, who stalled, and what it means when GDP rises but well-being lags behind.
@@ -67,7 +67,7 @@ From greening deserts to vanishing glaciers, this piece turns NASA’s pixels in
 
 <details class="story">
 
-<summary>🚇 <strong>London in Motion</strong> — The Pulse of a City</summary>
+<summary><span aria-hidden="true">🚇</span> <strong>London in Motion</strong> — The Pulse of a City</summary>
 
 Every entry, exit, and delay tells a story of urban life.\
 This narrative transforms Transport for London data into a living map of rhythm, pressure, and resilience.
@@ -85,26 +85,26 @@ how trends surge, communities form, and nostalgia revives titles long thought do
 
 <details class="story">
 
-<summary>🌆 <strong>Lights and Lives</strong> — Cities from Space</summary>
+<summary><span aria-hidden="true">🌆</span> <strong>Lights and Lives</strong> — Cities from Space</summary>
 
 Night-light data reveals how urban sprawl, inequality, and energy intersect.\
 A story told not in words but in luminous patterns across the Earth’s surface.
 
 </details>
 
-## 🧬 Origins & Evolution of Data
+## <span aria-hidden="true">🧬</span> Origins & Evolution of Data
 
 Every number has an origin story. These tales uncover how data was born, who shaped it, and how it came to define the modern world.
 
 <details class="evolution">
 
-<summary>🧮 <a href="data-science/genesis-of-data.html"><strong>The Genesis of Data</strong></a> — When Counting Became Knowing</summary>
+<summary><span aria-hidden="true">🧮</span> <a href="data-science/genesis-of-data.html"><strong>The Genesis of Data</strong></a> — When Counting Became Knowing</summary>
 
 From ancient tablets to industrial ledgers, the human instinct to measure the world laid the groundwork for today’s data revolution.
 
 </details>
 
-## 📚 Featured Datasets — Where Stories Begin
+## <span aria-hidden="true">📚</span> Featured Datasets — Where Stories Begin
 
 Each of these datasets offers more than numbers—they’re story engines. Click to expand.
 
@@ -124,7 +124,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>🌍 <strong>gapminder</strong> — Development in Motion</summary>
+<summary><span aria-hidden="true">🌍</span> <strong>gapminder</strong> — Development in Motion</summary>
 
 **What it is:** Country-level health, wealth, and population over time.\
 **Why it’s worthy:** Long horizons + comparable units = clean cross-country narratives.\
@@ -136,7 +136,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>⚾ <strong>Lahman Baseball Database</strong> — The Game as a Mirror of Culture</summary>
+<summary><span aria-hidden="true">⚾</span> <strong>Lahman Baseball Database</strong> — The Game as a Mirror of Culture</summary>
 
 **What it is:** Player/team stats from the 19th century to now.\
 **Why it’s worthy:** Deep history, rule changes, moneyball eras—quant + culture.\
@@ -160,7 +160,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>🚇 <strong>Transport for London (TfL)</strong> — Motion of a Metropolis</summary>
+<summary><span aria-hidden="true">🚇</span> <strong>Transport for London (TfL)</strong> — Motion of a Metropolis</summary>
 
 **What it is:** Open ridership, delays, closures, and more from London Underground.\
 **Why it’s worthy:** Network effects + peak waves = emergent patterns.\
@@ -184,7 +184,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>💰 <strong>FRED Economic Data</strong> — The Pulse of Economies</summary>
+<summary><span aria-hidden="true">💰</span> <strong>FRED Economic Data</strong> — The Pulse of Economies</summary>
 
 **What it is:** US/international macro time series (inflation, jobs, rates).\
 **Why it’s worthy:** High-frequency, consequential, and composable.\
@@ -220,7 +220,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>🌆 <strong>Global Urban Footprint</strong> — Cities from Space</summary>
+<summary><span aria-hidden="true">🌆</span> <strong>Global Urban Footprint</strong> — Cities from Space</summary>
 
 **What it is:** High-resolution, satellite-derived urban extent worldwide.\
 **Why it’s worthy:** Comparable geometry of cities across cultures and terrains.\

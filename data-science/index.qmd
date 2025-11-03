@@ -7,13 +7,13 @@ Click any story below to explore its full tale.
 
 ------------------------------------------------------------------------
 
-## 🧬 Origins & Evolution of Data
+## <span aria-hidden="true">🧬</span> Origins & Evolution of Data
 
 Every number begins as a story — of invention, intention, and evolution. These tales uncover how data came alive and began shaping the world we know.
 
 <details class="evolution">
 
-<summary>🧮 <a href="genesis-of-data.html"><strong>The Genesis of Data</strong></a> — When Counting Became Knowing</summary>
+<summary><span aria-hidden="true">🧮</span> <a href="genesis-of-data.html"><strong>The Genesis of Data</strong></a> — When Counting Became Knowing</summary>
 
 Across millennia, from ancient inscriptions to industrial records, the urge to measure became the first step toward our modern data revolution.
 

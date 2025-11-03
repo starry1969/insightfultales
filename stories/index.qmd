@@ -14,7 +14,7 @@ Click any story below to explore its full tale.
 
 <details class="story">
 
-<summary>🧭 <a href="geography_of_luck.html"><strong>Geography of Luck</strong></a> — The Latitude Lottery</summary>
+<summary><span aria-hidden="true">🧭</span> <a href="geography_of_luck.html"><strong>Geography of Luck</strong></a> — The Latitude Lottery</summary>
 
 Airports closer to the poles face harsher weather — but does geography itself decide punctuality?\
 This story measures how latitude quietly skews flight reliability, uncovering patterns of chance, climate, and coordination.
@@ -23,7 +23,7 @@ This story measures how latitude quietly skews flight reliability, uncovering pa
 
 <details class="story">
 
-<summary>🦋 <a href="butterfly_morning_delays.html"><strong>Butterfly Morning Delays</strong></a> — Small Causes, Wide Ripples</summary>
+<summary><span aria-hidden="true">🦋</span> <a href="butterfly_morning_delays.html"><strong>Butterfly Morning Delays</strong></a> — Small Causes, Wide Ripples</summary>
 
 A delay at dawn can echo across an entire air-traffic network.\
 Using NYC flight data, this tale visualizes how minute perturbations evolve into widespread effects — a modern butterfly effect.
@@ -41,7 +41,7 @@ By correlating daily anomalies, this piece explores how temperature and precipit
 
 <details class="story">
 
-<summary>⚾ <strong>Baseball Zeitgeist</strong> — A Century of Swings</summary>
+<summary></span>⚾ <strong>Baseball Zeitgeist</strong> — A Century of Swings</summary>
 
 Using Lahman’s database, this story blends sport, sociology, and technology to show how America’s game mirrors its evolving spirit — from dead-ball grit to data-driven power.
 
@@ -67,7 +67,7 @@ how trends surge, communities form, and nostalgia revives titles long thought do
 
 <details class="story">
 
-<summary>🌆 <strong>Lights and Lives</strong> — Cities from Space</summary>
+<summary><span aria-hidden="true">🌆</span> <strong>Lights and Lives</strong> — Cities from Space</summary>
 
 Night-light data reveals how urban sprawl, inequality, and energy intersect.\
 A story told not in words but in luminous patterns across the Earth’s surface.
@@ -76,4 +76,4 @@ A story told not in words but in luminous patterns across the Earth’s surface.
 
 ------------------------------------------------------------------------
 
-> 🪶 *These stories are not reports — they’re reflections. Each dataset holds a narrative, waiting for you to find the signal in the noise.*
+> <span aria-hidden="true">🪶</span> *These stories are not reports — they’re reflections. Each dataset holds a narrative, waiting for you to find the signal in the noise.*
