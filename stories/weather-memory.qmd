@@ -18,13 +18,13 @@ execute:
   freeze: auto
 ---
 
-## Goal & approach
+## 🎯🧭 Goal & approach
 
 **Goal.** Test whether *yesterday's* weather helps predict *today's* flight delays at NYC airports, beyond the effect of *today's* weather.
 
 **Method (high level).** 1) Join flights with hourly weather, aggregate to a **daily** panel by airport; 2) create **lagged weather** features (yesterday's precip, wind, visibility, temperature); 3) model today's mean departure delay using both **today** and **yesterday** weather plus calendar controls; 4) visualize the patterns and airport differences; 5) run a small **what-if** experiment.
 
-### Setup
+### ⚙️ Setup
 
 ```{r}
 library(tidyverse)
@@ -49,7 +49,7 @@ quiet_theme <- if (exists("quiet_theme")) quiet_theme else function() {
 }
 ```
 
-## Build a daily panel: flights × weather
+## 🧱✈️🌦️ Build a daily panel: flights × weather
 
 **Goal →** Create a tidy daily dataset by airport (JFK/LGA/EWR) with delay outcomes and weather inputs.
 
@@ -109,7 +109,7 @@ panel_model <- panel_daily %>%
   )
 ```
 
-## First look: does delay rise with yesterday’s rain?
+## 🔍✈️🌧️ First look: does delay rise with yesterday’s rain?
 
 ```{r}
 p_scatter <- panel_model %>%
@@ -135,7 +135,7 @@ subplot <- ggplotly(p_scatter, tooltip = c("x", "y")) %>%
 subplot
 ```
 
-## Today vs. yesterday: contrasting weather states
+## 🌤️🔄🌧️ Today vs. yesterday: contrasting weather states
 
 ```{r}
 p_contrast <- ggplot(panel_model, aes(precip_mm_lag1, precip_mm)) +
@@ -150,7 +150,7 @@ p_contrast <- ggplot(panel_model, aes(precip_mm_lag1, precip_mm)) +
 p_contrast
 ```
 
-## Modeling: does yesterday’s weather matter after controls?
+## ⚙️🌦️🔍 Modeling: does yesterday’s weather matter after controls?
 
 ```{r}
 model_full <- lm(
@@ -186,7 +186,7 @@ gt_tbl <- tidy_coefs %>%
 gt_tbl
 ```
 
-## Airport where memory is strongest
+## ✈️🧠📍 Airport where memory is strongest
 
 ```{r}
 by_airport <- panel_model %>%
@@ -214,7 +214,7 @@ p_airport <- by_airport %>%
 p_airport
 ```
 
-## Cancellation link: does yesterday’s rain raise today’s cancels?
+## 🔗🌧️✈️ Cancellation link: does yesterday’s rain raise today’s cancels?
 
 ```{r}
 cor_overall <- panel_model %>%
@@ -227,7 +227,7 @@ cor_by_airport <- panel_model %>%
 cor_overall; cor_by_airport
 ```
 
-## What-if: set yesterday’s rain to zero
+## 🔮🌧️🧪 What-if: set yesterday’s rain to zero
 
 ```{r}
 pred_obs <- augment(model_full, data = panel_model) %>% select(origin, date, .fitted)
@@ -261,7 +261,7 @@ p_whatif <- what_if %>%
 p_whatif
 ```
 
-## Bonus: Today vs. Yesterday on a joint scatter (hoverable)
+## ✨📈🔄 Bonus: Today vs. Yesterday on a joint scatter (hoverable)
 
 ```{r}
 p_scatter2 <- panel_model %>%
@@ -284,7 +284,7 @@ ggplotly(p_scatter2, tooltip = c("text", "x", "y")) %>%
 
 ```
 
-## Story beats
+## 📖🎵 Story beats
 
 **We asked:** Do storms leave a *hangover* in the schedule?
 
@@ -294,25 +294,25 @@ ggplotly(p_scatter2, tooltip = c("text", "x", "y")) %>%
 
 **Why it matters:** Recovery is a process. Aircraft and crews are networked; disruptions propagate and decay, sometimes over more than one day.
 
-## Practical implications
+## ⚙️🧰 Practical implications
 
 -   **Scheduling & rotations:** Build buffers the day *after* major weather events; rotate slack where the lag effect is strongest.
 -   **Maintenance & de-icing ops:** Staff for spillover demand on *wet→dry* transitions.
 -   **Passenger comms:** Proactive alerts for potential residual delays the day after storms.
 
-## Limitations
+## 🚧 Limitations
 
 -   We use **means** of delays; distributional effects (e.g., big tails) are not fully captured.
 -   Only **1-day** memory is modeled; longer lags may matter.
 -   Weather aggregation is **daily**; within-day timing (e.g., late-night rain) could drive stronger effects.
 -   Linear models are a simplification; non-linearities and interactions (e.g., wind × visibility) are likely.
 
-## References & Credits
+## 📚✍️ References & Credits
 
 -   Data: `nycflights13` (Hadley Wickham et al.) — CRAN: <https://CRAN.R-project.org/package=nycflights13>
 -   Packages: `tidyverse`, `lubridate`, `broom`, `gt`, `plotly`, `modelr`.
 -   Theme: falls back to a quiet minimal style if your site’s `quiet_theme()` is not available.
 
-## Gentle call to curiosity
+## 🕊️💫🔍 Gentle call to curiosity
 
 *What other forms of memory might our systems hold?*

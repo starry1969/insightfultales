@@ -217,15 +217,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data-definitions-why-these-choices" id="toc-data-definitions-why-these-choices" class="nav-link active" data-scroll-target="#data-definitions-why-these-choices">Data &amp; Definitions — <em>Why these choices?</em></a></li>
-  <li><a href="#finding-1-scatter-in-the-first-wave-predicts-afternoon-pain" id="toc-finding-1-scatter-in-the-first-wave-predicts-afternoon-pain" class="nav-link" data-scroll-target="#finding-1-scatter-in-the-first-wave-predicts-afternoon-pain">Finding 1 — Scatter in the first wave predicts afternoon pain</a></li>
-  <li><a href="#finding-2-short-haul-routes-amplify-the-ripple" id="toc-finding-2-short-haul-routes-amplify-the-ripple" class="nav-link" data-scroll-target="#finding-2-short-haul-routes-amplify-the-ripple">Finding 2 — Short-haul routes amplify the ripple</a></li>
-  <li><a href="#finding-3-after-weather-controls-the-association-persists" id="toc-finding-3-after-weather-controls-the-association-persists" class="nav-link" data-scroll-target="#finding-3-after-weather-controls-the-association-persists">Finding 3 — After weather controls, the association persists</a></li>
-  <li><a href="#finding-4-a-tiny-what-if-simulation" id="toc-finding-4-a-tiny-what-if-simulation" class="nav-link" data-scroll-target="#finding-4-a-tiny-what-if-simulation">Finding 4 — A tiny “what-if” simulation</a></li>
-  <li><a href="#practical-applications" id="toc-practical-applications" class="nav-link" data-scroll-target="#practical-applications">Practical Applications</a></li>
-  <li><a href="#limitations-what-we-didnt-model" id="toc-limitations-what-we-didnt-model" class="nav-link" data-scroll-target="#limitations-what-we-didnt-model">Limitations (what we didn’t model)</a></li>
-  <li><a href="#summary-what-we-discovered" id="toc-summary-what-we-discovered" class="nav-link" data-scroll-target="#summary-what-we-discovered">Summary (what we discovered)</a></li>
-  <li><a href="#references-credits" id="toc-references-credits" class="nav-link" data-scroll-target="#references-credits">References &amp; Credits</a></li>
+  <li><a href="#data-definitions-why-these-choices" id="toc-data-definitions-why-these-choices" class="nav-link active" data-scroll-target="#data-definitions-why-these-choices">📊 Data &amp; Definitions — <em>Why these choices?</em></a></li>
+  <li><a href="#scatter-in-the-first-wave-predicts-afternoon-pain" id="toc-scatter-in-the-first-wave-predicts-afternoon-pain" class="nav-link" data-scroll-target="#scatter-in-the-first-wave-predicts-afternoon-pain">🌊📈😣 Scatter in the first wave predicts afternoon pain</a></li>
+  <li><a href="#short-haul-routes-amplify-the-ripple" id="toc-short-haul-routes-amplify-the-ripple" class="nav-link" data-scroll-target="#short-haul-routes-amplify-the-ripple">✈️🔁🌊 Short-haul routes amplify the ripple</a></li>
+  <li><a href="#after-weather-controls-the-association-persists" id="toc-after-weather-controls-the-association-persists" class="nav-link" data-scroll-target="#after-weather-controls-the-association-persists">🌦️📈 After weather controls, the association persists</a></li>
+  <li><a href="#a-tiny-what-if-simulation" id="toc-a-tiny-what-if-simulation" class="nav-link" data-scroll-target="#a-tiny-what-if-simulation">🧪💭 A tiny “what-if” simulation</a></li>
+  <li><a href="#practical-applications" id="toc-practical-applications" class="nav-link" data-scroll-target="#practical-applications">🧰 Practical Applications</a></li>
+  <li><a href="#limitations-what-we-didnt-model" id="toc-limitations-what-we-didnt-model" class="nav-link" data-scroll-target="#limitations-what-we-didnt-model">🚧 Limitations (what we didn’t model)</a></li>
+  <li><a href="#summary-what-we-discovered" id="toc-summary-what-we-discovered" class="nav-link" data-scroll-target="#summary-what-we-discovered">📋 Summary (what we discovered)</a></li>
+  <li><a href="#references-credits" id="toc-references-credits" class="nav-link" data-scroll-target="#references-credits">📚 References &amp; Credits</a></li>
   </ul>
 </nav>
     </div>
@@ -290,7 +290,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Key Idea:</strong> Variability in the first morning wave (≈5–9 AM) is strongly associated with higher average <strong>afternoon</strong> arrival delays—especially on short-haul routes—suggesting that tightening the early schedule can yield outsized day-long benefits.</p>
 </blockquote>
 <section id="data-definitions-why-these-choices" class="level2">
-<h2 class="anchored" data-anchor-id="data-definitions-why-these-choices">Data &amp; Definitions — <em>Why these choices?</em></h2>
+<h2 class="anchored" data-anchor-id="data-definitions-why-these-choices">📊 Data &amp; Definitions — <em>Why these choices?</em></h2>
 <p>We study 2013 NYC flights (<code>nycflights13::flights</code>) and pair them with same-day weather summaries (<code>nycflights13::weather</code>) to control for confounding. We define:</p>
 <ul>
 <li><strong>First Wave:</strong> departures between <strong>05:00–09:00 local</strong>.</li>
@@ -349,8 +349,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 </section>
-<section id="finding-1-scatter-in-the-first-wave-predicts-afternoon-pain" class="level2">
-<h2 class="anchored" data-anchor-id="finding-1-scatter-in-the-first-wave-predicts-afternoon-pain">Finding 1 — Scatter in the first wave predicts afternoon pain</h2>
+<section id="scatter-in-the-first-wave-predicts-afternoon-pain" class="level2">
+<h2 class="anchored" data-anchor-id="scatter-in-the-first-wave-predicts-afternoon-pain">🌊📈😣 Scatter in the first wave predicts afternoon pain</h2>
 <p><strong>What we plot &amp; why:</strong> A simple scatter of morning variability (x) vs.&nbsp;afternoon mean arrival delay (y) reveals the basic relationship; a smooth fit (loess) clarifies the average trend.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -382,8 +382,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>What it implies:</strong> As first-wave scatter increases, afternoon arrival delays climb. This is consistent with <strong>queuing/turnaround knock-on</strong>—a few badly delayed early flights can desynchronize crew/aircraft rotations.</p>
 <p><strong>Why it matters:</strong> Interventions focused <strong>early</strong> can reduce whole-day delays more effectively than mid-day firefighting.</p>
 </section>
-<section id="finding-2-short-haul-routes-amplify-the-ripple" class="level2">
-<h2 class="anchored" data-anchor-id="finding-2-short-haul-routes-amplify-the-ripple">Finding 2 — Short-haul routes amplify the ripple</h2>
+<section id="short-haul-routes-amplify-the-ripple" class="level2">
+<h2 class="anchored" data-anchor-id="short-haul-routes-amplify-the-ripple">✈️🔁🌊 Short-haul routes amplify the ripple</h2>
 <p><strong>What we plot &amp; why:</strong> We segment by <strong>distance band</strong>; short-haul flights cycle aircraft/crews more frequently, increasing propagation channels.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -424,8 +424,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Implication:</strong> Short routes act like “delay multipliers.” Practical levers here include <strong>gate assignment discipline</strong>, <strong>turn-time buffers</strong>, and <strong>pushback sequencing</strong> in the first wave.</p>
 </section>
-<section id="finding-3-after-weather-controls-the-association-persists" class="level2">
-<h2 class="anchored" data-anchor-id="finding-3-after-weather-controls-the-association-persists">Finding 3 — After weather controls, the association persists</h2>
+<section id="after-weather-controls-the-association-persists" class="level2">
+<h2 class="anchored" data-anchor-id="after-weather-controls-the-association-persists">🌦️📈 After weather controls, the association persists</h2>
 <p><strong>What we fit &amp; why:</strong> A linear model predicting <strong>afternoon mean arrival delay</strong> from <strong>first-wave SD</strong>, controlling for <strong>precipitation</strong>, <strong>wind</strong>, <strong>visibility</strong>, <strong>month</strong> and <strong>weekday</strong> (to partially absorb seasonality/peaks). This is <strong>associational</strong>, not causal.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -483,8 +483,8 @@ Note
 </div>
 </div>
 </section>
-<section id="finding-4-a-tiny-what-if-simulation" class="level2">
-<h2 class="anchored" data-anchor-id="finding-4-a-tiny-what-if-simulation">Finding 4 — A tiny “what-if” simulation</h2>
+<section id="a-tiny-what-if-simulation" class="level2">
+<h2 class="anchored" data-anchor-id="a-tiny-what-if-simulation">🧪💭 A tiny “what-if” simulation</h2>
 <p><strong>What we simulate &amp; why:</strong> Suppose operations could shave <strong>2 minutes</strong> of <strong>SD</strong> from the first wave (tightened sequencing, better gate prep). Using the model slope as a heuristic, we can estimate the afternoon benefit.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -512,7 +512,7 @@ Note
 <p><strong>So what:</strong> Even modest improvements early could meaningfully reduce afternoon averages—multiplied across hundreds of flights, that is <strong>real passenger time</strong> and <strong>crew/aircraft efficiency</strong>.</p>
 </section>
 <section id="practical-applications" class="level2">
-<h2 class="anchored" data-anchor-id="practical-applications">Practical Applications</h2>
+<h2 class="anchored" data-anchor-id="practical-applications">🧰 Practical Applications</h2>
 <ul>
 <li><strong>Crew/Aircraft Rotations:</strong> Prioritize <strong>first-wave turn readiness</strong> (catering, fueling, pushback order) to minimize scatter.</li>
 <li><strong>Gate Discipline:</strong> Short-haul gates benefit from tighter <strong>buffer templates</strong> because they cycle more.</li>
@@ -521,7 +521,7 @@ Note
 </ul>
 </section>
 <section id="limitations-what-we-didnt-model" class="level2">
-<h2 class="anchored" data-anchor-id="limitations-what-we-didnt-model">Limitations (what we didn’t model)</h2>
+<h2 class="anchored" data-anchor-id="limitations-what-we-didnt-model">🚧 Limitations (what we didn’t model)</h2>
 <ul>
 <li>This is NYC-2013 only; airports differ in geometry/ATC regimes.</li>
 <li>Our model is associational; true causal identification would need instruments or exogenous shocks (e.g., runway closures).</li>
@@ -529,7 +529,7 @@ Note
 </ul>
 </section>
 <section id="summary-what-we-discovered" class="level2">
-<h2 class="anchored" data-anchor-id="summary-what-we-discovered">Summary (what we discovered)</h2>
+<h2 class="anchored" data-anchor-id="summary-what-we-discovered">📋 Summary (what we discovered)</h2>
 <ul>
 <li>First-wave <strong>scatter</strong> (not just average delay) is a strong signal for <strong>afternoon</strong> performance.</li>
 <li>The effect is strongest on <strong>short-haul</strong> days—where rotations are more frequent.</li>
@@ -538,7 +538,7 @@ Note
 </ul>
 </section>
 <section id="references-credits" class="level2">
-<h2 class="anchored" data-anchor-id="references-credits">References &amp; Credits</h2>
+<h2 class="anchored" data-anchor-id="references-credits">📚 References &amp; Credits</h2>
 <ul>
 <li>Data: <strong>nycflights13</strong> (flights, weather) — Wickham et al.&nbsp;(CRAN)</li>
 <li>Packages: <strong>tidyverse</strong>, <strong>lubridate</strong>, <strong>broom</strong>, <strong>ggplot2</strong></li>
