@@ -12,9 +12,9 @@ website:
   navbar:
     logo: images/logo.png
     left:
-      - text: "Home"
+      - text: "🏠 Home"
         href: index.qmd    
-      - text: "Stories"
+      - text: "📖 Stories"
         href: stories/index.qmd
         menu: 
           - href: stories/geography-of-luck.qmd
@@ -28,9 +28,9 @@ website:
         menu: 
           - href: data-science/genesis-of-data.qmd
             text: "🧮 Genesis of Data"
-      - text: "About"
+      - text: "💡 About"
         href: about.qmd
-      - text: "Contact"
+      - text: "💬 Contact"
         href: contact.qmd
   page-footer:
     left: "© 2025 Insightful Tales"
