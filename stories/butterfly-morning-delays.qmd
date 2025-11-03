@@ -44,7 +44,7 @@ quiet_theme <- function() {
 
 > **Key Idea:** Variability in the first morning wave (≈5–9 AM) is strongly associated with higher average **afternoon** arrival delays—especially on short-haul routes—suggesting that tightening the early schedule can yield outsized day-long benefits.
 
-## 📊 Data & Definitions — *Why these choices?*
+## <span aria-hidden="true">📊</span> Data & Definitions — *Why these choices?*
 
 We study 2013 NYC flights (`nycflights13::flights`) and pair them with same-day weather summaries (`nycflights13::weather`) to control for confounding. We define:
 
@@ -102,7 +102,7 @@ daily <- daily |>
   )
 ```
 
-## 🌊📈😣 Scatter in the first wave predicts afternoon pain
+## <span aria-hidden="true">🌊📈😣</span> Scatter in the first wave predicts afternoon pain
 
 **What we plot & why:** A simple scatter of morning variability (x) vs. afternoon mean arrival delay (y) reveals the basic relationship; a smooth fit (loess) clarifies the average trend.
 
@@ -128,7 +128,7 @@ p1
 
 **Why it matters:** Interventions focused **early** can reduce whole-day delays more effectively than mid-day firefighting.
 
-## ✈️🔁🌊 Short-haul routes amplify the ripple
+## <span aria-hidden="true">✈️🔁🌊</span> Short-haul routes amplify the ripple
 
 **What we plot & why:** We segment by **distance band**; short-haul flights cycle aircraft/crews more frequently, increasing propagation channels.
 
@@ -162,7 +162,7 @@ p2
 
 **Implication:** Short routes act like “delay multipliers.” Practical levers here include **gate assignment discipline**, **turn-time buffers**, and **pushback sequencing** in the first wave.
 
-## 🌦️📈 After weather controls, the association persists
+## <span aria-hidden="true">🌦️📈</span> After weather controls, the association persists
 
 **What we fit & why:** A linear model predicting **afternoon mean arrival delay** from **first-wave SD**, controlling for **precipitation**, **wind**, **visibility**, **month** and **weekday** (to partially absorb seasonality/peaks). This is **associational**, not causal.
 
@@ -195,7 +195,7 @@ broom::tidy(m1) |>
 **Interpretation:** If the coefficient is, say, **0.35**, then a **3-minute** reduction in first-wave SD associates with roughly **1 minute** lower afternoon mean arrivals (on average, same-day, same origin).
 :::
 
-## 🧪💭 A tiny “what-if” simulation
+## <span aria-hidden="true">💭</span> A tiny “what-if” simulation
 
 **What we simulate & why:** Suppose operations could shave **2 minutes** of **SD** from the first wave (tightened sequencing, better gate prep). Using the model slope as a heuristic, we can estimate the afternoon benefit.
 
@@ -215,27 +215,27 @@ tibble(
 
 **So what:** Even modest improvements early could meaningfully reduce afternoon averages—multiplied across hundreds of flights, that is **real passenger time** and **crew/aircraft efficiency**.
 
-## 🧰 Practical Applications
+## <span aria-hidden="true">🧰</span> Practical Applications
 
 -   **Crew/Aircraft Rotations:** Prioritize **first-wave turn readiness** (catering, fueling, pushback order) to minimize scatter.
 -   **Gate Discipline:** Short-haul gates benefit from tighter **buffer templates** because they cycle more.
 -   **Staffing Windows:** Shift a little staffing from mid-day to **pre-08:00** for a better whole-day payoff.
 -   **Playbooks for “Noisy Mornings”:** When σ₁ spikes, proactively **re-sequence** sensitive turns to break chains.
 
-## 🚧 Limitations (what we didn’t model)
+## <span aria-hidden="true">🚧</span> Limitations (what we didn’t model)
 
 -   This is NYC-2013 only; airports differ in geometry/ATC regimes.
 -   Our model is associational; true causal identification would need instruments or exogenous shocks (e.g., runway closures).
 -   We used daily aggregates; aircraft-tail-level propagation would be even cleaner.
 
-## 📋 Summary (what we discovered)
+## <span aria-hidden="true">📋</span> Summary (what we discovered)
 
 -   First-wave **scatter** (not just average delay) is a strong signal for **afternoon** performance.
 -   The effect is strongest on **short-haul** days—where rotations are more frequent.
 -   Controlling for weather/time effects, the relationship **persists**.
 -   A small reduction in morning scatter yields a **measurable** afternoon benefit.
 
-## 📚 References & Credits
+## <span aria-hidden="true">📚</span> References & Credits
 
 -   Data: **nycflights13** (flights, weather) — Wickham et al. (CRAN)
 -   Packages: **tidyverse**, **lubridate**, **broom**, **ggplot2**

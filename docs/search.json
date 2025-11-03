@@ -381,8 +381,8 @@
     "objectID": "stories/butterfly-morning-delays.html#a-tiny-what-if-simulation",
     "href": "stories/butterfly-morning-delays.html#a-tiny-what-if-simulation",
     "title": "🦋 Butterfly Morning Delays",
-    "section": "🧪💭 A tiny “what-if” simulation",
-    "text": "🧪💭 A tiny “what-if” simulation\nWhat we simulate & why: Suppose operations could shave 2 minutes of SD from the first wave (tightened sequencing, better gate prep). Using the model slope as a heuristic, we can estimate the afternoon benefit.\n\n\nCode\ncoef_sigma &lt;- broom::tidy(m1) |&gt;\n  filter(term == \"sigma_morning\") |&gt;\n  pull(estimate)\n\ndelta_sd &lt;- -2  # hypothetical tightening (minutes)\navg_effect &lt;- coef_sigma * delta_sd\n\ntibble(\n  hypothetical_sd_change_min = delta_sd,\n  predicted_change_pm_mean_min = avg_effect\n)\n\n\n\n  \n\n\n\nSo what: Even modest improvements early could meaningfully reduce afternoon averages—multiplied across hundreds of flights, that is real passenger time and crew/aircraft efficiency."
+    "section": "💭 A tiny “what-if” simulation",
+    "text": "💭 A tiny “what-if” simulation\nWhat we simulate & why: Suppose operations could shave 2 minutes of SD from the first wave (tightened sequencing, better gate prep). Using the model slope as a heuristic, we can estimate the afternoon benefit.\n\n\nCode\ncoef_sigma &lt;- broom::tidy(m1) |&gt;\n  filter(term == \"sigma_morning\") |&gt;\n  pull(estimate)\n\ndelta_sd &lt;- -2  # hypothetical tightening (minutes)\navg_effect &lt;- coef_sigma * delta_sd\n\ntibble(\n  hypothetical_sd_change_min = delta_sd,\n  predicted_change_pm_mean_min = avg_effect\n)\n\n\n\n  \n\n\n\nSo what: Even modest improvements early could meaningfully reduce afternoon averages—multiplied across hundreds of flights, that is real passenger time and crew/aircraft efficiency."
   },
   {
     "objectID": "stories/butterfly-morning-delays.html#practical-applications",

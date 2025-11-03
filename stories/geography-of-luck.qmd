@@ -20,14 +20,14 @@ execute:
 
 > “Where the sun sits higher, shadows of inequality grow shorter — but never quite disappear.”
 
-## 💡 Premise
+## <span aria-hidden="true">💡</span> Premise
 
 If you were to spin a globe and stop it at random, the odds of landing somewhere prosperous are not uniform. Latitude has long acted as the silent architect of opportunity — shaping climate, agriculture, disease, and, through them, destiny.\
 This story asks: *Does geography still rule luck in the 21st century?*
 
 ------------------------------------------------------------------------
 
-## 🌐 Data Sources
+## <span aria-hidden="true">🌐</span> Data Sources
 
 We combine multiple open datasets (2020 snapshot for a clean cross-section):
 
@@ -76,7 +76,7 @@ if (has_ne) {
 
 ------------------------------------------------------------------------
 
-## 🌱 First Glance — The Shape of Prosperity
+## <span aria-hidden="true">🌱</span> First Glance — The Shape of Prosperity
 
 ```{r}
 # GDP vs |latitude|
@@ -93,7 +93,7 @@ ggplot(wb, aes(abs_lat, gdp)) +
 
 ------------------------------------------------------------------------
 
-## 💰 Beyond Wealth — Life Follows Latitude
+## <span aria-hidden="true">💰</span> Beyond Wealth — Life Follows Latitude
 
 ```{r}
 # Life expectancy vs |latitude|
@@ -109,7 +109,7 @@ wb |> ggplot(aes(abs_lat, life)) +
 
 ------------------------------------------------------------------------
 
-## 🌍 Exceptions — When Geography Loses (Residuals)
+## <span aria-hidden="true">🌍</span> Exceptions — When Geography Loses (Residuals)
 
 We fit a simple model of wealth on latitude and look for countries that **outperform** what geography alone would predict.
 
@@ -142,7 +142,7 @@ knitr::kable(out_bot, digits = 2, caption = "Bottom 10 — poorer than latitude 
 
 ------------------------------------------------------------------------
 
-## 🗺️ Optional Map — The Luck Index (Residual Choropleth)
+## <span aria-hidden="true">🗺️</span> Optional Map — The Luck Index (Residual Choropleth)
 
 A **choropleth map** of the residuals ("luck index") highlights countries that over‑ or under‑perform relative to their absolute latitude.
 
@@ -175,7 +175,7 @@ if (isTRUE(has_ne)) {
 
 ------------------------------------------------------------------------
 
-## 💭 Reflection
+## <span aria-hidden="true">💭</span> Reflection
 
 > *The sun may rise for everyone, but it still shines longer for some.*
 
@@ -184,7 +184,7 @@ Yet each bright outlier on the map is a defiance of fate: policy and ingenuity t
 
 ------------------------------------------------------------------------
 
-## ⚙️ Technical Appendix
+## <span aria-hidden="true">⚙️</span> Technical Appendix
 
 -   **Packages:** `WDI`, `rnaturalearth`, `sf`, `tidyverse`, `janitor`, `scales`\
 -   **Year:** 2020 snapshot (World Bank)\

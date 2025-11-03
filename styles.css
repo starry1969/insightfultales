@@ -87,3 +87,8 @@ details.dataset > summary:hover,
 details.evolution > summary:hover {
   color: var(--brand2, #1f3b73);
 } 
+
+/* Accessibility: hide emojis from screen readers */
+[aria-hidden="true"] {
+  speak: none;
+}
