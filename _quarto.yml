@@ -3,6 +3,7 @@ project:
   output-dir: docs
 
 website:
+  site-url: https://www.insightfultales.com
   title: "Insightful Tales"
   description: "Where data finds its narrative — original visual and analytical stories built with Quarto."
   favicon: images/favicon.png
@@ -15,17 +16,22 @@ website:
         href: index.qmd    
       - text: "Stories"
         href: stories/index.qmd
+        menu: 
+          - href: stories/geography-of-luck.qmd
+            text: "🧭 Geography of Luck"
+          - href: stories/butterfly-morning-delays.qmd
+            text: "🦋 Butterfly Effect"
+          - href: stories/weather-memory.qmd
+            text: "🌦️ Weather Memory"
+      - text: "🏛️ Historical"
+        href: data-science/index.qmd
+        menu: 
+          - href: data-science/genesis-of-data.qmd
+            text: "🧮 Genesis of Data"
       - text: "About"
         href: about.qmd
       - text: "Contact"
         href: contact.qmd
-        menu:
-          - href: stories/geography_of_luck.qmd
-            text: "🧭 Geography of Luck"
-          - href: stories/butterfly_morning_delays.qmd
-            text: "🦋 Butterfly Effect"
-          - href: stories/weather_memory.qmd
-            text: "🌦️ Weather Memory"
   page-footer:
     left: "© 2025 Insightful Tales"
     right: "Made with ❤️ and Quarto"

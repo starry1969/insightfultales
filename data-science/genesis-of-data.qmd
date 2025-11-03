@@ -12,8 +12,7 @@ format:
     code-summary: "Show code"
 ---
 
-We like to imagine data as a modern concept — CSV files, databases, machine learning pipelines.\
-But the truth is: data is as old as civilization itself. Before there were scientists, there were record-keepers. Before there were models, there were marks — clay scratches, tally sticks, and census scrolls — all born from the same instinct: to *remember what mattered*.
+We like to imagine data as a modern concept — CSV files, databases, machine learning pipelines. But the truth is: data is as old as civilization itself. Before there were scientists, there were record-keepers. Before there were models, there were marks — clay scratches, tally sticks, and census scrolls — all born from the same instinct: to *remember what mattered*.
 
 The Babylonians were counting grain before they were writing poems. Their cuneiform tablets, pressed by reeds into wet clay, weren’t stories — they were inventories. It was there, in those humble lists of barley and livestock, that data first became a language of power. Whoever held the counts held control — of taxes, of armies, of life itself.
 
@@ -44,42 +43,47 @@ I find something poetic in tracing this lineage with modern tools. Using the **W
 ```{r}
 #| label: load-owid-world-pop
 #| include: false
+
 # Resilient loader for OWID world population, with cache + fallbacks
+
 library(tidyverse)
 
 get_owid_world_pop <- function(local_path = "data/owid_population_world.csv") {
-  dir.create("data", showWarnings = FALSE, recursive = TRUE)
+dir.create("data", showWarnings = FALSE, recursive = TRUE)
 
-  # Use cached file if exists
-  if (file.exists(local_path)) {
-    owid <- readr::read_csv(local_path, show_col_types = FALSE)
-    return(owid)
-  }
+# Use cached file if it exists
 
-  # Candidate URLs
-  urls <- c(
-    "https://raw.githubusercontent.com/owid/owid-data/master/processed/owid-population.csv",
-    "https://raw.githubusercontent.com/owid/owid-datasets/master/datasets/Population%20(OWID)/Population%20(OWID).csv"
-  )
+if (file.exists(local_path)) {
+owid <- readr::read_csv(local_path, show_col_types = FALSE)
+return(owid)
+}
 
-  for (u in urls) {
-    tf <- tempfile(fileext = ".csv")
-    ok <- try(suppressWarnings(utils::download.file(u, tf, mode = "wb", quiet = TRUE)), silent = TRUE)
-    if (!inherits(ok, "try-error")) {
-      owid <- try(readr::read_csv(tf, show_col_types = FALSE), silent = TRUE)
-      if (!inherits(owid, "try-error")) {
-        readr::write_csv(owid, local_path)
-        return(owid)
-      }
-    }
-  }
+# Candidate URLs
 
-  # Fallback minimal dataset
-  tibble(
-    entity = "World",
-    year = c(1800, 1850, 1900, 1950, 1970, 1990, 2000, 2010, 2020),
-    population = c(1e9, 1.26e9, 1.65e9, 2.52e9, 3.7e9, 5.3e9, 6.1e9, 6.9e9, 7.8e9)
-  )
+urls <- c(
+"[https://ourworldindata.org/grapher/population.csv](https://ourworldindata.org/grapher/population.csv)",
+"[https://raw.githubusercontent.com/owid/owid-data/master/processed/owid-population.csv](https://raw.githubusercontent.com/owid/owid-data/master/processed/owid-population.csv)"
+)
+
+for (u in urls) {
+tf <- tempfile(fileext = ".csv")
+ok <- try(suppressWarnings(utils::download.file(u, tf, mode = "wb", quiet = TRUE)), silent = TRUE)
+if (!inherits(ok, "try-error")) {
+owid <- try(readr::read_csv(tf, show_col_types = FALSE), silent = TRUE)
+if (!inherits(owid, "try-error")) {
+readr::write_csv(owid, local_path)
+return(owid)
+}
+}
+}
+
+# Fallback minimal dataset
+
+tibble(
+entity = "World",
+year = c(1800, 1850, 1900, 1950, 1970, 1990, 2000, 2010, 2020),
+population = c(1e9, 1.26e9, 1.65e9, 2.52e9, 3.7e9, 5.3e9, 6.1e9, 6.9e9, 7.8e9)
+)
 }
 ```
 
@@ -88,40 +92,71 @@ get_owid_world_pop <- function(local_path = "data/owid_population_world.csv") {
 #| label: fig-world-population-long
 #| fig-cap: "World population since 1800, with modern WDI overlay"
 #| message: false
+library(tidyverse)
 library(WDI)
 library(janitor)
 
 owid <- get_owid_world_pop()
 
-# Try pulling WDI; if offline, continue with empty
+# --- WDI (1960+) ---
 wdi_raw <- try(
-  WDI(indicator = "SP.POP.TOTL", start = 1960, end = as.integer(format(Sys.Date(), "%Y"))),
+  WDI(indicator = "SP.POP.TOTL",
+      start = 1960,
+      end   = as.integer(format(Sys.Date(), "%Y"))),
   silent = TRUE
 )
 
 if (inherits(wdi_raw, "try-error")) {
   wdi_world <- tibble(year = integer(), pop = numeric())
 } else {
-  wdi_world <- wdi_raw |>
-    rename(pop = SP.POP.TOTL) |>
-    group_by(year) |>
-    summarise(pop = sum(pop, na.rm = TRUE), .groups = "drop")
+  # Filter to the global aggregate
+  wdi_world <- wdi_raw %>%
+    filter(iso2c == "1W" | country == "World") %>%
+    select(year, pop = SP.POP.TOTL)
 }
 
-owid_world <- owid |>
-  janitor::clean_names() |>
-  rename(pop = population) |>
-  filter(tolower(entity) == "world", !is.na(year), !is.na(pop)) |>
-  distinct(year, .keep_all = TRUE)
+
+# --- OWID historical (ensure correct columns + units) ---
+
+tmp <- owid %>%
+clean_names() %>%
+rename(pop = population)
+
+if ("entity" %in% names(tmp) && any(tolower(tmp$entity) == "world")) {
+owid_world <- tmp %>%
+filter(tolower(entity) == "world", !is.na(year), !is.na(pop)) %>%
+distinct(year, .keep_all = TRUE)
+} else {
+
+# Fallback: aggregate across all entities per year
+
+owid_world <- tmp %>%
+group_by(year) %>%
+summarise(pop = sum(pop, na.rm = TRUE), .groups = "drop")
+}
+
+# Normalize OWID units if provided in millions
+
+if (max(owid_world$pop, na.rm = TRUE) < 1e6) {
+owid_world <- owid_world %>% mutate(pop = pop * 1e6)
+}
 
 ggplot() +
-  geom_area(data = owid_world, aes(year, pop/1e9), alpha = 0.2) +
-  geom_line(data = wdi_world, aes(year, pop/1e9)) +
-  labs(
-    title = "World Population: 1800–present",
-    subtitle = "Historical (shaded) with modern WDI overlay (solid line)",
-    x = NULL, y = "Billions"
-  )
+geom_area(data = owid_world, aes(year, pop / 1e9), alpha = 0.2) +
+geom_line(data = wdi_world,  aes(year, pop / 1e9)) +
+geom_vline(xintercept = 1960, linetype = "dotted") +
+annotate(
+"text",
+x = 1961,
+y = max(c(owid_world$pop, wdi_world$pop), na.rm = TRUE) / 1e9 * 0.9,
+label = "Official WDI begins (1960)",
+hjust = 0, size = 3
+) +
+labs(
+title = "World Population: 1800–present",
+subtitle = "Historical (shaded, OWID/Maddison) with modern WDI overlay (solid line)",
+x = NULL, y = "Billions"
+)
 ```
 :::
 

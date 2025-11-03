@@ -66,23 +66,24 @@ a {
   }
 }
 
-/* --- Stories <details> styling --- */
+/* --- Stories, Datasets, Evolution <details> styling --- */
 /* Hide the browser's built-in marker */
 details.story > summary::-webkit-details-marker,
-details.dataset > summary::-webkit-details-marker {
+details.dataset > summary::-webkit-details-marker,
+details.evolution > summary::-webkit-details-marker {
   display: none;
 }
 
 /* Add our custom arrow instead */
 details.story > summary,
-details.dataset > summary {
+details.dataset > summary,
+details.evolution > summary {
   position: relative;
   padding-left: 1.5rem;
 }
 
-
-
 details.story > summary:hover,
-details.dataset > summary:hover {
+details.dataset > summary:hover,
+details.evolution > summary:hover {
   color: var(--brand2, #1f3b73);
 } 

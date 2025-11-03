@@ -14,7 +14,7 @@ Each story turns data into narrative — click to explore.
 
 <details class="story">
 
-<summary>🧭 <a href="stories/geography_of_luck.html"><strong>Geography of Luck</strong></a> — The Latitude Lottery</summary>
+<summary>🧭 <a href="stories/geography-of-luck.html"><strong>Geography of Luck</strong></a> — The Latitude Lottery</summary>
 
 Airports closer to the poles face harsher weather — but does geography itself decide punctuality?\
 This story measures how latitude quietly skews flight reliability, uncovering patterns of chance, climate, and coordination.
@@ -23,7 +23,7 @@ This story measures how latitude quietly skews flight reliability, uncovering pa
 
 <details class="story">
 
-<summary>🦋 <a href="stories/butterfly_morning_delays.html"><strong>Butterfly Morning Delays</strong></a> — Small Causes, Wide Ripples</summary>
+<summary>🦋 <a href="stories/butterfly-morning-delays.html"><strong>Butterfly Morning Delays</strong></a> — Small Causes, Wide Ripples</summary>
 
 A delay at dawn can echo across an entire air-traffic network.\
 Using NYC flight data, this tale visualizes how minute perturbations evolve into widespread effects — a modern butterfly effect.
@@ -32,7 +32,7 @@ Using NYC flight data, this tale visualizes how minute perturbations evolve into
 
 <details class="story">
 
-<summary>🌦️ <a href="stories/weather_memory.html"><strong>Weather Memory</strong></a> — How the Sky Remembers</summary>
+<summary>🌦️ <a href="stories/weather-memory.html"><strong>Weather Memory</strong></a> — How the Sky Remembers</summary>
 
 Does weather have “momentum”?\
 By correlating daily anomalies, this piece explores how temperature and precipitation persist — revealing the hidden inertia of the atmosphere.
@@ -89,6 +89,18 @@ how trends surge, communities form, and nostalgia revives titles long thought do
 
 Night-light data reveals how urban sprawl, inequality, and energy intersect.\
 A story told not in words but in luminous patterns across the Earth’s surface.
+
+</details>
+
+## 🧬 Origins & Evolution of Data
+
+Every number has an origin story. These tales uncover how data was born, who shaped it, and how it came to define the modern world.
+
+<details class="evolution">
+
+<summary>🧮 <a href="data-science/genesis-of-data.html"><strong>The Genesis of Data</strong></a> — When Counting Became Knowing</summary>
+
+From ancient tablets to industrial ledgers, the human instinct to measure the world laid the groundwork for today’s data revolution.
 
 </details>
 
