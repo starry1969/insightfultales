@@ -4,6 +4,7 @@ project:
 
 website:
   site-url: https://www.insightfultales.com
+  google-analytics: "G-J2NWNXP0DY"
   title: "Insightful Tales"
   description: "Where data finds its narrative — original visual and analytical stories built with Quarto."
   favicon: images/favicon.png
