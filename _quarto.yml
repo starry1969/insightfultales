@@ -31,6 +31,8 @@ website:
         menu: 
           - href: datasets/nycflights13-the-dataset-that-took-off.qmd
             text: "✈️ nycflights13: The Dataset That Took Off"
+          - href: datasets/the-gapminder-dataset-a-history-of-human-progress-told-through-data.qmd
+            text: "🌍 The Gapminder Dataset — A History of Human Progress, Told Through Data"
       - text: "💡 About"
         href: about.qmd
       - text: "💬 Contact"
