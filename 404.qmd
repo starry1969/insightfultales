@@ -1,0 +1,68 @@
+---
+title: "Page Not Found"
+format:
+  html:
+    page-layout: full
+    toc: false
+    include-in-header:
+      text: |
+        <meta http-equiv="refresh" content="6; url=https://www.insightfultales.com/" />
+        <style>
+          body {
+            text-align: center;
+            font-family: "Inter", "Segoe UI", sans-serif;
+            color: #222;
+            background: linear-gradient(180deg, #fafafa 0%, #f2f6f9 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .content {
+            max-width: 600px;
+            padding: 2rem;
+            border-radius: 1.5rem;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            animation: fadein 1.2s ease;
+          }
+          @keyframes fadein {
+            from {opacity: 0;}
+            to {opacity: 1;}
+          }
+          h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+          }
+          p {
+            font-size: 1.1rem;
+            color: #555;
+          }
+          a {
+            color: #007acc;
+            text-decoration: none;
+          }
+          a:hover {
+            text-decoration: underline;
+          }
+        </style>
+---
+
+::: content
+# 😕 Oops — Page Not Found
+
+It seems you’ve wandered off the data path.\
+No worries — you’ll be redirected to the homepage in **a few seconds**.
+
+If not, click below:
+
+[🏠 Return Home](https://www.insightfultales.com)
+
+------------------------------------------------------------------------
+
+Or explore a few favorites:
+
+-   [🦋 Butterfly Morning Delays](stories/butterfly_morning_delays.qmd)\
+-   [🌦️ Weather Memory](stories/weather_memory.qmd)\
+-   [🧭 Geography of Luck](stories/geography_of_luck.qmd)
+:::
