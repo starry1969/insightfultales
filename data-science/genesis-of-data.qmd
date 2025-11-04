@@ -27,7 +27,7 @@ By the time the Romans perfected their census, data had become governance. “Ce
 
 ------------------------------------------------------------------------
 
-## <span aria-hidden="true">️🔢✨</span> The Spiritual Act of Counting
+## [️🔢]{aria-hidden="true"} The Spiritual Act of Counting
 
 I often think about counting not as a mechanical act, but a spiritual one — a human attempt to find order in chaos. Every tally is a quiet declaration that something exists, that it *matters enough to be counted*.
 
@@ -35,7 +35,7 @@ Florence Nightingale understood this profoundly. When she gathered data on death
 
 ------------------------------------------------------------------------
 
-## <span aria-hidden="true">🌍📈🚀</span> When the World Scaled Up
+## [🌍]{aria-hidden="true"} When the World Scaled Up
 
 Fast forward to the Victorian era: the world began to count everything. The first statistical societies formed, censuses became national events, and the idea of “objective truth through measurement” took hold. The machine age demanded data — and humanity obliged.
 
@@ -43,7 +43,7 @@ The story of data from then onward is exponential. By 1900, nearly every industr
 
 ------------------------------------------------------------------------
 
-## <span aria-hidden="true">📊🪞</span> The Data of Data
+## [📊]{aria-hidden="true"} The Data of Data
 
 I find something poetic in tracing this lineage with modern tools. Using the **World Bank’s historical population dataset**, we can visualize how humanity’s capacity to count itself expanded almost in lockstep with its population.
 
@@ -173,14 +173,14 @@ Overlay that with **Our World in Data’s historical metrics**, and you see an e
 
 This is the unseen virtue of data: it doesn’t just observe reality, it *amplifies intention*.
 
-## <span aria-hidden="true">🔢🧠💫</span> When Counting Became Knowing
+## [🔢]{aria-hidden="true"} When Counting Became Knowing
 
 The modern data scientist, in some sense, is a direct descendant of the temple scribe.\
 We still look for structure in chaos, still seek to compress the infinite world into finite symbols. The clay tablets became spreadsheets; the grain records became gigabytes. But the human motive remains unchanged: to understand, to predict, to improve.
 
 We often hear that data is “the new oil.” I don’t think that’s true. Oil is extracted, consumed, and gone. Data, when treated properly, is more like light — it illuminates. The Babylonians’ grain counts, Nightingale’s diagrams, Tukey’s exploratory plots — all were small sparks in a long illumination that continues through every dataset we open today.
 
-## <span aria-hidden="true">🌱⏳</span>A Living Timeline
+## [🌱]{aria-hidden="true"}A Living Timeline
 
 I’m building an **animated time-series visualization** that traces this evolution: each point represents the earliest known record of a nation’s statistical data — census, agricultural, financial, environmental.
 
@@ -207,7 +207,7 @@ ggplot(df, aes(year, countries_reporting)) +
 
 The story the data tells is breathtaking: we are a species that counts because we *care*.
 
-## <span aria-hidden="true">♾️🧮</span> Epilogue: The Infinite Ledger
+## [♾️]{aria-hidden="true"} Epilogue: The Infinite Ledger
 
 We are, each of us, a new line in the world’s oldest dataset — the ongoing attempt to make sense of being alive.\
 The Genesis of Data is not a past event; it’s a continuous present.\
@@ -215,7 +215,7 @@ Every number we collect is a reflection of what we value, and every dataset we p
 
 Data, at its most human level, is not about numbers. It’s about noticing.
 
-## <span aria-hidden="true">📚</span> References
+## [📚]{aria-hidden="true"} References
 
 -   [World Bank Historical Population Data (1800–present)](https://data.worldbank.org/indicator/SP.POP.TOTL)
 
