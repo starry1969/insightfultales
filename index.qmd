@@ -140,7 +140,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary><span aria-hidden="true">🌍</span> <a href="datasets/the-gapminder-dataset-a-history-of-human-progress-told-through-data.html"><strong>gapminder</strong> — Development in Motion</a></summary>
+<summary><span aria-hidden="true">🌍</span> <a href="datasets/the-gapminder-dataset-a-history-of-human-progress-told-through-data.html"><strong>The Gapminder Dataset</strong> — A History of Human Progress, Told Through Data</a></summary>
 
 **What it is:** Country-level health, wealth, and population over time.\
 **Why it’s worthy:** Long horizons + comparable units = clean cross-country narratives.\
@@ -152,7 +152,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>[⚾]{aria-hidden="true"} <strong>Lahman Baseball Database</strong> — The Game as a Mirror of Culture</summary>
+<summary>[⚾]{aria-hidden="true"} <a href="datasets/the-lahman-baseball-database-a-chronicle-of-the-games-digital-memory.html"><strong>Lahman Baseball Database</strong> — A Chronicle of the Game’s Digital Memory</a></summary>
 
 **What it is:** Player/team stats from the 19th century to now.\
 **Why it’s worthy:** Deep history, rule changes, moneyball eras—quant + culture.\
