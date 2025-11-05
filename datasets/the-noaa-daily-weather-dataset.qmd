@@ -1,0 +1,126 @@
+---
+title: "🌦️ The NOAA Daily Weather Dataset"
+subtitle: "A planet’s diary — recording our everyday atmosphere, one day at a time."
+description: "The NOAA Daily Weather dataset, curated by the National Centers for Environmental Information (NCEI), is one of the world’s most detailed archives of day-by-day weather. It preserves the highs, lows, and patterns of the planet’s pulse — turning routine weather into long-term climate memory."
+categories: [data-science, climate, history]
+image: images/noaa_daily_weather_cover.png
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: show
+    smooth-scroll: true
+    df-print: paged
+    anchor-sections: true
+execute:
+  warning: false
+  message: false
+  echo: true
+  freeze: auto
+---
+
+## 🪶 A Planet’s Daily Logbook
+
+If the Earth kept a diary, the **NOAA Daily Weather dataset** would be its journal — quietly recording what happened in the sky each day, everywhere.\
+From sweltering July afternoons in Texas to silent January snow in Maine, each entry captures our atmosphere’s daily rhythm.\
+And collectively, they reveal the long memory of weather that shapes our lives.
+
+## 🧭 Origins — From Observers to Databases
+
+The story begins in the late 19th century.\
+Long before satellites and sensors, weather was measured by hand — **Cooperative Observer Program (COOP)** volunteers using thermometers and rain gauges.\
+In 1890, the U.S. Weather Bureau (now the **National Weather Service**) organized these thousands of observers to provide a daily national picture.
+
+By the 1930s, these logs were centralized under what became the **National Climatic Data Center (NCDC)** — and eventually **NOAA’s National Centers for Environmental Information (NCEI)**.\
+Their mission was simple but monumental: **preserve the planet’s weather memory**.
+
+Today, the result is the **Global Historical Climatology Network – Daily (GHCN-Daily)**, containing billions of daily records from over 100,000 land-based stations across 180 countries.
+
+> “Climate is what you expect. Weather is what you get.” — Robert Heinlein\
+> This dataset captures *both.*
+
+## 🌍 What It Contains
+
+| Element       | Description                        | Example Variable |
+|:--------------|:-----------------------------------|:-----------------|
+| Temperature   | Daily maximum & minimum (°C or °F) | TMAX, TMIN       |
+| Precipitation | Total daily precipitation          | PRCP             |
+| Snowfall      | Daily snow accumulation            | SNOW             |
+| Snow Depth    | Depth of snow on the ground        | SNWD             |
+
+Each station reports one row per day — a simple rhythm of measurements stretching back, in some places, over **150 years**.
+
+NOAA also provides derived gridded versions, such as **nClimGrid-Daily**, mapping these station observations onto a fine grid across the contiguous U.S. from **1951 to present**, enabling spatial analyses of heatwaves, droughts, or flood events.
+
+## 💡 Why It Matters
+
+The NOAA Daily Weather dataset is more than just numbers — it’s **context**.\
+Every datapoint tells part of a larger story about life on Earth.
+
+-   **Time Depth:** Enables century-scale climate studies — tracking heatwaves, cold snaps, and rainfall shifts.
+-   **Daily Resolution:** Lets us see change as it happens — from one sunrise to the next.
+-   **Geographic Breadth:** A single, unified record spanning the globe’s landmasses.
+-   **Quality-Controlled:** Built with decades of standardization and statistical checks.
+-   **Open Access:** Available freely to the public via [NOAA’s Climate Data Online (CDO)](https://www.ncei.noaa.gov/cdo-web/).
+
+From farmers planning crops to engineers modeling heat stress on power grids — to storytellers like us connecting data to meaning — the dataset quietly underpins much of what we know about weather and climate.
+
+## 🧩 What Makes It Unique
+
+1.  **It’s the everyday data that becomes history.**\
+    While headlines capture hurricanes, this dataset records *the calm before the storm* — the slow shifts that define climate.
+2.  **It connects disciplines.**\
+    Weather data intersects naturally with agriculture, transportation, energy, health, and even economics.\
+    For instance, in 🦋 [Butterfly Morning Delays](../stories/butterfly-morning-delays.qmd) story, flight delays could easily be paired with daily precipitation and wind records.
+3.  **It’s global, yet personal.**\
+    Because it’s station-based, you can zoom from the planetary to the hyperlocal — even “my town on my birthday.”
+4.  **It’s science you can touch.**\
+    Each number once came from a real thermometer, a real place, a real moment in time.
+
+## 🧮 Example Exploration
+
+Imagine this:\
+You download 50 years of daily maximum temperatures for your city and plot how many summer days exceeded 95 °F each year.\
+You’d likely see the creeping signature of a warming world.
+
+Or perhaps you cross-match rainfall with flight delays, crop yields, or local power consumption.\
+Suddenly, weather becomes *behavioral data* — showing how the sky shapes our choices below.
+
+``` r
+# Example R snippet for NOAA Daily Summaries
+library(rnoaa)
+library(dplyr)
+
+# Pull last 30 years of daily summaries for a station
+ghcnd_stations() |> 
+  filter(grepl("LITTLE ROCK", name)) |> 
+  slice_head(n = 1) |> 
+  pull(id) -> station_id
+
+data <- meteo_pull_monitors(station_id, date_min = "1995-01-01", var = c("TMAX", "TMIN", "PRCP"))
+
+data |> 
+  mutate(year = lubridate::year(date)) |>
+  group_by(year) |>
+  summarise(hot_days = sum(TMAX > 35, na.rm = TRUE)) |>
+  ggplot(aes(year, hot_days)) +
+  geom_line() +
+  labs(title = "Number of Hot Days (TMAX > 35°C) per Year",
+       y = "Count", x = "Year")
+```
+
+This small snippet turns daily data into an evolving climate portrait.
+
+## 📚 References & Credits
+
+-   **NOAA/NCEI** — [Global Historical Climatology Network – Daily (GHCN-Daily)](https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily?utm_source=chatgpt.com)
+
+-   **NOAA/NCEI** — [nClimGrid-Daily](https://www.ncei.noaa.gov/products/land-based-station/nclimgrid-daily?utm_source=chatgpt.com)
+
+-   **Climate.gov** — [Daily Temperature and Precipitation Reports](https://www.climate.gov/maps-data/dataset/daily-temperature-and-precipitation-reports-data-tables?utm_source=chatgpt.com)
+
+-   **NOAA Climate Data Online (CDO)** — [Access Portal](https://www.ncei.noaa.gov/cdo-web/?utm_source=chatgpt.com)
+
+-   **Cooperative Observer Program (COOP)** — NOAA History
+
+-   Historical Context — [National Climatic Data Center (NCDC)](https://en.wikipedia.org/wiki/National_Climatic_Data_Center?utm_source=chatgpt.com)
