@@ -128,7 +128,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>✈️ <a href="datasets/nycflights13-the-dataset-that-took-off.html"><strong>nycflights13:</strong> The DataSet That Took Off</a></summary>
+<summary>✈️ <a href="datasets/nycflights13-the-dataset-that-took-off.html"><strong>nycflights13:</strong></a> The DataSet That Took Off</summary>
 
 **What it is:** All flights departing NYC in 2013, linked to weather, airlines, and airports.\
 **Why it’s worthy:** Rich joins (flights ⇄ weather ⇄ carriers) + time series + networks.\
@@ -140,7 +140,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary><span aria-hidden="true">🌍</span> <a href="datasets/the-gapminder-dataset-a-history-of-human-progress-told-through-data.html"><strong>The Gapminder Dataset</strong> — A History of Human Progress, Told Through Data</a></summary>
+<summary><span aria-hidden="true">🌍</span> <a href="datasets/the-gapminder-dataset-a-history-of-human-progress-told-through-data.html"><strong>The Gapminder Dataset</strong></a> — A History of Human Progress, Told Through Data</summary>
 
 **What it is:** Country-level health, wealth, and population over time.\
 **Why it’s worthy:** Long horizons + comparable units = clean cross-country narratives.\
@@ -152,7 +152,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>[⚾]{aria-hidden="true"} <a href="datasets/the-lahman-baseball-database-a-chronicle-of-the-games-digital-memory.html"><strong>Lahman Baseball Database</strong> — A Chronicle of the Game’s Digital Memory</a></summary>
+<summary>[⚾]{aria-hidden="true"} <a href="datasets/the-lahman-baseball-database-a-chronicle-of-the-games-digital-memory.html"><strong>Lahman Baseball Database</strong></a> — A Chronicle of the Game’s Digital Memory</summary>
 
 **What it is:** Player/team stats from the 19th century to now.\
 **Why it’s worthy:** Deep history, rule changes, moneyball eras—quant + culture.\
@@ -164,7 +164,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>🌦️ <strong>NOAA Daily Weather</strong> — Memory of the Sky</summary>
+<summary>[🌦️]{aria-hidden="true"}  <a href="datasets/the-noaa-daily-weather-dataset.html"> <strong>NOAA Daily Weather</strong></a> — Memory of the Sky</summary>
 
 **What it is:** Decades of daily observations for thousands of stations (GHCN).\
 **Why it’s worthy:** Local variability meets climate trends; perfect for “weather memory” ideas.\

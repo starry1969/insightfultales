@@ -34,7 +34,9 @@ website:
           - href: datasets/the-gapminder-dataset-a-history-of-human-progress-told-through-data.qmd
             text: "🌍 The Gapminder Dataset — A History of Human Progress, Told Through Data"
           - href: datasets/the-lahman-baseball-database-a-chronicle-of-the-games-digital-memory.qmd
-            text: "⚾ The Lahman Baseball Database — A Chronicle of the Game’s Digital Memory"        
+            text: "⚾ The Lahman Baseball Database — A Chronicle of the Game’s Digital Memory" 
+          - href: datasets/the-noaa-daily-weather-dataset.qmd
+            text: "🌦 A planet’s diary — recording our everyday atmosphere, one day at a time."           
       - text: "💡 About"
         href: about.qmd
       - text: "💬 Contact"
