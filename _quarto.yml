@@ -40,7 +40,9 @@ website:
       - text: "💬 Contact"
         href: contact.qmd
   page-footer:
-    left: "© 2025 Insightful Tales"
+    left: |
+      © 2025 Insightful Tales  
+      <small>🦋 Uses <a href="https://analytics.google.com/" target="_blank" rel="noopener" style="color:#2b5876;text-decoration:underline;">Google Analytics</a> (IP anonymization enabled; no personal data stored)</small>
     right: "Made with ❤️ and Quarto"
 format:
   html:
