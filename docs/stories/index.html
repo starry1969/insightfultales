@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="A collection of every Insightful Tales story — browse, filter, and explore.">
 
-<title>Page Not Found – Insightful Tales</title>
+<title>All Stories – Insightful Tales</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +24,27 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="/site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="/site_libs/quarto-nav/headroom.min.js"></script>
-<script src="/site_libs/clipboard/clipboard.min.js"></script>
-<script src="/site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="/site_libs/quarto-search/fuse.min.js"></script>
-<script src="/site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="/">
-<link href="/./images/favicon.png" rel="icon" type="image/png">
-<script src="/site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="/site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="/site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="/site_libs/quarto-html/popper.min.js"></script>
-<script src="/site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="/site_libs/quarto-html/anchor.min.js"></script>
-<link href="/site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="/site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="/site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="/site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="/site_libs/bootstrap/bootstrap-ffa9a6279353761231ec249df0a7fdd3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-ffa9a6279353761231ec249df0a7fdd3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,6 +72,35 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: [],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-J2NWNXP0DY"></script>
 
 <script type="text/javascript">
@@ -78,54 +110,43 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-J2NWNXP0DY', { 'anonymize_ip': true});
 </script>
-<meta http-equiv="refresh" content="6; url=https://www.insightfultales.com/">
-<style>
-  body {
-    text-align: center;
-    font-family: "Inter", "Segoe UI", sans-serif;
-    color: #222;
-    background: linear-gradient(180deg, #fafafa 0%, #f2f6f9 100%);
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .content {
-    max-width: 600px;
-    padding: 2rem;
-    border-radius: 1.5rem;
-    background: white;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    animation: fadein 1.2s ease;
-  }
-  @keyframes fadein {
-    from {opacity: 0;}
-    to {opacity: 1;}
-  }
-  h1 {
-    font-size: 2.2rem;
-    margin-bottom: 0.8rem;
-  }
-  p {
-    font-size: 1.1rem;
-    color: #555;
-  }
-  a {
-    color: #007acc;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-</style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="/styles.css">
-<meta property="og:title" content="Page Not Found – Insightful Tales">
-<meta property="og:description" content="Where data finds its narrative — original visual and analytical stories built with Quarto.">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="All Stories – Insightful Tales">
+<meta property="og:description" content="A collection of every Insightful Tales story — browse, filter, and explore.">
 <meta property="og:site_name" content="Insightful Tales">
-<meta name="twitter:title" content="Page Not Found – Insightful Tales">
-<meta name="twitter:description" content="Where data finds its narrative — original visual and analytical stories built with Quarto.">
+<meta name="twitter:title" content="All Stories – Insightful Tales">
+<meta name="twitter:description" content="A collection of every Insightful Tales story — browse, filter, and explore.">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -136,11 +157,11 @@ gtag('config', 'G-J2NWNXP0DY', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="/index.html" class="navbar-brand navbar-brand-logo">
-    <img src="/images/logo.png" alt="" class="navbar-logo light-content">
-    <img src="/images/logo.png" alt="" class="navbar-logo dark-content">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/logo.png" alt="" class="navbar-logo light-content">
+    <img src="../images/logo.png" alt="" class="navbar-logo dark-content">
     </a>
-    <a class="navbar-brand" href="/index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Insightful Tales</span>
     </a>
   </div>
@@ -151,7 +172,7 @@ gtag('config', 'G-J2NWNXP0DY', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="/index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">🏠 Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -160,15 +181,15 @@ gtag('config', 'G-J2NWNXP0DY', { 'anonymize_ip': true});
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-stories">    
         <li>
-    <a class="dropdown-item" href="/stories/geography-of-luck.html">
+    <a class="dropdown-item" href="../stories/geography-of-luck.html">
  <span class="dropdown-text">🧭 Geography of Luck</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="/stories/butterfly-morning-delays.html">
+    <a class="dropdown-item" href="../stories/butterfly-morning-delays.html">
  <span class="dropdown-text">🦋 Butterfly Effect</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="/stories/weather-memory.html">
+    <a class="dropdown-item" href="../stories/weather-memory.html">
  <span class="dropdown-text">🌦️ Weather Memory</span></a>
   </li>  
     </ul>
@@ -179,7 +200,7 @@ gtag('config', 'G-J2NWNXP0DY', { 'anonymize_ip': true});
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-historical">    
         <li>
-    <a class="dropdown-item" href="/data-science/genesis-of-data.html">
+    <a class="dropdown-item" href="../data-science/genesis-of-data.html">
  <span class="dropdown-text">🧮 Genesis of Data</span></a>
   </li>  
     </ul>
@@ -190,25 +211,25 @@ gtag('config', 'G-J2NWNXP0DY', { 'anonymize_ip': true});
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-datasets">    
         <li>
-    <a class="dropdown-item" href="/datasets/nycflights13-the-dataset-that-took-off.html">
+    <a class="dropdown-item" href="../datasets/nycflights13-the-dataset-that-took-off.html">
  <span class="dropdown-text">✈️ nycflights13: The Dataset That Took Off</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="/datasets/the-gapminder-dataset-a-history-of-human-progress-told-through-data.html">
+    <a class="dropdown-item" href="../datasets/the-gapminder-dataset-a-history-of-human-progress-told-through-data.html">
  <span class="dropdown-text">🌍 The Gapminder Dataset — A History of Human Progress, Told Through Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="/datasets/the-lahman-baseball-database-a-chronicle-of-the-games-digital-memory.html">
+    <a class="dropdown-item" href="../datasets/the-lahman-baseball-database-a-chronicle-of-the-games-digital-memory.html">
  <span class="dropdown-text">⚾ The Lahman Baseball Database — A Chronicle of the Game’s Digital Memory</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/about.html"> 
+    <a class="nav-link" href="../about.html"> 
 <span class="menu-text">💡 About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="/contact.html"> 
+    <a class="nav-link" href="../contact.html"> 
 <span class="menu-text">💬 Contact</span></a>
   </li>  
 </ul>
@@ -222,15 +243,22 @@ gtag('config', 'G-J2NWNXP0DY', { 'anonymize_ip': true});
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
 <!-- main -->
 <main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Page Not Found</h1>
+<h1 class="title">All Stories</h1>
 </div>
 
+<div>
+  <div class="description">
+    A collection of every Insightful Tales story — browse, filter, and explore.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta column-page">
@@ -245,26 +273,19 @@ gtag('config', 'G-J2NWNXP0DY', { 'anonymize_ip': true});
 </header>
 
 
-<section id="oops-page-not-found" class="level1 content">
-<h1>😕 Oops — Page Not Found</h1>
-<p>It seems you’ve wandered off the data path.<br>
-No worries — you’ll be redirected to the homepage in <strong>a few seconds</strong>.</p>
-<p>If not, click below:</p>
-<p><a href="https://www.insightfultales.com">🏠 Return Home</a></p>
-<hr>
-<p>Or explore a few favorites:</p>
-<ul>
-<li><a href="/./stories/butterfly-morning-delays.html">🦋 Butterfly Morning Delays</a><br>
-</li>
-<li><a href="/stories/weather_memory.qmd">🌦️ Weather Memory</a><br>
-</li>
-<li><a href="/./stories/geography-of-luck.html">🧭 Geography of Luck</a></li>
-</ul>
-</section>
+<p>🦋 <strong>All Stories</strong></p>
+<p>Explore every data narrative published on Insightful Tales —<br>
+from flight delays to weather memory and everything between.</p>
 
 
 
-</main> <!-- /main -->
+
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="list grid quarto-listing-cols-3">
+
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

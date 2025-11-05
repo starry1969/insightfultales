@@ -1,0 +1,17 @@
+---
+title: "All Stories"
+description: "A collection of every Insightful Tales story — browse, filter, and explore."
+listing:
+  contents:
+    - stories/*.qmd
+  sort: "title asc"
+  type: grid
+  fields: [title, description, categories]
+  image-align: left
+page-layout: full
+---
+
+🦋 **All Stories**
+
+Explore every data narrative published on Insightful Tales —\
+from flight delays to weather memory and everything between.

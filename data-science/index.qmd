@@ -1,0 +1,17 @@
+---
+title: "Data Science Stories"
+description: "Analytical explorations and narrative experiments that bring data to life."
+listing:
+  contents:
+    - data-science/*.qmd
+  sort: "title asc"
+  type: grid
+  fields: [title, description, categories]
+  image-align: left
+page-layout: full
+---
+
+🧮 **Data Science Stories**
+
+These are the analytical backbones of *Insightful Tales* —\
+notebooks that explore datasets, test ideas, and illuminate patterns that later become stories.

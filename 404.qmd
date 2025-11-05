@@ -62,7 +62,7 @@ If not, click below:
 
 Or explore a few favorites:
 
--   [🦋 Butterfly Morning Delays](stories/butterfly_morning_delays.qmd)\
+-   [🦋 Butterfly Morning Delays](stories/butterfly-morning-delays.qmd)\
 -   [🌦️ Weather Memory](stories/weather_memory.qmd)\
--   [🧭 Geography of Luck](stories/geography_of_luck.qmd)
+-   [🧭 Geography of Luck](stories/geography-of-luck.qmd)
 :::

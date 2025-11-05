@@ -1,0 +1,19 @@
+---
+title: "Featured Datasets"
+description: "Where stories begin — the datasets that power Insightful Tales."
+listing:
+  contents:
+    - datasets/*.qmd
+  sort: "title asc"
+  type: grid
+  fields: [title, description, categories]
+  image-align: left
+page-layout: full
+---
+
+📊 **Featured Datasets — Where Stories Begin**
+
+Behind every story lies a dataset waiting to be understood.\
+Explore the origins, purpose, and structure of the datasets that fuel *Insightful Tales*.
+
+Each entry links to its background page — describing how the data was collected, why it matters, and what stories it can tell.
