@@ -5,6 +5,8 @@ project:
     - stories/butterfly_morning_delays.html
     - stories/geography_of_luck.html
     - stories/weather_memory.html
+  post-render:
+    - powershell -Command "(Get-Content docs\sitemap.xml) -replace '/index.html', '/' | Set-Content docs\sitemap.xml"
 website:
   site-url: https://www.insightfultales.com
   google-analytics: "G-J2NWNXP0DY"
