@@ -49,7 +49,7 @@ quiet_theme <- if (exists("quiet_theme")) quiet_theme else function() {
 }
 ```
 
-## <span aria-hidden="true">🧱✈️</span> Build a daily panel: flights × weather
+## <span aria-hidden="true">🧱✈</span> Build a daily panel: flights × weather
 
 **Goal →** Create a tidy daily dataset by airport (JFK/LGA/EWR) with delay outcomes and weather inputs.
 
