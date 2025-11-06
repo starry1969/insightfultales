@@ -1,10 +1,10 @@
 project:
   type: website
   output-dir: docs
-  post-render:
-    - powershell -Command "New-Item -ItemType Directory -Force docs\stories | Out-Null; Copy-Item -Force redirects\butterfly_morning_delays.html docs\stories\butterfly_morning_delays.html"
-    - powershell -Command "Copy-Item -Force redirects\geography_of_luck.html docs\stories\geography_of_luck.html"
-    - powershell -Command "Copy-Item -Force redirects\weather_memory.html docs\stories\weather_memory.html"
+  resources:
+    - stories/butterfly_morning_delays.html
+    - stories/geography_of_luck.html
+    - stories/weather_memory.html
 website:
   site-url: https://www.insightfultales.com
   google-analytics: "G-J2NWNXP0DY"
