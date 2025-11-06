@@ -1,7 +1,10 @@
 project:
   type: website
   output-dir: docs
-
+  post-render:
+    - copy redirects/butterfly_morning_delays.html docs/stories/butterfly_morning_delays.html
+    - copy redirects/geography_of_luck.html docs/stories/geography_of_luck.html
+    - copy redirects/weather_memory.html docs/stories/weather_memory.html
 website:
   site-url: https://www.insightfultales.com
   google-analytics: "G-J2NWNXP0DY"
@@ -48,6 +51,7 @@ website:
     right: "Made with ❤️ and Quarto"
 format:
   html:
+    canonical-url: true
     theme: flatly
     css: styles.css
     toc: true
