@@ -1,0 +1,11 @@
+rental_id,start_date,end_date,start_station,end_station,duration_seconds
+1,2023-07-01 08:12:00,2023-07-01 08:25:00,Waterloo Station,Blackfriars Station,780
+2,2023-07-01 09:03:00,2023-07-01 09:14:00,King's Cross Station,Russell Square Station,660
+3,2023-07-01 12:45:00,2023-07-01 13:05:00,Victoria Station,Hyde Park Corner,1200
+4,2023-07-02 07:20:00,2023-07-02 07:41:00,London Bridge Station,Borough Station,1260
+5,2023-07-02 17:15:00,2023-07-02 17:33:00,Paddington Station,Baker Street Station,1080
+6,2023-07-03 08:10:00,2023-07-03 08:27:00,Stratford Station,Mile End Station,1020
+7,2023-07-03 18:45:00,2023-07-03 19:00:00,Canary Wharf Station,Limehouse Station,900
+8,2023-07-04 09:22:00,2023-07-04 09:37:00,Holborn Station,Chancery Lane Station,900
+9,2023-07-04 13:40:00,2023-07-04 14:05:00,Bank Station,Moorgate Station,1500
+10,2023-07-05 08:10:00,2023-07-05 08:25:00,Waterloo Station,Westminster Station,900

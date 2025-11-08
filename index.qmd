@@ -176,7 +176,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>[🚇]{aria-hidden="true"} <strong>Transport for London (TfL)</strong> — Motion of a Metropolis</summary>
+<summary>[🚇]{aria-hidden="true"}  <a href="datasets/transport-for-london-tfl-the-pulse-beneath-the-city.html"><strong>Transport for London (TfL)</strong></a> — The Pulse Beneath the City</summary>
 
 **What it is:** Open ridership, delays, closures, and more from London Underground.\
 **Why it’s worthy:** Network effects + peak waves = emergent patterns.\

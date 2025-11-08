@@ -1,0 +1,225 @@
+---
+title: "<span aria-hidden='true'>🚇</span> Transport for London (TfL) — The Pulse Beneath the City"
+subtitle: "How data reveals the hidden rhythm of London’s movement."
+description: "A look into the heartbeat of London through TfL’s open data — exploring Oyster and Contactless journeys, Tube entries and exits, and Cycle Hire usage to understand the patterns of a living metropolis."
+categories: [data-science, urban-life, history]
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: show
+    smooth-scroll: true
+    df-print: paged
+    anchor-sections: true
+execute:
+  warning: false
+  message: false
+  echo: true
+  freeze: auto
+---
+
+# 🚦 A City in Motion
+
+Every morning, the city exhales. Trains surge from the edges of London toward the center, buses weave through narrow streets, and cyclists form an almost-ritual migration across bridges. Transport for London — TfL — doesn’t just move people; it synchronizes the city’s pulse.
+
+Behind this choreography is an immense, open data system that captures every tap-in, every journey, and every pedal push. TfL’s datasets form one of the richest living chronicles of urban mobility ever shared with the public. Here, data becomes a mirror of daily life — showing not just where we go, but how we *collectively breathe* as a metropolis.
+
+------------------------------------------------------------------------
+
+# 🧮 The Dataset
+
+TfL’s **Open Data Portal** provides a universe of transport information, from real-time service updates to historical ridership counts.\
+For this page, we focus on three high-value, narrative-friendly datasets:
+
+| Dataset | Description | Key Variables | Time Span |
+|------------------|------------------|-------------------|------------------|
+| **Oyster & Contactless Journey Data** | Aggregated counts of tap-in and tap-out journeys by mode and station. | `date`, `mode`, `entries`, `exits` | 2015–present |
+| **Tube Entry/Exit Counts** | Station-level totals of passenger entries and exits, usually monthly or annual aggregates. | `station`, `entries`, `exits`, `year` | 2007–present |
+| **Cycle Hire Usage** | Trip-level data from London’s Santander Cycle scheme. | `start_station`, `end_station`, `duration`, `timestamp` | 2010–present |
+
+Each dataset offers a different window into the rhythm of London: - **Journeys** show **flow** — when and how people move. - **Entries/Exits** reveal **intensity** — where the city’s heartbeat is strongest. - **Cycle Hire** tells a story of **adaptation** — how London’s residents reclaim mobility.
+
+Data source: [TfL Open Data Portal](https://tfl.gov.uk/info-for/open-data-users/our-open-data)
+
+------------------------------------------------------------------------
+
+# 🗺️ Visualising the Pulse
+
+Below are examples (in R) of how we might bring this data to life using the tidyverse and spatial tools like `{sf}`.
+
+```{r}
+#| label: load-tfl-data
+#| echo: true
+#| error: false
+library(tidyverse)
+
+# Load CSV
+tube <- read_csv("../data/tfl/tube-entries-exits.csv")
+
+# Summarise totals
+tube |>
+  group_by(station, year) |>
+  summarise(
+    total = sum(entries + exits, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  arrange(desc(total)) |>
+  slice_head(n = 10)
+```
+
+## Visualising Station Flow
+
+```{r}
+#| label: tfl-busiest-stations
+#| fig-cap: "Top 10 busiest Tube stations by annual entries and exits."
+#| fig-alt: "Bar chart showing London's busiest Tube stations ranked by total passengers."
+tube |>
+    ggplot(aes(x = reorder(station, total), y = total)) +
+    geom_col() +
+    coord_flip() +
+    labs(x = NULL, y = "Total entries + exits", title = "London’s busiest stations") +
+    theme_minimal()
+```
+
+## Mapping Cycle Hire Patterns
+
+```{r}
+library(tidyverse)
+library(sf)
+library(ggspatial)
+library(rosm)
+
+# --- Load CSV ---
+cycle <- read_csv("../data/tfl/cycle-hire.csv", show_col_types = FALSE)
+
+# --- Coordinate lookup (approximate) ---
+coords <- tribble(
+  ~start_station,           ~lon,    ~lat,
+  "Waterloo Station",       -0.113,  51.503,
+  "King's Cross Station",   -0.122,  51.530,
+  "Victoria Station",       -0.143,  51.495,
+  "London Bridge Station",  -0.087,  51.505,
+  "Paddington Station",     -0.177,  51.516,
+  "Stratford Station",       0.002,  51.543,
+  "Canary Wharf Station",   -0.020,  51.505,
+  "Holborn Station",        -0.118,  51.517,
+  "Bank Station",           -0.089,  51.513,
+  "Westminster Station",    -0.125,  51.500
+)
+
+# --- Join & summarise to points (WGS84) ---
+cycle_pts_wgs84 <- cycle |>
+  left_join(coords, by = "start_station") |>
+  filter(!is.na(lon), !is.na(lat)) |>
+  group_by(start_station, lon, lat) |>
+  summarise(trips = n(), .groups = "drop") |>
+  st_as_sf(coords = c("lon", "lat"), crs = 4326)
+
+# --- Compute a padded bbox from your data & transform to Web-Mercator (EPSG:3857) ---
+if (nrow(cycle_pts_wgs84) == 0) stop("No stations matched the coord lookup. Check start_station names.")
+cycle_pts_3857 <- st_transform(cycle_pts_wgs84, 3857)
+
+# bbox padding helper (10% padding each side)
+pad_bbox <- function(bb, pad = 0.10) {
+  x_pad <- (bb["xmax"] - bb["xmin"]) * pad
+  y_pad <- (bb["ymax"] - bb["ymin"]) * pad
+  c(xmin = bb["xmin"] - x_pad,
+    xmax = bb["xmax"] + x_pad,
+    ymin = bb["ymin"] - y_pad,
+    ymax = bb["ymax"] + y_pad)
+}
+bb_3857 <- st_bbox(cycle_pts_3857)
+bb_3857 <- pad_bbox(bb_3857, pad = 0.12)
+
+# --- Plot ---
+ggplot() +
+  annotation_map_tile(type = "osm", zoomin = 0, progress = "none", cachedir = tempdir()) +
+# halo (bigger, semi-transparent)
+geom_sf(
+  data = cycle_pts_3857,
+  aes(size = trips),
+  color = "yellow",
+  alpha = 0.65,
+  size  = 4,        # fixed base size for the glow
+  show.legend = FALSE
+) +
+# core point (smaller, solid)
+geom_sf(
+  data = cycle_pts_3857,
+  aes(size = trips),
+  shape = 21,
+  fill  = "springgreen",   # or "cyan3", "springgreen3"
+  color = "yellow",
+  stroke = 0.8,
+  alpha  = 1
+) +
+  coord_sf(xlim = c(bb_3857["xmin"], bb_3857["xmax"]),
+           ylim = c(bb_3857["ymin"], bb_3857["ymax"]),
+           expand = FALSE, crs = st_crs(3857)) +
+  annotation_scale(location = "bl", width_hint = 0.25, text_cex = 0.7) +
+  annotation_north_arrow(location = "tr", style = north_arrow_fancy_orienteering) +
+  theme_void() +
+  labs(title = "Cycle Hire Start Stations (sample data on OSM tiles)",
+       size = "Trips")
+```
+
+# 💡 Story Sparks
+
+| Story Idea | Core Question | Visualization | Why It Matters |
+|------------|---------------|---------------|----------------|
+
+|  |  |  |  |
+|------------------|------------------|------------------|------------------|
+| **The Breath of the City** | How do London’s transport flows resemble biological rhythms? | Time-series of daily ridership peaks. | Shows how human mobility mirrors life’s natural cycles. |
+
+|  |  |  |  |
+|------------------|------------------|------------------|------------------|
+| **When London Paused** | What did the pandemic reveal about dependence on movement? | Before-and-after ridership comparison (2019 vs 2020). | Captures fragility and resilience in modern infrastructure. |
+
+|  |  |  |  |
+|------------------|------------------|------------------|------------------|
+| **The Rise of the Cyclist** | How did Londoners reclaim the streets via cycling? | Map of trip density pre- and post-lockdown. | Illustrates adaptive behavior under constraint. |
+
+|  |  |  |  |
+|------------------|------------------|------------------|------------------|
+| **The Geography of Delay** | Which stations create the largest ripple effects when disrupted? | Network-based delay propagation model. | Connects local events to city-wide consequences. |
+
+|  |  |  |  |
+|------------------|------------------|------------------|------------------|
+| **Underground Empathy** | Do certain lines reflect socioeconomic divides? | Overlay ridership with census data. | Reveals how movement encodes inequality. |
+
+# 🌍 Beyond the Underground
+
+The TfL datasets extend beyond transport—they’re a **social dataset** wrapped in motion. They trace where opportunity lies, how urban planning shapes behavior, and how collective rhythms respond to stress, weather, or policy change.
+
+Imagine joining TfL data with:
+
+-   **Weather records** → To see how rain reshapes the city’s mobility map.
+
+-   **Event data** → To observe London’s cultural pulse through ridership spikes.
+
+-   **Census and housing data** → To explore links between accessibility and affordability.
+
+Together, these connections form the **metabolism of the metropolis** — the invisible circulatory system that keeps London alive.
+
+# 🔮 Future Possibilities
+
+-   Integrate **live TfL API feeds** (train positions, service disruptions).
+
+-   Add **interactive dashboards** with Quarto + Plotly or Observable.
+
+-   Develop **“City Symphonies”**: sonifying transport data as daily rhythms.
+
+-   Expand comparative studies — “Paris vs. London,” “Tokyo’s Quiet Hours,” etc.
+
+# 📚 References & Credits
+
+-   Transport for London Open Data Portal: [https://tfl.gov.uk/info-for/open-data-users/our-open-data](https://tfl.gov.uk/info-for/open-data-users/our-open-data?utm_source=chatgpt.com)
+
+-   Greater London Authority: *London Datastore*
+
+-   OpenStreetMap contributors (for mapping)
+
+-   R packages: `{tidyverse}`, `{sf}`, `{lubridate}`, `{ggplot2}`
+
+-   Insightful Tales, 2025 — “Where data finds its narrative.”
