@@ -28,6 +28,8 @@ website:
             text: "🦋 Butterfly Effect"
           - href: stories/weather-memory.qmd
             text: "🌦️ Weather Memory"
+          - href: stories/the-hidden-rhythm-of-baseball.qmd
+            text: "⚾️ The Hidden Rhythm of Baseball"
       - text: "🏛️ Historical"
         menu: 
           - href: data-science/genesis-of-data.qmd

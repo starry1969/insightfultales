@@ -1,0 +1,230 @@
+---
+title: "⚾️ The Hidden Rhythm of Baseball"
+subtitle: "Why every era seems to have its own heartbeat — and what that rhythm reveals about us"
+description: "A hundred years of baseball heard, not just measured — where numbers whisper the story of how the game learned to breathe differently with each generation."
+categories: [stories, sports, culture]
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: show
+    smooth-scroll: true
+    df-print: paged
+    anchor-sections: true
+execute:
+  warning: false
+  message: false
+  echo: true
+  freeze: auto
+---
+
+> *What if every statistic were a note, and a hundred years of baseball formed a song we’ve only just begun to hear?*
+
+## [🧢]{aria-hidden="true"} The Game That Breathes
+
+Baseball isn’t timed by a clock, but it still has a **tempo**. Some eras feel quick and scrappy, others patient and thunderous. In this story, we’ll *listen* to that tempo using long‑run league averages. If you don’t speak data — no problem. Think of every chart as a **stethoscope** on the game’s chest.
+
+### [🧰]{aria-hidden="true"} What data are we using?
+
+We’ll use the well‑known **Lahman** database (public, free) through R. We’ll count simple things anyone can grasp: **runs**, **home runs**, **walks**, **strikeouts**, and **stolen bases**. From these counts, we compute commonsense rates, like “home runs **per plate appearance**.”
+
+```{r}
+library(tidyverse)
+library(Lahman)
+
+# Safe rate helper
+rate <- function(n, d) ifelse(d > 0, n / d, NA_real_)
+
+# Build league-level season summary from Teams
+season <- Teams %>%
+  transmute(
+    year = yearID,
+    g   = G,
+    r   = R,
+    hr  = HR,
+    bb  = BB,
+    so  = SO,
+    sb  = SB,
+    ab  = AB,
+    hbp = coalesce(HBP, 0L),
+    sf  = coalesce(SF, 0L),
+    pa  = AB + BB + hbp + sf
+  ) %>%
+  group_by(year) %>%
+  summarise(
+    g      = sum(g,  na.rm = TRUE),
+    r_pg   = rate(sum(r,  na.rm = TRUE), g),
+    # Use summed plate appearances; if pa has gaps early on, fall back to AB+BB
+    pa_sum = sum(pa, na.rm = TRUE),
+    abbb   = sum(ab + bb, na.rm = TRUE),
+    denom  = ifelse(pa_sum > 0, pa_sum, abbb),
+
+    hr_pa  = rate(sum(hr, na.rm = TRUE), denom),
+    bb_pa  = rate(sum(bb, na.rm = TRUE), denom),
+    so_pa  = rate(sum(so, na.rm = TRUE), denom),
+    sb_pa  = rate(sum(sb, na.rm = TRUE), denom)
+  ) %>%
+  ungroup() %>%
+  arrange(year) %>%
+  mutate(
+    # 5-year right-aligned moving average using base R (no zoo needed)
+    rpg_roll5 = as.numeric(stats::filter(r_pg, rep(1/5, 5), sides = 1)),
+    tto_share = hr_pa + bb_pa + so_pa,
+    bip_share = pmax(0, 1 - tto_share)
+  )
+```
+
+::: callout-tip\
+**Decoder**
+
+-   *per PA* ≈ per trip to the plate.
+
+-   *Runs per game* = average runs a team scores in a game that year.
+
+-   *Balls in play* = anything that isn’t a HR, walk, or strikeout.
+:::
+
+## [🎼]{aria-hidden="true"} A Heartbeat You Can See: Runs Per Game
+
+If the game were breathing, **runs per game** would be its chest rising and falling. Peaks = lively offense. Valleys = pitcher‑dominated eras.
+
+```{r}
+season %>%
+    ggplot(aes(year, r_pg)) +
+    geom_line(alpha = 0.85) +
+    geom_line(aes(y = rpg_roll5), linewidth = 1.1) +
+    labs(
+        title = "Runs per Team Game over Time",
+        subtitle = "The 5‑year smoother reveals gentle waves rather than a straight trend",
+        x = NULL, y = "Runs per game"
+    )
+```
+
+**What to notice:** The line **waves**. Offense doesn’t simply climb forever — it **surges and recedes** across generations.
+
+## [💥]{aria-hidden="true"} Fewer Things Happen, Louder When They Do
+
+Modern baseball increasingly ends in one of three ways: **home run, walk, or strikeout**. That means fewer balls are fielded. The game can *feel* slower between bursts of action, even while the big moments are bigger.
+
+```{r}
+season %>%
+    select(year, hr_pa, bb_pa, so_pa) %>%
+    pivot_longer(-year, names_to = "metric", values_to = "rate"
+    ) %>%
+    mutate(
+        metric = recode(metric,
+        hr_pa = "Home runs per PA",
+        bb_pa = "Walks per PA",
+        so_pa = "Strikeouts per PA")
+    ) %>%
+    ggplot(aes(year, rate, linetype = metric)) +
+    geom_line() +
+    labs(
+        title = "The Three True Outcomes over Time",
+        subtitle = "Share per plate appearance (league average)",
+        x = NULL, y = "Rate"
+    )
+```
+
+**What to notice:** Strikeouts climb steadily; home runs rise in bursts; walks bob up and down. Together they take up **more of the action pie**.
+
+## [🧶]{aria-hidden="true"} Thread Count: How Much Play Is *In* Play?
+
+Let’s peek at the **share of balls in play** — the portion of plate appearances that *require* a fielder to do something.
+
+```{r}
+season %>%
+    ggplot(aes(year, bip_share)) +
+    geom_line() +
+    labs(
+        title = "Balls In Play as a Share of All Plate Appearances",
+        subtitle = "When this falls, the game has fewer fielding plays and more all‑or‑nothing outcomes",
+        x = NULL, y = "Share (0–1)"
+    )
+```
+
+**What to notice:** When this dips, the game’s rhythm changes — fewer sprints and throws, more waiting for the next big swing.
+
+## [🏃]{aria-hidden="true"} Speed’s Comeback Arc
+
+Steals add heartbeat. Their rise and fall shows how teams toggle between **risk** and **power**.
+
+```{r}
+season %>%
+    ggplot(aes(year, sb_pa)) +
+    geom_line() +
+    labs(
+        title = "Stolen Bases per Plate Appearance",
+        subtitle = "Risk tolerance in motion",
+        x = NULL, y = "SB per PA"
+    )
+```
+
+**What to notice:** Cycles. The sport rediscovering speed isn’t nostalgia — it’s ecology. When defenses and pitchers neutralize power, **movement** becomes valuable again.
+
+## [🌀]{aria-hidden="true"} A Simple “Zeit Rhythm” Index
+
+To summarize the *feel* of an era, we blend four dials:
+
+-   **Power** (HR/PA)
+
+-   **Miss** (SO/PA)
+
+-   **Movement** (SB/PA)
+
+-   **Play in the Field** (Balls in play share, but we subtract it — less BIP = more all‑or‑nothing feel)
+
+The result is a single line: higher = louder, burstier baseball; lower = more contact‑heavy flow.
+
+```{r}
+zi <- season %>%
+  mutate(across(c(hr_pa, so_pa, sb_pa, bip_share), scale)) %>%
+  mutate(ZI = as.numeric(hr_pa + so_pa + sb_pa - bip_share)) %>%
+  mutate(ZI_roll5 = as.numeric(stats::filter(ZI, rep(1/5, 5), sides = 1))) %>%
+  select(year, ZI, ZI_roll5)
+
+
+
+zi %>% 
+    ggplot(aes(year, ZI)) +
+    geom_hline(yintercept = 0, linewidth = 0.3) +
+    geom_line(alpha = 0.55) +
+    geom_line(aes(y = ZI_roll5), linewidth = 1.1) +
+    labs(
+        title = "Zeit Rhythm Index",
+        subtitle = "A blended, z‑scored feel of power + miss + movement − balls in play",
+        x = NULL, y = "Index (0 ≈ average era)"
+    )
+```
+
+**What to notice:** The line **oscillates in multi‑decade waves** rather than drifting randomly — a hint that baseball self‑corrects when any one style takes over.
+
+## [🔭]{aria-hidden="true"} What This Suggests Next
+
+-   **Contact renaissance**: As pitchers and defenses optimize for strikeouts and power prevention, putting the ball in play may regain value — not as nostalgia, but as an *edge*.
+
+-   **Smart speed**: Selective stealing and hit‑and‑run tactics may return in pockets where they exploit pitcher/catcher timing.
+
+-   **Fielding theater**: If leagues want more visible action, rule tweaks that increase balls in play could shift the rhythm again.
+
+## [📦]{aria-hidden="true"} Reproducibility Notes
+
+-   **Source**: The public **Lahman** database via the `Lahman` R package.
+
+-   **Averages**: We averaged teams into a single league line per year to hear the broad rhythm (details will vary by ballpark or league).
+
+-   **Approximations**: Older seasons are missing some counts (like sacrifice flies). We used simple, conservative fallbacks that don’t change the big picture.
+
+-   **Smoothing**: A gentle 5‑year average makes the waves easier to see.
+
+## [📚]{aria-hidden="true"} References & Credits
+
+-   **Sean Lahman** — *Lahman Baseball Database* (public historical stats).
+
+-   **Lahman (R package, CRAN)** — convenient access to the database.
+
+-   **tidyverse (CRAN)** — data wrangling and plotting in R.
+
+-   **zoo (CRAN)** — rolling averages.
+
+*Inspirations:* FanGraphs and Baseball‑Reference for longstanding public analytics; the broader sabermetric community for opening up the conversation.

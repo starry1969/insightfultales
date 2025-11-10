@@ -57,7 +57,7 @@ By correlating daily anomalies, this piece explores how temperature and precipit
 
 <details class="story">
 
-<summary>[⚾]{aria-hidden="true"} <strong>Baseball Zeitgeist</strong> — A Century of Swings</summary>
+<summary>[⚾]{aria-hidden="true"} <a href="stories/the-hidden-rhythm-of-baseball.html"><strong>Baseball Zeitgeist</strong></a> — A Century of Swings</summary>
 
 Using Lahman’s database, this story blends sport, sociology, and technology to show how America’s game mirrors its evolving spirit — from dead-ball grit to data-driven power.
 
