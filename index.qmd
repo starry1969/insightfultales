@@ -20,7 +20,7 @@ execute:
 
 <section class="hero">
 
-<p>Where data finds its narrative — original visual and analytical stories built with Quarto.</p>
+<p>Where data finds its narrative — original visual and analytical stories.</p>
 
 </section>
 
