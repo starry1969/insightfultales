@@ -1,63 +1,63 @@
 [
   {
-    "objectID": "stories/when-growth-forgot-happiness-the-hidden-curve-of-hidden-progress.html",
-    "href": "stories/when-growth-forgot-happiness-the-hidden-curve-of-hidden-progress.html",
+    "objectID": "stories/when-growth-forgot-happiness-the-hidden-curve-of-human-progress.html",
+    "href": "stories/when-growth-forgot-happiness-the-hidden-curve-of-human-progress.html",
     "title": "🌏 When Growth Forgot Happiness — The Hidden Curve of Human Progress",
     "section": "",
     "text": "For decades, countries chased GDP — the grand total of what they produced.\nBut can numbers capture joy, belonging, or peace of mind?\nThis story starts with a simple but daring question:\n\nIf GDP rises, does life always feel better?\n\nWe’ll keep the math gentle and the meaning clear.\nYou don’t need a statistics background — only curiosity."
   },
   {
-    "objectID": "stories/when-growth-forgot-happiness-the-hidden-curve-of-hidden-progress.html#the-question-what-if-growth-isnt-happiness",
-    "href": "stories/when-growth-forgot-happiness-the-hidden-curve-of-hidden-progress.html#the-question-what-if-growth-isnt-happiness",
+    "objectID": "stories/when-growth-forgot-happiness-the-hidden-curve-of-human-progress.html#the-question-what-if-growth-isnt-happiness",
+    "href": "stories/when-growth-forgot-happiness-the-hidden-curve-of-human-progress.html#the-question-what-if-growth-isnt-happiness",
     "title": "🌏 When Growth Forgot Happiness — The Hidden Curve of Human Progress",
     "section": "",
     "text": "For decades, countries chased GDP — the grand total of what they produced.\nBut can numbers capture joy, belonging, or peace of mind?\nThis story starts with a simple but daring question:\n\nIf GDP rises, does life always feel better?\n\nWe’ll keep the math gentle and the meaning clear.\nYou don’t need a statistics background — only curiosity."
   },
   {
-    "objectID": "stories/when-growth-forgot-happiness-the-hidden-curve-of-hidden-progress.html#building-a-fair-baseline",
-    "href": "stories/when-growth-forgot-happiness-the-hidden-curve-of-hidden-progress.html#building-a-fair-baseline",
+    "objectID": "stories/when-growth-forgot-happiness-the-hidden-curve-of-human-progress.html#building-a-fair-baseline",
+    "href": "stories/when-growth-forgot-happiness-the-hidden-curve-of-human-progress.html#building-a-fair-baseline",
     "title": "🌏 When Growth Forgot Happiness — The Hidden Curve of Human Progress",
     "section": "🔢 2. Building a Fair Baseline",
     "text": "🔢 2. Building a Fair Baseline\nWe’ll connect income (GDP per person) and life expectancy,\nthen look for nations that live longer or shorter lives than their income predicts.\nThat difference — the gap between money and meaning —\nis what we call the ✨ Decoupling Index.\n\n\nCode\ndf &lt;- gapminder %&gt;%\n    mutate(\n        log_gdppc = log10(gdpPercap),\n        decade = (year %/% 10) * 10\n    )\n\nlo &lt;- loess(lifeExp ~ log_gdppc + year, data = df, span = 0.5, degree = 2)\n\ndf_index &lt;- df %&gt;%\n    mutate(\n        lifeExp_hat = predict(lo, newdata = df),\n        decouple = lifeExp - lifeExp_hat\n    )\n\n\nInterpretation:\n\n💙 Positive Index → People live longer than income predicts.\n❤️ Negative Index → People live shorter lives than income predicts."
   },
   {
-    "objectID": "stories/when-growth-forgot-happiness-the-hidden-curve-of-hidden-progress.html#the-hidden-curve-appears",
-    "href": "stories/when-growth-forgot-happiness-the-hidden-curve-of-hidden-progress.html#the-hidden-curve-appears",
+    "objectID": "stories/when-growth-forgot-happiness-the-hidden-curve-of-human-progress.html#the-hidden-curve-appears",
+    "href": "stories/when-growth-forgot-happiness-the-hidden-curve-of-human-progress.html#the-hidden-curve-appears",
     "title": "🌏 When Growth Forgot Happiness — The Hidden Curve of Human Progress",
     "section": "📈 3. The Hidden Curve Appears",
     "text": "📈 3. The Hidden Curve Appears\n\n\nCode\ndf_index %&gt;%\n    ggplot(aes(x = gdpPercap, y = lifeExp, color = decouple)) +\n    geom_point(alpha = 0.6) +\n    scale_x_log10(labels = label_dollar(scale = 1)) +\n    scale_y_continuous(limits = c(25, 90)) +\n    scale_color_gradient2(\n        low = \"#a50f15\", mid = \"#f0f0f0\", high = \"#08519c\",\n        midpoint = 0,\n        name = \"Decoupling\\nIndex\"\n    ) +\n    labs(x = \"GDP per person (log scale)\", y = \"Life expectancy (years)\") +\n    theme_minimal(base_size = 13)\n\n\n\n\n\n💫 The Hidden Curve — life vs. income, colored by Decoupling Index.\n\n\n\n\n✨ Look closely: some nations sparkle above the line — others droop below.\nThe curve isn’t smooth progress; it’s a collage of human choices."
   },
   {
-    "objectID": "stories/when-growth-forgot-happiness-the-hidden-curve-of-hidden-progress.html#time-reveals-who-outran-money",
-    "href": "stories/when-growth-forgot-happiness-the-hidden-curve-of-hidden-progress.html#time-reveals-who-outran-money",
+    "objectID": "stories/when-growth-forgot-happiness-the-hidden-curve-of-human-progress.html#time-reveals-who-outran-money",
+    "href": "stories/when-growth-forgot-happiness-the-hidden-curve-of-human-progress.html#time-reveals-who-outran-money",
     "title": "🌏 When Growth Forgot Happiness — The Hidden Curve of Human Progress",
     "section": "⏳ 4. Time Reveals Who Outran Money",
     "text": "⏳ 4. Time Reveals Who Outran Money\n\n\nCode\ntrend &lt;- df_index %&gt;%\n    group_by(country) %&gt;%\n    arrange(year, .by_group = TRUE) %&gt;%\n    summarize(\n        start_decouple = first(decouple),\n        end_decouple   = last(decouple),\n        change = end_decouple - start_decouple,\n        continent = first(continent),\n        .groups = \"drop\"\n    ) %&gt;%\n    arrange(desc(change))\n\n\n\n\nCode\ntop_risers   &lt;- trend |&gt; slice_max(change, n = 10)\ntop_slippers &lt;- trend |&gt; slice_min(change, n = 10)\n\nbind_rows(\n    top_risers |&gt; mutate(type = \"🌟 Riser\"),\n    top_slippers |&gt; mutate(type = \"💤 Slipper\")\n    ) |&gt;\n    select(type, country, continent, start_decouple, end_decouple, change) |&gt;\n    knitr::kable(digits = 2)\n\n\n\n\n\n\n\n\n\n\n\n\n\ntype\ncountry\ncontinent\nstart_decouple\nend_decouple\nchange\n\n\n\n\n🌟 Riser\nNicaragua\nAmericas\n-10.82\n9.60\n20.42\n\n\n🌟 Riser\nSaudi Arabia\nAsia\n-22.50\n-3.82\n18.68\n\n\n🌟 Riser\nGambia\nAfrica\n-7.86\n8.47\n16.33\n\n\n🌟 Riser\nHaiti\nAmericas\n-9.41\n5.83\n15.24\n\n\n🌟 Riser\nMadagascar\nAfrica\n-7.82\n5.63\n13.45\n\n\n🌟 Riser\nComoros\nAfrica\n-1.52\n11.85\n13.37\n\n\n🌟 Riser\nBahrain\nAsia\n-16.02\n-2.79\n13.23\n\n\n🌟 Riser\nPeru\nAmericas\n-11.47\n1.13\n12.60\n\n\n🌟 Riser\nHonduras\nAmericas\n-7.07\n4.74\n11.81\n\n\n🌟 Riser\nSenegal\nAfrica\n-7.27\n4.47\n11.74\n\n\n💤 Slipper\nBotswana\nAfrica\n7.26\n-22.74\n-30.00\n\n\n💤 Slipper\nSwaziland\nAfrica\n-1.15\n-27.56\n-26.41\n\n\n💤 Slipper\nLesotho\nAfrica\n4.73\n-15.11\n-19.84\n\n\n💤 Slipper\nEquatorial Guinea\nAfrica\n-2.94\n-21.69\n-18.74\n\n\n💤 Slipper\nTaiwan\nAsia\n15.55\n0.18\n-15.37\n\n\n💤 Slipper\nZimbabwe\nAfrica\n10.94\n-3.91\n-14.84\n\n\n💤 Slipper\nZambia\nAfrica\n-0.51\n-13.23\n-12.72\n\n\n💤 Slipper\nTrinidad and Tobago\nAmericas\n6.31\n-5.73\n-12.04\n\n\n💤 Slipper\nSingapore\nAsia\n10.79\n-1.00\n-11.79\n\n\n💤 Slipper\nThailand\nAsia\n11.19\n0.28\n-10.91\n\n\n\n🌍 Top ten risers and slippers by Decoupling Index.\n\n\nThese countries are your story leads — places where life pulled ahead or fell behind wealth."
   },
   {
-    "objectID": "stories/when-growth-forgot-happiness-the-hidden-curve-of-hidden-progress.html#country-micro-stories-human-over-graph",
-    "href": "stories/when-growth-forgot-happiness-the-hidden-curve-of-hidden-progress.html#country-micro-stories-human-over-graph",
+    "objectID": "stories/when-growth-forgot-happiness-the-hidden-curve-of-human-progress.html#country-micro-stories-human-over-graph",
+    "href": "stories/when-growth-forgot-happiness-the-hidden-curve-of-human-progress.html#country-micro-stories-human-over-graph",
     "title": "🌏 When Growth Forgot Happiness — The Hidden Curve of Human Progress",
     "section": "🇧🇹 5. Country Micro-Stories — Human Over Graph",
     "text": "🇧🇹 5. Country Micro-Stories — Human Over Graph\nWe’ll soon explore pairs like:\n\n🇧🇹 Bhutan, where happiness led the economy.\n🇯🇵 Japan, where prosperity met stagnation.\n🇺🇸 United States, where health plateaued despite riches.\n\nEach line tells a tale — of policy, culture, and priorities.\n\n\nCode\nset.seed(1)\nCASE_RISER   &lt;- top_risers$country[1]\nCASE_SLIPPER &lt;- top_slippers$country[1]\nglue(\"Riser example: {CASE_RISER}\")\n\n\nRiser example: Nicaragua\n\n\nCode\nglue(\"Slipper example: {CASE_SLIPPER}\")\n\n\nSlipper example: Botswana"
   },
   {
-    "objectID": "stories/when-growth-forgot-happiness-the-hidden-curve-of-hidden-progress.html#the-quiet-threshold-when-money-stops-buying-life",
-    "href": "stories/when-growth-forgot-happiness-the-hidden-curve-of-hidden-progress.html#the-quiet-threshold-when-money-stops-buying-life",
+    "objectID": "stories/when-growth-forgot-happiness-the-hidden-curve-of-human-progress.html#the-quiet-threshold-when-money-stops-buying-life",
+    "href": "stories/when-growth-forgot-happiness-the-hidden-curve-of-human-progress.html#the-quiet-threshold-when-money-stops-buying-life",
     "title": "🌏 When Growth Forgot Happiness — The Hidden Curve of Human Progress",
     "section": "💡 6. The Quiet Threshold — When Money Stops Buying Life",
     "text": "💡 6. The Quiet Threshold — When Money Stops Buying Life\n\n\nCode\nref_year &lt;- 2007\ncurve_df &lt;- df_index |&gt; filter(year == ref_year)\nlo_ref &lt;- loess(lifeExp ~ log_gdppc, data = curve_df, span = 0.5)\ngridx &lt;- tibble(log_gdppc = seq(min(curve_df$log_gdppc), max(curve_df$log_gdppc), length.out = 200))\npred  &lt;- predict(lo_ref, newdata = gridx)\ncurve_plot &lt;- bind_cols(gridx, tibble(lifeExp_hat = pred)) |&gt;\n    mutate(gdpPercap = 10^log_gdppc)\n\ncurve_df |&gt;\n    ggplot(aes(gdpPercap, lifeExp)) +\n    geom_point(alpha = 0.6) +\n    geom_line(data = curve_plot, aes(gdpPercap, lifeExp_hat), linewidth = 1) +\n    scale_x_log10(labels = label_dollar(scale = 1)) +\n    labs(\n        x = \"GDP per person (log scale)\",\n        y = \"Life expectancy (years)\",\n        subtitle = \"Beyond this bend, more income buys little extra life.\"\n    ) +\n    theme_minimal(base_size = 13)\n\n\n\n\n\n\n\n\n\nBeyond a comfort zone (roughly $30 000 per person),\nthe curve flattens — proof that life’s deepest gains come from what money can’t buy."
   },
   {
-    "objectID": "stories/when-growth-forgot-happiness-the-hidden-curve-of-hidden-progress.html#where-we-go-next",
-    "href": "stories/when-growth-forgot-happiness-the-hidden-curve-of-hidden-progress.html#where-we-go-next",
+    "objectID": "stories/when-growth-forgot-happiness-the-hidden-curve-of-human-progress.html#where-we-go-next",
+    "href": "stories/when-growth-forgot-happiness-the-hidden-curve-of-human-progress.html#where-we-go-next",
     "title": "🌏 When Growth Forgot Happiness — The Hidden Curve of Human Progress",
     "section": "🚀 7. Where We Go Next",
     "text": "🚀 7. Where We Go Next\nEach finding births a future story:\n\n😊 The Happiness Deficit — when wealth outpaces joy.\n🔄 The Curve That Bends Twice — tech progress, then overwhelm.\n🧮 Counting What Counts — education, safety, belonging.\n💬 Data of Dignity — measuring lives beyond the ledger.\n\nOur mission: turn data into empathy, and statistics into stories that feel alive."
   },
   {
-    "objectID": "stories/when-growth-forgot-happiness-the-hidden-curve-of-hidden-progress.html#references-credits",
-    "href": "stories/when-growth-forgot-happiness-the-hidden-curve-of-hidden-progress.html#references-credits",
+    "objectID": "stories/when-growth-forgot-happiness-the-hidden-curve-of-human-progress.html#references-credits",
+    "href": "stories/when-growth-forgot-happiness-the-hidden-curve-of-human-progress.html#references-credits",
     "title": "🌏 When Growth Forgot Happiness — The Hidden Curve of Human Progress",
     "section": "📚 References & Credits",
     "text": "📚 References & Credits\nData Sources\n\n🌐 Gapminder Foundation — Gapminder Data Portal\n🌍 World Bank Open Data — World Development Indicators\n🇺🇳 UNDP — Human Development Reports\n😊 World Happiness Report (UN SDSN)\n\nBackground & Inspiration\n\n📖 Easterlin (1974) Does Economic Growth Improve the Human Lot?\n🕊️ Sen (1999) Development as Freedom\n💭 Layard (2005) Happiness: Lessons from a New Science\n🌈 Rosling (2018) Factfulness\n\nCredits\n\n✍️ Concept & Writing — Insightful Tales\n🎨 Visual Design — Insightful Tales Studio\n📊 Data Stewardship — Gapminder Foundation"
