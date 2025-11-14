@@ -1,0 +1,228 @@
+---
+title: "🌏 When Growth Forgot Happiness — The Hidden Curve of Human Progress"
+subtitle: "A Gapminder Tale of Wealth, Well-Being, and the Uneven Pursuit of a Better Life."
+description: >
+  Economic growth was supposed to lift all boats. But did more money always buy better lives?
+  Using Gapminder, we trace the hidden curve where prosperity rose yet well-being lagged — and ask what truly counts as progress.
+categories: [data-science, well-being, economics]
+keywords: [Gapminder, GDP per capita, life expectancy, happiness, human development, decoupling]
+format:
+  html:
+    toc: true
+    toc-title: "🧭 Navigate"
+    toc-depth: 3
+    number-sections: false
+    code-fold: show
+    smooth-scroll: true
+    df-print: paged
+    anchor-sections: true
+execute:
+  warning: false
+  message: false
+  echo: true
+  freeze: auto
+---
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+library(gapminder)
+library(glue)
+library(scales)
+library(modelr)
+library(broom)
+```
+
+## 🕊️ 1. The Question — What if Growth Isn’t Happiness?
+
+For decades, countries chased **GDP** — the grand total of what they produced.\
+But can numbers capture joy, belonging, or peace of mind?
+
+This story starts with a simple but daring question:
+
+> **If GDP rises, does life always feel better?**
+
+We’ll keep the math gentle and the meaning clear.\
+You don’t need a statistics background — only curiosity.
+
+## 🔢 2. Building a Fair Baseline
+
+We’ll connect **income (GDP per person)** and **life expectancy**,\
+then look for nations that live **longer or shorter** lives than their income predicts.
+
+That difference — the gap between *money* and *meaning* —\
+is what we call the **✨ Decoupling Index**.
+
+```{r}
+#| label: decoupling-index
+df <- gapminder %>%
+    mutate(
+        log_gdppc = log10(gdpPercap),
+        decade = (year %/% 10) * 10
+    )
+
+lo <- loess(lifeExp ~ log_gdppc + year, data = df, span = 0.5, degree = 2)
+
+df_index <- df %>%
+    mutate(
+        lifeExp_hat = predict(lo, newdata = df),
+        decouple = lifeExp - lifeExp_hat
+    )
+```
+
+**Interpretation:**
+
+-   💙 Positive Index → People live longer than income predicts.
+
+-   ❤️ Negative Index → People live shorter lives than income predicts.
+
+## 📈 3. The Hidden Curve Appears
+
+```{r}
+#| label: hidden-curve
+#| fig-cap: "💫 The Hidden Curve — life vs. income, colored by Decoupling Index."
+df_index %>%
+    ggplot(aes(x = gdpPercap, y = lifeExp, color = decouple)) +
+    geom_point(alpha = 0.6) +
+    scale_x_log10(labels = label_dollar(scale = 1)) +
+    scale_y_continuous(limits = c(25, 90)) +
+    scale_color_gradient2(
+        low = "#a50f15", mid = "#f0f0f0", high = "#08519c",
+        midpoint = 0,
+        name = "Decoupling\nIndex"
+    ) +
+    labs(x = "GDP per person (log scale)", y = "Life expectancy (years)") +
+    theme_minimal(base_size = 13)
+```
+
+✨ Look closely: some nations sparkle above the line — others droop below.\
+The curve isn’t smooth progress; it’s a collage of human choices.
+
+## ⏳ 4. Time Reveals Who Outran Money
+
+```{r}
+#| label: trends
+trend <- df_index %>%
+    group_by(country) %>%
+    arrange(year, .by_group = TRUE) %>%
+    summarize(
+        start_decouple = first(decouple),
+        end_decouple   = last(decouple),
+        change = end_decouple - start_decouple,
+        continent = first(continent),
+        .groups = "drop"
+    ) %>%
+    arrange(desc(change))
+
+```
+
+```{r}
+#| label: table
+#| fig-cap: "🌍 Top ten risers and slippers by Decoupling Index."
+top_risers   <- trend |> slice_max(change, n = 10)
+top_slippers <- trend |> slice_min(change, n = 10)
+
+bind_rows(
+    top_risers |> mutate(type = "🌟 Riser"),
+    top_slippers |> mutate(type = "💤 Slipper")
+    ) |>
+    select(type, country, continent, start_decouple, end_decouple, change) |>
+    knitr::kable(digits = 2)
+
+```
+
+These countries are your story leads — places where **life pulled ahead** or **fell behind** wealth.
+
+## 🇧🇹 5. Country Micro-Stories — Human Over Graph
+
+We’ll soon explore pairs like:
+
+-   🇧🇹 **Bhutan**, where happiness led the economy.
+
+-   🇯🇵 **Japan**, where prosperity met stagnation.
+
+-   🇺🇸 **United States**, where health plateaued despite riches.
+
+Each line tells a tale — of policy, culture, and priorities.
+
+```{r}
+#| label: case-example
+set.seed(1)
+CASE_RISER   <- top_risers$country[1]
+CASE_SLIPPER <- top_slippers$country[1]
+glue("Riser example: {CASE_RISER}")
+glue("Slipper example: {CASE_SLIPPER}")
+```
+
+## 💡 6. The Quiet Threshold — When Money Stops Buying Life
+
+```{r}
+#| label: threshold
+ref_year <- 2007
+curve_df <- df_index |> filter(year == ref_year)
+lo_ref <- loess(lifeExp ~ log_gdppc, data = curve_df, span = 0.5)
+gridx <- tibble(log_gdppc = seq(min(curve_df$log_gdppc), max(curve_df$log_gdppc), length.out = 200))
+pred  <- predict(lo_ref, newdata = gridx)
+curve_plot <- bind_cols(gridx, tibble(lifeExp_hat = pred)) |>
+    mutate(gdpPercap = 10^log_gdppc)
+
+curve_df |>
+    ggplot(aes(gdpPercap, lifeExp)) +
+    geom_point(alpha = 0.6) +
+    geom_line(data = curve_plot, aes(gdpPercap, lifeExp_hat), linewidth = 1) +
+    scale_x_log10(labels = label_dollar(scale = 1)) +
+    labs(
+        x = "GDP per person (log scale)",
+        y = "Life expectancy (years)",
+        subtitle = "Beyond this bend, more income buys little extra life."
+    ) +
+    theme_minimal(base_size = 13)
+```
+
+Beyond a comfort zone (roughly \$30 000 per person),\
+**the curve flattens** — proof that life’s deepest gains come from what money can’t buy.
+
+## 🚀 7. Where We Go Next
+
+Each finding births a future story:
+
+-   😊 **The Happiness Deficit** — when wealth outpaces joy.
+
+-   🔄 **The Curve That Bends Twice** — tech progress, then overwhelm.
+
+-   🧮 **Counting What Counts** — education, safety, belonging.
+
+-   💬 **Data of Dignity** — measuring lives beyond the ledger.
+
+Our mission: turn data into empathy, and statistics into stories that feel *alive*.
+
+## 📚 References & Credits
+
+**Data Sources**
+
+-   🌐 Gapminder Foundation — *Gapminder Data Portal*
+
+-   🌍 World Bank Open Data — *World Development Indicators*
+
+-   🇺🇳 UNDP — *Human Development Reports*
+
+-   😊 World Happiness Report (UN SDSN)
+
+**Background & Inspiration**
+
+-   📖 Easterlin (1974) *Does Economic Growth Improve the Human Lot?*
+
+-   🕊️ Sen (1999) *Development as Freedom*
+
+-   💭 Layard (2005) *Happiness: Lessons from a New Science*
+
+-   🌈 Rosling (2018) *Factfulness*
+
+**Credits**
+
+-   ✍️ Concept & Writing — *Insightful Tales*
+
+-   🎨 Visual Design — *Insightful Tales Studio*
+
+-   📊 Data Stewardship — *Gapminder Foundation*

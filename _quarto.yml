@@ -30,6 +30,8 @@ website:
             text: "🌦️ Weather Memory"
           - href: stories/the-hidden-rhythm-of-baseball.qmd
             text: "⚾️ The Hidden Rhythm of Baseball"
+          - href: stories/when-growth-forgot-happiness-the-hidden-curve-of-human-progress.qmd
+            text: "🌏 When Growth Forgot Happiness — The Hidden Curve of Human Progress"
       - text: "🏛️ Historical"
         menu: 
           - href: data-science/genesis-of-data.qmd

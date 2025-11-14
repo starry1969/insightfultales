@@ -50,13 +50,80 @@ a {
   text-decoration: none;
 }
 
-/* --- Hero section --- */
+/* ===========================
+   HERO BASE STYLES
+   =========================== */
+
 .hero {
-  background: linear-gradient(135deg, var(--brand2), var(--brand));
-  color: #fff;
-  border-radius: 14px;
-  padding: 2rem 1.25rem;
+  padding: 3rem 1.5rem;
+  border-radius: 1.5rem;
+  margin-bottom: 2.75rem;
+  text-align: center;
+  color: #ffffff;
 }
+
+.hero__inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.hero__title {
+  font-size: clamp(2.1rem, 3vw, 2.6rem);
+  margin-bottom: 0.6rem;
+}
+
+.hero__subtitle {
+  font-weight: 400;
+  margin-top: 0;
+  opacity: 0.96;
+}
+
+.hero__summary {
+  margin-top: 1.7rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  opacity: 0.96;
+}
+
+/* Optional: hide decorative emojis from screen readers */
+.hero__emoji[aria-hidden="true"] {
+  speak: none;
+}
+
+/* ===========================
+   DATASET BADGE
+   =========================== */
+
+.dataset-badge {
+  display: inline-block;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  backdrop-filter: blur(3px);
+  font-size: 0.95rem;
+}
+
+/* Generic "light on dark" badge */
+.dataset-badge--light {
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+}
+
+/* ===========================
+   GAPMINDER VARIANT
+   =========================== */
+
+.hero--gapminder {
+  /* blue → teal → gold global-progress gradient */
+  background: linear-gradient(135deg, #005f99 0%, #008ecc 40%, #e3b505 100%);
+}
+
+/* If you ever need a Gapminder-specific badge tweak later */
+.dataset-badge--gapminder {
+  /* currently same as --light; override here if needed */
+}
+
 
 /* --- Small screens --- */
 @media (max-width: 768px) {
