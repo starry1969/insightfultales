@@ -2,6 +2,21 @@
 title: "🌦 Weather Memory"
 subtitle: "Do flight delays 'remember' yesterday's weather? Evidence from nycflights13."
 description: "Bad weather can disrupt schedules, but does the pain linger after skies clear? This short data story explores whether today's flight delays still carry the fingerprint of yesterday's weather — a simple form of system memory."
+keywords: [
+  weather memory,
+  flight delays,
+  weather and delays,
+  lagged weather effects,
+  delay propagation,
+  aviation weather impacts,
+  NYC flights,
+  nycflights13,
+  temporal dependence,
+  system memory,
+  weather persistence,
+  airline performance,
+  daily weather effects
+]
 categories: [climate, systems, data-science]
 format:
   html:

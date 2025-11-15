@@ -2,6 +2,23 @@
 title: "✈️ nycflights13: The Dataset That Took Off"
 subtitle: "How one year of New York flights became one of the most famous datasets in data science"
 description: "A richly detailed dataset of all 336,776 flights departing New York City in 2013 — curated by Hadley Wickham and the tidyverse team from U.S. Bureau of Transportation Statistics data. It’s one of the most iconic datasets in modern data science, built to teach real-world data wrangling, visualization, and relational joins through an engaging, tangible subject: air travel."
+keywords: [
+  nycflights13,
+  flight data,
+  aviation dataset,
+  New York flights,
+  2013 flights,
+  Bureau of Transportation Statistics,
+  tidyverse,
+  data wrangling,
+  relational data,
+  flight delays,
+  departure delays,
+  arrival delays,
+  airline performance,
+  data science education,
+  exploratory data analysis
+]
 categories: [History of Data Science, Transportation & Infrastructure, Education & Methodology]
 format:
   html:

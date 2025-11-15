@@ -1,5 +1,5 @@
 ---
-title: "Insightful Tales"
+title: "🌀 Insightful Tales"
 subtitle: "Where stories become narrative."
 description: "Insightful Tales is where numbers find their voice. Through thoughtful storytelling, rich visuals, and clear analysis, the site turns datasets into human-focused narratives about how the world moves, grows, and remembers."
 keywords: [

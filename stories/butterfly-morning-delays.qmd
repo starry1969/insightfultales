@@ -2,6 +2,22 @@
 title: "🦋 Butterfly Morning Delays"
 subtitle: "How early-morning schedule noise ripples through the rest of the day."
 description: "A story about cause and consequence in motion — how a stormy sunrise or a missed departure can reshape an entire day of air travel."
+keywords: [
+  flight delays,
+  morning delays,
+  delay propagation,
+  aviation networks,
+  air traffic ripple effects,
+  NYC flights,
+  airport congestion,
+  schedule disruptions,
+  aviation data analysis,
+  delay chains,
+  butterfly effect,
+  airline performance,
+  morning schedule noise,
+  air travel patterns
+]
 categories: ["flights", "delays", "nycflights13"]
 format:
   html:

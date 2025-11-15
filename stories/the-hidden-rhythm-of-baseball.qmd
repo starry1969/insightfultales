@@ -2,6 +2,22 @@
 title: "⚾️ The Hidden Rhythm of Baseball"
 subtitle: "Why every era seems to have its own heartbeat — and what that rhythm reveals about us"
 description: "A hundred years of baseball heard, not just measured — where numbers whisper the story of how the game learned to breathe differently with each generation."
+keywords: [
+  baseball history,
+  baseball eras,
+  sabermetrics,
+  baseball analytics,
+  MLB trends,
+  historical baseball data,
+  era-based performance,
+  evolution of baseball,
+  baseball culture,
+  pace of play,
+  baseball rhythm,
+  generational shifts in baseball,
+  MLB statistics,
+  long-term sports patterns
+]
 categories: [stories, sports, culture]
 format:
   html:

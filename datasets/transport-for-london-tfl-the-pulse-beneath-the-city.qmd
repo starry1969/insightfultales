@@ -2,6 +2,23 @@
 title: "<span aria-hidden='true'>🚇</span> Transport for London (TfL) — The Pulse Beneath the City"
 subtitle: "How data reveals the hidden rhythm of London’s movement."
 description: "A look into the heartbeat of London through TfL’s open data — exploring Oyster and Contactless journeys, Tube entries and exits, and Cycle Hire usage to understand the patterns of a living metropolis."
+keywords: [
+  Transport for London,
+  TfL open data,
+  London transport data,
+  Tube ridership,
+  Oyster journeys,
+  Contactless journeys,
+  cycle hire data,
+  mobility patterns,
+  urban mobility,
+  transport analytics,
+  ridership trends,
+  London commuting,
+  public transport data,
+  city movement patterns,
+  open mobility datasets
+]
 categories: [data-science, urban-life, history]
 format:
   html:

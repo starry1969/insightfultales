@@ -2,6 +2,22 @@
 title: "🌦️ The NOAA Daily Weather Dataset"
 subtitle: "A planet’s diary — recording our everyday atmosphere, one day at a time."
 description: "The NOAA Daily Weather dataset, curated by the National Centers for Environmental Information (NCEI), is one of the world’s most detailed archives of day-by-day weather. It preserves the highs, lows, and patterns of the planet’s pulse — turning routine weather into long-term climate memory."
+keywords: [
+  NOAA Daily Weather,
+  GHCN daily,
+  NOAA climate data,
+  daily weather observations,
+  historical weather data,
+  temperature records,
+  precipitation records,
+  climate trends,
+  NCEI dataset,
+  weather variability,
+  climate analysis,
+  meteorological data,
+  long-term weather patterns,
+  environmental data
+]
 categories: [data-science, climate, history]
 image: images/noaa_daily_weather_cover.png
 format:

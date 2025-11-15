@@ -2,6 +2,21 @@
 title: "🧭 The Geography of Luck"
 subtitle: "The fortune of birthplaces and borders — tracing how chance and geography conspire to shape our destinies."
 description: "What we call “luck” often begins with latitude and longitude. This story uncovers how place, mobility, and systems intertwine to shape the fortunes of people and nations."
+keywords: [
+  geography of luck,
+  birthplace inequality,
+  geographic inequality,
+  borders and opportunity,
+  mobility and place,
+  global inequality,
+  chance of birth,
+  latitude effects,
+  place and destiny,
+  economic geography,
+  spatial inequality,
+  human development patterns,
+  global mobility
+]
 categories: [geography, sociology, economics]
 format:
   html:
