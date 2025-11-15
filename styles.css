@@ -166,7 +166,25 @@ details.evolution > summary:hover {
   speak: none;
 }
 
+/* hides categories */
 .quarto-category,
-.quarto-keywords {
+.quarto-categories,
+.sidebar-title > .quarto-category {
+  display: none !important;
+}
+
+/* hides keywords */
+.quarto-keyword,
+.quarto-keywords,
+.quarto-keyword-list,
+div.keywords,
+span.keyword,
+p.keywords {
+  display: none !important;
+}
+
+/* hides whole metadata block, if grouped */
+.quarto-title-meta,
+.quarto-title-meta-heading {
   display: none !important;
 }
