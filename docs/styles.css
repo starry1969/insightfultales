@@ -1,13 +1,68 @@
 /* ================================
-   Insightful Tales — Minimal CSS
+   Insightful Tales — CSS
    ================================ */
 
-/* --- Tokens --- */
+/* ==============
+   Design Tokens
+   ============== */
 :root {
+  /* Existing layout tokens */
   --nav-logo-h: 3rem;
   --bs-navbar-brand-height: 6rem;
+  
+  /* Core brand colors */
+  --color-brand-dark:      #0F172A;   /* Midnight Navy */
+  --color-brand-accent:    #38BDF8; /* Bright Cyan */
+  --color-brand-secondary: #1D4ED8; /* Deep Blue */
+  
+  /* Secondary / mood colors */
+  --color-insight-gold:  #FBBF24; /* Insight / discovery */
+  --color-clarity-gray:  #64748B; /* Clarity / analysis */
+  --color-calm-sky:      #7DD3FC; /* Calm climate stories */
+  --color-earth-moss:    #4D7C0F; /* Earth / geography */
+  --color-neutral-white: #FFFFFF; /* Data neutrality */
+  
+  /* Backward-compat with old names (optional but handy) */
   --brand:  #2b5876;
   --brand2: #1f3b73;
+}
+
+/* ===============
+   Body Qualities
+   =============== */
+
+body {
+  background-color: var(--color-neutral-white);
+  color: var(--color-brand-dark);
+}
+
+/* ==================
+   Nav Bar Qualities
+   ================== */
+
+.navbar,
+.navbar.navbar-expand-lg,
+.dropdown-menu {
+    background: var(--color-brand-dark);
+    color: var(--color-neutral-white);
+}
+
+.navbar a,
+.navbar, .navbar-brand,
+.navbar .nav-link {
+    color: var(--color-calm-white);
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus,
+.navbar .dropdown-menu .dropdown-item:hover,
+.navbar .dropdown-menu .dropdown-item:focus,
+.navbar .dropdown-menu .dropdown-item:active {
+    color: var(--color-brand-accent);
+}
+
+.navbar { 
+  min-height: calc(var(--nav-logo-h) + 0.75rem);
 }
 
 .navbar-brand .navbar-title {
@@ -29,22 +84,17 @@ img.navbar-logo {
   display: inline-block;
 }
 
-.navbar { 
-  min-height: calc(var(--nav-logo-h) + 0.75rem);
-}
-
 /* Hide the dark-mode duplicate logo */
 .navbar-logo.dark-content { 
   display: none !important;
 }
 
-/* --- Headings / Links --- */
+/* =========
+   Headings
+   ========= */
+   
 h1, h2 { 
   scroll-margin-top: calc(var(--nav-logo-h) + 1rem);
-}
-
-a { 
-  text-decoration: none;
 }
 
 /* ===========================
@@ -68,9 +118,59 @@ a {
   overflow: hidden;
 }
 
+/* ==========================================
+   Mood colors for tags / chips / labels
+   ========================================== */
+   
+.tag-insight {
+    background: var(--color-insight-gold);
+    color: var(--color-brand-dark);
+}
 
+.tag-clarity {
+    background: var(--color-clarity-gray);
+    color: var(--color-neutral-white);
+}
 
-/* --- Small screens --- */
+.tag-calm {
+    background: var(--color-calm-sky);
+    color: var(--color-brand-dark);
+}
+
+.tag-earth {
+    background: var(--color-earth-moss);
+    color: var(--color-neutral-white);
+}
+
+/* ================
+   Links / Buttons
+   ================ */
+   
+a {
+    color: var(--color-brand-secondary);
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    color: var(--color-brand-accent);
+}
+
+.btn-primary {
+    background-color: var(--color-brand-secondary);
+    border-color: var(--color-brand-secondary);
+    color: var(--color-neutral-white);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-brand-dark);
+    border-color: var(--color-brand-dark);
+}
+
+/* ==================
+   Smaller Screens
+   ================== */
+
 @media (max-width: 768px) {
   :root {
     --nav-logo-h: 6rem;              /* smaller logo on mobile */
@@ -78,8 +178,11 @@ a {
   }
 }
 
-/* --- Stories, Datasets, Evolution <details> styling --- */
-/* Hide the browser's built-in marker */
+/* =======================================
+   Stories / Datasets / Evolution Styling
+     Hide the browser's built-in marker
+   ======================================= */
+
 details.story > summary::-webkit-details-marker,
 details.dataset > summary::-webkit-details-marker,
 details.evolution > summary::-webkit-details-marker {
@@ -100,19 +203,29 @@ details.evolution > summary:hover {
   color: var(--brand2, #1f3b73);
 } 
 
-/* Accessibility: hide emojis from screen readers */
+/* ===============================================
+   Accessibility: hide emojis from screen readers
+   =============================================== */
+
 [aria-hidden="true"] {
   speak: none;
 }
 
-/* hides categories */
+/* ================
+   Hide Categories
+   ================ */
+   
 .quarto-category,
 .quarto-categories,
 .sidebar-title > .quarto-category {
   display: none !important;
 }
 
-/* hides keywords */
+
+/* ==============
+   Hide Keywords
+   ============== */
+   
 .quarto-keyword,
 .quarto-keywords,
 .quarto-keyword-list,
@@ -122,13 +235,21 @@ p.keywords {
   display: none !important;
 }
 
-/* hides whole metadata block, if grouped */
+
+/* =======================================
+   Hides whole metadata block, if grouped
+   ======================================= */
+   
 .quarto-title-meta,
 .quarto-title-meta-heading {
   display: none !important;
 }
 
-/* Hide the entire Quarto title block (title + subtitle + description + meta) */
+/* =========================================
+   Hide the entire Quarto title block
+    (title + subtitle + description + meta)
+   ========================================= */
+
 .quarto-title-block {
   display: none !important;
 }
