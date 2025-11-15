@@ -2,6 +2,35 @@
 title: "Insightful Tales"
 subtitle: "Where stories become narrative."
 description: "Insightful Tales is where numbers find their voice. Through thoughtful storytelling, rich visuals, and clear analysis, the site turns datasets into human-focused narratives about how the world moves, grows, and remembers."
+keywords: [
+  data storytelling,
+  data visualization,
+  data science,
+  human progress,
+  global trends,
+  statistics,
+  analysis,
+  narratives,
+  insight,
+  exploration,
+  datasets,
+  visual analytics,
+  human-centered data,
+  world patterns,
+  quantitative storytelling
+]
+categories: [
+  data-science,
+  storytelling,
+  global-trends,
+  human-progress,
+  climate-and-weather,
+  urban-life,
+  economics,
+  culture-and-history,
+  visual-analytics,
+  exploration
+]
 google-analytics: "G-J2NWNXP0DY"
 format:
   html:
