@@ -21,8 +21,6 @@ keywords: [
 categories: [data-science, history, sports]
 format:
   html:
-    toc: true
-    toc-depth: 3
     smooth-scroll: true
     df-print: paged
     code-fold: show

@@ -22,8 +22,6 @@ keywords: [
 categories: [History of Data Science, Transportation & Infrastructure, Education & Methodology]
 format:
   html:
-    toc: true
-    toc-depth: 3
     code-fold: show
     smooth-scroll: true
     df-print: paged

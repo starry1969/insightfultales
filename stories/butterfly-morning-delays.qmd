@@ -21,8 +21,6 @@ keywords: [
 categories: ["flights", "delays", "nycflights13"]
 format:
   html:
-    toc: true
-    toc-depth: 3
     code-fold: show
     smooth-scroll: true
     df-print: paged

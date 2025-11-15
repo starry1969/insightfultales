@@ -22,8 +22,6 @@ categories: [data-science, climate, history]
 image: images/noaa_daily_weather_cover.png
 format:
   html:
-    toc: true
-    toc-depth: 3
     code-fold: show
     smooth-scroll: true
     df-print: paged

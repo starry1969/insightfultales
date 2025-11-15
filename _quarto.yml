@@ -63,4 +63,6 @@ format:
     theme: flatly
     css: styles.css
     toc: true
+    toc-title: "🧭 Navigate"
+    toc-depth: 3
     freeze: auto

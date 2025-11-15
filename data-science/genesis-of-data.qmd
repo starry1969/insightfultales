@@ -20,8 +20,6 @@ categories: [history, data-science, philosophy]
 image: images/genesis_of_data.png
 format:
   html:
-    toc: true
-    toc-depth: 3
     code-fold: show
     smooth-scroll: true
     df-print: paged

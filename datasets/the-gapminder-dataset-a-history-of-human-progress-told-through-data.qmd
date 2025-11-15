@@ -22,8 +22,6 @@ keywords: [
 categories: [Global Development, Data-Visualization, Human Progress]
 format:
   html:
-    toc: true
-    toc-depth: 3
     code-fold: show
     smooth-scroll: true
     df-print: paged

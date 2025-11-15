@@ -35,8 +35,6 @@ google-analytics: "G-J2NWNXP0DY"
 format:
   html:
     page-layout: full
-    toc: true
-    toc-depth: 3
     code-fold: show
     smooth-scroll: true
     df-print: paged

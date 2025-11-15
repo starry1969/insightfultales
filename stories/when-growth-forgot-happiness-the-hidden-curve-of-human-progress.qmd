@@ -8,9 +8,6 @@ categories: [data-science, well-being, economics]
 keywords: [Gapminder, GDP per capita, life expectancy, happiness, human development, decoupling]
 format:
   html:
-    toc: true
-    toc-title: "🧭 Navigate"
-    toc-depth: 3
     number-sections: false
     code-fold: show
     smooth-scroll: true
