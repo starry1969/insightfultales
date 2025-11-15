@@ -89,30 +89,6 @@ img.navbar-logo {
   display: none !important;
 }
 
-/* ===============================
-   Indent submenu links on mobile
-   =============================== */
-   
-@media (max-width: 991px) {
-
-  /* Base padding for all nav links on mobile */
-  .navbar .navbar-nav .nav-link {
-    padding-left: 1rem;
-  }
-
-  /* Submenu items (dropdown entries) – clearly indented */
-  .navbar .dropdown-menu .dropdown-item {
-    padding-left: 2.5rem !important;   /* more indentation */
-    border-left: 3px solid var(--color-brand-secondary);
-    display: block;                    /* make sure it behaves like a block */
-  }
-
-  /* If Quarto renders deeper nesting, indent even more */
-  .navbar .dropdown-menu .dropdown-menu .dropdown-item {
-    padding-left: 3.25rem !important;
-  }
-}
-
 /* =========
    Headings
    ========= */
@@ -278,26 +254,28 @@ p.keywords {
   display: none !important;
 }
 
-
 /* =====================================
    Mobile navbar – force submenu indent
    ===================================== */
 @media (max-width: 991px) {
 
-  /* Top-level links: keep them closer to the edge */
+  /* Top-level links: keep them nearer the left edge */
   .navbar .navbar-nav > .nav-item > .nav-link {
     padding-left: 1rem !important;
   }
 
-  /* Submenu container: shift the whole dropdown to the right */
-  .navbar .dropdown-menu {
-    margin-left: 1.5rem !important;
-    border-left: 3px solid var(--color-brand-secondary);
+  /* Any dropdown container in the nav (ul or div) */
+  .navbar .navbar-nav .dropdown-menu {
+    margin-left: 1.5rem !important; /* shift the whole block right */
+    border-left: 3px solid var(--color-brand-accent);
+    background-color: rgba(56, 189, 248, 0.08); /* TEMP debug tint */
   }
 
-  /* Submenu items: extra padding so they clearly indent */
-  .navbar .dropdown-menu .dropdown-item {
-    padding-left: 1.5rem !important;   /* inside the shifted menu */
+  /* Any link inside dropdown menus */
+  .navbar .navbar-nav .dropdown-menu a,
+  .navbar .navbar-nav .dropdown-menu .nav-link,
+  .navbar .navbar-nav .dropdown-item {
+    padding-left: 1.25rem !important;  /* extra padding inside the shifted menu */
     display: block;
   }
 }
