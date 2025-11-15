@@ -217,7 +217,7 @@ details.evolution > summary::-webkit-details-marker {
 details.story > summary,
 details.dataset > summary,
 details.evolution > summary {
-  position: relative;*/
+  position: relative;
   padding-left: 1.5rem;
 }
 
@@ -278,3 +278,26 @@ p.keywords {
   display: none !important;
 }
 
+
+/* =====================================
+   Mobile navbar – force submenu indent
+   ===================================== */
+@media (max-width: 991px) {
+
+  /* Top-level links: keep them closer to the edge */
+  .navbar .navbar-nav > .nav-item > .nav-link {
+    padding-left: 1rem !important;
+  }
+
+  /* Submenu container: shift the whole dropdown to the right */
+  .navbar .dropdown-menu {
+    margin-left: 1.5rem !important;
+    border-left: 3px solid var(--color-brand-secondary);
+  }
+
+  /* Submenu items: extra padding so they clearly indent */
+  .navbar .dropdown-menu .dropdown-item {
+    padding-left: 1.5rem !important;   /* inside the shifted menu */
+    display: block;
+  }
+}
