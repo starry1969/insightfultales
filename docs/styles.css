@@ -55,12 +55,18 @@ a {
    =========================== */
 
 .hero {
-  padding: 3rem 1.5rem;
+  padding: 1.5rem 1.5rem;      /* was 3rem 1.5rem */
+  margin: 1.5rem 0 2rem;       /* a bit less bottom gap */
   border-radius: 1.5rem;
-  margin-bottom: 2.75rem;
   text-align: center;
-  color: #ffffff;
+  background: #f5f5ff;         /* light tinted background so it stands out */
+  color: #111827;              /* dark text so it’s readable */
 }
+
+.hero p {
+  margin: 0;                   /* remove extra top/bottom space from the <p> */
+}
+
 
 .hero__inner {
   max-width: 760px;

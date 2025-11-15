@@ -18,7 +18,9 @@ execute:
   freeze: auto
 ---
 
+<section class="hero">
 <p>Where data finds its narrative — original visual and analytical stories.</p>
+</section>
 
 ## [✨]{aria-hidden="true"} Featured Stories
 
