@@ -89,6 +89,21 @@ img.navbar-logo {
   display: none !important;
 }
 
+/* ===============================
+   Indent submenu links on mobile
+   =============================== */
+@media (max-width: 991px) {
+    .navbar-nav .dropdown-menu .dropdown-item {
+        padding-left: 1.75rem !important; /* indent amount */
+        border-left: 3px solid var(--color-brand-secondary);
+    }
+    
+    /* Optional: indent deeper nested links even more */
+    .navbar-nav .dropdown-menu .dropdown-menu .dropdown-item {
+        padding-left: 3rem !important;
+    }
+}
+
 /* =========
    Headings
    ========= */
