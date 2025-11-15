@@ -11,7 +11,8 @@
   --bs-navbar-brand-height: 6rem;
   
   /* Core brand colors */
-  --color-brand-dark:      #0F172A;   /* Midnight Navy */
+  --color-brand-dark:      #0F172A; /* Midnight Navy */
+  --color-brand-dark2:     #2F394C; /* A little lighter than midnight navy 
   --color-brand-accent:    #38BDF8; /* Bright Cyan */
   --color-brand-secondary: #1D4ED8; /* Deep Blue */
   
@@ -41,9 +42,13 @@ body {
    ================== */
 
 .navbar,
-.navbar.navbar-expand-lg,
-.dropdown-menu {
+.navbar.navbar-expand-lg{
     background: var(--color-brand-dark);
+    color: var(--color-neutral-white);
+}
+
+.dropdown-menu {
+    background: var(--color-brand-dark2);
     color: var(--color-neutral-white);
 }
 
@@ -54,7 +59,10 @@ body {
 }
 
 .navbar .nav-link:hover,
-.navbar .nav-link:focus,
+.navbar .nav-link:focus {
+    color: var(--color-brand-accent);
+}
+
 .navbar .dropdown-menu .dropdown-item:hover,
 .navbar .dropdown-menu .dropdown-item:focus,
 .navbar .dropdown-menu .dropdown-item:active {
