@@ -165,3 +165,8 @@ details.evolution > summary:hover {
 [aria-hidden="true"] {
   speak: none;
 }
+
+.quarto-category,
+.quarto-keywords {
+  display: none !important;
+}
