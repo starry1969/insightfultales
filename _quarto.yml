@@ -64,7 +64,10 @@ format:
     theme: flatly
     css: styles.css
     toc: true
-    toc-title: "🧭 Navigate"
+    toc-title: "Navigate"
     toc-location: right
     toc-depth: 3
+    smooth-scroll: true
+    include-after-body:
+      - assets/toc-scrollspy.js
     freeze: auto
