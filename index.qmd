@@ -45,15 +45,14 @@ execute:
   echo: true
   freeze: auto
 ---
-
 <section class="hero">
-
-# 🌀 Insightful Tales
-
-## Where stories become narrative.
-
-Insightful Tales is where numbers find their voice. Through thoughtful storytelling, rich visuals, and clear analysis, the site turns datasets into human-focused narratives about how the world moves, grows, and remembers.
-
+  <h1>🌀 Insightful Tales</h1>
+  <h2>Where stories become narrative.</h2>
+  <p>
+    Insightful Tales is where numbers find their voice. Through thoughtful storytelling,
+    rich visuals, and clear analysis, the site turns datasets into human-focused narratives
+    about how the world moves, grows, and remembers.
+  </p>
 </section>
 
 ## [✨]{aria-hidden="true"} Featured Stories

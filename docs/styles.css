@@ -4,13 +4,10 @@
 
 /* --- Tokens --- */
 :root {
-  --nav-logo-h: 3rem;              /* pick your size */
-  --bs-navbar-brand-height: 4rem;  /* align Bootstrap token, just in case */
+  --nav-logo-h: 3rem;
+  --bs-navbar-brand-height: 6rem;
   --brand:  #2b5876;
   --brand2: #1f3b73;
-  
-  /* some themes read this token */
-  --bs-navbar-brand-height: 6rem;
 }
 
 .navbar-brand .navbar-title {
@@ -60,11 +57,11 @@ a {
   background-position: center;
   background-repeat: no-repeat;
 
-  padding: 4rem 2rem;
+  padding: 1.5rem 2rem;
   border-radius: 1.5rem;
   color: white;
   margin-bottom: 2.5rem;
-  text-align: center;
+  text-align: left;
 
   /* This prevents the hero from bleeding outside its own section */
   position: relative;
