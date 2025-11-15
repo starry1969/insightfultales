@@ -55,80 +55,21 @@ a {
    =========================== */
 
 .hero {
-  padding: 1.5rem 1.5rem;      /* was 3rem 1.5rem */
-  margin: 1.5rem 0 2rem;       /* a bit less bottom gap */
+  background-image: url("images/hero-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* brand styling */
+  padding: 4rem 2rem;
   border-radius: 1.5rem;
+  color: white;
   text-align: center;
-  background: #f5f5ff;         /* light tinted background so it stands out */
-  color: #111827;              /* dark text so it’s readable */
+
+  /* make text readable over the image */
+  backdrop-filter: brightness(1.2);
 }
 
-.hero p {
-  margin: 0;                   /* remove extra top/bottom space from the <p> */
-}
-
-
-.hero__inner {
-  max-width: 760px;
-  margin: 0 auto;
-}
-
-.hero__title {
-  font-size: clamp(2.1rem, 3vw, 2.6rem);
-  margin-bottom: 0.6rem;
-}
-
-.hero__subtitle {
-  font-weight: 400;
-  margin-top: 0;
-  opacity: 0.96;
-}
-
-.hero__summary {
-  margin-top: 1.7rem;
-  font-size: 1.05rem;
-  line-height: 1.7;
-  opacity: 0.96;
-}
-
-/* Optional: hide decorative emojis from screen readers */
-.hero__emoji[aria-hidden="true"] {
-  speak: none;
-}
-
-/* ===========================
-   DATASET BADGE
-   =========================== */
-
-.dataset-badge {
-  display: inline-block;
-  padding: 0.45rem 0.9rem;
-  border-radius: 999px;
-  font-weight: 600;
-  text-decoration: none;
-  backdrop-filter: blur(3px);
-  font-size: 0.95rem;
-}
-
-/* Generic "light on dark" badge */
-.dataset-badge--light {
-  background: rgba(255, 255, 255, 0.22);
-  color: #ffffff;
-}
-
-/* ===========================
-   GAPMINDER VARIANT
-   =========================== */
-
-.hero--gapminder {
-  /* blue → teal → gold global-progress gradient */
-  background: linear-gradient(135deg, #005f99 0%, #008ecc 40%, #e3b505 100%);
-}
-
-/* If you ever need a Gapminder-specific badge tweak later */
-.dataset-badge--gapminder {
-  /* currently same as --light; override here if needed */
-}
 
 
 /* --- Small screens --- */
@@ -188,3 +129,9 @@ p.keywords {
 .quarto-title-meta-heading {
   display: none !important;
 }
+
+/* Hide the entire Quarto title block (title + subtitle + description + meta) */
+.quarto-title-block {
+  display: none !important;
+}
+
