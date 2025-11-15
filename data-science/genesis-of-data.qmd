@@ -2,6 +2,20 @@
 title: "🧮 The Genesis of Data — When Counting Became Knowing"
 subtitle: "Tracing humanity’s first attempts to quantify the world — from Babylonian grain tablets to Victorian census tables, where the act of counting became the foundation of data science."
 description: "Where numbers first became mirrors of the world."
+keywords: [
+  history of data,
+  origins of statistics,
+  data science history,
+  ancient counting,
+  measurement systems,
+  Babylonian tablets,
+  census history,
+  numerical records,
+  evolution of data,
+  philosophy of measurement,
+  early data practices,
+  data and society
+]
 categories: [history, data-science, philosophy]
 image: images/genesis_of_data.png
 format:
