@@ -287,3 +287,175 @@ p.keywords {
     display: block;
   }
 }
+
+/* ===========================================================
+   Insightful Tales — Complete TOC Sidebar Styling
+   =========================================================== */
+
+/* ---------- Variables ---------- */
+:root {
+  --it-toc-bg: radial-gradient(
+    circle at top left,
+    rgba(56, 189, 248, 0.18),
+    rgba(15, 23, 42, 0.96)
+  );
+  --it-toc-border: rgba(148, 163, 184, 0.45);
+  --it-toc-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+  --it-toc-link: rgb(226, 232, 240);
+  --it-toc-link-soft: rgba(148, 163, 184, 0.9);
+  --it-toc-link-hover: rgb(125, 211, 252);
+}
+
+/* ---------- Core TOC Card Appearance ---------- */
+#TOC,
+#quarto-sidebar-toc {
+  font-size: 0.95rem;
+  line-height: 1.4;
+
+  background: var(--it-toc-bg);
+  border-radius: 1.5rem;
+  border: 1px solid var(--it-toc-border);
+  box-shadow: var(--it-toc-shadow);
+
+  padding: 1rem 1.2rem;
+  margin-bottom: 2rem;
+
+  backdrop-filter: blur(8px);
+}
+
+/* ---------- Desktop Sticky Behavior + TOC Scroll ---------- */
+@media (min-width: 992px) {
+
+  /* The TOC card itself (one inner scrollbar only if needed) */
+  #TOC,
+  #quarto-sidebar-toc {
+    position: sticky;
+    top: 6rem;                       /* adjust if navbar overlaps */
+    max-height: calc(100vh - 7rem);  /* fit within viewport */
+    overflow-y: auto;                /* TOC scrolls inside */
+  }
+
+  /* Prevent margin container from adding a second scrollbar */
+  #quarto-margin-sidebar {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+}
+
+/* ---------- Title ---------- */
+#TOC > h2#toc-title,
+#quarto-sidebar-toc > h2#toc-title {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  opacity: 0.9;
+  margin-bottom: 0.5rem;
+
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Compass badge (emoji injected via CSS) */
+#TOC > h2#toc-title::before,
+#quarto-sidebar-toc > h2#toc-title::before {
+  content: "🧭";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 0.9rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 999px;
+
+  background: rgba(15, 23, 42, 0.98);
+  box-shadow: 0 0 0 1px var(--it-toc-border);
+}
+
+/* ---------- Lists ---------- */
+#TOC ul,
+#quarto-sidebar-toc ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.5rem;
+}
+
+#TOC li,
+#quarto-sidebar-toc li {
+  margin: 0.1rem 0;
+}
+
+#TOC > ul > li,
+#quarto-sidebar-toc > ul > li {
+  margin-top: 0.35rem;
+}
+
+/* ---------- Link Styling ---------- */
+#TOC a,
+#quarto-sidebar-toc a {
+  text-decoration: none;
+  display: block;
+  padding: 0.14rem 0.25rem;
+  border-radius: 0.4rem;
+
+  color: var(--it-toc-link);
+  opacity: 0.95;
+
+  transition:
+    background 0.16s ease,
+    color 0.16s ease,
+    transform 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+#TOC a:hover,
+#quarto-sidebar-toc a:hover {
+  background: rgba(56, 189, 248, 0.18);
+  color: var(--it-toc-link-hover);
+  transform: translateX(2px);
+}
+
+/* ---------- Nested Levels ---------- */
+#TOC ul ul,
+#quarto-sidebar-toc ul ul {
+  padding-left: 0.9rem;
+  border-left: 1px dashed var(--it-toc-border);
+  margin-top: 0.15rem;
+}
+
+#TOC ul ul a,
+#quarto-sidebar-toc ul ul a {
+  font-size: 0.9rem;
+  color: var(--it-toc-link-soft);
+}
+
+/* ---------- Active Section Highlight ---------- */
+.toc-active .nav-link.active,
+.toc-active .nav-link[aria-current],
+#TOC a.active,
+#TOC a[aria-current="true"],
+#quarto-sidebar-toc a.active,
+#quarto-sidebar-toc a[aria-current="true"] {
+  background: linear-gradient(
+    90deg,
+    rgba(56, 189, 248, 0.28),
+    rgba(59, 130, 246, 0.25)
+  );
+  color: #e0f2fe;
+  font-weight: 600;
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.65);
+  border-radius: 0.4rem;
+}
+
+/* ---------- Mobile Behavior ---------- */
+@media (max-width: 991px) {
+  #TOC,
+  #quarto-sidebar-toc {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.7);
+    margin-top: 1rem;
+  }
+}
