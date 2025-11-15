@@ -1,5 +1,5 @@
 ---
-title: "<span aria-hidden='true'>🚇</span> Transport for London (TfL) — The Pulse Beneath the City"
+title: "Transport for London (TfL) — The Pulse Beneath the City"
 subtitle: "How data reveals the hidden rhythm of London’s movement."
 description: "A look into the heartbeat of London through TfL’s open data — exploring Oyster and Contactless journeys, Tube entries and exits, and Cycle Hire usage to understand the patterns of a living metropolis."
 keywords: [
@@ -32,6 +32,13 @@ execute:
   echo: true
   freeze: auto
 ---
+<section class="hero">
+  <h1>🚇 Transport for London (TfL) — The Pulse Beneath the City</h1>
+  <h2>How data reveals the hidden rhythm of London’s movement.</h2>
+  <p>
+    A look into the heartbeat of London through TfL’s open data — exploring Oyster and Contactless journeys, Tube entries and exits, and Cycle Hire usage to understand the patterns of a living metropolis.
+  </p>
+</section>
 
 # 🚦 A City in Motion
 

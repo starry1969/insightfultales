@@ -1,5 +1,5 @@
 ---
-title: "⚾ The Lahman Baseball Database — A Chronicle of the Game’s Digital Memory"
+title: "The Lahman Baseball Database — A Chronicle of the Game’s Digital Memory"
 subtitle: "From paper box scores to open data, how one project preserved baseball’s statistical soul."
 description: "Exploring the origins, history, and significance of the Lahman Baseball Database — a dataset that bridges baseball’s past and data science’s future."
 keywords: [
@@ -31,6 +31,13 @@ execute:
   echo: true
   freeze: auto
 ---
+<section class="hero">
+  <h1>⚾ The Lahman Baseball Database — A Chronicle of the Game’s Digital Memory</h1>
+  <h2>From paper box scores to open data, how one project preserved baseball’s statistical soul.</h2>
+  <p>
+    Exploring the origins, history, and significance of the Lahman Baseball Database — a dataset that bridges baseball’s past and data science’s future.
+  </p>
+</section>
 
 # [🧾]{aria-hidden="true"} Origins: From Box Scores to Bytes
 

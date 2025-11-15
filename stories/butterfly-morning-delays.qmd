@@ -1,5 +1,5 @@
 ---
-title: "🦋 Butterfly Morning Delays"
+title: "Butterfly Morning Delays"
 subtitle: "How early-morning schedule noise ripples through the rest of the day."
 description: "A story about cause and consequence in motion — how a stormy sunrise or a missed departure can reshape an entire day of air travel."
 keywords: [
@@ -31,6 +31,13 @@ execute:
   echo: true
   freeze: auto
 ---
+<section class="hero">
+  <h1>🦋 Butterfly Morning Delays</h1>
+  <h2>How early-morning schedule noise ripples through the rest of the day.</h2>
+  <p>
+    A story about cause and consequence in motion — how a stormy sunrise or a missed departure can reshape an entire day of air travel.
+  </p>
+</section>
 
 > *This analysis uses open data (`nycflights13`) to demonstrate a novel, reproducible approach to understanding delay propagation within a single day. Unlike traditional performance summaries that emphasize average delay, we focus on variability — the “schedule chaos” that amplifies downstream disruption. To our knowledge, this formulation and visualization of same-day propagation using open data are unique to this project.*
 

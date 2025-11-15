@@ -1,5 +1,5 @@
 ---
-title: "⚾️ The Hidden Rhythm of Baseball"
+title: "The Hidden Rhythm of Baseball"
 subtitle: "Why every era seems to have its own heartbeat — and what that rhythm reveals about us"
 description: "A hundred years of baseball heard, not just measured — where numbers whisper the story of how the game learned to breathe differently with each generation."
 keywords: [
@@ -31,6 +31,13 @@ execute:
   echo: true
   freeze: auto
 ---
+<section class="hero">
+  <h1>⚾️ The Hidden Rhythm of Baseball</h1>
+  <h2>Why every era seems to have its own heartbeat — and what that rhythm reveals about us</h2>
+  <p>
+    A hundred years of baseball heard, not just measured — where numbers whisper the story of how the game learned to breathe differently with each generation.
+  </p>
+</section>
 
 > *What if every statistic were a note, and a hundred years of baseball formed a song we’ve only just begun to hear?*
 

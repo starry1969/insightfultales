@@ -1,5 +1,5 @@
 ---
-title: "🌍 The Gapminder Dataset — A History of Human Progress, Told Through Data"
+title: "The Gapminder Dataset — A History of Human Progress, Told Through Data"
 subtitle: "How a Swedish doctor turned global statistics into a story of human progress — and changed how the world sees itself."
 description: "It’s rare that a spreadsheet can change how people see the world. But that’s exactly what the Gapminder dataset has done. Behind those rows and columns of life expectancy, GDP, and population lies one of the most remarkable stories in modern data science — the quest to make humanity’s progress visible, tangible, and, most of all, understandable."
 keywords: [
@@ -32,6 +32,13 @@ execute:
   echo: true
   freeze: auto
 ---
+<section class="hero">
+  <h1>🌍 The Gapminder Dataset — A History of Human Progress, Told Through Data</h1>
+  <h2>How a Swedish doctor turned global statistics into a story of human progress — and changed how the world sees itself.</h2>
+  <p>
+    It’s rare that a spreadsheet can change how people see the world. But that’s exactly what the Gapminder dataset has done. Behind those rows and columns of life expectancy, GDP, and population lies one of the most remarkable stories in modern data science — the quest to make humanity’s progress visible, tangible, and, most of all, understandable.
+  </p>
+</section>
 
 ### [📜]{aria-hidden="true"} Origins: From Curiosity to Clarity
 
