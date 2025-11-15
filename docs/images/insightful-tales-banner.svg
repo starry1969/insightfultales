@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  width="800"
+  height="200"
+  viewBox="0 0 800 200"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-labelledby="title desc">
+  <title id="title">Insightful Tales</title>
+  <desc id="desc">Spiral logo with the text Insightful Tales</desc>
+
+  <!-- Background (transparent for use on any page) -->
+  <rect x="0" y="0" width="800" height="200" fill="none"/>
+
+  <!-- Blue spiral icon -->
+  <g transform="translate(100,100)">
+    <!-- Outer circle for subtle base -->
+    <circle cx="0" cy="0" r="70" fill="#0f172a"/>
+
+    <!-- Spiral stroke -->
+    <path
+      d="M -5,-5
+         C 35,-45 75,-25 65,15
+         C 55,55 10,55 -5,30
+         C -20,5 0,-5 15,0
+         C 30,5 30,25 15,30"
+      fill="none"
+      stroke="#38bdf8"
+      stroke-width="10"
+      stroke-linecap="round"
+      stroke-linejoin="round" />
+  </g>
+
+  <!-- Text: Insightful Tales -->
+  <text
+    x="190"
+    y="95"
+    font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    font-size="54"
+    font-weight="600"
+    fill="#0f172a">
+    Insightful Tales
+  </text>
+
+  <!-- Optional tagline under the name -->
+  <text
+    x="190"
+    y="135"
+    font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    font-size="22"
+    fill="#64748b">
+    Where patterns become stories
+  </text>
+</svg>
