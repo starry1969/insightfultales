@@ -1,5 +1,5 @@
 ---
-title: "🌀 Insightful Tales"
+title: "Insightful Tales"
 subtitle: "Where stories become narrative."
 description: "Insightful Tales is where numbers find their voice. Through thoughtful storytelling, rich visuals, and clear analysis, the site turns datasets into human-focused narratives about how the world moves, grows, and remembers."
 keywords: [
@@ -47,7 +47,13 @@ execute:
 ---
 
 <section class="hero">
-<p>Where data finds its narrative — original visual and analytical stories.</p>
+
+# 🌀 Insightful Tales
+
+## Where stories become narrative.
+
+Insightful Tales is where numbers find their voice. Through thoughtful storytelling, rich visuals, and clear analysis, the site turns datasets into human-focused narratives about how the world moves, grows, and remembers.
+
 </section>
 
 ## [✨]{aria-hidden="true"} Featured Stories
@@ -93,8 +99,7 @@ Using Lahman’s database, this story blends sport, sociology, and technology to
 
 <summary>[💰]{aria-hidden="true"} <a href="stories/when-growth-forgot-happiness-the-hidden-curve-of-human-progress.html"><strong>The Wealth of Nations, Revisited</strong></a> — Gapminder Tales</summary>
 
-A visual narrative on global progress and paradox:
-who truly caught up, who stalled, and what it means when GDP rises but well-being lags behind.
+A visual narrative on global progress and paradox: who truly caught up, who stalled, and what it means when GDP rises but well-being lags behind.
 
 </details>
 
@@ -166,7 +171,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary><span aria-hidden="true">🌍</span> <a href="datasets/the-gapminder-dataset-a-history-of-human-progress-told-through-data.html"><strong>The Gapminder Dataset</strong></a> — A History of Human Progress, Told Through Data</summary>
+<summary>[🌍]{aria-hidden="true"} <a href="datasets/the-gapminder-dataset-a-history-of-human-progress-told-through-data.html"><strong>The Gapminder Dataset</strong></a> — A History of Human Progress, Told Through Data</summary>
 
 **What it is:** Country-level health, wealth, and population over time.\
 **Why it’s worthy:** Long horizons + comparable units = clean cross-country narratives.\
@@ -190,7 +195,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>[🌦️]{aria-hidden="true"}  <a href="datasets/the-noaa-daily-weather-dataset.html"> <strong>NOAA Daily Weather</strong></a> — Memory of the Sky</summary>
+<summary>[🌦️]{aria-hidden="true"} <a href="datasets/the-noaa-daily-weather-dataset.html"> <strong>NOAA Daily Weather</strong></a> — Memory of the Sky</summary>
 
 **What it is:** Decades of daily observations for thousands of stations (GHCN).\
 **Why it’s worthy:** Local variability meets climate trends; perfect for “weather memory” ideas.\
@@ -202,7 +207,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>[🚇]{aria-hidden="true"}  <a href="datasets/transport-for-london-tfl-the-pulse-beneath-the-city.html"><strong>Transport for London (TfL)</strong></a> — The Pulse Beneath the City</summary>
+<summary>[🚇]{aria-hidden="true"} <a href="datasets/transport-for-london-tfl-the-pulse-beneath-the-city.html"><strong>Transport for London (TfL)</strong></a> — The Pulse Beneath the City</summary>
 
 **What it is:** Open ridership, delays, closures, and more from London Underground.\
 **Why it’s worthy:** Network effects + peak waves = emergent patterns.\
