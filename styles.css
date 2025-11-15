@@ -60,14 +60,15 @@ a {
   background-position: center;
   background-repeat: no-repeat;
 
-  /* brand styling */
   padding: 4rem 2rem;
   border-radius: 1.5rem;
   color: white;
+  margin-bottom: 2.5rem;
   text-align: center;
 
-  /* make text readable over the image */
-  backdrop-filter: brightness(1.2);
+  /* This prevents the hero from bleeding outside its own section */
+  position: relative;
+  overflow: hidden;
 }
 
 
