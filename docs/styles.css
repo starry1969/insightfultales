@@ -12,7 +12,7 @@
   
   /* Core brand colors */
   --color-brand-dark:      #0F172A; /* Midnight Navy */
-  --color-brand-dark2:     #2F394C; /* A little lighter than midnight navy */ 
+  --color-brand-dark2:     #2F394C; /* A little lighter than midnight navy 
   --color-brand-accent:    #38BDF8; /* Bright Cyan */
   --color-brand-secondary: #1D4ED8; /* Deep Blue */
   
@@ -59,7 +59,10 @@ body {
 }
 
 .navbar .nav-link:hover,
-.navbar .nav-link:focus,
+.navbar .nav-link:focus {
+    color: var(--color-brand-accent);
+}
+
 .navbar .dropdown-menu .dropdown-item:hover,
 .navbar .dropdown-menu .dropdown-item:focus,
 .navbar .dropdown-menu .dropdown-item:active {
