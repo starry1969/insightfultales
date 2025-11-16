@@ -45,7 +45,7 @@ execute:
   freeze: auto
 ---
 <section class="hero">
-  <h1>🌀 Insightful Tales</h1>
+  <h1><span aria-hidden="true">🌀</span> Insightful Tales</h1>
   <h2 class="hero-subtitle">Where stories become narrative.</h2>
   <p class="hero-text">
     Insightful Tales is where numbers find their voice. Through thoughtful storytelling,
@@ -78,7 +78,7 @@ Using NYC flight data, this tale visualizes how minute perturbations evolve into
 
 <details class="story">
 
-<summary>🌦️ <a href="stories/weather-memory.html"><strong>Weather Memory</strong></a> — How the Sky Remembers</summary>
+<summary><span aria-hidden="true">🌦️</span> <a href="stories/weather-memory.html"><strong>Weather Memory</strong></a> — How the Sky Remembers</summary>
 
 Does weather have “momentum”?\
 By correlating daily anomalies, this piece explores how temperature and precipitation persist — revealing the hidden inertia of the atmosphere.
@@ -103,7 +103,7 @@ A visual narrative on global progress and paradox: who truly caught up, who stal
 
 <details class="story">
 
-<summary>🛰️ <strong>Planetary Pulse</strong> — Reading Earth from Orbit</summary>
+<summary><span aria-hidden="true">🛰️</span> <strong>Planetary Pulse</strong> — Reading Earth from Orbit</summary>
 
 Satellite imagery meets storytelling.\
 From greening deserts to vanishing glaciers, this piece turns NASA’s pixels into a planetary diary of change.
@@ -121,7 +121,7 @@ This narrative transforms Transport for London data into a living map of rhythm,
 
 <details class="story">
 
-<summary>🕹️ <strong>The Hype Curve</strong> — Life and Death of a Game</summary>
+<summary><span aria-hidden="true">🕹️</span> <strong>The Hype Curve</strong> — Life and Death of a Game</summary>
 
 Steam data visualized as cultural heartbeat:\
 how trends surge, communities form, and nostalgia revives titles long thought dormant.
@@ -157,7 +157,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>✈️ <a href="datasets/nycflights13-the-dataset-that-took-off.html"><strong>nycflights13:</strong></a> The DataSet That Took Off</summary>
+<summary><span aria-hidden="true">✈️</span> <a href="datasets/nycflights13-the-dataset-that-took-off.html"><strong>nycflights13:</strong></a> The DataSet That Took Off</summary>
 
 **What it is:** All flights departing NYC in 2013, linked to weather, airlines, and airports.\
 **Why it’s worthy:** Rich joins (flights ⇄ weather ⇄ carriers) + time series + networks.\
@@ -217,7 +217,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>🛍️ <strong>UCI Online Retail</strong> — Human Behavior in Transactions</summary>
+<summary><span aria-hidden="true">🛍️</span> <strong>UCI Online Retail</strong> — Human Behavior in Transactions</summary>
 
 **What it is:** Line-item invoices for a UK e-commerce retailer (2010–2011).\
 **Why it’s worthy:** Basket analysis, seasonality, long-tail dynamics.\
@@ -241,7 +241,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>🛰️ <strong>NASA MODIS / Earth Observatory</strong> — A Planet in Pixels</summary>
+<summary><span aria-hidden="true">🛰️</span> <strong>NASA MODIS / Earth Observatory</strong> — A Planet in Pixels</summary>
 
 **What it is:** Satellite observations (vegetation, fires, aerosols, ice).\
 **Why it’s worthy:** Visual storytelling + measurable change.\
@@ -253,7 +253,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>🕹️ <strong>Steam Games</strong> — Collective Taste in the Wild</summary>
+<summary><span aria-hidden="true">🕹️</span> <strong>Steam Games</strong> — Collective Taste in the Wild</summary>
 
 **What it is:** Game metadata, reviews, tags, and (often) playtime stats.\
 **Why it’s worthy:** Social proof, hype cycles, networked preference landscapes.\

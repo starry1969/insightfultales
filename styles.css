@@ -21,7 +21,7 @@
   --color-clarity-gray:  #64748B; /* Clarity / analysis */
   --color-calm-sky:      #7DD3FC; /* Calm climate stories */
   --color-earth-moss:    #4D7C0F; /* Earth / geography */
-  --color-neutral-white: #FFFFFF; /* Data neutrality */
+  --color-neutral-white: #f9fafb; /* Data neutrality */
   
   /* Backward-compat with old names (optional but handy) */
   --brand:  #2b5876;
@@ -33,8 +33,89 @@
    =============== */
 
 body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
   background-color: var(--color-neutral-white);
+  color: var(--color-brand-dark); /* deep, readable navy */
+}
+
+/* Keep main text at a comfortable width */
+main, .content, .page-content, .quarto-content {
+  max-width: 70ch;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 700;
   color: var(--color-brand-dark);
+}
+
+h1, h2 { 
+  scroll-margin-top: calc(var(--nav-logo-h) + 1rem);
+}
+
+/* Page-level titles inside content (not the suppressed YAML title) */
+h1 {
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-top: 2.25rem;
+  margin-bottom: 0.35rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-top: 1.75rem;
+  margin-bottom: 0.3rem;
+}
+
+/* Give paragraphs after headings a bit of breathing room */
+h1 + p,
+h2 + p,
+h3 + p {
+  margin-top: 0.25rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0.9rem;
+}
+
+/* Slightly tighter spacing between consecutive paragraphs */
+p + p {
+  margin-top: 0.25rem;
+}
+
+/* Lists */
+ul, ol {
+  padding-left: 1.4rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.9rem;
+}
+
+/* Blockquotes = quiet emphasis */
+blockquote {
+  border-left: 3px solid rgba(15, 23, 42, 0.15);
+  padding-left: 0.9rem;
+  margin-left: 0;
+  color: #475569;
+  font-style: italic;
+}
+
+code, kbd, samp {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+               "Liberation Mono", "Courier New", monospace;
+  font-size: 0.95em;
+  background-color: rgba(148, 163, 184, 0.12);
+  padding: 0.1em 0.25em;
+  border-radius: 0.25rem;
 }
 
 /* ==================
@@ -97,14 +178,6 @@ img.navbar-logo {
   display: none !important;
 }
 
-/* =========
-   Headings
-   ========= */
-   
-h1, h2 { 
-  scroll-margin-top: calc(var(--nav-logo-h) + 1rem);
-}
-
 /* ===========================
    HERO BASE STYLES
    =========================== */
@@ -135,8 +208,7 @@ h1, h2 {
 
 .hero-text {
   max-width: 42rem;
-  margin: 0 auto 0;   /* center text block within hero; change to 0 if you prefer left */
-  margin-left: 0;
+  margin: 0;
 }
 
 /* ==========================================
@@ -168,13 +240,14 @@ h1, h2 {
    ================ */
    
 a {
-    color: var(--color-brand-secondary);
+    color: var(--color-brand-secondary); /* deep blue */
     text-decoration: none;
 }
 
 a:hover,
 a:focus {
-    color: var(--color-brand-accent);
+    color: var(--color-brand-accent); /* bright accent */
+    text-decoration: underline;
 }
 
 .btn-primary {
@@ -214,15 +287,28 @@ details.evolution > summary::-webkit-details-marker {
 details.story > summary,
 details.dataset > summary,
 details.evolution > summary {
-  position: relative;
-  padding-left: 1.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-brand-dark);
+  padding: 0.25rem 0;
+  list-style: none;
+  /* position: relative;
+  padding-left: 1.5rem; */
 }
 
 details.story > summary:hover,
 details.dataset > summary:hover,
 details.evolution > summary:hover {
-  color: var(--brand2, #1f3b73);
-} 
+  color: var(--color-brand-accent);
+  /* color: var(--brand2, #1f3b73); */
+}
+
+/* Optional: open state — use secondary deep blue */
+details.story[open] > summary,
+details.dataset[open] > summary,
+details.evolution[open] > summary {
+  color: var(--color-brand-secondary);
+}
 
 /* ===============================================
    Accessibility: hide emojis from screen readers
