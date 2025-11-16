@@ -20,12 +20,23 @@ keywords: [
 ]
 categories: ["stories", "sports", "culture"]
 ---
+
 <section class="hero">
-  <h1><span aria-hidden="true">⚾️</span> The Hidden Rhythm of Baseball</h1>
-  <h2 class="hero-subtitle">Why every era seems to have its own heartbeat — and what that rhythm reveals about us</h2>
-  <p class="hero-text">
-    A hundred years of baseball heard, not just measured — where numbers whisper the story of how the game learned to breathe differently with each generation.
-  </p>
+
+<h1>[⚾️]{aria-hidden="true"} The Hidden Rhythm of Baseball</h1>
+
+<h2 class="hero-subtitle">
+
+Why every era seems to have its own heartbeat — and what that rhythm reveals about us
+
+</h2>
+
+<p class="hero-text">
+
+A hundred years of baseball heard, not just measured — where numbers whisper the story of how the game learned to breathe differently with each generation.
+
+</p>
+
 </section>
 
 > *What if every statistic were a note, and a hundred years of baseball formed a song we’ve only just begun to hear?*
@@ -226,6 +237,12 @@ zi %>%
 -   **Approximations**: Older seasons are missing some counts (like sacrifice flies). We used simple, conservative fallbacks that don’t change the big picture.
 
 -   **Smoothing**: A gentle 5‑year average makes the waves easier to see.
+
+<section class="dataset-source">
+
+<img src="../images/dataset-icons/lahman.svg" class="dataset-icon-small" aria-hidden="true"/> <strong>Dataset:</strong> <a href="../datasets/the-lahman-baseball-database-a-chronicle-of-the-games-digital-memory.html">Lahman Baseball Database</a>
+
+</section>
 
 ## [📚]{aria-hidden="true"} References & Credits
 

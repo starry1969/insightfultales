@@ -1,0 +1,28 @@
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Outer Ring -->
+  <circle 
+    cx="120" 
+    cy="120" 
+    r="108" 
+    stroke="#38BDF8" 
+    stroke-width="12" 
+    fill="none"
+  />
+
+  <!-- Parabolic Career Arc -->
+  <path 
+    d="M50 150 
+       Q 120 60, 190 150"
+    stroke="#38BDF8"
+    stroke-width="12"
+    fill="none"
+    stroke-linecap="round"
+  />
+
+  <!-- Career / Season Data Points -->
+  <circle cx="85" cy="120" r="10" fill="#38BDF8"/>
+  <circle cx="120" cy="95" r="10" fill="#38BDF8"/>
+  <circle cx="155" cy="120" r="10" fill="#38BDF8"/>
+
+</svg>

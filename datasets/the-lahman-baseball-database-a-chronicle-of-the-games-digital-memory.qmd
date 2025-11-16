@@ -2,30 +2,51 @@
 title: "The Lahman Baseball Database — A Chronicle of the Game’s Digital Memory"
 subtitle: "From paper box scores to open data, how one project preserved baseball’s statistical soul."
 description: "Exploring the origins, history, and significance of the Lahman Baseball Database — a dataset that bridges baseball’s past and data science’s future."
-keywords: [
-  "Lahman Baseball Database",
-  "baseball statistics",
-  "MLB history",
-  "sabermetrics",
-  "baseball analytics",
-  "historical baseball data",
-  "box score archives",
-  "open sports data",
-  "player statistics",
-  "team performance",
-  "baseball records",
-  "sports data science",
-  "baseball data analysis",
-  "MLB datasets"
-]
-categories: [data-science, history, sports]
+keywords:
+  - "Lahman Baseball Database"
+  - "baseball statistics"
+  - "MLB history"
+  - "sabermetrics"
+  - "baseball analytics"
+  - "historical baseball data"
+  - "box score archives"
+  - "open sports data"
+  - "player statistics"
+  - "team performance"
+  - "baseball records"
+  - "sports data science"
+  - "baseball data analysis"
+  - "MLB datasets"
+categories:
+  - "data-science"
+  - "history"
+  - "sports"
 ---
+
+<!-- Dataset Badge -->
+
+<p class="dataset-header-badge">
+
+<img src="../images/dataset-icons/lahman.svg" class="dataset-icon-hero" aria-hidden="true"/>
+
+</p>
+
 <section class="hero">
-  <h1><span aria-hidden="true">⚾</span> The Lahman Baseball Database — A Chronicle of the Game’s Digital Memory</h1>
-  <h2 class="hero-subtitle">From paper box scores to open data, how one project preserved baseball’s statistical soul.</h2>
-  <p class="hero-text">
-    Exploring the origins, history, and significance of the Lahman Baseball Database — a dataset that bridges baseball’s past and data science’s future.
-  </p>
+
+<h1>[⚾]{aria-hidden="true"}The Lahman Baseball Database — A Chronicle of the Game’s Digital Memory</h1>
+
+<h2 class="hero-subtitle">
+
+From paper box scores to open data, how one project preserved baseball’s statistical soul.
+
+</h2>
+
+<p class="hero-text">
+
+Exploring the origins, history, and significance of the Lahman Baseball Database — a dataset that bridges baseball’s past and data science’s future.
+
+</p>
+
 </section>
 
 # [🧾]{aria-hidden="true"} Origins: From Box Scores to Bytes

@@ -21,6 +21,15 @@ keywords: [
 ]
 categories: ["Global Development", "Data-Visualization", "Human Progress"]
 ---
+
+<!-- Dataset Badge -->
+<p class="dataset-header-badge">
+  <img src="../images/dataset-icons/gapminder.svg"
+       alt=""
+       class="dataset-icon-hero"
+       aria-hidden="true">
+</p>
+
 <section class="hero">
   <h1><span aria-hidden="true">🌍</span> The Gapminder Dataset — A History of Human Progress, Told Through Data</h1>
   <h2 class="hero-subtitle">How a Swedish doctor turned global statistics into a story of human progress — and changed how the world sees itself.</h2>

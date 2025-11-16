@@ -165,7 +165,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>[🌍]{aria-hidden="true"} <a href="datasets/the-gapminder-dataset-a-history-of-human-progress-told-through-data.html"><strong>The Gapminder Dataset</strong></a> — A History of Human Progress, Told Through Data</summary>
+<summary><img src="images/dataset-icons/gapminder.svg" alt="" class="dataset-badge-icon" aria-hidden="true"> <a href="datasets/the-gapminder-dataset-a-history-of-human-progress-told-through-data.html"><strong>The Gapminder Dataset</strong></a> — A History of Human Progress, Told Through Data</summary>
 
 **What it is:** Country-level health, wealth, and population over time.\
 **Why it’s worthy:** Long horizons + comparable units = clean cross-country narratives.\
@@ -177,7 +177,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>[⚾]{aria-hidden="true"} <a href="datasets/the-lahman-baseball-database-a-chronicle-of-the-games-digital-memory.html"><strong>Lahman Baseball Database</strong></a> — A Chronicle of the Game’s Digital Memory</summary>
+<summary><img src="images/dataset-icons/lahman.svg" alt="" class="dataset-badge-icon" aria-hidden="true"><a href="datasets/the-lahman-baseball-database-a-chronicle-of-the-games-digital-memory.html"><strong>Lahman Baseball Database</strong></a> — A Chronicle of the Game’s Digital Memory</summary>
 
 **What it is:** Player/team stats from the 19th century to now.\
 **Why it’s worthy:** Deep history, rule changes, moneyball eras—quant + culture.\

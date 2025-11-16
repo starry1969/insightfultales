@@ -188,6 +188,16 @@ Each finding births a future story:
 
 Our mission: turn data into empathy, and statistics into stories that feel *alive*.
 
+<section class="dataset-source">
+  <img src="../images/dataset-icons/gapminder.svg"
+       class="dataset-icon-small"
+       alt=""
+       aria-hidden="true">
+  <span><strong>Dataset:</strong> 
+    <a href="../datasets/gapminder.html">Gapminder</a>
+  </span>
+</section>
+
 ## <span aria-hidden="true">📚</span> References & Credits
 
 **Data Sources**

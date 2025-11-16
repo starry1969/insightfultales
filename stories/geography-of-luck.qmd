@@ -204,6 +204,16 @@ Yet each bright outlier on the map is a defiance of fate: policy and ingenuity t
 
 ------------------------------------------------------------------------
 
+<section class="dataset-source">
+  <img src="../images/dataset-icons/nycflights13.svg"
+       class="dataset-icon-small"
+       alt=""
+       aria-hidden="true">
+  <span><strong>Dataset:</strong> 
+    <a href="../datasets/nycflights13-the-dataset-that-took-off.html">nycflights13</a>
+  </span>
+</section>
+
 ## [⚙️]{aria-hidden="true"} Technical Appendix
 
 -   **Packages:** `WDI`, `rnaturalearth`, `sf`, `tidyverse`, `janitor`, `scales`\
