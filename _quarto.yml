@@ -67,7 +67,14 @@ format:
     toc-title: "Navigate"
     toc-location: right
     toc-depth: 3
-    smooth-scroll: true
     include-after-body:
       - assets/toc-scrollspy.js
-    freeze: auto
+code-fold: show
+smooth-scroll: true
+df-print: paged
+anchor-sections: true
+execute:
+  warning: false
+  message: false
+  echo: true
+  freeze: auto
