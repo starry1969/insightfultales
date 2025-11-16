@@ -3,44 +3,33 @@ title: "Transport for London (TfL) — The Pulse Beneath the City"
 subtitle: "How data reveals the hidden rhythm of London’s movement."
 description: "A look into the heartbeat of London through TfL’s open data — exploring Oyster and Contactless journeys, Tube entries and exits, and Cycle Hire usage to understand the patterns of a living metropolis."
 keywords: [
-  Transport for London,
-  TfL open data,
-  London transport data,
-  Tube ridership,
-  Oyster journeys,
-  Contactless journeys,
-  cycle hire data,
-  mobility patterns,
-  urban mobility,
-  transport analytics,
-  ridership trends,
-  London commuting,
-  public transport data,
-  city movement patterns,
-  open mobility datasets
+  "Transport for London",
+  "TfL open data",
+  "London transport data",
+  "Tube ridership",
+  "Oyster journeys",
+  "Contactless journeys",
+  "cycle hire data",
+  "mobility patterns",
+  "urban mobility",
+  "transport analytics",
+  "ridership trends",
+  "London commuting",
+  "public transport data",
+  "city movement patterns",
+  "open mobility datasets"
 ]
-categories: [data-science, urban-life, history]
-format:
-  html:
-    code-fold: show
-    smooth-scroll: true
-    df-print: paged
-    anchor-sections: true
-execute:
-  warning: false
-  message: false
-  echo: true
-  freeze: auto
+categories: ["data-science", "urban-life", "history"]
 ---
 <section class="hero">
-  <h1>🚇 Transport for London (TfL) — The Pulse Beneath the City</h1>
+  <h1><span aria-hidden="true">🚇</span> Transport for London (TfL) — The Pulse Beneath the City</h1>
   <h2 class="hero-subtitle">How data reveals the hidden rhythm of London’s movement.</h2>
   <p class="hero-text">
     A look into the heartbeat of London through TfL’s open data — exploring Oyster and Contactless journeys, Tube entries and exits, and Cycle Hire usage to understand the patterns of a living metropolis.
   </p>
 </section>
 
-# 🚦 A City in Motion
+# <span aria-hidden="true">🚦</span> A City in Motion
 
 Every morning, the city exhales. Trains surge from the edges of London toward the center, buses weave through narrow streets, and cyclists form an almost-ritual migration across bridges. Transport for London — TfL — doesn’t just move people; it synchronizes the city’s pulse.
 
@@ -48,7 +37,7 @@ Behind this choreography is an immense, open data system that captures every tap
 
 ------------------------------------------------------------------------
 
-# 🧮 The Dataset
+# <span aria-hidden="true">🧮</span> The Dataset
 
 TfL’s **Open Data Portal** provides a universe of transport information, from real-time service updates to historical ridership counts.\
 For this page, we focus on three high-value, narrative-friendly datasets:
@@ -65,7 +54,7 @@ Data source: [TfL Open Data Portal](https://tfl.gov.uk/info-for/open-data-users/
 
 ------------------------------------------------------------------------
 
-# 🗺️ Visualising the Pulse
+# <span aria-hidden="true">🗺️</span> Visualising the Pulse
 
 Below are examples (in R) of how we might bring this data to life using the tidyverse and spatial tools like `{sf}`.
 
@@ -185,7 +174,7 @@ geom_sf(
        size = "Trips")
 ```
 
-# 💡 Story Sparks
+# <span aria-hidden="true">💡</span> Story Sparks
 
 | Story Idea | Core Question | Visualization | Why It Matters |
 |------------|---------------|---------------|----------------|
@@ -210,7 +199,7 @@ geom_sf(
 |------------------|------------------|------------------|------------------|
 | **Underground Empathy** | Do certain lines reflect socioeconomic divides? | Overlay ridership with census data. | Reveals how movement encodes inequality. |
 
-# 🌍 Beyond the Underground
+# <span aria-hidden="true">🌍</span> Beyond the Underground
 
 The TfL datasets extend beyond transport—they’re a **social dataset** wrapped in motion. They trace where opportunity lies, how urban planning shapes behavior, and how collective rhythms respond to stress, weather, or policy change.
 
@@ -224,7 +213,7 @@ Imagine joining TfL data with:
 
 Together, these connections form the **metabolism of the metropolis** — the invisible circulatory system that keeps London alive.
 
-# 🔮 Future Possibilities
+# <span aria-hidden="true">🔮</span> Future Possibilities
 
 -   Integrate **live TfL API feeds** (train positions, service disruptions).
 
@@ -234,7 +223,7 @@ Together, these connections form the **metabolism of the metropolis** — the in
 
 -   Expand comparative studies — “Paris vs. London,” “Tokyo’s Quiet Hours,” etc.
 
-# 📚 References & Credits
+# <span aria-hidden="true">📚</span> References & Credits
 
 -   Transport for London Open Data Portal: [https://tfl.gov.uk/info-for/open-data-users/our-open-data](https://tfl.gov.uk/info-for/open-data-users/our-open-data?utm_source=chatgpt.com)
 

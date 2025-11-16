@@ -3,50 +3,38 @@ title: "🌦️ The NOAA Daily Weather Dataset"
 subtitle: "A planet’s diary — recording our everyday atmosphere, one day at a time."
 description: "The NOAA Daily Weather dataset, curated by the National Centers for Environmental Information (NCEI), is one of the world’s most detailed archives of day-by-day weather. It preserves the highs, lows, and patterns of the planet’s pulse — turning routine weather into long-term climate memory."
 keywords: [
-  NOAA Daily Weather,
-  GHCN daily,
-  NOAA climate data,
-  daily weather observations,
-  historical weather data,
-  temperature records,
-  precipitation records,
-  climate trends,
-  NCEI dataset,
-  weather variability,
-  climate analysis,
-  meteorological data,
-  long-term weather patterns,
-  environmental data
+  "NOAA Daily Weather",
+  "GHCN daily",
+  "NOAA climate data",
+  "daily weather observations",
+  "historical weather data",
+  "temperature records",
+  "precipitation records",
+  "climate trends",
+  "NCEI dataset",
+  "weather variability",
+  "climate analysis",
+  "meteorological data",
+  "long-term weather patterns",
+  "environmental data"
 ]
-categories: [data-science, climate, history]
-image: images/noaa_daily_weather_cover.png
-format:
-  html:
-    code-fold: show
-    smooth-scroll: true
-    df-print: paged
-    anchor-sections: true
-execute:
-  warning: false
-  message: false
-  echo: true
-  freeze: auto
+categories: ["data-science", "climate", "history"]
 ---
 <section class="hero">
-  <h1>🌦️ The NOAA Daily Weather Dataset</h1>
+  <h1><span aria-hidden="true">🌦️</span> The NOAA Daily Weather Dataset</h1>
   <h2 class="hero-subtitle">A planet’s diary — recording our everyday atmosphere, one day at a time.</h2>
   <p class="hero-text">
     The NOAA Daily Weather dataset, curated by the National Centers for Environmental Information (NCEI), is one of the world’s most detailed archives of day-by-day weather. It preserves the highs, lows, and patterns of the planet’s pulse — turning routine weather into long-term climate memory.
   </p>
 </section>
 
-## 🪶 A Planet’s Daily Logbook
+## <span aria-hidden="true">🪶</span> A Planet’s Daily Logbook
 
 If the Earth kept a diary, the **NOAA Daily Weather dataset** would be its journal — quietly recording what happened in the sky each day, everywhere.\
 From sweltering July afternoons in Texas to silent January snow in Maine, each entry captures our atmosphere’s daily rhythm.\
 And collectively, they reveal the long memory of weather that shapes our lives.
 
-## 🧭 Origins — From Observers to Databases
+## <span aria-hidden="true">🧭</span> Origins — From Observers to Databases
 
 The story begins in the late 19th century.\
 Long before satellites and sensors, weather was measured by hand — **Cooperative Observer Program (COOP)** volunteers using thermometers and rain gauges.\
@@ -60,7 +48,7 @@ Today, the result is the **Global Historical Climatology Network – Daily (GHCN
 > “Climate is what you expect. Weather is what you get.” — Robert Heinlein\
 > This dataset captures *both.*
 
-## 🌍 What It Contains
+## <span aria-hidden="true">🌍</span> What It Contains
 
 | Element       | Description                        | Example Variable |
 |:--------------|:-----------------------------------|:-----------------|
@@ -73,7 +61,7 @@ Each station reports one row per day — a simple rhythm of measurements stretch
 
 NOAA also provides derived gridded versions, such as **nClimGrid-Daily**, mapping these station observations onto a fine grid across the contiguous U.S. from **1951 to present**, enabling spatial analyses of heatwaves, droughts, or flood events.
 
-## 💡 Why It Matters
+## <span aria-hidden="true">💡</span> Why It Matters
 
 The NOAA Daily Weather dataset is more than just numbers — it’s **context**.\
 Every datapoint tells part of a larger story about life on Earth.
@@ -86,19 +74,19 @@ Every datapoint tells part of a larger story about life on Earth.
 
 From farmers planning crops to engineers modeling heat stress on power grids — to storytellers like us connecting data to meaning — the dataset quietly underpins much of what we know about weather and climate.
 
-## 🧩 What Makes It Unique
+## <span aria-hidden="true">🧩</span> What Makes It Unique
 
 1.  **It’s the everyday data that becomes history.**\
     While headlines capture hurricanes, this dataset records *the calm before the storm* — the slow shifts that define climate.
 2.  **It connects disciplines.**\
     Weather data intersects naturally with agriculture, transportation, energy, health, and even economics.\
-    For instance, in 🦋 [Butterfly Morning Delays](../stories/butterfly-morning-delays.qmd) story, flight delays could easily be paired with daily precipitation and wind records.
+    For instance, in <span aria-hidden="true">🦋</span> [Butterfly Morning Delays](../stories/butterfly-morning-delays.qmd) story, flight delays could easily be paired with daily precipitation and wind records.
 3.  **It’s global, yet personal.**\
     Because it’s station-based, you can zoom from the planetary to the hyperlocal — even “my town on my birthday.”
 4.  **It’s science you can touch.**\
     Each number once came from a real thermometer, a real place, a real moment in time.
 
-## 🧮 Example Exploration
+## <span aria-hidden="true">🧮</span> Example Exploration
 
 Imagine this:\
 You download 50 years of daily maximum temperatures for your city and plot how many summer days exceeded 95 °F each year.\
@@ -132,7 +120,7 @@ data |>
 
 This small snippet turns daily data into an evolving climate portrait.
 
-## 📚 References & Credits
+## <span aria-hidden="true">📚</span> References & Credits
 
 -   **NOAA/NCEI** — [Global Historical Climatology Network – Daily (GHCN-Daily)](https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily?utm_source=chatgpt.com)
 

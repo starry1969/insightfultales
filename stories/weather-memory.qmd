@@ -17,7 +17,7 @@ keywords: [
   "airline performance",
   "daily weather effects"
 ]
-categories: [climate, systems, data-science]
+categories: ["climate", "systems", "data-science"]
 ---
 <section class="hero">
   <h1><span aria-hidden="true">🌦</span> Weather Memory</h1>
