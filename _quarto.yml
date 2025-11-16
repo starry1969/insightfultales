@@ -18,9 +18,9 @@ website:
   navbar:
     logo: images/logo.png
     left:
-      - text: "<img src='images/top-nav-icons/home-icon.png' alt='Home — Insightful Tales' loading='lazy' width='18' height='18' class='nav-icon'> Home"
+      - text: "<img src='/images/top-nav-icons/home-icon.png' alt='Home — Insightful Tales' loading='lazy' width='18' height='18' class='nav-icon'> Home"
         href: index.qmd    
-      - text: "<img src='images/top-nav-icons/stories-icon.png' alt='Stories at Insightful Tales' loading='lazy' width='18' height='18' class='nav-icon'> Stories"
+      - text: "<img src='/images/top-nav-icons/stories-icon.png' alt='Stories at Insightful Tales' loading='lazy' width='18' height='18' class='nav-icon'> Stories"
         menu: 
           - href: stories/geography-of-luck.qmd
             text: "🧭 Geography of Luck"
@@ -32,11 +32,11 @@ website:
             text: "⚾️ The Hidden Rhythm of Baseball"
           - href: stories/when-growth-forgot-happiness-the-hidden-curve-of-human-progress.qmd
             text: "🌏 When Growth Forgot Happiness — The Hidden Curve of Human Progress"
-      - text: "<img src='images/top-nav-icons/historical-icon.png' alt='Historical stories at Insightful Tales' loading='lazy' width='18' height='18' class='nav-icon'>️ Historical"
+      - text: "<img src='/images/top-nav-icons/historical-icon.png' alt='Historical stories at Insightful Tales' loading='lazy' width='18' height='18' class='nav-icon'>️ Historical"
         menu: 
           - href: data-science/genesis-of-data.qmd
             text: "🧮 Genesis of Data"
-      - text: "<img src='images/top-nav-icons/datasets-icon.png' alt='Datasets at Insightful Tales' loading='lazy' width='18' height='18' class='nav-icon'> Datasets"
+      - text: "<img src='/images/top-nav-icons/datasets-icon.png' alt='Datasets at Insightful Tales' loading='lazy' width='18' height='18' class='nav-icon'> Datasets"
         menu: 
           - href: datasets/nycflights13-the-dataset-that-took-off.qmd
             text: "✈️ nycflights13: The Dataset That Took Off"
@@ -48,9 +48,9 @@ website:
             text: "🌦 A planet’s diary — recording our everyday atmosphere, one day at a time."
           - href: datasets/transport-for-london-tfl-the-pulse-beneath-the-city.qmd
             text: "🚇 Transport for London (TfL) — The Pulse Beneath the City"
-      - text: "<img src='images/top-nav-icons/about-icon.png' alt='About Insightful Tales' loading='lazy' width='18' height='18' class='nav-icon'> About"
+      - text: "<img src='/images/top-nav-icons/about-icon.png' alt='About Insightful Tales' loading='lazy' width='18' height='18' class='nav-icon'> About"
         href: about.qmd
-      - text: "<img src='images/top-nav-icons/contact-icon.png' alt='Contact Insightful Tales' loading='lazy' width='18' height='18' class='nav-icon'> Contact"
+      - text: "<img src='/images/top-nav-icons/contact-icon.png' alt='Contact Insightful Tales' loading='lazy' width='18' height='18' class='nav-icon'> Contact"
         href: contact.qmd
   page-footer:
     left: |

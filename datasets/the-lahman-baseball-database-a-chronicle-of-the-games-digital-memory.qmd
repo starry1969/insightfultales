@@ -33,8 +33,8 @@ execute:
 ---
 <section class="hero">
   <h1>⚾ The Lahman Baseball Database — A Chronicle of the Game’s Digital Memory</h1>
-  <h2>From paper box scores to open data, how one project preserved baseball’s statistical soul.</h2>
-  <p>
+  <h2 class="hero-subtitle">From paper box scores to open data, how one project preserved baseball’s statistical soul.</h2>
+  <p class="hero-text">
     Exploring the origins, history, and significance of the Lahman Baseball Database — a dataset that bridges baseball’s past and data science’s future.
   </p>
 </section>

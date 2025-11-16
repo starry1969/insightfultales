@@ -46,8 +46,8 @@ execute:
 ---
 <section class="hero">
   <h1>🌀 Insightful Tales</h1>
-  <h2>Where stories become narrative.</h2>
-  <p>
+  <h2 class="hero-subtitle">Where stories become narrative.</h2>
+  <p class="hero-text">
     Insightful Tales is where numbers find their voice. Through thoughtful storytelling,
     rich visuals, and clear analysis, the site turns datasets into human-focused narratives
     about how the world moves, grows, and remembers.

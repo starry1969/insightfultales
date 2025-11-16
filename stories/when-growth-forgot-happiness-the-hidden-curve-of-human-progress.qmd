@@ -21,8 +21,8 @@ execute:
 ---
 <section class="hero">
   <h1>🌏 When Growth Forgot Happiness — The Hidden Curve of Human Progress</h1>
-  <h2>A Gapminder Tale of Wealth, Well-Being, and the Uneven Pursuit of a Better Life.</h2>
-  <p>
+  <h2 class="hero-subtitle">A Gapminder Tale of Wealth, Well-Being, and the Uneven Pursuit of a Better Life.</h2>
+  <p class="hero-text">
     Economic growth was supposed to lift all boats. But did more money always buy better lives?
   Using Gapminder, we trace the hidden curve where prosperity rose yet well-being lagged — and ask what truly counts as progress.
   </p>

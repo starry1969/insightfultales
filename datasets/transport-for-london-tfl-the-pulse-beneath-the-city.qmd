@@ -34,8 +34,8 @@ execute:
 ---
 <section class="hero">
   <h1>🚇 Transport for London (TfL) — The Pulse Beneath the City</h1>
-  <h2>How data reveals the hidden rhythm of London’s movement.</h2>
-  <p>
+  <h2 class="hero-subtitle">How data reveals the hidden rhythm of London’s movement.</h2>
+  <p class="hero-text">
     A look into the heartbeat of London through TfL’s open data — exploring Oyster and Contactless journeys, Tube entries and exits, and Cycle Hire usage to understand the patterns of a living metropolis.
   </p>
 </section>

@@ -33,8 +33,8 @@ execute:
 ---
 <section class="hero">
   <h1>⚾️ The Hidden Rhythm of Baseball</h1>
-  <h2>Why every era seems to have its own heartbeat — and what that rhythm reveals about us</h2>
-  <p>
+  <h2 class="hero-subtitle">Why every era seems to have its own heartbeat — and what that rhythm reveals about us</h2>
+  <p class="hero-text">
     A hundred years of baseball heard, not just measured — where numbers whisper the story of how the game learned to breathe differently with each generation.
   </p>
 </section>

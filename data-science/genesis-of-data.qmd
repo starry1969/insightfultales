@@ -34,9 +34,9 @@ execute:
 
 <h1>🧮 The Genesis of Data — When Counting Became Knowing</h1>
 
-<h2>Tracing humanity’s first attempts to quantify the world — from Babylonian grain tablets to Victorian census tables, where the act of counting became the foundation of data science.</h2>
+<h2 class="hero-subtitle">Tracing humanity’s first attempts to quantify the world — from Babylonian grain tablets to Victorian census tables, where the act of counting became the foundation of data science.</h2>
 
-<p>Where numbers first became mirrors of the world.</p>
+<p class="hero-text">Where numbers first became mirrors of the world.</p>
 
 </section>
 

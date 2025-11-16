@@ -34,8 +34,8 @@ execute:
 ---
 <section class="hero">
   <h1>✈️ nycflights13: The Dataset That Took Off</h1>
-  <h2>How one year of New York flights became one of the most famous datasets in data science</h2>
-  <p>
+  <h2 class="hero-subtitle">How one year of New York flights became one of the most famous datasets in data science</h2>
+  <p class="hero-text">
     A richly detailed dataset of all 336,776 flights departing New York City in 2013 — curated by Hadley Wickham and the tidyverse team from U.S. Bureau of Transportation Statistics data. It’s one of the most iconic datasets in modern data science, built to teach real-world data wrangling, visualization, and relational joins through an engaging, tangible subject: air travel.
   </p>
 </section>

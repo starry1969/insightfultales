@@ -32,8 +32,8 @@ execute:
 ---
 <section class="hero">
   <h1>🌦 Weather Memory</h1>
-  <h2>Do flight delays 'remember' yesterday's weather? Evidence from nycflights13.</h2>
-  <p>
+  <h2 class="hero-subtitle">Do flight delays 'remember' yesterday's weather? Evidence from nycflights13.</h2>
+  <p class="hero-text">
     Bad weather can disrupt schedules, but does the pain linger after skies clear? This short data story explores whether today's flight delays still carry the fingerprint of yesterday's weather — a simple form of system memory.
   </p>
 </section>

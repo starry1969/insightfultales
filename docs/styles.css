@@ -126,6 +126,19 @@ h1, h2 {
   overflow: hidden;
 }
 
+.hero-subtitle {
+  font-size: 1.25rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.hero-text {
+  max-width: 42rem;
+  margin: 0 auto 0;   /* center text block within hero; change to 0 if you prefer left */
+  margin-left: 0;
+}
+
 /* ==========================================
    Mood colors for tags / chips / labels
    ========================================== */
