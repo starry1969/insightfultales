@@ -583,7 +583,8 @@ p.keywords {
 details.dataset > summary {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
+  flex-wrap: wrap;  /* allows title + subtitle to wrap nicely */
 }
 
 /* The badge icon inside the summary line */
