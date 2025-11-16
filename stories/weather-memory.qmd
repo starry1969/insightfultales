@@ -31,7 +31,7 @@ execute:
   freeze: auto
 ---
 <section class="hero">
-  <h1>🌦 Weather Memory</h1>
+  <h1><span aria-hidden="true">🌦</span> Weather Memory</h1>
   <h2 class="hero-subtitle">Do flight delays 'remember' yesterday's weather? Evidence from nycflights13.</h2>
   <p class="hero-text">
     Bad weather can disrupt schedules, but does the pain linger after skies clear? This short data story explores whether today's flight delays still carry the fingerprint of yesterday's weather — a simple form of system memory.
@@ -69,7 +69,7 @@ quiet_theme <- if (exists("quiet_theme")) quiet_theme else function() {
 }
 ```
 
-## <span aria-hidden="true">🧱✈</span> Build a daily panel: flights × weather
+## <span aria-hidden="true">🧱</span> Build a daily panel: flights × weather
 
 **Goal →** Create a tidy daily dataset by airport (JFK/LGA/EWR) with delay outcomes and weather inputs.
 

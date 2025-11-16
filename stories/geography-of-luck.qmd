@@ -33,11 +33,19 @@ execute:
 
 <section class="hero">
 
-<h1>🧭 The Geography of Luck</h1>
+<h1><span aria-hidden="true">🧭</span> The Geography of Luck</h1>
 
-<h2 class="hero-subtitle">The fortune of birthplaces and borders — tracing how chance and geography conspire to shape our destinies.</h2>
+<h2 class="hero-subtitle">
 
-<p class="hero-text">What we call “luck” often begins with latitude and longitude. This story uncovers how place, mobility, and systems intertwine to shape the fortunes of people and nations.</p>
+The fortune of birthplaces and borders — tracing how chance and geography conspire to shape our destinies.
+
+</h2>
+
+<p class="hero-text">
+
+What we call “luck” often begins with latitude and longitude. This story uncovers how place, mobility, and systems intertwine to shape the fortunes of people and nations.
+
+</p>
 
 </section>
 

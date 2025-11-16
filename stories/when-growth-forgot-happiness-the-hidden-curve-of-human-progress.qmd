@@ -20,7 +20,7 @@ execute:
   freeze: auto
 ---
 <section class="hero">
-  <h1>🌏 When Growth Forgot Happiness — The Hidden Curve of Human Progress</h1>
+  <h1><span aria-hidden="true">🌏</span> When Growth Forgot Happiness — The Hidden Curve of Human Progress</h1>
   <h2 class="hero-subtitle">A Gapminder Tale of Wealth, Well-Being, and the Uneven Pursuit of a Better Life.</h2>
   <p class="hero-text">
     Economic growth was supposed to lift all boats. But did more money always buy better lives?
@@ -39,7 +39,7 @@ library(modelr)
 library(broom)
 ```
 
-## 🕊️ 1. The Question — What if Growth Isn’t Happiness?
+## <span aria-hidden="true">🕊️</span> 1. The Question — What if Growth Isn’t Happiness?
 
 For decades, countries chased **GDP** — the grand total of what they produced.\
 But can numbers capture joy, belonging, or peace of mind?
@@ -51,7 +51,7 @@ This story starts with a simple but daring question:
 We’ll keep the math gentle and the meaning clear.\
 You don’t need a statistics background — only curiosity.
 
-## 🔢 2. Building a Fair Baseline
+## <span aria-hidden="true">🔢</span> 2. Building a Fair Baseline
 
 We’ll connect **income (GDP per person)** and **life expectancy**,\
 then look for nations that live **longer or shorter** lives than their income predicts.
@@ -78,11 +78,11 @@ df_index <- df %>%
 
 **Interpretation:**
 
--   💙 Positive Index → People live longer than income predicts.
+-   <span aria-hidden="true">💙</span> Positive Index → People live longer than income predicts.
 
--   ❤️ Negative Index → People live shorter lives than income predicts.
+-   <span aria-hidden="true">❤️</span> Negative Index → People live shorter lives than income predicts.
 
-## 📈 3. The Hidden Curve Appears
+## <span aria-hidden="true">📈</span> 3. The Hidden Curve Appears
 
 ```{r}
 #| label: hidden-curve
@@ -101,10 +101,10 @@ df_index %>%
     theme_minimal(base_size = 13)
 ```
 
-✨ Look closely: some nations sparkle above the line — others droop below.\
+<span aria-hidden="true">✨</span> Look closely: some nations sparkle above the line — others droop below.\
 The curve isn’t smooth progress; it’s a collage of human choices.
 
-## ⏳ 4. Time Reveals Who Outran Money
+## <span aria-hidden="true">⏳</span> 4. Time Reveals Who Outran Money
 
 ```{r}
 #| label: trends
@@ -160,7 +160,7 @@ glue("Riser example: {CASE_RISER}")
 glue("Slipper example: {CASE_SLIPPER}")
 ```
 
-## 💡 6. The Quiet Threshold — When Money Stops Buying Life
+## <span aria-hidden="true">💡</span> 6. The Quiet Threshold — When Money Stops Buying Life
 
 ```{r}
 #| label: threshold
@@ -188,46 +188,46 @@ curve_df |>
 Beyond a comfort zone (roughly \$30 000 per person),\
 **the curve flattens** — proof that life’s deepest gains come from what money can’t buy.
 
-## 🚀 7. Where We Go Next
+## <span aria-hidden="true">🚀</span> 7. Where We Go Next
 
 Each finding births a future story:
 
--   😊 **The Happiness Deficit** — when wealth outpaces joy.
+-   <span aria-hidden="true">😊</span> **The Happiness Deficit** — when wealth outpaces joy.
 
--   🔄 **The Curve That Bends Twice** — tech progress, then overwhelm.
+-   <span aria-hidden="true">🔄</span> **The Curve That Bends Twice** — tech progress, then overwhelm.
 
--   🧮 **Counting What Counts** — education, safety, belonging.
+-   <span aria-hidden="true">🧮</span> **Counting What Counts** — education, safety, belonging.
 
--   💬 **Data of Dignity** — measuring lives beyond the ledger.
+-   <span aria-hidden="true">💬</span> **Data of Dignity** — measuring lives beyond the ledger.
 
 Our mission: turn data into empathy, and statistics into stories that feel *alive*.
 
-## 📚 References & Credits
+## <span aria-hidden="true">📚</span> References & Credits
 
 **Data Sources**
 
--   🌐 Gapminder Foundation — *Gapminder Data Portal*
+-   <span aria-hidden="true">🌐</span> Gapminder Foundation — *Gapminder Data Portal*
 
--   🌍 World Bank Open Data — *World Development Indicators*
+-   <span aria-hidden="true">🌍</span> World Bank Open Data — *World Development Indicators*
 
 -   🇺🇳 UNDP — *Human Development Reports*
 
--   😊 World Happiness Report (UN SDSN)
+-   <span aria-hidden="true">😊</span> World Happiness Report (UN SDSN)
 
 **Background & Inspiration**
 
--   📖 Easterlin (1974) *Does Economic Growth Improve the Human Lot?*
+-   <span aria-hidden="true">📖</span> Easterlin (1974) *Does Economic Growth Improve the Human Lot?*
 
--   🕊️ Sen (1999) *Development as Freedom*
+-   <span aria-hidden="true">🕊️</span> Sen (1999) *Development as Freedom*
 
--   💭 Layard (2005) *Happiness: Lessons from a New Science*
+-   <span aria-hidden="true">💭</span> Layard (2005) *Happiness: Lessons from a New Science*
 
--   🌈 Rosling (2018) *Factfulness*
+-   <span aria-hidden="true">🌈</span> Rosling (2018) *Factfulness*
 
 **Credits**
 
--   ✍️ Concept & Writing — *Insightful Tales*
+-   <span aria-hidden="true">✍️</span> Concept & Writing — *Insightful Tales*
 
--   🎨 Visual Design — *Insightful Tales Studio*
+-   <span aria-hidden="true">🎨</span> Visual Design — *Insightful Tales Studio*
 
--   📊 Data Stewardship — *Gapminder Foundation*
+-   <span aria-hidden="true">📊</span> Data Stewardship — *Gapminder Foundation*
