@@ -588,8 +588,10 @@ details.dataset > summary {
 
 /* The badge icon inside the summary line */
 .dataset-badge-icon {
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  margin-right: 0.35rem;
+  vertical-align: middle;
   flex-shrink: 0;
 }
 
