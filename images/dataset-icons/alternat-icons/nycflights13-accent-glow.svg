@@ -1,0 +1,54 @@
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Glow Filter -->
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <!-- First glow layer -->
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Cyan color matrix for glow -->
+    <filter id="cyan-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feColorMatrix 
+        type="matrix"
+        values="0 0 0 0 0.2235  
+                0 0 0 0 0.7412  
+                0 0 0 0 0.9725  
+                0 0 0 1 0"
+        result="cyanBlur"/>
+      <feMerge>
+        <feMergeNode in="cyanBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Outer Circle with Cyan Glow -->
+  <circle 
+    cx="120" 
+    cy="120" 
+    r="108" 
+    stroke="#FFFFFF" 
+    stroke-width="12" 
+    fill="none"
+    filter="url(#cyan-glow)"
+  />
+
+  <!-- S-Curve Path with Glow -->
+  <path 
+    d="M60 160 
+       C 95 120, 105 120, 140 80
+       C 170 50, 190 70, 180 105" 
+    stroke="#FFFFFF" 
+    stroke-width="14" 
+    stroke-linecap="round" 
+    fill="none"
+    filter="url(#cyan-glow)"
+  />
+
+</svg>

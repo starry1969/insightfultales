@@ -1,0 +1,22 @@
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer Circle -->
+  <circle 
+    cx="120" 
+    cy="120" 
+    r="108" 
+    stroke="#FFFFFF" 
+    stroke-width="12" 
+    fill="none"
+  />
+
+  <!-- Abstract S-Curve Flight Path (Inverted) -->
+  <path 
+    d="M60 160 
+       C 95 120, 105 120, 140 80
+       C 170 50, 190 70, 180 105" 
+    stroke="#FFFFFF" 
+    stroke-width="14" 
+    stroke-linecap="round" 
+    fill="none"
+  />
+</svg>

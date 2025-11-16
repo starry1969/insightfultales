@@ -2,36 +2,35 @@
 title: "Insightful Tales"
 subtitle: "Where stories become narrative."
 description: "Insightful Tales is where numbers find their voice. Through thoughtful storytelling, rich visuals, and clear analysis, the site turns datasets into human-focused narratives about how the world moves, grows, and remembers."
-keywords: [
-  "data storytelling",
-  "data visualization",
-  "data science",
-  "human progress",
-  "global trends",
-  "statistics",
-  "analysis",
-  "narratives",
-  "insight",
-  "exploration",
-  "datasets",
-  "visual analytics",
-  "human-centered data",
-  "world patterns",
-  "quantitative storytelling"
-]
-categories: [
-  "data-science",
-  "storytelling",
-  "global-trends",
-  "human-progress",
-  "climate-and-weather",
-  "urban-life",
-  "economics",
-  "culture-and-history",
-  "visual-analytics",
-  "exploration"
-]
+keywords:
+  - "data storytelling"
+  - "data visualization"
+  - "data science"
+  - "human progress"
+  - "global trends"
+  - "statistics"
+  - "analysis"
+  - "narratives"
+  - "insight"
+  - "exploration"
+  - "datasets"
+  - "visual analytics"
+  - "human-centered data"
+  - "world patterns"
+  - "quantitative storytelling"
+categories:
+  - "data-science"
+  - "storytelling"
+  - "global-trends"
+  - "human-progress"
+  - "climate-and-weather"
+  - "urban-life"
+  - "economics"
+  - "culture-and-history"
+  - "visual-analytics"
+  - "exploration"
 ---
+
 
 <section class="hero">
 
@@ -154,7 +153,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>[✈️]{aria-hidden="true"} <a href="datasets/nycflights13-the-dataset-that-took-off.html"><strong>nycflights13:</strong></a> The DataSet That Took Off</summary>
+<summary><img src="images/dataset-icons/nycflights13.svg" alt="" class="dataset-badge-icon" aria-hidden="true"> <a href="datasets/nycflights13-the-dataset-that-took-off.html"><strong>nycflights13:</strong></a> The DataSet That Took Off</summary>
 
 **What it is:** All flights departing NYC in 2013, linked to weather, airlines, and airports.\
 **Why it’s worthy:** Rich joins (flights ⇄ weather ⇄ carriers) + time series + networks.\

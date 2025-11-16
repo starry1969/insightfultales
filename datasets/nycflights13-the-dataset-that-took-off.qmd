@@ -21,6 +21,15 @@ keywords: [
 ]
 categories: ["History of Data Science", "Transportation & Infrastructure", "Education & Methodology"]
 ---
+
+<!-- Dataset Badge -->
+<p class="dataset-header-badge">
+  <img src="../images/dataset-icons/nycflights13.svg"
+       alt=""
+       class="dataset-icon-hero"
+       aria-hidden="true">
+</p>
+
 <section class="hero">
   <h1><span aria-hidden="true">✈️</span> nycflights13: The Dataset That Took Off</h1>
   <h2 class="hero-subtitle">How one year of New York flights became one of the most famous datasets in data science</h2>

@@ -245,6 +245,16 @@ tibble(
 -   Controlling for weather/time effects, the relationship **persists**.
 -   A small reduction in morning scatter yields a **measurable** afternoon benefit.
 
+<section class="dataset-source">
+  <img src="../images/dataset-icons/nycflights13.svg"
+       class="dataset-icon-small"
+       alt=""
+       aria-hidden="true">
+  <span><strong>Dataset:</strong> 
+    <a href="../datasets/nycflights13-the-dataset-that-took-off.html">nycflights13</a>
+  </span>
+</section>
+
 ## [📚]{aria-hidden="true"} References & Credits
 
 -   Data: **nycflights13** (flights, weather) — Wickham et al. (CRAN)

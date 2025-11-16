@@ -2,7 +2,7 @@
 title: "When Growth Forgot Happiness — The Hidden Curve of Human Progress"
 subtitle: "A Gapminder Tale of Wealth, Well-Being, and the Uneven Pursuit of a Better Life."
 description: "Economic growth was supposed to lift all boats. But did more money always buy better lives? Using Gapminder, we trace the hidden curve where prosperity rose yet well-being lagged — and ask what truly counts as progress."
-  keywords: ["Gapminder", "GDP per capita", "life expectancy", "happiness", "human development", "decoupling"]
+keywords: ["Gapminder", "GDP per capita", "life expectancy", "happiness", "human development", "decoupling"]
 categories: ["data-science", "well-being", "economics"]
 ---
 <section class="hero">
