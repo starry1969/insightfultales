@@ -1,0 +1,16 @@
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Outer Circle -->
+  <circle cx="120" cy="120" r="108" stroke="#38BDF8" stroke-width="12" fill="none"></circle>
+
+  <!-- Weather Wave (temperature / daily variation) -->
+  <path d="M40 130
+       C 65 110, 85 110, 110 130
+       C 135 150, 155 150, 180 130" stroke="#38BDF8" stroke-width="10" fill="none" stroke-linecap="round"></path>
+
+  <!-- Rain / Event Bars -->
+  <line x1="80" x2="80" y1="130" y2="155" stroke="#38BDF8" stroke-width="8" stroke-linecap="round"></line>
+  <line x1="120" x2="120" y1="130" y2="165" stroke="#38BDF8" stroke-width="8" stroke-linecap="round"></line>
+  <line x1="160" x2="160" y1="130" y2="150" stroke="#38BDF8" stroke-width="8" stroke-linecap="round"></line>
+
+</svg>

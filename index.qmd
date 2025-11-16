@@ -189,7 +189,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>[🌦️]{aria-hidden="true"} <a href="datasets/the-noaa-daily-weather-dataset.html"> <strong>NOAA Daily Weather</strong></a> — Memory of the Sky</summary>
+<summary><img src="images/dataset-icons/noaa-daily.svg" alt="" class="dataset-badge-icon" aria-hidden="true"> <a href="datasets/the-noaa-daily-weather-dataset.html"> <strong>NOAA Daily Weather</strong></a> — Memory of the Sky</summary>
 
 **What it is:** Decades of daily observations for thousands of stations (GHCN).\
 **Why it’s worthy:** Local variability meets climate trends; perfect for “weather memory” ideas.\

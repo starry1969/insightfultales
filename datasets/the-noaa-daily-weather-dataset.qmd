@@ -20,6 +20,15 @@ keywords: [
 ]
 categories: ["data-science", "climate", "history"]
 ---
+
+<!-- Dataset Badge -->
+
+<p class="dataset-header-badge">
+
+<img src="../images/dataset-icons/noaa-daily.svg" class="dataset-icon-hero" aria-hidden="true"/>
+
+</p>
+
 <section class="hero">
   <h1><span aria-hidden="true">🌦️</span> The NOAA Daily Weather Dataset</h1>
   <h2 class="hero-subtitle">A planet’s diary — recording our everyday atmosphere, one day at a time.</h2>
