@@ -267,10 +267,11 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 **Why it’s worthy:** Comparable geometry of cities across cultures and terrains.\
 **Story sparks:** Edge growth vs. infill; coastal constraints; night-lights vs. census discrepancies.
 
+</details>
+
+<!-- Refer to Dataset Icon Language -->
 <p class="icon-language-link">
   <a href="dataset-icon-language.html">
     Learn the meaning behind these dataset icons →
   </a>
 </p>
-
-</details>
