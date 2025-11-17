@@ -201,7 +201,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>[🚇]{aria-hidden="true"} <a href="datasets/transport-for-london-tfl-the-pulse-beneath-the-city.html"><strong>Transport for London (TfL)</strong></a> — The Pulse Beneath the City</summary>
+<summary><img src="images/dataset-icons/tfl.svg" alt="" class="dataset-badge-icon" aria-hidden="true"> <a href="datasets/transport-for-london-tfl-the-pulse-beneath-the-city.html"><strong>Transport for London (TfL)</strong></a> — The Pulse Beneath the City</summary>
 
 **What it is:** Open ridership, delays, closures, and more from London Underground.\
 **Why it’s worthy:** Network effects + peak waves = emergent patterns.\
@@ -213,7 +213,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>[🛍️]{aria-hidden="true"} <strong>UCI Online Retail</strong> — Human Behavior in Transactions</summary>
+<summary><img src="images/dataset-icons/uci-online-retail.svg" alt="" class="dataset-badge-icon" aria-hidden="true"> <strong>UCI Online Retail</strong> — Human Behavior in Transactions</summary>
 
 **What it is:** Line-item invoices for a UK e-commerce retailer (2010–2011).\
 **Why it’s worthy:** Basket analysis, seasonality, long-tail dynamics.\
@@ -225,7 +225,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>[💰]{aria-hidden="true"} <strong>FRED Economic Data</strong> — The Pulse of Economies</summary>
+<summary><img src="images/dataset-icons/fred.svg" alt="" class="dataset-badge-icon" aria-hidden="true"> <strong>FRED Economic Data</strong> — The Pulse of Economies</summary>
 
 **What it is:** US/international macro time series (inflation, jobs, rates).\
 **Why it’s worthy:** High-frequency, consequential, and composable.\
@@ -237,7 +237,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>[🛰️]{aria-hidden="true"} <strong>NASA MODIS / Earth Observatory</strong> — A Planet in Pixels</summary>
+<summary><img src="images/dataset-icons/nasa-modis.svg" alt="" class="dataset-badge-icon" aria-hidden="true"> <strong>NASA MODIS / Earth Observatory</strong> — A Planet in Pixels</summary>
 
 **What it is:** Satellite observations (vegetation, fires, aerosols, ice).\
 **Why it’s worthy:** Visual storytelling + measurable change.\
@@ -249,7 +249,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>[🕹️]{aria-hidden="true"} <strong>Steam Games</strong> — Collective Taste in the Wild</summary>
+<summary><img src="images/dataset-icons/steam-games.svg" alt="" class="dataset-badge-icon" aria-hidden="true"> <strong>Steam Games</strong> — Collective Taste in the Wild</summary>
 
 **What it is:** Game metadata, reviews, tags, and (often) playtime stats.\
 **Why it’s worthy:** Social proof, hype cycles, networked preference landscapes.\
@@ -261,7 +261,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary>[🌆]{aria-hidden="true"} <strong>Global Urban Footprint</strong> — Cities from Space</summary>
+<summary><img src="images/dataset-icons/global-urban-footprint.svg" alt="" class="dataset-badge-icon" aria-hidden="true"> <strong>Global Urban Footprint</strong> — Cities from Space</summary>
 
 **What it is:** High-resolution, satellite-derived urban extent worldwide.\
 **Why it’s worthy:** Comparable geometry of cities across cultures and terrains.\

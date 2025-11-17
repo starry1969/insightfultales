@@ -1,0 +1,14 @@
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Outer Circle Frame -->
+  <circle cx="120" cy="120" r="108" stroke="#38BDF8" stroke-width="12" fill="none"></circle>
+
+  <!-- Game Tile Stack (library of games) -->
+  <rect x="70" y="85" width="60" height="70" rx="10" stroke="#38BDF8" stroke-width="8" fill="none"></rect>
+  <rect x="85" y="95" width="60" height="70" rx="10" stroke="#38BDF8" stroke-width="8" fill="none"></rect>
+
+  <!-- Play / Activity Indicator (abstract) -->
+  <circle cx="155" cy="135" r="16" stroke="#38BDF8" stroke-width="8" fill="none"></circle>
+  <path d="M150 127 L162 135 L150 143 Z" fill="#38BDF8"></path>
+
+</svg>

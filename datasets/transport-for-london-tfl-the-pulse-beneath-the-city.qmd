@@ -21,6 +21,15 @@ keywords: [
 ]
 categories: ["data-science", "urban-life", "history"]
 ---
+
+<!-- Dataset Badge -->
+
+<p class="dataset-header-badge">
+
+<img src="../images/dataset-icons/tfl.svg" class="dataset-icon-hero" aria-hidden="true"/>
+
+</p>
+
 <section class="hero">
   <h1><span aria-hidden="true">🚇</span> Transport for London (TfL) — The Pulse Beneath the City</h1>
   <h2 class="hero-subtitle">How data reveals the hidden rhythm of London’s movement.</h2>

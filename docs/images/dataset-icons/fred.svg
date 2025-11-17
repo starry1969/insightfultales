@@ -1,0 +1,20 @@
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Outer Circle Frame -->
+  <circle cx="120" cy="120" r="108" stroke="#38BDF8" stroke-width="12" fill="none"></circle>
+
+  <!-- Baseline (time axis) -->
+  <line x1="55" y1="155" x2="185" y2="155" stroke="#38BDF8" stroke-width="8" stroke-linecap="round"></line>
+
+  <!-- Economic Curve (stylized FRED-style series) -->
+  <path d="M60 150
+       C 80 130, 95 125, 110 135
+       S 145 120, 160 135
+       S 180 120, 180 110" stroke="#38BDF8" stroke-width="10" fill="none" stroke-linecap="round"></path>
+
+  <!-- Data Points -->
+  <circle cx="85" cy="137" r="8" fill="#38BDF8"></circle>
+  <circle cx="125" cy="132" r="8" fill="#38BDF8"></circle>
+  <circle cx="160" cy="128" r="8" fill="#38BDF8"></circle>
+
+</svg>

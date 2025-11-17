@@ -1,0 +1,17 @@
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Outer Circle Frame -->
+  <circle cx="120" cy="120" r="108" stroke="#38BDF8" stroke-width="12" fill="none"></circle>
+
+  <!-- Earth Arc (lower hemisphere hint) -->
+  <path d="M55 150
+       A 80 80 0 0 0 185 150" stroke="#38BDF8" stroke-width="10" fill="none" stroke-linecap="round"></path>
+
+  <!-- Orbital Swath / Track -->
+  <path d="M70 90
+       Q 120 60, 170 90" stroke="#38BDF8" stroke-width="8" fill="none" stroke-linecap="round"></path>
+
+  <!-- Sensor Footprint / Pixel -->
+  <rect x="110" y="80" width="16" height="16" rx="3" fill="#38BDF8"></rect>
+
+</svg>
