@@ -287,6 +287,34 @@
     "text": "📊 Featured Datasets — Where Stories Begin\nBehind every story lies a dataset waiting to be understood.\nExplore the origins, purpose, and structure of the datasets that fuel Insightful Tales.\nEach entry links to its background page — describing how the data was collected, why it matters, and what stories it can tell.\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
+    "objectID": "data-science/index.html",
+    "href": "data-science/index.html",
+    "title": "Data Science Stories",
+    "section": "",
+    "text": "🧮 Data Science Stories\nThese are the analytical backbones of Insightful Tales —\nnotebooks that explore datasets, test ideas, and illuminate patterns that later become stories.\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Contact",
+    "section": "",
+    "text": "I’d love to hear from readers, researchers, or collaborators interested in data storytelling, visualization, or related projects.\n\n💡 Feedback or story ideas? Drop a note below.\n\n🧠 Collaboration inquiries? I’m open to cross-disciplinary data projects.\n\n👉 [LinkedIn Profile](https://www.linkedin.com/in/joseph-schaffer-a6270138\n👉 GitHub Repository\nOr email me directly: joseph [at] insightfultales [dot] com"
+  },
+  {
+    "objectID": "contact.html#get-in-touch",
+    "href": "contact.html#get-in-touch",
+    "title": "Contact",
+    "section": "",
+    "text": "I’d love to hear from readers, researchers, or collaborators interested in data storytelling, visualization, or related projects.\n\n💡 Feedback or story ideas? Drop a note below.\n\n🧠 Collaboration inquiries? I’m open to cross-disciplinary data projects.\n\n👉 [LinkedIn Profile](https://www.linkedin.com/in/joseph-schaffer-a6270138\n👉 GitHub Repository\nOr email me directly: joseph [at] insightfultales [dot] com"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Insightful Tales",
+    "section": "",
+    "text": "🦋 Insightful Tales is a creative data storytelling project that transforms datasets into visual, narrative insights.\nEvery story is built from data — but told like literature, not statistics."
+  },
+  {
     "objectID": "data-science/genesis-of-data.html",
     "href": "data-science/genesis-of-data.html",
     "title": "The Genesis of Data — When Counting Became Knowing",
@@ -343,32 +371,95 @@
     "text": "📚 References\n\nWorld Bank Historical Population Data (1800–present)\nOur World in Data — History of Statistics\nUN Data Portal: National Census Records Archive"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About Insightful Tales",
+    "objectID": "dataset-icon-language.html",
+    "href": "dataset-icon-language.html",
+    "title": "🔹 The Insightful Tales Dataset Icon Language",
     "section": "",
-    "text": "🦋 Insightful Tales is a creative data storytelling project that transforms datasets into visual, narrative insights.\nEvery story is built from data — but told like literature, not statistics."
+    "text": "The cyan circles and abstract shapes you see across Insightful Tales aren’t just decoration. They’re a visual language: a way of hinting at what each dataset is and how it behaves, before a single number appears on the page."
   },
   {
-    "objectID": "contact.html",
-    "href": "contact.html",
-    "title": "Contact",
-    "section": "",
-    "text": "I’d love to hear from readers, researchers, or collaborators interested in data storytelling, visualization, or related projects.\n\n💡 Feedback or story ideas? Drop a note below.\n\n🧠 Collaboration inquiries? I’m open to cross-disciplinary data projects.\n\n👉 [LinkedIn Profile](https://www.linkedin.com/in/joseph-schaffer-a6270138\n👉 GitHub Repository\nOr email me directly: joseph [at] insightfultales [dot] com"
+    "objectID": "dataset-icon-language.html#the-shared-visual-grammar",
+    "href": "dataset-icon-language.html#the-shared-visual-grammar",
+    "title": "🔹 The Insightful Tales Dataset Icon Language",
+    "section": "🧩 The Shared Visual Grammar",
+    "text": "🧩 The Shared Visual Grammar\nBefore we look at individual icons, here’s the common design grammar they all share.\n\nCyan circle as frame.\nEvery icon sits in a bright cyan ring. It marks the design as part of the Insightful Tales family, and suggests a bounded, structured view of the world — a dataset as a lens.\nAbstract rather than literal.\nNo airplanes, no globes, no logos. Each icon uses minimal geometry — arcs, lines, dots, blocks — to capture the structure of the data instead of its surface aesthetics.\nConsistent weight and geometry.\nLine weights and shapes are kept consistent, so very different domains (flights, weather, urban form, economics, games) still feel like they belong to the same library.\nContext-aware usage.\n\nSmall badge (.dataset-badge-icon) in lists and “Featured Datasets”.\n\nHero badge (.dataset-icon-hero) at the top of dataset pages.\n\nTiny source badge (.dataset-icon-small) in story footers like “Dataset: nycflights13”."
   },
   {
-    "objectID": "contact.html#get-in-touch",
-    "href": "contact.html#get-in-touch",
-    "title": "Contact",
-    "section": "",
-    "text": "I’d love to hear from readers, researchers, or collaborators interested in data storytelling, visualization, or related projects.\n\n💡 Feedback or story ideas? Drop a note below.\n\n🧠 Collaboration inquiries? I’m open to cross-disciplinary data projects.\n\n👉 [LinkedIn Profile](https://www.linkedin.com/in/joseph-schaffer-a6270138\n👉 GitHub Repository\nOr email me directly: joseph [at] insightfultales [dot] com"
+    "objectID": "dataset-icon-language.html#nycflights13-the-dataset-that-took-off",
+    "href": "dataset-icon-language.html#nycflights13-the-dataset-that-took-off",
+    "title": "🔹 The Insightful Tales Dataset Icon Language",
+    "section": "✈️ nycflights13 — The Dataset That Took Off",
+    "text": "✈️ nycflights13 — The Dataset That Took Off\n\n\n\nWhat you see\n\nA stylized, angular path inside the circle.\nA sense of origin and destination, with a central kink that feels like movement.\n\nWhat it represents\n\nThe path hints at flight legs and routing.\nThe angle suggests direction and schedules — departures and arrivals rather than a static point.\nThe circle is the air traffic system around NYC, seen as a whole.\n\nTogether, the icon says: this is a dataset of routes, timings, and connections — a structured, navigable map of flights."
   },
   {
-    "objectID": "data-science/index.html",
-    "href": "data-science/index.html",
-    "title": "Data Science Stories",
-    "section": "",
-    "text": "🧮 Data Science Stories\nThese are the analytical backbones of Insightful Tales —\nnotebooks that explore datasets, test ideas, and illuminate patterns that later become stories.\n\n\n\n\n\n\n\n\nNo matching items"
+    "objectID": "dataset-icon-language.html#gapminder-human-progress-in-motion",
+    "href": "dataset-icon-language.html#gapminder-human-progress-in-motion",
+    "title": "🔹 The Insightful Tales Dataset Icon Language",
+    "section": "🌍 Gapminder — Human Progress in Motion",
+    "text": "🌍 Gapminder — Human Progress in Motion\n\n\n\nWhat you see\n\nA smooth, rising curve with three circular markers, all inside the circle.\n\nWhat it represents\n\nThe curve is a stylized development trajectory: GDP per capita, life expectancy, or another long-run indicator.\nThe dots are countries or snapshots in time — clustered along the progress curve.\nThe circle stands for the world, viewed through comparable indicators.\n\nThis icon captures Gapminder as a dataset about global development trajectories — where different places sit along a shared arc of progress."
+  },
+  {
+    "objectID": "dataset-icon-language.html#lahman-baseball-database-baseballs-digital-memory",
+    "href": "dataset-icon-language.html#lahman-baseball-database-baseballs-digital-memory",
+    "title": "🔹 The Insightful Tales Dataset Icon Language",
+    "section": "⚾ Lahman Baseball Database — Baseball’s Digital Memory",
+    "text": "⚾ Lahman Baseball Database — Baseball’s Digital Memory\n\n\n\nWhat you see\n\nA parabolic arc across the circle, with three dots near its peak.\n\nWhat it represents\n\nThe arc is a career or season trajectory — rise, peak, decline.\nThe dots are key seasons, players, or eras placed along that arc.\nThe circle is the historical record of the game.\n\nThe icon echoes what Lahman is best at: long-term, relational baseball history, where every row is part of a bigger narrative arc."
+  },
+  {
+    "objectID": "dataset-icon-language.html#noaa-daily-weather-rhythm-of-the-days",
+    "href": "dataset-icon-language.html#noaa-daily-weather-rhythm-of-the-days",
+    "title": "🔹 The Insightful Tales Dataset Icon Language",
+    "section": "🌦 NOAA Daily Weather — Rhythm of the Days",
+    "text": "🌦 NOAA Daily Weather — Rhythm of the Days\n\n\n\nWhat you see\n\nA gently undulating wave across the circle.\nThree short vertical bars rising from the wave.\n\nWhat it represents\n\nThe wave is daily variation: highs and lows, the breathing rhythm of weather.\nThe bars are rain or notable events: a storm spike, a heavy day, an outlier.\nThe circle is the broader climate system that these days live within.\n\nThis icon signals daily records and weather persistence, ideal for stories about memory in systems and the mood of seasons."
+  },
+  {
+    "objectID": "dataset-icon-language.html#tfl-open-data-the-network-beneath-the-city",
+    "href": "dataset-icon-language.html#tfl-open-data-the-network-beneath-the-city",
+    "title": "🔹 The Insightful Tales Dataset Icon Language",
+    "section": "🚇 TfL Open Data — The Network Beneath the City",
+    "text": "🚇 TfL Open Data — The Network Beneath the City\n\n\n\nWhat you see\n\nCrisscrossing lines.\nTwo solid circular nodes where lines meet.\n\nWhat it represents\n\nThe lines are routes — Tube lines, rail paths, bus corridors.\nThe nodes are interchanges and stations, where flows intersect.\nThe circle is the entire transit network as a single organism.\n\nTfL’s data is about movement on a graph — this icon foregrounds routes, intersections, and connectivity."
+  },
+  {
+    "objectID": "dataset-icon-language.html#uci-online-retail-baskets-and-transactions",
+    "href": "dataset-icon-language.html#uci-online-retail-baskets-and-transactions",
+    "title": "🔹 The Insightful Tales Dataset Icon Language",
+    "section": "🛒 UCI Online Retail — Baskets and Transactions",
+    "text": "🛒 UCI Online Retail — Baskets and Transactions\n\n\n\nWhat you see\n\nA rounded rectangle with horizontal lines (a “mini invoice” or basket).\nAn arrow-like element extending outward.\n\nWhat it represents\n\nThe rectangle is a basket or invoice: one order, many line items.\nThe horizontal lines stand in for products in that order.\nThe arrow suggests a completed transaction — an event in time.\nThe circle frames the marketplace as a system.\n\nThis icon marks datasets about customers, orders, and items, where the grain of the data is the transaction."
+  },
+  {
+    "objectID": "dataset-icon-language.html#fred-economic-data-the-macro-curve",
+    "href": "dataset-icon-language.html#fred-economic-data-the-macro-curve",
+    "title": "🔹 The Insightful Tales Dataset Icon Language",
+    "section": "📈 FRED Economic Data — The Macro Curve",
+    "text": "📈 FRED Economic Data — The Macro Curve\n\n\n\nWhat you see\n\nA horizontal baseline.\nA rising-and-falling curve with three markers.\n\nWhat it represents\n\nThe baseline is time — months, quarters, years.\nThe curve is a simplified business cycle: expansions and recessions.\nThe dots are key readings or indicators: unemployment, inflation, GDP.\nThe circle is the macroeconomic landscape.\n\nFRED’s icon is about time-series indicators in motion, not any single statistic."
+  },
+  {
+    "objectID": "dataset-icon-language.html#nasa-modis-earth-observatory-earth-seen-from-orbit",
+    "href": "dataset-icon-language.html#nasa-modis-earth-observatory-earth-seen-from-orbit",
+    "title": "🔹 The Insightful Tales Dataset Icon Language",
+    "section": "🛰️ NASA MODIS / Earth Observatory — Earth Seen from Orbit",
+    "text": "🛰️ NASA MODIS / Earth Observatory — Earth Seen from Orbit\n\n\n\nWhat you see\n\nA lower arc.\nA high sweeping curve.\nA small square “pixel” near the top curve.\n\nWhat it represents\n\nThe lower arc suggests the Earth’s limb.\nThe upper curve is a satellite ground track or swath.\nThe square is a sensor footprint — one tile of an image.\nThe circle frames the Earth-observation domain.\n\nThis icon hints at remote sensing and swaths of imagery, where each pixel is a measurement of our planet."
+  },
+  {
+    "objectID": "dataset-icon-language.html#global-urban-footprint-where-the-world-is-built",
+    "href": "dataset-icon-language.html#global-urban-footprint-where-the-world-is-built",
+    "title": "🔹 The Insightful Tales Dataset Icon Language",
+    "section": "🌆 Global Urban Footprint — Where the World Is Built",
+    "text": "🌆 Global Urban Footprint — Where the World Is Built\n\n\n\nWhat you see\n\nA gently faceted “ground” shape.\nSeveral small, blocky rectangles sitting on top of it.\n\nWhat it represents\n\nThe ground patch is land — a slice of the Earth’s surface.\nThe blocks are built-up areas: urban clusters and structures.\nThe circle is the global coverage of the dataset.\n\nThe icon expresses GUF as a map of where humanity has concretized the landscape."
+  },
+  {
+    "objectID": "dataset-icon-language.html#steam-games-libraries-and-play",
+    "href": "dataset-icon-language.html#steam-games-libraries-and-play",
+    "title": "🔹 The Insightful Tales Dataset Icon Language",
+    "section": "🎮 Steam Games — Libraries and Play",
+    "text": "🎮 Steam Games — Libraries and Play\n\n\n\nWhat you see\n\nTwo overlapping rounded rectangles.\nA circular shape with a small triangle inside it.\n\nWhat it represents\n\nThe overlapping rectangles are a stack of game tiles — a digital library.\nThe circle with a triangle is a play/interaction indicator.\nThe circle frame is the ecosystem of games, players, and time.\n\nSteam datasets are about collections, activity, and engagement — not just one title, but the whole library in motion."
+  },
+  {
+    "objectID": "dataset-icon-language.html#how-to-read-and-use-these-icons",
+    "href": "dataset-icon-language.html#how-to-read-and-use-these-icons",
+    "title": "🔹 The Insightful Tales Dataset Icon Language",
+    "section": "🎨 How to Read and Use These Icons",
+    "text": "🎨 How to Read and Use These Icons\n\nWhen you see a small badge next to a dataset name, it’s there to quickly signal the dataset’s “shape” — flights, cities, climate, economics, etc.\nWhen you see a large badge at the top of a dataset page, it’s a visual “cover” for that particular dataset, echoing the stories it can tell.\nWhen you see a small badge in a story footer (“Dataset: …”), it helps you connect the narrative you just read with the underlying dataset page, so you can explore further.\n\nOver time, this icon language is meant to feel familiar: even before you read a title, a quick glance at the symbol will tell you what kind of world you’re about to step into — flights, weather, cities, games, baseball, macroeconomics, Earth systems, and more."
   },
   {
     "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#a-dataset-born-in-the-skies-above-new-york",

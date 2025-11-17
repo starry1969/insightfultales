@@ -630,3 +630,65 @@ details.dataset > summary {
   /* Optional typography */
   font-size: 0.95rem;
 }
+
+/* ============================================================
+   Dataset Icon Language — Card + Two-Column Layout
+   ============================================================ */
+
+/* Wrapper for each dataset explanation block */
+.icon-explainer {
+  display: grid;
+  grid-template-columns: 100px 1fr;  /* icon left, text right */
+  gap: 1.25rem;                      /* spacing between icon + text */
+  align-items: start;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  background: rgba(47, 57, 76, 0.8); /* subtle card */
+  border: 1px solid rgba(56, 189, 248, 0.25); /* cyan tint border */
+  border-radius: 1rem;               /* soft card shape */
+}
+
+/* The icon in the left column */
+.icon-explainer img {
+  width: 80px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
+}
+
+/* Text on the right column */
+.icon-explainer-text {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--color-neutral-white, #FFFFFF);
+}
+
+/* Bold headings inside explanation */
+.icon-explainer-text strong {
+  color: var(--color-brand-accent, #38BDF8);
+  font-weight: 600;
+}
+
+/* Make lists clean and compact */
+.icon-explainer-text ul,
+.icon-explainer-text ol {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+/* ============================================================
+   Responsive Behavior
+   ============================================================ */
+
+@media (max-width: 700px) {
+  .icon-explainer {
+    grid-template-columns: 1fr;  /* stack icon above text */
+    text-align: left;
+  }
+
+  .icon-explainer img {
+    margin: 0 auto 1rem auto;     /* center icon on mobile */
+    width: 70px;
+  }
+}
