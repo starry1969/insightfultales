@@ -49,6 +49,12 @@ Exploring the origins, history, and significance of the Lahman Baseball Database
 
 </section>
 
+<p class="dataset-subnav">
+  <a href="../dataset-icon-language.html" class="small-link">
+    What does this icon mean?
+  </a>
+</p>
+
 # [🧾]{aria-hidden="true"} Origins: From Box Scores to Bytes
 
 Before baseball had Statcast, WAR, or machine-tracked pitch velocities, there were *box scores* — neat little tables printed in newspapers, carefully summarizing who hit what and when. These weren’t just numbers; they were the fingerprints of every game ever played.

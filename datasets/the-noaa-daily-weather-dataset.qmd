@@ -37,6 +37,12 @@ categories: ["data-science", "climate", "history"]
   </p>
 </section>
 
+<p class="dataset-subnav">
+  <a href="../dataset-icon-language.html" class="small-link">
+    What does this icon mean?
+  </a>
+</p>
+
 ## <span aria-hidden="true">🪶</span> A Planet’s Daily Logbook
 
 If the Earth kept a diary, the **NOAA Daily Weather dataset** would be its journal — quietly recording what happened in the sky each day, everywhere.\

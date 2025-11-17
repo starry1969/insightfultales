@@ -1,5 +1,5 @@
 ---
-title: "🔹 The Insightful Tales Dataset Icon Language"
+title: "The Insightful Tales Dataset Icon Language"
 subtitle: "A visual guide to the meanings behind each dataset badge."
 description: "An overview of the abstract icon system used across Insightful Tales datasets — what each symbol represents, and how the icons fit together as a visual language."
 keywords:

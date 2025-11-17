@@ -38,6 +38,8 @@ website:
             text: "🧮 Genesis of Data"
       - text: "<img src='/images/top-nav-icons/datasets-icon.png' alt='Datasets at Insightful Tales' loading='lazy' width='18' height='18' class='nav-icon'> Datasets"
         menu: 
+          - href: dataset-icon-language.qmd
+            text: "<img src='/images/top-nav-icons/data-icon-language-icon.png' alt='The Dataset Icon Language' loading='lazy' width='18' height='18' class='nav-icon'> The Dataset Icon Language  ← logical!"
           - href: datasets/nycflights13-the-dataset-that-took-off.qmd
             text: "✈️ nycflights13"
           - href: datasets/the-gapminder-dataset-a-history-of-human-progress-told-through-data.qmd
@@ -49,9 +51,13 @@ website:
           - href: datasets/transport-for-london-tfl-the-pulse-beneath-the-city.qmd
             text: "🚇 Transport for London (TfL)"
       - text: "<img src='/images/top-nav-icons/about-icon.png' alt='About Insightful Tales' loading='lazy' width='18' height='18' class='nav-icon'> About"
-        href: about.qmd
-      - text: "<img src='/images/top-nav-icons/contact-icon.png' alt='Contact Insightful Tales' loading='lazy' width='18' height='18' class='nav-icon'> Contact"
-        href: contact.qmd
+        menu: 
+          - href: about.qmd
+            text: "<img src='/images/top-nav-icons/about-icon.png' alt='What is Insightful Tales' loading='lazy' width='18' height='18' class='nav-icon'> What is Insightful Tales?"
+          - href: dataset-icon-language.qmd
+            text: "<img src='/images/top-nav-icons/data-icon-language-icon.png' alt='The Dataset Icon Language' loading='lazy' width='18' height='18' class='nav-icon'> The Dataset Icon Language"
+          - href: contact.qmd
+            text: "<img src='/images/top-nav-icons/contact-icon.png' alt='Contact Insightful Tales' loading='lazy' width='18' height='18' class='nav-icon'> Contact"
   page-footer:
     left: |
       © 2025 Insightful Tales  

@@ -692,3 +692,30 @@ details.dataset > summary {
     width: 70px;
   }
 }
+
+/* ================================================
+   Dataset Subnav — small contextual link
+   (Used under dataset hero badge)
+   ================================================ */
+
+.dataset-subnav {
+  margin-top: 0.25rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.95rem;
+  text-align: left;
+  opacity: 0.85;
+}
+
+.dataset-subnav a {
+  color: var(--color-brand-accent, #38BDF8);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.dataset-subnav a:hover {
+  color: var(--color-brand-accent);
+  border-color: var(--color-brand-accent);
+  text-shadow: 0 0 6px rgba(56, 189, 248, 0.45);
+}

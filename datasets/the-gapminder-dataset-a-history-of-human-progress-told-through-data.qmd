@@ -38,6 +38,12 @@ categories: ["Global Development", "Data-Visualization", "Human Progress"]
   </p>
 </section>
 
+<p class="dataset-subnav">
+  <a href="../dataset-icon-language.html" class="small-link">
+    What does this icon mean?
+  </a>
+</p>
+
 ### [📜]{aria-hidden="true"} Origins: From Curiosity to Clarity
 
 The Gapminder story begins with **Hans Rosling** — a Swedish physician, public health professor, and global educator with an uncanny ability to make statistics feel *alive*.
