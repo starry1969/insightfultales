@@ -240,7 +240,7 @@ Together, these connections form the **metabolism of the metropolis** — the in
 
 # <span aria-hidden="true">📚</span> References & Credits
 
--   Transport for London Open Data Portal: [https://tfl.gov.uk/info-for/open-data-users/our-open-data](https://tfl.gov.uk/info-for/open-data-users/our-open-data?utm_source=chatgpt.com)
+-   Transport for London Open Data Portal: [https://tfl.gov.uk/info-for/open-data-users/our-open-data](https://tfl.gov.uk/info-for/open-data-users/our-open-data?utm_source=insightfultales.com)
 
 -   Greater London Authority: *London Datastore*
 

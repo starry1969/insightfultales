@@ -137,14 +137,14 @@ This small snippet turns daily data into an evolving climate portrait.
 
 ## <span aria-hidden="true">📚</span> References & Credits
 
--   **NOAA/NCEI** — [Global Historical Climatology Network – Daily (GHCN-Daily)](https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily?utm_source=chatgpt.com)
+-   **NOAA/NCEI** — [Global Historical Climatology Network – Daily (GHCN-Daily)](https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily?utm_source=insightfultales.com)
 
--   **NOAA/NCEI** — [nClimGrid-Daily](https://www.ncei.noaa.gov/products/land-based-station/nclimgrid-daily?utm_source=chatgpt.com)
+-   **NOAA/NCEI** — [nClimGrid-Daily](https://www.ncei.noaa.gov/products/land-based-station/nclimgrid-daily?utm_source=insightfultales.com)
 
--   **Climate.gov** — [Daily Temperature and Precipitation Reports](https://www.climate.gov/maps-data/dataset/daily-temperature-and-precipitation-reports-data-tables?utm_source=chatgpt.com)
+-   **Climate.gov** — [Daily Temperature and Precipitation Reports](https://www.climate.gov/maps-data/dataset/daily-temperature-and-precipitation-reports-data-tables?utm_source=insightfultales.com)
 
--   **NOAA Climate Data Online (CDO)** — [Access Portal](https://www.ncei.noaa.gov/cdo-web/?utm_source=chatgpt.com)
+-   **NOAA Climate Data Online (CDO)** — [Access Portal](https://www.ncei.noaa.gov/cdo-web/?utm_source=insightfultales.com)
 
 -   **Cooperative Observer Program (COOP)** — NOAA History
 
--   Historical Context — [National Climatic Data Center (NCDC)](https://en.wikipedia.org/wiki/National_Climatic_Data_Center?utm_source=chatgpt.com)
+-   Historical Context — [National Climatic Data Center (NCDC)](https://en.wikipedia.org/wiki/National_Climatic_Data_Center?utm_source=insightfultales.com)
