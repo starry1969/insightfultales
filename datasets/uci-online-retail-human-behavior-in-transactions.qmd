@@ -1,0 +1,256 @@
+---
+title: "UCI Online Retail — Human Behavior in Transactions"
+subtitle: "Line-item invoices for a UK e-commerce retailer, 2010–2011."
+description: "A rich log of every product, basket, and return for a gift-oriented UK online retailer — a natural playground for basket analysis, seasonality, and long-tail behavior."
+categories: [datasets, ecommerce, human-behavior, economics, data-science]
+keywords: [
+  "UCI Online Retail dataset",
+  "market basket analysis",
+  "basket analysis",
+  "ecommerce transactions",
+  "RFM segmentation",
+  "customer behavior",
+  "long tail",
+  "seasonality",
+  "co-occurrence networks",
+  "UK online retail"
+]
+# format and other global options inherited from _quarto.yml
+---
+
+<!-- Dataset Badge -->
+
+<p class="dataset-header-badge">
+
+<img src="../images/dataset-icons/uci-online-retail.svg" class="dataset-icon-hero" aria-hidden="true"/>
+
+</p>
+
+<!-- Hero Header -->
+
+<section class="hero">
+  <h1><span aria-hidden="true">🛒️</span> UCI Online Retail — Human Behavior in Transactions</h1>
+  <h2 class="hero-subtitle">Line-item invoices for a UK e-commerce retailer, 2010–2011.</h2>
+  <p class="hero-text">
+    A rich log of every product, basket, and return for a gift-oriented UK online retailer — a natural playground for basket analysis, seasonality, and long-tail behavior.
+  </p>
+</section>
+
+<!-- Refer to Dataset Icon Language -->
+<p class="dataset-subnav">
+  <a href="../dataset-icon-language.html" class="small-link">
+    What does this icon mean?
+  </a>
+</p>
+
+# 🧾 What is this dataset?
+
+The **UCI Online Retail dataset** is a log of **541,909 line-item invoice records** from a **UK-based, non-store online retailer** that mainly sells **unique “all-occasion” giftware**, with many customers being wholesalers.
+
+It captures every item on every invoice between **1 December 2010 and 9 December 2011**, including cancellations.
+
+In other words, this is **a year of human shopping behavior**, expressed as a table: who bought what, when, how much, and from where.
+
+------------------------------------------------------------------------
+
+# 📦 What’s inside the table?
+
+At its core, the dataset has one row per **line item on an invoice**. A typical schema (as implemented in several R/Python wrappers) looks like this:
+
+-   **InvoiceNo** – 6-digit code for each transaction (if it starts with `C`, it indicates a cancellation/return).\
+-   **StockCode** – product code for each distinct item.\
+-   **Description** – human-readable product name.\
+-   **Quantity** – number of units purchased (can be negative for returns).\
+-   **InvoiceDate** – date and time when the invoice was generated.\
+-   **UnitPrice** – price per unit (in sterling).\
+-   **CustomerID** – numeric customer identifier.\
+-   **Country** – country where the customer resides.
+
+From just these columns, you can reconstruct:
+
+-   **Baskets** (all items sharing an InvoiceNo).\
+-   **Customer histories** (all rows sharing a CustomerID).\
+-   **Time series** (grouping by InvoiceDate at various granularities).\
+-   **Geography** (by Country).
+
+------------------------------------------------------------------------
+
+# 🧠 Why it’s worthy of attention
+
+This dataset sits at the crossroads of **behavior, business, and complexity**:
+
+-   **Basket analysis playground**
+    -   Classic **market-basket rules** (“people who buy X also buy Y”) are almost textbook-designed for this data.\
+    -   You get thousands of distinct products, allowing both obvious and surprising co-occurrence patterns.
+-   **Seasonality and calendar stories**
+    -   The time window includes **major holidays**, especially the end-of-year gift season, giving rich **weekly and seasonal cycles** in purchases, returns, and order sizes.
+-   **Long-tail dynamics**
+    -   A few products sell constantly, but many sell rarely — a **long-tail distribution** that invites questions about variety, niche goods, and the economics of “just-in-case” inventory.
+-   **Customer lifetime & churn signals**
+    -   Because customers are identified (when CustomerID is present), you can study **recency-frequency-monetary (RFM)** patterns, churn, and loyalty — echoing the original RFM-based segmentation work that motivated this dataset.
+
+This is not just “transaction data”; it’s a **behavioral trace** of how people assemble baskets when buying gifts.
+
+------------------------------------------------------------------------
+
+# 🔍 How the data was collected (and what it represents)
+
+According to the UCI documentation, the dataset comes from a **real, UK-registered online retailer** that sells “unique all-occasion gifts,” mainly to customers in the UK and Europe, with many wholesale buyers.
+
+Key characteristics:
+
+-   **Non-store retailer** – everything happens online; no in-person point-of-sale data.\
+-   **Gift-oriented** – products often have “gift set,” “decor,” or “party” flavors, which shapes basket composition and seasonality.\
+-   **Wholesale flavor** – large quantities and repeat orders from some customers, useful for differentiating **B2B vs B2C behavior**.
+
+The original analysis that accompanied this dataset used it to demonstrate **data mining and customer segmentation** for online retail, especially via RFM and clustering techniques.
+
+------------------------------------------------------------------------
+
+# 🧺 What kinds of questions can you ask?
+
+This dataset is endlessly re-usable because it naturally supports multiple “lenses”:
+
+### 🤝 Basket & co-occurrence questions
+
+-   Which items **tend to appear together** on the same invoice?\
+-   Are there **“anchor products”** that pull entire families of accessories into the cart?\
+-   Can we build **product co-occurrence networks** where communities reveal natural “gift themes”?
+
+### 📅 Time & seasonality questions
+
+-   How does **order volume** vary by day of week and month?\
+-   Are returns clustered at particular **post-holiday dates**?\
+-   Do customers exhibit **weekend vs weekday personalities** (tiny impulse orders vs big planned baskets)?
+
+### 👥 Customer & behavior questions
+
+-   How do **first-time buyers** differ from **repeat buyers** in basket size, product mix, and return behavior?\
+-   Can RFM-style segmentation uncover **distinct customer archetypes** (e.g., “last-minute gifters,” “bulk wholesalers,” “curious one-off browsers”)?\
+-   How does **churn risk** change after a return or a negative experience hinted by high cancellation rates?
+
+### 🌍 Geography & market structure questions
+
+-   Which countries rely more on **wholesale-like orders** (large quantities, repeated SKUs)?\
+-   Are there **regional favorites** that almost never appear elsewhere?
+
+------------------------------------------------------------------------
+
+# ✨ Story sparks
+
+Here are some story directions tailored to this dataset that **lean into narrative and visuals**:
+
+### 🕸️ “The Hidden Gift Graph”
+
+> **Product co-occurrence graphs** that show the hidden neighborhoods of the gift store.
+
+-   Build a **network** where nodes are products and edges link items that frequently appear in the same invoice.\
+-   Use community detection to find **gift “ecosystems”**—cozy tea sets with candles, party supplies that live near novelty mugs, etc.\
+-   Visual angle: interactive graph + small multiples of communities, each with narrative labels like **“Cozy Evenings,” “Office Banter,” “Children’s Parties.”**
+
+------------------------------------------------------------------------
+
+### 🧬 “The Long Tail of Little Joys”
+
+> Exploring **long-tail dynamics**: thousands of products that each sell only rarely, but together shape the character of the store.
+
+-   Plot the **sales rank vs frequency** to show the highly skewed distribution of product popularity.\
+-   Tell the story of a few **rare, quirky products**: what baskets do they appear in, and which “power products” drag them into the cart?\
+-   Frame this as a story about **variety vs efficiency**: what does it mean for a retailer to keep all these niche items alive?
+
+------------------------------------------------------------------------
+
+### 🔁 “Arcs of Regret: The Anatomy of Returns”
+
+> Tracking **return behavior arcs** across time and customers.
+
+-   Use negative Quantities / cancellation invoices to define **returns**.\
+-   Study the **time between purchase and return**, and whether certain product types or basket patterns are more return-prone.\
+-   Build **“emotion arcs”**: e.g., a timeline per customer type (initial excitement with large baskets → small return spike → future purchase decisions).
+
+------------------------------------------------------------------------
+
+### 💸 “Invisible Profit: Rare Combos That Matter”
+
+> Identifying **rare combinations** that quietly contribute outsized revenue or margin.
+
+-   Define “rare but lucrative baskets”: baskets that occur infrequently but have high total value or margin.\
+-   Explore **which products serve as bridges** between everyday items and niche, high-value pieces.\
+-   This can become a story about **tiny configuration changes**—adding one complementary item—that transform an ordinary basket into a highly profitable one.
+
+------------------------------------------------------------------------
+
+# 🧪 Practical quirks, caveats & ethics
+
+Before diving in, it helps to know where the sharp edges are:
+
+-   **Missing IDs** – some rows lack CustomerID; these can be used for anonymous, session-level stories but not customer-centric ones.\
+-   **Cancellations and negative quantities** – returns appear as invoices with `C` prefixes and negative Quantity; you’ll need to decide whether to remove, net out, or explicitly model them.\
+-   **Non-commercial use** – multiple sources note that this dataset is provided for **research and educational purposes**, not for commercial targeting or productization.\
+-   **No demographic detail** – you see **behavior**, not personal identity. That’s a feature, not a bug: it keeps the focus on baskets and patterns rather than individuals.
+
+From an ethics point of view, this dataset is a good sandbox for exploring **behavioral patterns** without drifting into invasive profiling. Still, it’s worth emphasizing in any story that this is **historical, anonymized data** used for learning, not live tracking.
+
+------------------------------------------------------------------------
+
+# 🧑‍💻 Getting started in R & Python
+
+You might load the dataset in different ways depending on your tools.
+
+### 🟦 In R
+
+Several R packages mirror the UCI Online Retail data; one example is `BAdatasets::online_retail`:
+
+``` r
+# install.packages("BAdatasets")  # if needed
+library(BAdatasets)
+data("online_retail")
+
+str(online_retail)
+#> 'data.frame': 541909 obs. of  8 variables:
+#>  $ InvoiceNo : chr ...
+#>  $ StockCode : chr ...
+#>  ...
+```
+
+You can then build:
+
+-    **Baskets**: `dplyr::group_by(InvoiceNo)`
+
+-    **Customer histories**: `group_by(CustomerID)`
+
+-   **Daily totals**: `mutate(date = as.Date(InvoiceDate)) |> group_by(date)`
+
+### 🟧 In Python
+
+If you download the original Excel file (`Online Retail.xlsx`) from UCI, loading is straightforward:
+
+``` python
+import pandas as pd
+
+df = pd.read_excel("Online Retail.xlsx")
+
+df.head()
+```
+
+From there:
+
+-    Build a **basket-level table** by grouping on `InvoiceNo`.
+
+-   Create **RFM features** per `CustomerID`.
+
+-   Construct **co-occurrence matrices** (e.g., with pivot tables) for market basket analysis.
+
+# 📚 References
+
+-    **UCI Machine Learning Repository – Online Retail Data Set.** University of California, Irvine. Describes the original 2010–2011 UK non-store online retail transactions, including schema and usage context. [[UCI Machine Learning Repository+2UCI Machine Learning Repository+2]{.underline}](https://archive.ics.uci.edu/dataset/352/online%2Bretail?utm_source=insightfultales.com){alt="https://archive.ics.uci.edu/dataset/352/online%2Bretail?utm_source=insightfultales.com"}
+
+-   **Chen, D., Sain, S. L., & Guo, K. (2012).** *Data mining for the online retail industry: A case study of RFM model-based customer segmentation using data mining.* *Journal of Database Marketing & Customer Strategy Management, 19*(3), 197–208. Demonstrates RFM-based customer segmentation on this dataset. [[UCI Machine Learning Repository+1]{.underline}](https://archive.ics.uci.edu/dataset/352/online%2Bretail?utm_source=insightfultales.com){alt="https://archive.ics.uci.edu/dataset/352/online%2Bretail?utm_source=insightfultales.com"}
+
+-   **Allan, J. (2024).** `online_retail` dataset in the **BAdatasets** R package. Provides a ready-to-use version of the UCI Online Retail data with clear column documentation. [[Rdrr.io]{.underline}](https://rdrr.io/github/jmsallan/BAdatasets/man/online_retail.html?utm_source=insightfultales.com){alt="https://rdrr.io/github/jmsallan/BAdatasets/man/online_retail.html?utm_source=insightfultales.com"}
+
+-   **Selected public analyses.**
+
+    -   Ehsan Behzadi, *Online Retail Data Analysis and Preprocessing* (GitHub), focusing on cleaning, EDA, RFM, and clustering. [[GitHub]{.underline}](https://github.com/Ehsan-Behzadi/Online-Retail-Data-Analysis-and-Preprocessing?utm_source=insightfultales.com){alt="https://github.com/Ehsan-Behzadi/Online-Retail-Data-Analysis-and-Preprocessing?utm_source=insightfultales.com"}
+
+    -    Various Kaggle notebooks and blog posts exploring market basket analysis, customer clustering, and preprocessing strategies on this dataset. [[Kaggle+1]{.underline}](https://www.kaggle.com/code/ronak4249/online-retail-eda?utm_source=insightfultales.com){alt="https://www.kaggle.com/code/ronak4249/online-retail-eda?utm_source=insightfultales.com"}

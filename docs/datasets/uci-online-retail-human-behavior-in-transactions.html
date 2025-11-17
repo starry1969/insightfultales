@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="keywords" content="NOAA Daily Weather, GHCN daily, NOAA climate data, daily weather observations, historical weather data, temperature records, precipitation records, climate trends, NCEI dataset, weather variability, climate analysis, meteorological data, long-term weather patterns, environmental data">
-<meta name="description" content="The NOAA Daily Weather dataset, curated by the National Centers for Environmental Information (NCEI), is one of the world’s most detailed archives of day-by-day weather. It preserves the highs, lows, and patterns of the planet’s pulse — turning routine weather into long-term climate memory.">
+<meta name="keywords" content="UCI Online Retail dataset, market basket analysis, basket analysis, ecommerce transactions, RFM segmentation, customer behavior, long tail, seasonality, co-occurrence networks, UK online retail">
+<meta name="description" content="A rich log of every product, basket, and return for a gift-oriented UK online retailer — a natural playground for basket analysis, seasonality, and long-tail behavior.">
 
-<title>🌦️ The NOAA Daily Weather Dataset – Insightful Tales</title>
+<title>UCI Online Retail — Human Behavior in Transactions – Insightful Tales</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -119,15 +119,15 @@ gtag('config', 'G-J2NWNXP0DY', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="🌦️ The NOAA Daily Weather Dataset – Insightful Tales">
-<meta property="og:description" content="The NOAA Daily Weather dataset, curated by the National Centers for Environmental Information (NCEI), is one of the world’s most detailed archives of day-by-day weather. It preserves the highs, lows, and patterns of the planet’s pulse — turning routine weather into long-term climate memory.">
-<meta property="og:image" content="https://www.insightfultales.com/images/dataset-icons/noaa-daily.svg">
+<meta property="og:title" content="UCI Online Retail — Human Behavior in Transactions – Insightful Tales">
+<meta property="og:description" content="A rich log of every product, basket, and return for a gift-oriented UK online retailer — a natural playground for basket analysis, seasonality, and long-tail behavior.">
+<meta property="og:image" content="https://www.insightfultales.com/images/dataset-icons/uci-online-retail.svg">
 <meta property="og:site_name" content="Insightful Tales">
-<meta name="twitter:title" content="🌦️ The NOAA Daily Weather Dataset – Insightful Tales">
-<meta name="twitter:description" content="The NOAA Daily Weather dataset, curated by the National Centers for Environmental Information (NCEI), is one of the world’s most detailed archives of day-by-day weather. It preserves the highs, lows, and patterns of the planet’s pulse — turning routine weather into long-term climate memory.">
-<meta name="twitter:image" content="https://www.insightfultales.com/images/dataset-icons/noaa-daily.svg">
+<meta name="twitter:title" content="UCI Online Retail — Human Behavior in Transactions – Insightful Tales">
+<meta name="twitter:description" content="A rich log of every product, basket, and return for a gift-oriented UK online retailer — a natural playground for basket analysis, seasonality, and long-tail behavior.">
+<meta name="twitter:image" content="https://www.insightfultales.com/images/dataset-icons/uci-online-retail.svg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://www.insightfultales.com/datasets/the-noaa-daily-weather-dataset.html">
+<link rel="canonical" href="https://www.insightfultales.com/datasets/uci-online-retail-human-behavior-in-transactions.html">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -263,13 +263,31 @@ gtag('config', 'G-J2NWNXP0DY', { 'anonymize_ip': true});
     <h2 id="toc-title">Navigate</h2>
    
   <ul>
-  <li><a href="#a-planets-daily-logbook" id="toc-a-planets-daily-logbook" class="nav-link active" data-scroll-target="#a-planets-daily-logbook"><span aria-hidden="true">🪶</span> A Planet’s Daily Logbook</a></li>
-  <li><a href="#origins-from-observers-to-databases" id="toc-origins-from-observers-to-databases" class="nav-link" data-scroll-target="#origins-from-observers-to-databases"><span aria-hidden="true">🧭</span> Origins — From Observers to Databases</a></li>
-  <li><a href="#what-it-contains" id="toc-what-it-contains" class="nav-link" data-scroll-target="#what-it-contains"><span aria-hidden="true">🌍</span> What It Contains</a></li>
-  <li><a href="#why-it-matters" id="toc-why-it-matters" class="nav-link" data-scroll-target="#why-it-matters"><span aria-hidden="true">💡</span> Why It Matters</a></li>
-  <li><a href="#what-makes-it-unique" id="toc-what-makes-it-unique" class="nav-link" data-scroll-target="#what-makes-it-unique"><span aria-hidden="true">🧩</span> What Makes It Unique</a></li>
-  <li><a href="#example-exploration" id="toc-example-exploration" class="nav-link" data-scroll-target="#example-exploration"><span aria-hidden="true">🧮</span> Example Exploration</a></li>
-  <li><a href="#references-credits" id="toc-references-credits" class="nav-link" data-scroll-target="#references-credits"><span aria-hidden="true">📚</span> References &amp; Credits</a></li>
+  <li><a href="#what-is-this-dataset" id="toc-what-is-this-dataset" class="nav-link active" data-scroll-target="#what-is-this-dataset">🧾 What is this dataset?</a></li>
+  <li><a href="#whats-inside-the-table" id="toc-whats-inside-the-table" class="nav-link" data-scroll-target="#whats-inside-the-table">📦 What’s inside the table?</a></li>
+  <li><a href="#why-its-worthy-of-attention" id="toc-why-its-worthy-of-attention" class="nav-link" data-scroll-target="#why-its-worthy-of-attention">🧠 Why it’s worthy of attention</a></li>
+  <li><a href="#how-the-data-was-collected-and-what-it-represents" id="toc-how-the-data-was-collected-and-what-it-represents" class="nav-link" data-scroll-target="#how-the-data-was-collected-and-what-it-represents">🔍 How the data was collected (and what it represents)</a></li>
+  <li><a href="#what-kinds-of-questions-can-you-ask" id="toc-what-kinds-of-questions-can-you-ask" class="nav-link" data-scroll-target="#what-kinds-of-questions-can-you-ask">🧺 What kinds of questions can you ask?</a>
+  <ul class="collapse">
+  <li><a href="#basket-co-occurrence-questions" id="toc-basket-co-occurrence-questions" class="nav-link" data-scroll-target="#basket-co-occurrence-questions">🤝 Basket &amp; co-occurrence questions</a></li>
+  <li><a href="#time-seasonality-questions" id="toc-time-seasonality-questions" class="nav-link" data-scroll-target="#time-seasonality-questions">📅 Time &amp; seasonality questions</a></li>
+  <li><a href="#customer-behavior-questions" id="toc-customer-behavior-questions" class="nav-link" data-scroll-target="#customer-behavior-questions">👥 Customer &amp; behavior questions</a></li>
+  <li><a href="#geography-market-structure-questions" id="toc-geography-market-structure-questions" class="nav-link" data-scroll-target="#geography-market-structure-questions">🌍 Geography &amp; market structure questions</a></li>
+  </ul></li>
+  <li><a href="#story-sparks" id="toc-story-sparks" class="nav-link" data-scroll-target="#story-sparks">✨ Story sparks</a>
+  <ul class="collapse">
+  <li><a href="#the-hidden-gift-graph" id="toc-the-hidden-gift-graph" class="nav-link" data-scroll-target="#the-hidden-gift-graph">🕸️ “The Hidden Gift Graph”</a></li>
+  <li><a href="#the-long-tail-of-little-joys" id="toc-the-long-tail-of-little-joys" class="nav-link" data-scroll-target="#the-long-tail-of-little-joys">🧬 “The Long Tail of Little Joys”</a></li>
+  <li><a href="#arcs-of-regret-the-anatomy-of-returns" id="toc-arcs-of-regret-the-anatomy-of-returns" class="nav-link" data-scroll-target="#arcs-of-regret-the-anatomy-of-returns">🔁 “Arcs of Regret: The Anatomy of Returns”</a></li>
+  <li><a href="#invisible-profit-rare-combos-that-matter" id="toc-invisible-profit-rare-combos-that-matter" class="nav-link" data-scroll-target="#invisible-profit-rare-combos-that-matter">💸 “Invisible Profit: Rare Combos That Matter”</a></li>
+  </ul></li>
+  <li><a href="#practical-quirks-caveats-ethics" id="toc-practical-quirks-caveats-ethics" class="nav-link" data-scroll-target="#practical-quirks-caveats-ethics">🧪 Practical quirks, caveats &amp; ethics</a></li>
+  <li><a href="#getting-started-in-r-python" id="toc-getting-started-in-r-python" class="nav-link" data-scroll-target="#getting-started-in-r-python">🧑‍💻 Getting started in R &amp; Python</a>
+  <ul class="collapse">
+  <li><a href="#in-r" id="toc-in-r" class="nav-link" data-scroll-target="#in-r">🟦 In R</a></li>
+  <li><a href="#in-python" id="toc-in-python" class="nav-link" data-scroll-target="#in-python">🟧 In Python</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">📚 References</a></li>
   </ul>
 </nav>
     </div>
@@ -278,18 +296,20 @@ gtag('config', 'G-J2NWNXP0DY', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">🌦️ The NOAA Daily Weather Dataset</h1>
-<p class="subtitle lead">A planet’s diary — recording our everyday atmosphere, one day at a time.</p>
+<h1 class="title">UCI Online Retail — Human Behavior in Transactions</h1>
+<p class="subtitle lead">Line-item invoices for a UK e-commerce retailer, 2010–2011.</p>
   <div class="quarto-categories">
+    <div class="quarto-category">datasets</div>
+    <div class="quarto-category">ecommerce</div>
+    <div class="quarto-category">human-behavior</div>
+    <div class="quarto-category">economics</div>
     <div class="quarto-category">data-science</div>
-    <div class="quarto-category">climate</div>
-    <div class="quarto-category">history</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    The NOAA Daily Weather dataset, curated by the National Centers for Environmental Information (NCEI), is one of the world’s most detailed archives of day-by-day weather. It preserves the highs, lows, and patterns of the planet’s pulse — turning routine weather into long-term climate memory.
+    A rich log of every product, basket, and return for a gift-oriented UK online retailer — a natural playground for basket analysis, seasonality, and long-tail behavior.
   </div>
 </div>
 
@@ -305,7 +325,7 @@ gtag('config', 'G-J2NWNXP0DY', { 'anonymize_ip': true});
 <div>
   <div class="keywords">
     <div class="block-title">Keywords</div>
-    <p>NOAA Daily Weather, GHCN daily, NOAA climate data, daily weather observations, historical weather data, temperature records, precipitation records, climate trends, NCEI dataset, weather variability, climate analysis, meteorological data, long-term weather patterns, environmental data</p>
+    <p>UCI Online Retail dataset, market basket analysis, basket analysis, ecommerce transactions, RFM segmentation, customer behavior, long tail, seasonality, co-occurrence networks, UK online retail</p>
   </div>
 </div>
 
@@ -314,147 +334,270 @@ gtag('config', 'G-J2NWNXP0DY', { 'anonymize_ip': true});
 
 <!-- Dataset Badge -->
 <p class="dataset-header-badge">
-</p><p><img src="../images/dataset-icons/noaa-daily.svg" class="dataset-icon-hero" aria-hidden="true"></p>
+</p><p><img src="../images/dataset-icons/uci-online-retail.svg" class="dataset-icon-hero" aria-hidden="true"></p>
 <p></p>
+<!-- Hero Header -->
 <section class="hero">
 <h1>
-<span aria-hidden="true">🌦️</span> The NOAA Daily Weather Dataset
+<span aria-hidden="true">🛒️</span> UCI Online Retail — Human Behavior in Transactions
 </h1>
 <h2 class="hero-subtitle anchored">
-A planet’s diary — recording our everyday atmosphere, one day at a time.
+Line-item invoices for a UK e-commerce retailer, 2010–2011.
 </h2>
 <p class="hero-text">
-The NOAA Daily Weather dataset, curated by the National Centers for Environmental Information (NCEI), is one of the world’s most detailed archives of day-by-day weather. It preserves the highs, lows, and patterns of the planet’s pulse — turning routine weather into long-term climate memory.
+A rich log of every product, basket, and return for a gift-oriented UK online retailer — a natural playground for basket analysis, seasonality, and long-tail behavior.
 </p>
 </section>
+<!-- Refer to Dataset Icon Language -->
 <p class="dataset-subnav">
 <a href="../dataset-icon-language.html" class="small-link"> What does this icon mean? </a>
 </p>
-<section id="a-planets-daily-logbook" class="level2">
-<h2 class="anchored" data-anchor-id="a-planets-daily-logbook"><span aria-hidden="true">🪶</span> A Planet’s Daily Logbook</h2>
-<p>If the Earth kept a diary, the <strong>NOAA Daily Weather dataset</strong> would be its journal — quietly recording what happened in the sky each day, everywhere.<br>
-From sweltering July afternoons in Texas to silent January snow in Maine, each entry captures our atmosphere’s daily rhythm.<br>
-And collectively, they reveal the long memory of weather that shapes our lives.</p>
+<section id="what-is-this-dataset" class="level1">
+<h1>🧾 What is this dataset?</h1>
+<p>The <strong>UCI Online Retail dataset</strong> is a log of <strong>541,909 line-item invoice records</strong> from a <strong>UK-based, non-store online retailer</strong> that mainly sells <strong>unique “all-occasion” giftware</strong>, with many customers being wholesalers.</p>
+<p>It captures every item on every invoice between <strong>1 December 2010 and 9 December 2011</strong>, including cancellations.</p>
+<p>In other words, this is <strong>a year of human shopping behavior</strong>, expressed as a table: who bought what, when, how much, and from where.</p>
+<hr>
 </section>
-<section id="origins-from-observers-to-databases" class="level2">
-<h2 class="anchored" data-anchor-id="origins-from-observers-to-databases"><span aria-hidden="true">🧭</span> Origins — From Observers to Databases</h2>
-<p>The story begins in the late 19th century.<br>
-Long before satellites and sensors, weather was measured by hand — <strong>Cooperative Observer Program (COOP)</strong> volunteers using thermometers and rain gauges.<br>
-In 1890, the U.S. Weather Bureau (now the <strong>National Weather Service</strong>) organized these thousands of observers to provide a daily national picture.</p>
-<p>By the 1930s, these logs were centralized under what became the <strong>National Climatic Data Center (NCDC)</strong> — and eventually <strong>NOAA’s National Centers for Environmental Information (NCEI)</strong>.<br>
-Their mission was simple but monumental: <strong>preserve the planet’s weather memory</strong>.</p>
-<p>Today, the result is the <strong>Global Historical Climatology Network – Daily (GHCN-Daily)</strong>, containing billions of daily records from over 100,000 land-based stations across 180 countries.</p>
-<blockquote class="blockquote">
-<p>“Climate is what you expect. Weather is what you get.” — Robert Heinlein<br>
-This dataset captures <em>both.</em></p>
-</blockquote>
-</section>
-<section id="what-it-contains" class="level2">
-<h2 class="anchored" data-anchor-id="what-it-contains"><span aria-hidden="true">🌍</span> What It Contains</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 21%">
-<col style="width: 52%">
-<col style="width: 26%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Element</th>
-<th style="text-align: left;">Description</th>
-<th style="text-align: left;">Example Variable</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Temperature</td>
-<td style="text-align: left;">Daily maximum &amp; minimum (°C or °F)</td>
-<td style="text-align: left;">TMAX, TMIN</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Precipitation</td>
-<td style="text-align: left;">Total daily precipitation</td>
-<td style="text-align: left;">PRCP</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Snowfall</td>
-<td style="text-align: left;">Daily snow accumulation</td>
-<td style="text-align: left;">SNOW</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Snow Depth</td>
-<td style="text-align: left;">Depth of snow on the ground</td>
-<td style="text-align: left;">SNWD</td>
-</tr>
-</tbody>
-</table>
-<p>Each station reports one row per day — a simple rhythm of measurements stretching back, in some places, over <strong>150 years</strong>.</p>
-<p>NOAA also provides derived gridded versions, such as <strong>nClimGrid-Daily</strong>, mapping these station observations onto a fine grid across the contiguous U.S. from <strong>1951 to present</strong>, enabling spatial analyses of heatwaves, droughts, or flood events.</p>
-</section>
-<section id="why-it-matters" class="level2">
-<h2 class="anchored" data-anchor-id="why-it-matters"><span aria-hidden="true">💡</span> Why It Matters</h2>
-<p>The NOAA Daily Weather dataset is more than just numbers — it’s <strong>context</strong>.<br>
-Every datapoint tells part of a larger story about life on Earth.</p>
+<section id="whats-inside-the-table" class="level1">
+<h1>📦 What’s inside the table?</h1>
+<p>At its core, the dataset has one row per <strong>line item on an invoice</strong>. A typical schema (as implemented in several R/Python wrappers) looks like this:</p>
 <ul>
-<li><strong>Time Depth:</strong> Enables century-scale climate studies — tracking heatwaves, cold snaps, and rainfall shifts.</li>
-<li><strong>Daily Resolution:</strong> Lets us see change as it happens — from one sunrise to the next.</li>
-<li><strong>Geographic Breadth:</strong> A single, unified record spanning the globe’s landmasses.</li>
-<li><strong>Quality-Controlled:</strong> Built with decades of standardization and statistical checks.</li>
-<li><strong>Open Access:</strong> Available freely to the public via <a href="https://www.ncei.noaa.gov/cdo-web/">NOAA’s Climate Data Online (CDO)</a>.</li>
+<li><strong>InvoiceNo</strong> – 6-digit code for each transaction (if it starts with <code>C</code>, it indicates a cancellation/return).<br>
+</li>
+<li><strong>StockCode</strong> – product code for each distinct item.<br>
+</li>
+<li><strong>Description</strong> – human-readable product name.<br>
+</li>
+<li><strong>Quantity</strong> – number of units purchased (can be negative for returns).<br>
+</li>
+<li><strong>InvoiceDate</strong> – date and time when the invoice was generated.<br>
+</li>
+<li><strong>UnitPrice</strong> – price per unit (in sterling).<br>
+</li>
+<li><strong>CustomerID</strong> – numeric customer identifier.<br>
+</li>
+<li><strong>Country</strong> – country where the customer resides.</li>
 </ul>
-<p>From farmers planning crops to engineers modeling heat stress on power grids — to storytellers like us connecting data to meaning — the dataset quietly underpins much of what we know about weather and climate.</p>
-</section>
-<section id="what-makes-it-unique" class="level2">
-<h2 class="anchored" data-anchor-id="what-makes-it-unique"><span aria-hidden="true">🧩</span> What Makes It Unique</h2>
-<ol type="1">
-<li><strong>It’s the everyday data that becomes history.</strong><br>
-While headlines capture hurricanes, this dataset records <em>the calm before the storm</em> — the slow shifts that define climate.</li>
-<li><strong>It connects disciplines.</strong><br>
-Weather data intersects naturally with agriculture, transportation, energy, health, and even economics.<br>
-For instance, in <span aria-hidden="true">🦋</span> <a href="../stories/butterfly-morning-delays.html">Butterfly Morning Delays</a> story, flight delays could easily be paired with daily precipitation and wind records.</li>
-<li><strong>It’s global, yet personal.</strong><br>
-Because it’s station-based, you can zoom from the planetary to the hyperlocal — even “my town on my birthday.”</li>
-<li><strong>It’s science you can touch.</strong><br>
-Each number once came from a real thermometer, a real place, a real moment in time.</li>
-</ol>
-</section>
-<section id="example-exploration" class="level2">
-<h2 class="anchored" data-anchor-id="example-exploration"><span aria-hidden="true">🧮</span> Example Exploration</h2>
-<p>Imagine this:<br>
-You download 50 years of daily maximum temperatures for your city and plot how many summer days exceeded 95 °F each year.<br>
-You’d likely see the creeping signature of a warming world.</p>
-<p>Or perhaps you cross-match rainfall with flight delays, crop yields, or local power consumption.<br>
-Suddenly, weather becomes <em>behavioral data</em> — showing how the sky shapes our choices below.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example R snippet for NOAA Daily Summaries</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rnoaa)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Pull last 30 years of daily summaries for a station</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ghcnd_stations</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">"LITTLE ROCK"</span>, name)) <span class="sc">|&gt;</span> </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(id) <span class="ot">-&gt;</span> station_id</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">meteo_pull_monitors</span>(station_id, <span class="at">date_min =</span> <span class="st">"1995-01-01"</span>, <span class="at">var =</span> <span class="fu">c</span>(<span class="st">"TMAX"</span>, <span class="st">"TMIN"</span>, <span class="st">"PRCP"</span>))</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> </span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> lubridate<span class="sc">::</span><span class="fu">year</span>(date)) <span class="sc">|&gt;</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">hot_days =</span> <span class="fu">sum</span>(TMAX <span class="sc">&gt;</span> <span class="dv">35</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, hot_days)) <span class="sc">+</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Number of Hot Days (TMAX &gt; 35°C) per Year"</span>,</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Count"</span>, <span class="at">x =</span> <span class="st">"Year"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This small snippet turns daily data into an evolving climate portrait.</p>
-</section>
-<section id="references-credits" class="level2">
-<h2 class="anchored" data-anchor-id="references-credits"><span aria-hidden="true">📚</span> References &amp; Credits</h2>
+<p>From just these columns, you can reconstruct:</p>
 <ul>
-<li><p><strong>NOAA/NCEI</strong> — <a href="https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily?utm_source=chatgpt.com">Global Historical Climatology Network – Daily (GHCN-Daily)</a></p></li>
-<li><p><strong>NOAA/NCEI</strong> — <a href="https://www.ncei.noaa.gov/products/land-based-station/nclimgrid-daily?utm_source=chatgpt.com">nClimGrid-Daily</a></p></li>
-<li><p><strong>Climate.gov</strong> — <a href="https://www.climate.gov/maps-data/dataset/daily-temperature-and-precipitation-reports-data-tables?utm_source=chatgpt.com">Daily Temperature and Precipitation Reports</a></p></li>
-<li><p><strong>NOAA Climate Data Online (CDO)</strong> — <a href="https://www.ncei.noaa.gov/cdo-web/?utm_source=chatgpt.com">Access Portal</a></p></li>
-<li><p><strong>Cooperative Observer Program (COOP)</strong> — NOAA History</p></li>
-<li><p>Historical Context — <a href="https://en.wikipedia.org/wiki/National_Climatic_Data_Center?utm_source=chatgpt.com">National Climatic Data Center (NCDC)</a></p></li>
+<li><strong>Baskets</strong> (all items sharing an InvoiceNo).<br>
+</li>
+<li><strong>Customer histories</strong> (all rows sharing a CustomerID).<br>
+</li>
+<li><strong>Time series</strong> (grouping by InvoiceDate at various granularities).<br>
+</li>
+<li><strong>Geography</strong> (by Country).</li>
+</ul>
+<hr>
+</section>
+<section id="why-its-worthy-of-attention" class="level1">
+<h1>🧠 Why it’s worthy of attention</h1>
+<p>This dataset sits at the crossroads of <strong>behavior, business, and complexity</strong>:</p>
+<ul>
+<li><strong>Basket analysis playground</strong>
+<ul>
+<li>Classic <strong>market-basket rules</strong> (“people who buy X also buy Y”) are almost textbook-designed for this data.<br>
+</li>
+<li>You get thousands of distinct products, allowing both obvious and surprising co-occurrence patterns.</li>
+</ul></li>
+<li><strong>Seasonality and calendar stories</strong>
+<ul>
+<li>The time window includes <strong>major holidays</strong>, especially the end-of-year gift season, giving rich <strong>weekly and seasonal cycles</strong> in purchases, returns, and order sizes.</li>
+</ul></li>
+<li><strong>Long-tail dynamics</strong>
+<ul>
+<li>A few products sell constantly, but many sell rarely — a <strong>long-tail distribution</strong> that invites questions about variety, niche goods, and the economics of “just-in-case” inventory.</li>
+</ul></li>
+<li><strong>Customer lifetime &amp; churn signals</strong>
+<ul>
+<li>Because customers are identified (when CustomerID is present), you can study <strong>recency-frequency-monetary (RFM)</strong> patterns, churn, and loyalty — echoing the original RFM-based segmentation work that motivated this dataset.</li>
+</ul></li>
+</ul>
+<p>This is not just “transaction data”; it’s a <strong>behavioral trace</strong> of how people assemble baskets when buying gifts.</p>
+<hr>
+</section>
+<section id="how-the-data-was-collected-and-what-it-represents" class="level1">
+<h1>🔍 How the data was collected (and what it represents)</h1>
+<p>According to the UCI documentation, the dataset comes from a <strong>real, UK-registered online retailer</strong> that sells “unique all-occasion gifts,” mainly to customers in the UK and Europe, with many wholesale buyers.</p>
+<p>Key characteristics:</p>
+<ul>
+<li><strong>Non-store retailer</strong> – everything happens online; no in-person point-of-sale data.<br>
+</li>
+<li><strong>Gift-oriented</strong> – products often have “gift set,” “decor,” or “party” flavors, which shapes basket composition and seasonality.<br>
+</li>
+<li><strong>Wholesale flavor</strong> – large quantities and repeat orders from some customers, useful for differentiating <strong>B2B vs B2C behavior</strong>.</li>
+</ul>
+<p>The original analysis that accompanied this dataset used it to demonstrate <strong>data mining and customer segmentation</strong> for online retail, especially via RFM and clustering techniques.</p>
+<hr>
+</section>
+<section id="what-kinds-of-questions-can-you-ask" class="level1">
+<h1>🧺 What kinds of questions can you ask?</h1>
+<p>This dataset is endlessly re-usable because it naturally supports multiple “lenses”:</p>
+<section id="basket-co-occurrence-questions" class="level3">
+<h3 class="anchored" data-anchor-id="basket-co-occurrence-questions">🤝 Basket &amp; co-occurrence questions</h3>
+<ul>
+<li>Which items <strong>tend to appear together</strong> on the same invoice?<br>
+</li>
+<li>Are there <strong>“anchor products”</strong> that pull entire families of accessories into the cart?<br>
+</li>
+<li>Can we build <strong>product co-occurrence networks</strong> where communities reveal natural “gift themes”?</li>
+</ul>
+</section>
+<section id="time-seasonality-questions" class="level3">
+<h3 class="anchored" data-anchor-id="time-seasonality-questions">📅 Time &amp; seasonality questions</h3>
+<ul>
+<li>How does <strong>order volume</strong> vary by day of week and month?<br>
+</li>
+<li>Are returns clustered at particular <strong>post-holiday dates</strong>?<br>
+</li>
+<li>Do customers exhibit <strong>weekend vs weekday personalities</strong> (tiny impulse orders vs big planned baskets)?</li>
+</ul>
+</section>
+<section id="customer-behavior-questions" class="level3">
+<h3 class="anchored" data-anchor-id="customer-behavior-questions">👥 Customer &amp; behavior questions</h3>
+<ul>
+<li>How do <strong>first-time buyers</strong> differ from <strong>repeat buyers</strong> in basket size, product mix, and return behavior?<br>
+</li>
+<li>Can RFM-style segmentation uncover <strong>distinct customer archetypes</strong> (e.g., “last-minute gifters,” “bulk wholesalers,” “curious one-off browsers”)?<br>
+</li>
+<li>How does <strong>churn risk</strong> change after a return or a negative experience hinted by high cancellation rates?</li>
+</ul>
+</section>
+<section id="geography-market-structure-questions" class="level3">
+<h3 class="anchored" data-anchor-id="geography-market-structure-questions">🌍 Geography &amp; market structure questions</h3>
+<ul>
+<li>Which countries rely more on <strong>wholesale-like orders</strong> (large quantities, repeated SKUs)?<br>
+</li>
+<li>Are there <strong>regional favorites</strong> that almost never appear elsewhere?</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="story-sparks" class="level1">
+<h1>✨ Story sparks</h1>
+<p>Here are some story directions tailored to this dataset that <strong>lean into narrative and visuals</strong>:</p>
+<section id="the-hidden-gift-graph" class="level3">
+<h3 class="anchored" data-anchor-id="the-hidden-gift-graph">🕸️ “The Hidden Gift Graph”</h3>
+<blockquote class="blockquote">
+<p><strong>Product co-occurrence graphs</strong> that show the hidden neighborhoods of the gift store.</p>
+</blockquote>
+<ul>
+<li>Build a <strong>network</strong> where nodes are products and edges link items that frequently appear in the same invoice.<br>
+</li>
+<li>Use community detection to find <strong>gift “ecosystems”</strong>—cozy tea sets with candles, party supplies that live near novelty mugs, etc.<br>
+</li>
+<li>Visual angle: interactive graph + small multiples of communities, each with narrative labels like <strong>“Cozy Evenings,” “Office Banter,” “Children’s Parties.”</strong></li>
+</ul>
+<hr>
+</section>
+<section id="the-long-tail-of-little-joys" class="level3">
+<h3 class="anchored" data-anchor-id="the-long-tail-of-little-joys">🧬 “The Long Tail of Little Joys”</h3>
+<blockquote class="blockquote">
+<p>Exploring <strong>long-tail dynamics</strong>: thousands of products that each sell only rarely, but together shape the character of the store.</p>
+</blockquote>
+<ul>
+<li>Plot the <strong>sales rank vs frequency</strong> to show the highly skewed distribution of product popularity.<br>
+</li>
+<li>Tell the story of a few <strong>rare, quirky products</strong>: what baskets do they appear in, and which “power products” drag them into the cart?<br>
+</li>
+<li>Frame this as a story about <strong>variety vs efficiency</strong>: what does it mean for a retailer to keep all these niche items alive?</li>
+</ul>
+<hr>
+</section>
+<section id="arcs-of-regret-the-anatomy-of-returns" class="level3">
+<h3 class="anchored" data-anchor-id="arcs-of-regret-the-anatomy-of-returns">🔁 “Arcs of Regret: The Anatomy of Returns”</h3>
+<blockquote class="blockquote">
+<p>Tracking <strong>return behavior arcs</strong> across time and customers.</p>
+</blockquote>
+<ul>
+<li>Use negative Quantities / cancellation invoices to define <strong>returns</strong>.<br>
+</li>
+<li>Study the <strong>time between purchase and return</strong>, and whether certain product types or basket patterns are more return-prone.<br>
+</li>
+<li>Build <strong>“emotion arcs”</strong>: e.g., a timeline per customer type (initial excitement with large baskets → small return spike → future purchase decisions).</li>
+</ul>
+<hr>
+</section>
+<section id="invisible-profit-rare-combos-that-matter" class="level3">
+<h3 class="anchored" data-anchor-id="invisible-profit-rare-combos-that-matter">💸 “Invisible Profit: Rare Combos That Matter”</h3>
+<blockquote class="blockquote">
+<p>Identifying <strong>rare combinations</strong> that quietly contribute outsized revenue or margin.</p>
+</blockquote>
+<ul>
+<li>Define “rare but lucrative baskets”: baskets that occur infrequently but have high total value or margin.<br>
+</li>
+<li>Explore <strong>which products serve as bridges</strong> between everyday items and niche, high-value pieces.<br>
+</li>
+<li>This can become a story about <strong>tiny configuration changes</strong>—adding one complementary item—that transform an ordinary basket into a highly profitable one.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="practical-quirks-caveats-ethics" class="level1">
+<h1>🧪 Practical quirks, caveats &amp; ethics</h1>
+<p>Before diving in, it helps to know where the sharp edges are:</p>
+<ul>
+<li><strong>Missing IDs</strong> – some rows lack CustomerID; these can be used for anonymous, session-level stories but not customer-centric ones.<br>
+</li>
+<li><strong>Cancellations and negative quantities</strong> – returns appear as invoices with <code>C</code> prefixes and negative Quantity; you’ll need to decide whether to remove, net out, or explicitly model them.<br>
+</li>
+<li><strong>Non-commercial use</strong> – multiple sources note that this dataset is provided for <strong>research and educational purposes</strong>, not for commercial targeting or productization.<br>
+</li>
+<li><strong>No demographic detail</strong> – you see <strong>behavior</strong>, not personal identity. That’s a feature, not a bug: it keeps the focus on baskets and patterns rather than individuals.</li>
+</ul>
+<p>From an ethics point of view, this dataset is a good sandbox for exploring <strong>behavioral patterns</strong> without drifting into invasive profiling. Still, it’s worth emphasizing in any story that this is <strong>historical, anonymized data</strong> used for learning, not live tracking.</p>
+<hr>
+</section>
+<section id="getting-started-in-r-python" class="level1">
+<h1>🧑‍💻 Getting started in R &amp; Python</h1>
+<p>You might load the dataset in different ways depending on your tools.</p>
+<section id="in-r" class="level3">
+<h3 class="anchored" data-anchor-id="in-r">🟦 In R</h3>
+<p>Several R packages mirror the UCI Online Retail data; one example is <code>BAdatasets::online_retail</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("BAdatasets")  # if needed</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(BAdatasets)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"online_retail"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(online_retail)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 'data.frame': 541909 obs. of  8 variables:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ InvoiceNo : chr ...</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ StockCode : chr ...</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  ...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You can then build:</p>
+<ul>
+<li><p><strong>Baskets</strong>: <code>dplyr::group_by(InvoiceNo)</code></p></li>
+<li><p><strong>Customer histories</strong>: <code>group_by(CustomerID)</code></p></li>
+<li><p><strong>Daily totals</strong>: <code>mutate(date = as.Date(InvoiceDate)) |&gt; group_by(date)</code></p></li>
+</ul>
+</section>
+<section id="in-python" class="level3">
+<h3 class="anchored" data-anchor-id="in-python">🟧 In Python</h3>
+<p>If you download the original Excel file (<code>Online Retail.xlsx</code>) from UCI, loading is straightforward:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(<span class="st">"Online Retail.xlsx"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>From there:</p>
+<ul>
+<li><p>Build a <strong>basket-level table</strong> by grouping on <code>InvoiceNo</code>.</p></li>
+<li><p>Create <strong>RFM features</strong> per <code>CustomerID</code>.</p></li>
+<li><p>Construct <strong>co-occurrence matrices</strong> (e.g., with pivot tables) for market basket analysis.</p></li>
+</ul>
+</section>
+</section>
+<section id="references" class="level1">
+<h1>📚 References</h1>
+<ul>
+<li><p><strong>UCI Machine Learning Repository – Online Retail Data Set.</strong> University of California, Irvine. Describes the original 2010–2011 UK non-store online retail transactions, including schema and usage context. <a href="https://archive.ics.uci.edu/dataset/352/online%2Bretail?utm_source=insightfultales.com" alt="https://archive.ics.uci.edu/dataset/352/online%2Bretail?utm_source=insightfultales.com"><u>UCI Machine Learning Repository+2UCI Machine Learning Repository+2</u></a></p></li>
+<li><p><strong>Chen, D., Sain, S. L., &amp; Guo, K. (2012).</strong> <em>Data mining for the online retail industry: A case study of RFM model-based customer segmentation using data mining.</em> <em>Journal of Database Marketing &amp; Customer Strategy Management, 19</em>(3), 197–208. Demonstrates RFM-based customer segmentation on this dataset. <a href="https://archive.ics.uci.edu/dataset/352/online%2Bretail?utm_source=insightfultales.com" alt="https://archive.ics.uci.edu/dataset/352/online%2Bretail?utm_source=insightfultales.com"><u>UCI Machine Learning Repository+1</u></a></p></li>
+<li><p><strong>Allan, J. (2024).</strong> <code>online_retail</code> dataset in the <strong>BAdatasets</strong> R package. Provides a ready-to-use version of the UCI Online Retail data with clear column documentation. <a href="https://rdrr.io/github/jmsallan/BAdatasets/man/online_retail.html?utm_source=insightfultales.com" alt="https://rdrr.io/github/jmsallan/BAdatasets/man/online_retail.html?utm_source=insightfultales.com"><u>Rdrr.io</u></a></p></li>
+<li><p><strong>Selected public analyses.</strong></p>
+<ul>
+<li><p>Ehsan Behzadi, <em>Online Retail Data Analysis and Preprocessing</em> (GitHub), focusing on cleaning, EDA, RFM, and clustering. <a href="https://github.com/Ehsan-Behzadi/Online-Retail-Data-Analysis-and-Preprocessing?utm_source=insightfultales.com" alt="https://github.com/Ehsan-Behzadi/Online-Retail-Data-Analysis-and-Preprocessing?utm_source=insightfultales.com"><u>GitHub</u></a></p></li>
+<li><p>Various Kaggle notebooks and blog posts exploring market basket analysis, customer clustering, and preprocessing strategies on this dataset. <a href="https://www.kaggle.com/code/ronak4249/online-retail-eda?utm_source=insightfultales.com" alt="https://www.kaggle.com/code/ronak4249/online-retail-eda?utm_source=insightfultales.com"><u>Kaggle+1</u></a></p></li>
+</ul></li>
 </ul>
 
 

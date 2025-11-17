@@ -213,7 +213,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary><img src="images/dataset-icons/uci-online-retail.svg" alt="" class="dataset-badge-icon" aria-hidden="true"> <strong>UCI Online Retail</strong> — Human Behavior in Transactions</summary>
+<summary><img src="images/dataset-icons/uci-online-retail.svg" alt="" class="dataset-badge-icon" aria-hidden="true"> <a href="datasets/uci-online-retail-human-behavior-in-transactions.html"><strong>UCI Online Retail</strong></a> — Human Behavior in Transactions</summary>
 
 **What it is:** Line-item invoices for a UK e-commerce retailer (2010–2011).\
 **Why it’s worthy:** Basket analysis, seasonality, long-tail dynamics.\
