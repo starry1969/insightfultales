@@ -198,6 +198,12 @@ Our mission: turn data into empathy, and statistics into stories that feel *aliv
   </span>
 </section>
 
+<p class="dataset-subnav">
+  <a href="../dataset-icon-language.html" class="small-link">
+    What do these icons mean?
+  </a>
+</p>
+
 ## <span aria-hidden="true">📚</span> References & Credits
 
 **Data Sources**

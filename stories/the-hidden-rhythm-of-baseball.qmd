@@ -244,6 +244,12 @@ zi %>%
 
 </section>
 
+<p class="dataset-subnav">
+  <a href="../dataset-icon-language.html" class="small-link">
+    What do these icons mean?
+  </a>
+</p>
+
 ## [📚]{aria-hidden="true"} References & Credits
 
 -   **Sean Lahman** — *Lahman Baseball Database* (public historical stats).

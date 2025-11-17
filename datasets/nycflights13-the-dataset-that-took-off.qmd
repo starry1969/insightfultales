@@ -142,7 +142,7 @@ It’s not about New York flights alone; it’s about **how we understand and mo
 
 In the same way the *iris* dataset taught generations of statisticians about classification, *nycflights13* has taught generations of data scientists about structure, relationships, and storytelling.
 
-### <span aria-hidden="true">🔧</span> Structure at a Glance
+## <span aria-hidden="true">🔧</span> Structure at a Glance
 
 | Table | Description | Rows | Key columns |
 |----|----|----|----|
@@ -152,7 +152,7 @@ In the same way the *iris* dataset taught generations of statisticians about cla
 | `planes` | Aircraft manufacturing info | 3,322 | `tailnum` |
 | `weather` | Hourly conditions for each airport | 26,115 | `origin`, `year`, `month`, `day`, `hour` |
 
-### <span aria-hidden="true">📘</span> Legacy and Influence
+## <span aria-hidden="true">📘</span> Legacy and Influence
 
 The dataset’s success inspired a wave of similar projects:
 
@@ -163,14 +163,14 @@ It’s still maintained under the **tidyverse organization on GitHub**, ensuring
 
 For many, it was the *first real dataset they ever analyzed* — and it’s still the one they remember.
 
-### <span aria-hidden="true">✈️</span> In the End
+## <span aria-hidden="true">✈️</span> In the End
 
 `nycflights13` is not just about flights.\
 It’s about the *journey* of data — from messy public records to a structured, teachable story.\
 It’s about curiosity, reproducibility, and accessibility.\
 And like the air traffic over New York, it continues to connect learners all over the world — one tidy join at a time.
 
-### <span aria-hidden="true">📚</span> References
+## <span aria-hidden="true">📚</span> References
 
 1.  Wickham, H.
     (2014).

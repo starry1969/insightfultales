@@ -53,7 +53,7 @@
     "href": "stories/when-growth-forgot-happiness-the-hidden-curve-of-human-progress.html#where-we-go-next",
     "title": "When Growth Forgot Happiness — The Hidden Curve of Human Progress",
     "section": "🚀 7. Where We Go Next",
-    "text": "🚀 7. Where We Go Next\nEach finding births a future story:\n\n😊 The Happiness Deficit — when wealth outpaces joy.\n🔄 The Curve That Bends Twice — tech progress, then overwhelm.\n🧮 Counting What Counts — education, safety, belonging.\n💬 Data of Dignity — measuring lives beyond the ledger.\n\nOur mission: turn data into empathy, and statistics into stories that feel alive.\n\n Dataset: Gapminder"
+    "text": "🚀 7. Where We Go Next\nEach finding births a future story:\n\n😊 The Happiness Deficit — when wealth outpaces joy.\n🔄 The Curve That Bends Twice — tech progress, then overwhelm.\n🧮 Counting What Counts — education, safety, belonging.\n💬 Data of Dignity — measuring lives beyond the ledger.\n\nOur mission: turn data into empathy, and statistics into stories that feel alive.\n\n Dataset: Gapminder \n\n\n What do these icons mean?"
   },
   {
     "objectID": "stories/when-growth-forgot-happiness-the-hidden-curve-of-human-progress.html#references-credits",
@@ -123,7 +123,7 @@
     "href": "stories/the-hidden-rhythm-of-baseball.html#reproducibility-notes",
     "title": "The Hidden Rhythm of Baseball",
     "section": "📦 Reproducibility Notes",
-    "text": "📦 Reproducibility Notes\n\nSource: The public Lahman database via the Lahman R package.\nAverages: We averaged teams into a single league line per year to hear the broad rhythm (details will vary by ballpark or league).\nApproximations: Older seasons are missing some counts (like sacrifice flies). We used simple, conservative fallbacks that don’t change the big picture.\nSmoothing: A gentle 5‑year average makes the waves easier to see.\n\n\n Dataset: Lahman Baseball Database"
+    "text": "📦 Reproducibility Notes\n\nSource: The public Lahman database via the Lahman R package.\nAverages: We averaged teams into a single league line per year to hear the broad rhythm (details will vary by ballpark or league).\nApproximations: Older seasons are missing some counts (like sacrifice flies). We used simple, conservative fallbacks that don’t change the big picture.\nSmoothing: A gentle 5‑year average makes the waves easier to see.\n\n\n Dataset: Lahman Baseball Database\n\n\n What do these icons mean?"
   },
   {
     "objectID": "stories/the-hidden-rhythm-of-baseball.html#references-credits",
@@ -186,7 +186,7 @@
     "href": "stories/geography-of-luck.html#reflection",
     "title": "The Geography of Luck",
     "section": "💭 Reflection",
-    "text": "💭 Reflection\n\nThe sun may rise for everyone, but it still shines longer for some.\n\nLatitude once dictated agriculture, disease, and labor. Today, it still whispers through economies — a relic of environmental inheritance.\nYet each bright outlier on the map is a defiance of fate: policy and ingenuity turning geography into geography’s undoing.\n\n\n Dataset: nycflights13"
+    "text": "💭 Reflection\n\nThe sun may rise for everyone, but it still shines longer for some.\n\nLatitude once dictated agriculture, disease, and labor. Today, it still whispers through economies — a relic of environmental inheritance.\nYet each bright outlier on the map is a defiance of fate: policy and ingenuity turning geography into geography’s undoing.\n\n\n Dataset: nycflights13 \n\n\n What do these icons mean?"
   },
   {
     "objectID": "stories/geography-of-luck.html#technical-appendix",
@@ -529,7 +529,35 @@
     "href": "datasets/nycflights13-the-dataset-that-took-off.html#why-it-matters",
     "title": "✈nycflights13: The Dataset That Took Off",
     "section": "🌍 Why It Matters",
-    "text": "🌍 Why It Matters\nnycflights13 endures because it’s a microcosm of real life.\nIt captures delay frustrations, winter weather, airline competition, and the randomness of human systems.\nIt also shows how separate data sources — flights, airports, weather, and aircraft — interconnect to form a coherent story.\nIt’s not about New York flights alone; it’s about how we understand and model the world through data.\nIn the same way the iris dataset taught generations of statisticians about classification, nycflights13 has taught generations of data scientists about structure, relationships, and storytelling.\n\n🔧 Structure at a Glance\n\n\n\n\n\n\n\n\n\nTable\nDescription\nRows\nKey columns\n\n\n\n\nflights\nEvery NYC departure in 2013\n336,776\nyear, month, day, dep_time, arr_time, carrier, tailnum, origin, dest\n\n\nairlines\nCarrier codes and full names\n16\ncarrier\n\n\nairports\nAll airports in the dataset\n1,458\nfaa\n\n\nplanes\nAircraft manufacturing info\n3,322\ntailnum\n\n\nweather\nHourly conditions for each airport\n26,115\norigin, year, month, day, hour\n\n\n\n\n\n📘 Legacy and Influence\nThe dataset’s success inspired a wave of similar projects:\n\nfivethirtyeight — datasets from FiveThirtyEight journalism pieces.gapminder — Hans Rosling’s world development data.palmerpenguins — a modern, ecological replacement for iris.\n\nBut nycflights13 remains unique in how it captures an entire real-world system, cleanly and reproducibly, in just a few megabytes.\nIt’s still maintained under the tidyverse organization on GitHub, ensuring compatibility with modern R versions.\nFor many, it was the first real dataset they ever analyzed — and it’s still the one they remember.\n\n\n✈️ In the End\nnycflights13 is not just about flights.\nIt’s about the journey of data — from messy public records to a structured, teachable story.\nIt’s about curiosity, reproducibility, and accessibility.\nAnd like the air traffic over New York, it continues to connect learners all over the world — one tidy join at a time.\n\n\n📚 References\n\nWickham, H. (2014). nycflights13: Flights that departed NYC in 2013. R package version 0.1.\nCRAN R Project. nycflights13 package documentation. https://cran.r-project.org/web/packages/nycflights13/\nBureau of Transportation Statistics (BTS). On-Time Performance Data. https://transtats.bts.gov/DL_SelectFields.asp?T able_ID=236\nNOAA National Centers for Environmental Information. Integrated Surface Database (ISD).\nWickham, H., & Grolemund, G. (2017). R for Data Science. O’Reilly Media.\nTidyverse Team. nycflights13 source code repository. https://github.com/tidyverse/nycflights13"
+    "text": "🌍 Why It Matters\nnycflights13 endures because it’s a microcosm of real life.\nIt captures delay frustrations, winter weather, airline competition, and the randomness of human systems.\nIt also shows how separate data sources — flights, airports, weather, and aircraft — interconnect to form a coherent story.\nIt’s not about New York flights alone; it’s about how we understand and model the world through data.\nIn the same way the iris dataset taught generations of statisticians about classification, nycflights13 has taught generations of data scientists about structure, relationships, and storytelling."
+  },
+  {
+    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#structure-at-a-glance",
+    "href": "datasets/nycflights13-the-dataset-that-took-off.html#structure-at-a-glance",
+    "title": "✈nycflights13: The Dataset That Took Off",
+    "section": "🔧 Structure at a Glance",
+    "text": "🔧 Structure at a Glance\n\n\n\n\n\n\n\n\n\nTable\nDescription\nRows\nKey columns\n\n\n\n\nflights\nEvery NYC departure in 2013\n336,776\nyear, month, day, dep_time, arr_time, carrier, tailnum, origin, dest\n\n\nairlines\nCarrier codes and full names\n16\ncarrier\n\n\nairports\nAll airports in the dataset\n1,458\nfaa\n\n\nplanes\nAircraft manufacturing info\n3,322\ntailnum\n\n\nweather\nHourly conditions for each airport\n26,115\norigin, year, month, day, hour"
+  },
+  {
+    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#legacy-and-influence",
+    "href": "datasets/nycflights13-the-dataset-that-took-off.html#legacy-and-influence",
+    "title": "✈nycflights13: The Dataset That Took Off",
+    "section": "📘 Legacy and Influence",
+    "text": "📘 Legacy and Influence\nThe dataset’s success inspired a wave of similar projects:\n\nfivethirtyeight — datasets from FiveThirtyEight journalism pieces.gapminder — Hans Rosling’s world development data.palmerpenguins — a modern, ecological replacement for iris.\n\nBut nycflights13 remains unique in how it captures an entire real-world system, cleanly and reproducibly, in just a few megabytes.\nIt’s still maintained under the tidyverse organization on GitHub, ensuring compatibility with modern R versions.\nFor many, it was the first real dataset they ever analyzed — and it’s still the one they remember."
+  },
+  {
+    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#in-the-end",
+    "href": "datasets/nycflights13-the-dataset-that-took-off.html#in-the-end",
+    "title": "✈nycflights13: The Dataset That Took Off",
+    "section": "✈️ In the End",
+    "text": "✈️ In the End\nnycflights13 is not just about flights.\nIt’s about the journey of data — from messy public records to a structured, teachable story.\nIt’s about curiosity, reproducibility, and accessibility.\nAnd like the air traffic over New York, it continues to connect learners all over the world — one tidy join at a time."
+  },
+  {
+    "objectID": "datasets/nycflights13-the-dataset-that-took-off.html#references",
+    "href": "datasets/nycflights13-the-dataset-that-took-off.html#references",
+    "title": "✈nycflights13: The Dataset That Took Off",
+    "section": "📚 References",
+    "text": "📚 References\n\nWickham, H. (2014). nycflights13: Flights that departed NYC in 2013. R package version 0.1.\nCRAN R Project. nycflights13 package documentation. https://cran.r-project.org/web/packages/nycflights13/\nBureau of Transportation Statistics (BTS). On-Time Performance Data. https://transtats.bts.gov/DL_SelectFields.asp?T able_ID=236\nNOAA National Centers for Environmental Information. Integrated Surface Database (ISD).\nWickham, H., & Grolemund, G. (2017). R for Data Science. O’Reilly Media.\nTidyverse Team. nycflights13 source code repository. https://github.com/tidyverse/nycflights13"
   },
   {
     "objectID": "datasets/the-lahman-baseball-database-a-chronicle-of-the-games-digital-memory.html",
@@ -620,7 +648,7 @@
     "href": "stories/butterfly-morning-delays.html#summary-what-we-discovered",
     "title": "Butterfly Morning Delays",
     "section": "📋 Summary (what we discovered)",
-    "text": "📋 Summary (what we discovered)\n\nFirst-wave scatter (not just average delay) is a strong signal for afternoon performance.\nThe effect is strongest on short-haul days—where rotations are more frequent.\nControlling for weather/time effects, the relationship persists.\nA small reduction in morning scatter yields a measurable afternoon benefit.\n\n\n Dataset: nycflights13"
+    "text": "📋 Summary (what we discovered)\n\nFirst-wave scatter (not just average delay) is a strong signal for afternoon performance.\nThe effect is strongest on short-haul days—where rotations are more frequent.\nControlling for weather/time effects, the relationship persists.\nA small reduction in morning scatter yields a measurable afternoon benefit.\n\n\n Dataset: nycflights13 \n\n\n What do these icons mean?"
   },
   {
     "objectID": "stories/butterfly-morning-delays.html#references-credits",
@@ -725,7 +753,7 @@
     "href": "stories/weather-memory.html#limitations",
     "title": "Weather Memory",
     "section": "🚧 Limitations",
-    "text": "🚧 Limitations\n\nWe use means of delays; distributional effects (e.g., big tails) are not fully captured.\nOnly 1-day memory is modeled; longer lags may matter.\nWeather aggregation is daily; within-day timing (e.g., late-night rain) could drive stronger effects.\nLinear models are a simplification; non-linearities and interactions (e.g., wind × visibility) are likely.\n\n\n Dataset: nycflights13"
+    "text": "🚧 Limitations\n\nWe use means of delays; distributional effects (e.g., big tails) are not fully captured.\nOnly 1-day memory is modeled; longer lags may matter.\nWeather aggregation is daily; within-day timing (e.g., late-night rain) could drive stronger effects.\nLinear models are a simplification; non-linearities and interactions (e.g., wind × visibility) are likely.\n\n\n Dataset: nycflights13 \n\n\n What do these icons mean?"
   },
   {
     "objectID": "stories/weather-memory.html#references-credits",

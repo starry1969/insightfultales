@@ -255,6 +255,12 @@ tibble(
   </span>
 </section>
 
+<p class="dataset-subnav">
+  <a href="../dataset-icon-language.html" class="small-link">
+    What do these icons mean?
+  </a>
+</p>
+
 ## [📚]{aria-hidden="true"} References & Credits
 
 -   Data: **nycflights13** (flights, weather) — Wickham et al. (CRAN)
