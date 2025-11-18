@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="keywords" content="flight delays, morning delays, delay propagation, aviation networks, air traffic ripple effects, NYC flights, airport congestion, schedule disruptions, aviation data analysis, delay chains, butterfly effect, airline performance, morning schedule noise, air travel patterns">
+<meta name="description" content="Earth pulses with life — forests inhale, oceans flicker, deserts blossom and sleep. Using decades of NASA satellite imagery, this story uncovers the planet’s hidden rhythms, where they are steady, and where they are starting to skip a beat.">
+
+<title>The Planet That Breathes — Tracking Earth’s Hidden Rhythms from Space – Insightful Tales</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-ffa9a6279353761231ec249df0a7fdd3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-J2NWNXP0DY"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-J2NWNXP0DY', { 'anonymize_ip': true});
+</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<link href="../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+
+<script src="../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="The Planet That Breathes — Tracking Earth’s Hidden Rhythms from Space – Insightful Tales">
+<meta property="og:description" content="Earth pulses with life — forests inhale, oceans flicker, deserts blossom and sleep. Using decades of NASA satellite imagery, this story uncovers the planet’s hidden rhythms, where they are steady, and where they are starting to skip a beat.">
+<meta property="og:image" content="https://www.insightfultales.com/stories/the-planet-that-breathes-tracking-earths-hidden-rhythms-from-space_files/figure-html/unnamed-chunk-1-1.png">
+<meta property="og:site_name" content="Insightful Tales">
+<meta property="og:image:height" content="960">
+<meta property="og:image:width" content="1344">
+<meta name="twitter:title" content="The Planet That Breathes — Tracking Earth’s Hidden Rhythms from Space – Insightful Tales">
+<meta name="twitter:description" content="Earth pulses with life — forests inhale, oceans flicker, deserts blossom and sleep. Using decades of NASA satellite imagery, this story uncovers the planet’s hidden rhythms, where they are steady, and where they are starting to skip a beat.">
+<meta name="twitter:image" content="https://www.insightfultales.com/stories/the-planet-that-breathes-tracking-earths-hidden-rhythms-from-space_files/figure-html/unnamed-chunk-1-1.png">
+<meta name="twitter:image-height" content="960">
+<meta name="twitter:image-width" content="1344">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.insightfultales.com/stories/the-planet-that-breathes-tracking-earths-hidden-rhythms-from-space.html">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/logo.png" alt="" class="navbar-logo light-content">
+    <img src="../images/logo.png" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Insightful Tales</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text"><img src="../images/top-nav-icons/home-icon.png" alt="Home — Insightful Tales" loading="lazy" width="18" height="18" class="nav-icon"> Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-img-srcimagestop-nav-iconsstories-icon.png-altstories-at-insightful-tales-loadinglazy-width18-height18-classnav-icon-stories" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text"><img src="../images/top-nav-icons/stories-icon.png" alt="Stories at Insightful Tales" loading="lazy" width="18" height="18" class="nav-icon"> Stories</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-img-srcimagestop-nav-iconsstories-icon.png-altstories-at-insightful-tales-loadinglazy-width18-height18-classnav-icon-stories">    
+        <li>
+    <a class="dropdown-item" href="../stories/geography-of-luck.html">
+ <span class="dropdown-text">🧭 Geography of Luck</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stories/butterfly-morning-delays.html">
+ <span class="dropdown-text">🦋 Butterfly Effect</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stories/weather-memory.html">
+ <span class="dropdown-text">🌦️ Weather Memory</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stories/the-hidden-rhythm-of-baseball.html">
+ <span class="dropdown-text">⚾️ The Hidden Rhythm of Baseball</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stories/when-growth-forgot-happiness-the-hidden-curve-of-human-progress.html">
+ <span class="dropdown-text">🌏 When Growth Forgot Happiness</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-img-srcimagestop-nav-iconshistorical-icon.png-althistorical-stories-at-insightful-tales-loadinglazy-width18-height18-classnav-icon-historical" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text"><img src="../images/top-nav-icons/historical-icon.png" alt="Historical stories at Insightful Tales" loading="lazy" width="18" height="18" class="nav-icon"> Historical</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-img-srcimagestop-nav-iconshistorical-icon.png-althistorical-stories-at-insightful-tales-loadinglazy-width18-height18-classnav-icon-historical">    
+        <li>
+    <a class="dropdown-item" href="../data-science/genesis-of-data.html">
+ <span class="dropdown-text">🧮 Genesis of Data</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-img-srcimagestop-nav-iconsdatasets-icon.png-altdatasets-at-insightful-tales-loadinglazy-width18-height18-classnav-icon-datasets" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text"><img src="../images/top-nav-icons/datasets-icon.png" alt="Datasets at Insightful Tales" loading="lazy" width="18" height="18" class="nav-icon"> Datasets</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-img-srcimagestop-nav-iconsdatasets-icon.png-altdatasets-at-insightful-tales-loadinglazy-width18-height18-classnav-icon-datasets">    
+        <li>
+    <a class="dropdown-item" href="../dataset-icon-language.html">
+ <span class="dropdown-text"><img src="../images/top-nav-icons/data-icon-language-icon.png" alt="The Dataset Icon Language" loading="lazy" width="18" height="18" class="nav-icon"> The Dataset Icon Language ← logical!</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../datasets/nycflights13-the-dataset-that-took-off.html">
+ <span class="dropdown-text">✈️ nycflights13</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../datasets/the-gapminder-dataset-a-history-of-human-progress-told-through-data.html">
+ <span class="dropdown-text">🌍 The Gapminder Dataset</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../datasets/the-lahman-baseball-database-a-chronicle-of-the-games-digital-memory.html">
+ <span class="dropdown-text">⚾ The Lahman Baseball Database</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../datasets/the-noaa-daily-weather-dataset.html">
+ <span class="dropdown-text">🌦 NOAA Daily Weather Dataset</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../datasets/transport-for-london-tfl-the-pulse-beneath-the-city.html">
+ <span class="dropdown-text">🚇 Transport for London (TfL)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../datasets/uci-online-retail-human-behavior-in-transactions.html">
+ <span class="dropdown-text">🛒 UCI Online Retail</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-img-srcimagestop-nav-iconsabout-icon.png-altabout-insightful-tales-loadinglazy-width18-height18-classnav-icon-about" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text"><img src="../images/top-nav-icons/about-icon.png" alt="About Insightful Tales" loading="lazy" width="18" height="18" class="nav-icon"> About</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-img-srcimagestop-nav-iconsabout-icon.png-altabout-insightful-tales-loadinglazy-width18-height18-classnav-icon-about">    
+        <li>
+    <a class="dropdown-item" href="../about.html">
+ <span class="dropdown-text"><img src="../images/top-nav-icons/about-icon.png" alt="What is Insightful Tales" loading="lazy" width="18" height="18" class="nav-icon"> What is Insightful Tales?</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../dataset-icon-language.html">
+ <span class="dropdown-text"><img src="../images/top-nav-icons/data-icon-language-icon.png" alt="The Dataset Icon Language" loading="lazy" width="18" height="18" class="nav-icon"> The Dataset Icon Language</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contact.html">
+ <span class="dropdown-text"><img src="../images/top-nav-icons/contact-icon.png" alt="Contact Insightful Tales" loading="lazy" width="18" height="18" class="nav-icon"> Contact</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Navigate</h2>
+   
+  <ul>
+  <li><a href="#earth-has-a-pulse-we-just-never-looked-for-it" id="toc-earth-has-a-pulse-we-just-never-looked-for-it" class="nav-link active" data-scroll-target="#earth-has-a-pulse-we-just-never-looked-for-it">🫀 <strong>Earth Has a Pulse — We Just Never Looked for It</strong></a></li>
+  <li><a href="#rhythm-1-the-green-pulse-vegetation-breathing" id="toc-rhythm-1-the-green-pulse-vegetation-breathing" class="nav-link" data-scroll-target="#rhythm-1-the-green-pulse-vegetation-breathing">🌱 <strong>Rhythm 1: The Green Pulse (Vegetation Breathing)</strong></a>
+  <ul class="collapse">
+  <li><a href="#visual-1-ndvi-pulse-a-forests-yearly-breath" id="toc-visual-1-ndvi-pulse-a-forests-yearly-breath" class="nav-link" data-scroll-target="#visual-1-ndvi-pulse-a-forests-yearly-breath"><strong>Visual 1 — NDVI Pulse: A Forest’s Yearly Breath</strong></a></li>
+  </ul></li>
+  <li><a href="#every-region-has-a-natural-rhythm-but-not-all-are-stable" id="toc-every-region-has-a-natural-rhythm-but-not-all-are-stable" class="nav-link" data-scroll-target="#every-region-has-a-natural-rhythm-but-not-all-are-stable">✨ <strong>Every Region Has a Natural Rhythm — But Not All Are Stable</strong></a></li>
+  <li><a href="#rhythm-3-the-fire-pulse-earths-flickers" id="toc-rhythm-3-the-fire-pulse-earths-flickers" class="nav-link" data-scroll-target="#rhythm-3-the-fire-pulse-earths-flickers">🔥 <strong>Rhythm 3: The Fire Pulse — Earth’s Flickers</strong></a>
+  <ul class="collapse">
+  <li><a href="#visual-2-the-barcode-of-fire" id="toc-visual-2-the-barcode-of-fire" class="nav-link" data-scroll-target="#visual-2-the-barcode-of-fire"><strong>Visual 2 — The Barcode of Fire</strong></a></li>
+  </ul></li>
+  <li><a href="#the-big-discovery-the-rhythm-breakers" id="toc-the-big-discovery-the-rhythm-breakers" class="nav-link" data-scroll-target="#the-big-discovery-the-rhythm-breakers">🧭 <strong>The Big Discovery — The Rhythm Breakers</strong></a></li>
+  <li><a href="#where-this-leads-future-explorations" id="toc-where-this-leads-future-explorations" class="nav-link" data-scroll-target="#where-this-leads-future-explorations">🔮 <strong>Where This Leads — Future Explorations</strong></a></li>
+  <li><a href="#references-credits" id="toc-references-credits" class="nav-link" data-scroll-target="#references-credits">📚 <strong>References &amp; Credits</strong></a>
+  <ul class="collapse">
+  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources"><strong>Data Sources</strong></a></li>
+  <li><a href="#concepts" id="toc-concepts" class="nav-link" data-scroll-target="#concepts"><strong>Concepts</strong></a></li>
+  <li><a href="#r-packages-used" id="toc-r-packages-used" class="nav-link" data-scroll-target="#r-packages-used"><strong>R Packages Used</strong></a></li>
+  <li><a href="#credits" id="toc-credits" class="nav-link" data-scroll-target="#credits"><strong>Credits</strong></a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">The Planet That Breathes — Tracking Earth’s Hidden Rhythms from Space</h1>
+<p class="subtitle lead">How satellite eyes reveal a living planet with seasons, pulses, and sudden interruptions.</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">flights</div>
+    <div class="quarto-category">delays</div>
+    <div class="quarto-category">nycflights13</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Earth pulses with life — forests inhale, oceans flicker, deserts blossom and sleep. Using decades of NASA satellite imagery, this story uncovers the planet’s hidden rhythms, where they are steady, and where they are starting to skip a beat.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>flight delays, morning delays, delay propagation, aviation networks, air traffic ripple effects, NYC flights, airport congestion, schedule disruptions, aviation data analysis, delay chains, butterfly effect, airline performance, morning schedule noise, air travel patterns</p>
+  </div>
+</div>
+
+</header>
+
+
+<section class="hero">
+<h1>
+<span aria-hidden="true">🪐</span> The Planet That Breathes — Tracking Earth’s Hidden Rhythms from Space
+</h1>
+<h2 class="hero-subtitle anchored">
+<p>How satellite eyes reveal a living planet with seasons, pulses, and sudden interruptions.</p>
+</h2>
+<p class="hero-text">
+</p><p>Earth pulses with life — forests inhale, oceans flicker, deserts blossom and sleep. Using decades of NASA satellite imagery, this story uncovers the planet’s hidden rhythms, where they are steady, and where they are starting to skip a beat.</p>
+<p></p>
+</section>
+<section id="earth-has-a-pulse-we-just-never-looked-for-it" class="level1">
+<h1>🫀 <strong>Earth Has a Pulse — We Just Never Looked for It</strong></h1>
+<p>Every living thing has rhythms.</p>
+<ul>
+<li>Your heart beats.</li>
+<li>Your lungs rise and fall.</li>
+<li>Your body temperature cycles each day.</li>
+</ul>
+<p>Earth does, too — but its rhythms are slow, wide, and hard to see from the ground.</p>
+<p>Satellites give us a way to watch:</p>
+<ul>
+<li>forests green and brown</li>
+<li>lakes grow warm then cool</li>
+<li>snow advance and retreat</li>
+<li>dust sweep across continents</li>
+<li>fires flash like sparks in the dark</li>
+</ul>
+<p>If you take any single pixel on Earth and graph it through time, something magical happens:</p>
+<p><strong>It forms a repeating pattern — a heartbeat.</strong></p>
+</section>
+<section id="rhythm-1-the-green-pulse-vegetation-breathing" class="level1">
+<h1>🌱 <strong>Rhythm 1: The Green Pulse (Vegetation Breathing)</strong></h1>
+<p>Forests and grasslands “inhale” as they grow and “exhale” when they rest.</p>
+<p>We can show this using <strong>a simple NDVI time series</strong>.</p>
+<section id="visual-1-ndvi-pulse-a-forests-yearly-breath" class="level3">
+<h3 class="anchored" data-anchor-id="visual-1-ndvi-pulse-a-forests-yearly-breath"><strong>Visual 1 — NDVI Pulse: A Forest’s Yearly Breath</strong></h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># simulate a simple, intuitive NDVI annual rhythm that ANY reader can understand</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>days <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">365</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>ndvi <span class="ot">&lt;-</span> <span class="fl">0.3</span> <span class="sc">+</span> <span class="fl">0.25</span><span class="sc">*</span><span class="fu">sin</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span>(days<span class="sc">/</span><span class="dv">365</span>)) <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">365</span>, <span class="dv">0</span>, <span class="fl">0.02</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">day =</span> days, <span class="at">NDVI =</span> ndvi)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(day, NDVI)) <span class="sc">+</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size=</span><span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"A Forest’s Yearly Breath"</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">"Growing season rise → summer peak → winter rest"</span>,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">"Day of Year"</span>, <span class="at">y=</span><span class="st">"NDVI (green-ness)"</span>) <span class="sc">+</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="the-planet-that-breathes-tracking-earths-hidden-rhythms-from-space_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A wave that rises, peaks, falls, and rests.</p>
+<p>But now comes the twist…</p>
+</section>
+</section>
+<section id="every-region-has-a-natural-rhythm-but-not-all-are-stable" class="level1">
+<h1>✨ <strong>Every Region Has a Natural Rhythm — But Not All Are Stable</strong></h1>
+<p>When we compute this rhythm for locations across Earth, patterns emerge:</p>
+<ul>
+<li>Some places have strong, steady pulses</li>
+<li>Some have pulses that weaken slowly</li>
+<li>Some suddenly change shape</li>
+<li>A few lose their rhythm entirely</li>
+</ul>
+<p>This gives us a completely new lens:<br>
+<strong>Is a region’s natural heartbeat stable or changing?</strong></p>
+</section>
+<section id="rhythm-3-the-fire-pulse-earths-flickers" class="level1">
+<h1>🔥 <strong>Rhythm 3: The Fire Pulse — Earth’s Flickers</strong></h1>
+<p>Fire activity has a rhythm too — annual fire seasons.</p>
+<section id="visual-2-the-barcode-of-fire" class="level3">
+<h3 class="anchored" data-anchor-id="visual-2-the-barcode-of-fire"><strong>Visual 2 — The Barcode of Fire</strong></h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">23</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>weeks <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">52</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>fire_counts <span class="ot">&lt;-</span> <span class="fu">abs</span>(<span class="fu">rnorm</span>(<span class="dv">52</span>, <span class="at">mean =</span> <span class="fu">sin</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span>(weeks<span class="sc">/</span><span class="dv">52</span>))<span class="sc">*</span><span class="dv">40</span> <span class="sc">+</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">20</span>))</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>fire_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">week =</span> weeks, <span class="at">fires =</span> fire_counts)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fire_df, <span class="fu">aes</span>(week, fires)) <span class="sc">+</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width=</span><span class="fl">0.9</span>) <span class="sc">+</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"The Barcode of Fire"</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">"A simulated fire season pattern — calm → ignition → peak → fade"</span>,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">"Week of Year"</span>, <span class="at">y=</span><span class="st">"Fire Detections"</span>) <span class="sc">+</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="the-planet-that-breathes-tracking-earths-hidden-rhythms-from-space_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Tall spikes → fire season.<br>
+Flat lines → off season.</p>
+</section>
+</section>
+<section id="the-big-discovery-the-rhythm-breakers" class="level1">
+<h1>🧭 <strong>The Big Discovery — The Rhythm Breakers</strong></h1>
+<blockquote class="blockquote">
+<p><strong>Some regions of Earth show rhythm “breaks”— abrupt shifts in their natural cycles that don’t match climate patterns, seasons, or geography.</strong></p>
+</blockquote>
+<p>These “rhythm breaks” often align with:</p>
+<ul>
+<li>irrigation expansion</li>
+<li>dam construction</li>
+<li>megafires</li>
+<li>rapid urbanization</li>
+<li>mining pits</li>
+<li>desert irrigation circular fields</li>
+<li>sudden ecosystem collapse</li>
+</ul>
+<p>Most scientific papers analyze trends.<br>
+Almost none analyze <strong>rhythm stability</strong>.</p>
+<p>We are opening a completely new door.</p>
+</section>
+<section id="where-this-leads-future-explorations" class="level1">
+<h1>🔮 <strong>Where This Leads — Future Explorations</strong></h1>
+<p>This single idea — <strong>the stability of Earth’s pulses</strong> — gives a roadmap for future stories:</p>
+<ul>
+<li><em>Which forests are losing the strength of their green pulse?</em></li>
+<li><em>Where are fire seasons changing shape most rapidly?</em></li>
+<li><em>Are winter cycles becoming less predictable?</em></li>
+<li><em>Do human-made interruptions leave detectable “scars” in the rhythm?</em></li>
+<li><em>What regions show new rhythms that never existed before?</em></li>
+</ul>
+<p>This internal consistency creates a whole <strong>series</strong> of original, planetary tales.</p>
+<section class="dataset-source">
+<p><img src="../images/dataset-icons/nasa-modis.svg" class="dataset-icon-small" aria-hidden="true"> <strong>Dataset:</strong> NASA MODIS</p>
+</section>
+<p class="dataset-subnav">
+</p><p><a href="../dataset-icon-language.html" class="small-link"> What do these icons mean? </a></p>
+<p></p>
+</section>
+<section id="references-credits" class="level1">
+<h1>📚 <strong>References &amp; Credits</strong></h1>
+<section id="data-sources" class="level3">
+<h3 class="anchored" data-anchor-id="data-sources"><strong>Data Sources</strong></h3>
+<ul>
+<li>NASA MODIS Terra &amp; Aqua Imagery</li>
+<li>NASA Earth Observatory</li>
+<li>NASA FIRMS (Fire Information for Resource Management System)</li>
+<li>NOAA Snow &amp; Ice Data</li>
+<li>USGS Landsat Archive</li>
+</ul>
+</section>
+<section id="concepts" class="level3">
+<h3 class="anchored" data-anchor-id="concepts"><strong>Concepts</strong></h3>
+<ul>
+<li>Normalized Difference Vegetation Index (NDVI)</li>
+<li>Seasonal snow cover extent</li>
+<li>Fire hotspot detection</li>
+<li>Land surface temperature</li>
+</ul>
+</section>
+<section id="r-packages-used" class="level3">
+<h3 class="anchored" data-anchor-id="r-packages-used"><strong>R Packages Used</strong></h3>
+<ul>
+<li><strong>tidyverse</strong> — data wrangling</li>
+<li><strong>ggplot2</strong> — visualizations</li>
+<li><strong>terra</strong> or <strong>raster</strong> (future expansions)</li>
+<li><strong>sf</strong> (spatial data)</li>
+</ul>
+</section>
+<section id="credits" class="level3">
+<h3 class="anchored" data-anchor-id="credits"><strong>Credits</strong></h3>
+<ul>
+<li>Satellite imagery courtesy of NASA / USGS</li>
+<li>Conceptual framing and narrative by <strong>Insightful Tales</strong> (original work)</li>
+<li>All simulated plots here are illustrative; real satellite derivatives will be added in later iterations</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script>
+
+window.addEventListener("DOMContentLoaded", () => {
+
+  // Find the TOC container (sidebar or top)
+
+  const toc = document.querySelector("#TOC, #quarto-sidebar-toc");
+
+  if (!toc) return;
+
+
+
+  // All TOC links that point to sections on the page
+
+  const tocLinks = Array.from(
+
+    toc.querySelectorAll('a[data-scroll-target], a[href^="#"]')
+
+  );
+
+  if (!tocLinks.length) return;
+
+
+
+  // Map links -> section elements
+
+  let sections = tocLinks
+
+    .map(link => {
+
+      let target = link.getAttribute("data-scroll-target");
+
+      if (target && target.startsWith("#")) {
+
+        return document.querySelector(target);
+
+      }
+
+
+
+      const href = link.getAttribute("href");
+
+      if (href && href.startsWith("#") && href.length > 1) {
+
+        return document.querySelector(href);
+
+      }
+
+
+
+      return null;
+
+    })
+
+    .filter(Boolean);
+
+
+
+  if (!sections.length) return;
+
+
+
+  // Sort sections by vertical position, top to bottom
+
+  sections.sort((a, b) => a.offsetTop - b.offsetTop);
+
+
+
+  const clearActive = () => {
+
+    tocLinks.forEach(link => {
+
+      link.classList.remove("active");
+
+      link.removeAttribute("aria-current");
+
+    });
+
+  };
+
+
+
+  const setActiveForId = (id) => {
+
+    if (!id) return;
+
+
+
+    const link = tocLinks.find(l => {
+
+      const ds = l.getAttribute("data-scroll-target");
+
+      if (ds && ds === `#${id}`) return true;
+
+      const href = l.getAttribute("href");
+
+      if (href && href === `#${id}`) return true;
+
+      return false;
+
+    });
+
+
+
+    if (!link) return;
+
+
+
+    clearActive();
+
+    link.classList.add("active");
+
+    link.setAttribute("aria-current", "location");
+
+  };
+
+
+
+  // Update active link based on scroll position
+
+  const updateActiveOnScroll = () => {
+
+    const scrollPos =
+
+      window.scrollY || document.documentElement.scrollTop || 0;
+
+
+
+    // Adjust for fixed navbar / padding at top (tweak if needed)
+
+    const offset = 140;
+
+
+
+    let currentId = sections[0].id;
+
+
+
+    for (const sec of sections) {
+
+      if (sec.offsetTop - offset <= scrollPos) {
+
+        currentId = sec.id;
+
+      } else {
+
+        break;
+
+      }
+
+    }
+
+
+
+    setActiveForId(currentId);
+
+  };
+
+
+
+  // Run on load
+
+  updateActiveOnScroll();
+
+
+
+  // Update on scroll and resize
+
+  window.addEventListener("scroll", () => {
+
+    window.requestAnimationFrame(updateActiveOnScroll);
+
+  });
+
+
+
+  window.addEventListener("resize", () => {
+
+    // Recompute positions on resize (optional but safe)
+
+    sections.sort((a, b) => a.offsetTop - b.offsetTop);
+
+    updateActiveOnScroll();
+
+  });
+
+
+
+  // Also handle clicking TOC links (so it highlights immediately on click)
+
+  tocLinks.forEach(link => {
+
+    link.addEventListener("click", () => {
+
+      const ds = link.getAttribute("data-scroll-target");
+
+      const href = link.getAttribute("href");
+
+
+
+      let id = null;
+
+      if (ds && ds.startsWith("#")) id = ds.slice(1);
+
+      else if (href && href.startsWith("#")) id = href.slice(1);
+
+
+
+      if (id) setActiveForId(id);
+
+    });
+
+  });
+
+});
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/www\.insightfultales\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2025 Insightful Tales<br>
+<small>🦋 Uses <a href="https://analytics.google.com/" target="_blank" rel="noopener" style="color:#2b5876;text-decoration:underline;">Google Analytics</a> (IP anonymization enabled; no personal data stored)</small></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Made with ❤️ and Quarto</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

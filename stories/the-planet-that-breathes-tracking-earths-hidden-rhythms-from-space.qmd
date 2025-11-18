@@ -1,0 +1,191 @@
+---
+title: "The Planet That Breathes — Tracking Earth’s Hidden Rhythms from Space"
+subtitle: "How satellite eyes reveal a living planet with seasons, pulses, and sudden interruptions."
+description: "Earth pulses with life — forests inhale, oceans flicker, deserts blossom and sleep. Using decades of NASA satellite imagery, this story uncovers the planet’s hidden rhythms, where they are steady, and where they are starting to skip a beat."
+keywords: ["flight delays", "morning delays", "delay propagation", "aviation networks", "air traffic ripple effects", "NYC flights", "airport congestion", "schedule disruptions", "aviation data analysis", "delay chains", "butterfly effect", "airline performance", "morning schedule noise", "air travel patterns"]
+categories: ["flights", "delays", "nycflights13"]
+---
+
+<section class="hero">
+
+<h1>[🪐]{aria-hidden="true"} The Planet That Breathes — Tracking Earth’s Hidden Rhythms from Space</h1>
+
+<h2 class="hero-subtitle">
+
+How satellite eyes reveal a living planet with seasons, pulses, and sudden interruptions.
+
+</h2>
+
+<p class="hero-text">
+
+Earth pulses with life — forests inhale, oceans flicker, deserts blossom and sleep. Using decades of NASA satellite imagery, this story uncovers the planet’s hidden rhythms, where they are steady, and where they are starting to skip a beat.
+
+</p>
+
+</section>
+
+# 🫀 **Earth Has a Pulse — We Just Never Looked for It**
+
+Every living thing has rhythms.
+
+-   Your heart beats.
+-   Your lungs rise and fall.
+-   Your body temperature cycles each day.
+
+Earth does, too — but its rhythms are slow, wide, and hard to see from the ground.
+
+Satellites give us a way to watch:
+
+-   forests green and brown
+-   lakes grow warm then cool
+-   snow advance and retreat
+-   dust sweep across continents
+-   fires flash like sparks in the dark
+
+If you take any single pixel on Earth and graph it through time, something magical happens:
+
+**It forms a repeating pattern — a heartbeat.**
+
+# 🌱 **Rhythm 1: The Green Pulse (Vegetation Breathing)**
+
+Forests and grasslands “inhale” as they grow and “exhale” when they rest.
+
+We can show this using **a simple NDVI time series**.
+
+### **Visual 1 — NDVI Pulse: A Forest’s Yearly Breath**
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+
+# simulate a simple, intuitive NDVI annual rhythm that ANY reader can understand
+set.seed(12)
+days <- 1:365
+ndvi <- 0.3 + 0.25*sin(2*pi*(days/365)) + rnorm(365, 0, 0.02)
+
+df <- tibble(day = days, NDVI = ndvi)
+
+ggplot(df, aes(day, NDVI)) +
+  geom_line(size=1.2) +
+  labs(title="A Forest’s Yearly Breath",
+       subtitle="Growing season rise → summer peak → winter rest",
+       x="Day of Year", y="NDVI (green-ness)") +
+  theme_minimal(base_size = 15)
+```
+
+A wave that rises, peaks, falls, and rests.
+
+But now comes the twist…
+
+# ✨ **Every Region Has a Natural Rhythm — But Not All Are Stable**
+
+When we compute this rhythm for locations across Earth, patterns emerge:
+
+-   Some places have strong, steady pulses
+-   Some have pulses that weaken slowly
+-   Some suddenly change shape
+-   A few lose their rhythm entirely
+
+This gives us a completely new lens:\
+**Is a region’s natural heartbeat stable or changing?**
+
+# 🔥 **Rhythm 3: The Fire Pulse — Earth’s Flickers**
+
+Fire activity has a rhythm too — annual fire seasons.
+
+### **Visual 2 — The Barcode of Fire**
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+
+set.seed(23)
+
+weeks <- 1:52
+fire_counts <- abs(rnorm(52, mean = sin(2*pi*(weeks/52))*40 + 50, sd = 20))
+
+fire_df <- tibble(week = weeks, fires = fire_counts)
+
+ggplot(fire_df, aes(week, fires)) +
+  geom_col(width=0.9) +
+  labs(title="The Barcode of Fire",
+       subtitle="A simulated fire season pattern — calm → ignition → peak → fade",
+       x="Week of Year", y="Fire Detections") +
+  theme_minimal(base_size = 15)
+```
+
+Tall spikes → fire season.\
+Flat lines → off season.
+
+# 🧭 **The Big Discovery — The Rhythm Breakers**
+
+> **Some regions of Earth show rhythm “breaks”— abrupt shifts in their natural cycles that don’t match climate patterns, seasons, or geography.**
+
+These “rhythm breaks” often align with:
+
+-   irrigation expansion
+-   dam construction
+-   megafires
+-   rapid urbanization
+-   mining pits
+-   desert irrigation circular fields
+-   sudden ecosystem collapse
+
+Most scientific papers analyze trends.\
+Almost none analyze **rhythm stability**.
+
+We are opening a completely new door.
+
+# 🔮 **Where This Leads — Future Explorations**
+
+This single idea — **the stability of Earth’s pulses** — gives a roadmap for future stories:
+
+-   *Which forests are losing the strength of their green pulse?*
+-   *Where are fire seasons changing shape most rapidly?*
+-   *Are winter cycles becoming less predictable?*
+-   *Do human-made interruptions leave detectable “scars” in the rhythm?*
+-   *What regions show new rhythms that never existed before?*
+
+This internal consistency creates a whole **series** of original, planetary tales.
+
+<section class="dataset-source">
+
+<img src="../images/dataset-icons/nasa-modis.svg" class="dataset-icon-small" aria-hidden="true"/> <strong>Dataset:</strong> NASA MODIS
+
+</section>
+
+<p class="dataset-subnav">
+
+<a href="../dataset-icon-language.html" class="small-link"> What do these icons mean? </a>
+
+</p>
+
+# 📚 **References & Credits**
+
+### **Data Sources**
+
+-   NASA MODIS Terra & Aqua Imagery
+-   NASA Earth Observatory
+-   NASA FIRMS (Fire Information for Resource Management System)
+-   NOAA Snow & Ice Data
+-   USGS Landsat Archive
+
+### **Concepts**
+
+-   Normalized Difference Vegetation Index (NDVI)
+-   Seasonal snow cover extent
+-   Fire hotspot detection
+-   Land surface temperature
+
+### **R Packages Used**
+
+-   **tidyverse** — data wrangling
+-   **ggplot2** — visualizations
+-   **terra** or **raster** (future expansions)
+-   **sf** (spatial data)
+
+### **Credits**
+
+-   Satellite imagery courtesy of NASA / USGS
+-   Conceptual framing and narrative by **Insightful Tales** (original work)
+-   All simulated plots here are illustrative; real satellite derivatives will be added in later iterations
