@@ -99,7 +99,7 @@ A visual narrative on global progress and paradox: who truly caught up, who stal
 
 <details class="story">
 
-<summary>[🛰️]{aria-hidden="true"} <strong>Planetary Pulse</strong> — Reading Earth from Orbit</summary>
+<summary>[🪐️]{aria-hidden="true"} <a href="stories/the-planet-that-breathes-tracking-earths-hidden-rhythms-from-space.html"><strong>Planetary Pulse</strong></a> — Reading Earth from Orbit</summary>
 
 Satellite imagery meets storytelling.\
 From greening deserts to vanishing glaciers, this piece turns NASA’s pixels into a planetary diary of change.
