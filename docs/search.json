@@ -655,7 +655,7 @@
     "href": "stories/butterfly-morning-delays.html#summary-what-we-discovered",
     "title": "Butterfly Morning Delays",
     "section": "📋 Summary (what we discovered)",
-    "text": "📋 Summary (what we discovered)\n\nFirst-wave scatter (not just average delay) is a strong signal for afternoon performance.\nThe effect is strongest on short-haul days—where rotations are more frequent.\nControlling for weather/time effects, the relationship persists.\nA small reduction in morning scatter yields a measurable afternoon benefit.\n\n\n Dataset: nycflights13 \n\n\n What do these icons mean?"
+    "text": "📋 Summary (what we discovered)\n\nFirst-wave scatter (not just average delay) is a strong signal for afternoon performance.\nThe effect is strongest on short-haul days—where rotations are more frequent.\nControlling for weather/time effects, the relationship persists.\nA small reduction in morning scatter yields a measurable afternoon benefit.\n\n\n Dataset: nycflights13\n\n\n What do these icons mean?"
   },
   {
     "objectID": "stories/butterfly-morning-delays.html#references-credits",

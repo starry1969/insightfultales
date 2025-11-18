@@ -2,30 +2,26 @@
 title: "Butterfly Morning Delays"
 subtitle: "How early-morning schedule noise ripples through the rest of the day."
 description: "A story about cause and consequence in motion — how a stormy sunrise or a missed departure can reshape an entire day of air travel."
-keywords: [
-  "flight delays",
-  "morning delays",
-  "delay propagation",
-  "aviation networks",
-  "air traffic ripple effects",
-  "NYC flights",
-  "airport congestion",
-  "schedule disruptions",
-  "aviation data analysis",
-  "delay chains",
-  "butterfly effect",
-  "airline performance",
-  "morning schedule noise",
-  "air travel patterns"
-]
+keywords: ["flight delays", "morning delays", "delay propagation", "aviation networks", "air traffic ripple effects", "NYC flights", "airport congestion", "schedule disruptions", "aviation data analysis", "delay chains", "butterfly effect", "airline performance", "morning schedule noise", "air travel patterns"]
 categories: ["flights", "delays", "nycflights13"]
 ---
+
 <section class="hero">
-  <h1><span aria-hidden="true">🦋</span> Butterfly Morning Delays</h1>
-  <h2 class="hero-subtitle">How early-morning schedule noise ripples through the rest of the day.</h2>
-  <p class="hero-text">
-    A story about cause and consequence in motion — how a stormy sunrise or a missed departure can reshape an entire day of air travel.
-  </p>
+
+<h1><span aria-hidden="true">🦋</span> Butterfly Morning Delays</h1>
+
+<h2 class="hero-subtitle">
+
+How early-morning schedule noise ripples through the rest of the day.
+
+</h2>
+
+<p class="hero-text">
+
+A story about cause and consequence in motion — how a stormy sunrise or a missed departure can reshape an entire day of air travel.
+
+</p>
+
 </section>
 
 > *This analysis uses open data (`nycflights13`) to demonstrate a novel, reproducible approach to understanding delay propagation within a single day. Unlike traditional performance summaries that emphasize average delay, we focus on variability — the “schedule chaos” that amplifies downstream disruption. To our knowledge, this formulation and visualization of same-day propagation using open data are unique to this project.*
@@ -246,19 +242,15 @@ tibble(
 -   A small reduction in morning scatter yields a **measurable** afternoon benefit.
 
 <section class="dataset-source">
-  <img src="../images/dataset-icons/nycflights13.svg"
-       class="dataset-icon-small"
-       alt=""
-       aria-hidden="true">
-  <span><strong>Dataset:</strong> 
-    <a href="../datasets/nycflights13-the-dataset-that-took-off.html">nycflights13</a>
-  </span>
+
+<img src="../images/dataset-icons/nycflights13.svg" class="dataset-icon-small" aria-hidden="true"/> <strong>Dataset:</strong> <a href="../datasets/nycflights13-the-dataset-that-took-off.html">nycflights13</a>
+
 </section>
 
 <p class="dataset-subnav">
-  <a href="../dataset-icon-language.html" class="small-link">
-    What do these icons mean?
-  </a>
+
+<a href="../dataset-icon-language.html" class="small-link"> What do these icons mean? </a>
+
 </p>
 
 ## [📚]{aria-hidden="true"} References & Credits
