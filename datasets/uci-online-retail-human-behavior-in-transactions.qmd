@@ -2,20 +2,8 @@
 title: "UCI Online Retail — Human Behavior in Transactions"
 subtitle: "Line-item invoices for a UK e-commerce retailer, 2010–2011."
 description: "A rich log of every product, basket, and return for a gift-oriented UK online retailer — a natural playground for basket analysis, seasonality, and long-tail behavior."
+keywords: ["UCI Online Retail dataset", "market basket analysis", "basket analysis", "ecommerce transactions", "RFM segmentation", "customer behavior", "long tail", "seasonality", "co-occurrence networks", "UK online retail"]
 categories: [datasets, ecommerce, human-behavior, economics, data-science]
-keywords: [
-  "UCI Online Retail dataset",
-  "market basket analysis",
-  "basket analysis",
-  "ecommerce transactions",
-  "RFM segmentation",
-  "customer behavior",
-  "long tail",
-  "seasonality",
-  "co-occurrence networks",
-  "UK online retail"
-]
-# format and other global options inherited from _quarto.yml
 ---
 
 <!-- Dataset Badge -->

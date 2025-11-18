@@ -224,95 +224,67 @@
     "text": "📚 References & Credits\n\nRosling, H. (2006). The best stats you’ve ever seen [TED Talk]. https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen\n\nGapminder Foundation. (2024). About Gapminder. https://www.gapminder.org/about\n\nRosling, H., Rosling, O., & Rosling Rönnlund, A. (2018). Factfulness: Ten Reasons We’re Wrong About the World—and Why Things Are Better Than You Think. Flatiron Books.\n\nUnited Nations Data Division (UNdata). Life Expectancy and GDP per Capita Statistics.\n\nWorld Bank Open Data. World Development Indicators.\n\nBryan, J., Wickham, H., & RStudio Team. (2017). gapminder: Data from Gapminder. R package version 0.3.0.\n\nRosling, O., & Rönnlund, A. (2023). Gapminder World Tools and Dollar Street Visual Database. https://www.gapminder.org/tools"
   },
   {
-    "objectID": "datasets/index.html",
-    "href": "datasets/index.html",
-    "title": "Featured Datasets",
+    "objectID": "datasets/nasa-modis-global-environmental-time-series.html",
+    "href": "datasets/nasa-modis-global-environmental-time-series.html",
+    "title": "🌍 NASA MODIS — Global Environmental Time Series",
     "section": "",
-    "text": "📊 Featured Datasets — Where Stories Begin\nBehind every story lies a dataset waiting to be understood.\nExplore the origins, purpose, and structure of the datasets that fuel Insightful Tales.\nEach entry links to its background page — describing how the data was collected, why it matters, and what stories it can tell.\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "What does this icon mean?"
   },
   {
-    "objectID": "data-science/index.html",
-    "href": "data-science/index.html",
-    "title": "Data Science Stories",
-    "section": "",
-    "text": "🧮 Data Science Stories\nThese are the analytical backbones of Insightful Tales —\nnotebooks that explore datasets, test ideas, and illuminate patterns that later become stories.\n\n\n\n\n\n\n\n\nNo matching items"
+    "objectID": "datasets/nasa-modis-global-environmental-time-series.html#what-is-modis",
+    "href": "datasets/nasa-modis-global-environmental-time-series.html#what-is-modis",
+    "title": "🌍 NASA MODIS — Global Environmental Time Series",
+    "section": "🌐 What is MODIS?",
+    "text": "🌐 What is MODIS?\nMODIS (Moderate Resolution Imaging Spectroradiometer) is an instrument aboard NASA’s Terra (1999-present) and Aqua (2002-present) satellites.\nIt scans the entire planet every 1–2 days in 36 spectral bands, capturing:\n\nvegetation\nsnow\nice\nfires\nclouds\ndust\nsea-surface temperatures\nland-surface temperatures\natmospheric aerosols\nwater vapor\n\nMore than 26 years of continuous observations make MODIS the most consistent environmental time series in Earth’s history."
   },
   {
-    "objectID": "contact.html",
-    "href": "contact.html",
-    "title": "Contact",
-    "section": "",
-    "text": "I’d love to hear from readers, researchers, or collaborators interested in data storytelling, visualization, or related projects.\n\n💡 Feedback or story ideas? Drop a note below.\n\n🧠 Collaboration inquiries? I’m open to cross-disciplinary data projects.\n\n👉 [LinkedIn Profile](https://www.linkedin.com/in/joseph-schaffer-a6270138\n👉 GitHub Repository\nOr email me directly: joseph [at] insightfultales [dot] com"
+    "objectID": "datasets/nasa-modis-global-environmental-time-series.html#why-modis-is-special",
+    "href": "datasets/nasa-modis-global-environmental-time-series.html#why-modis-is-special",
+    "title": "🌍 NASA MODIS — Global Environmental Time Series",
+    "section": "🧩 Why MODIS Is Special",
+    "text": "🧩 Why MODIS Is Special\nMODIS isn’t one dataset — it’s a family of global products that share:\n\nconsistent processing\nlong-term continuity\nglobal coverage\nstable calibration\npredictable update cycles\nmultiple instruments (Terra + Aqua) for redundancy\n\nThis creates the rare ability to observe:\n\nseasonal rhythms\nlong-term trends\nsudden environmental interruptions\necological “pulse changes”\nfire season shifts\nsnow melt timing\nland temperature behavior\n\nMODIS is essentially a planetary vital signs monitor."
   },
   {
-    "objectID": "contact.html#get-in-touch",
-    "href": "contact.html#get-in-touch",
-    "title": "Contact",
-    "section": "",
-    "text": "I’d love to hear from readers, researchers, or collaborators interested in data storytelling, visualization, or related projects.\n\n💡 Feedback or story ideas? Drop a note below.\n\n🧠 Collaboration inquiries? I’m open to cross-disciplinary data projects.\n\n👉 [LinkedIn Profile](https://www.linkedin.com/in/joseph-schaffer-a6270138\n👉 GitHub Repository\nOr email me directly: joseph [at] insightfultales [dot] com"
+    "objectID": "datasets/nasa-modis-global-environmental-time-series.html#key-modis-data-products-used-in-insightful-tales",
+    "href": "datasets/nasa-modis-global-environmental-time-series.html#key-modis-data-products-used-in-insightful-tales",
+    "title": "🌍 NASA MODIS — Global Environmental Time Series",
+    "section": "📦 Key MODIS Data Products Used in Insightful Tales",
+    "text": "📦 Key MODIS Data Products Used in Insightful Tales\n\n🌱 Vegetation (NDVI / EVI)\nMOD13 (Terra) • MYD13 (Aqua)\n\nNDVI (Normalized Difference Vegetation Index)\nEVI (Enhanced Vegetation Index)\n16-day composites, global\n\nUsed for:\n\n“Green pulse” seasonal cycles\nLong-term greening/browning trends\n\n\n\n❄️ Snow & Ice\nMOD10 (Terra) • MYD10 (Aqua)\n\nDaily or 8-day snow cover\nSnow persistence and melt timing\n\nUsed for:\n\nWinter rhythm (“blink of snow”)\nSnow retreat mapping\n\n\n\n🔥 Active Fire / Burned Area\nMOD14 / MYD14\n\nThermal anomaly detections\nFire intensity & location\n\nUsed for:\n\nFire season “barcode” visualization\nDetecting rhythm shifts in fire timing\n\n\n\n🌡️ Land Surface Temperature\nMOD11 / MYD11\n\nDay/night land temperature\nUrban heat island structure\n\nUsed for:\n\nCity heat pulse\nComparing natural vs built environments"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About Insightful Tales",
-    "section": "",
-    "text": "🦋 Insightful Tales is a creative data storytelling project that transforms datasets into visual, narrative insights.\nEvery story is built from data — but told like literature, not statistics."
+    "objectID": "datasets/nasa-modis-global-environmental-time-series.html#modis-in-insightful-tales",
+    "href": "datasets/nasa-modis-global-environmental-time-series.html#modis-in-insightful-tales",
+    "title": "🌍 NASA MODIS — Global Environmental Time Series",
+    "section": "🧭 MODIS in Insightful Tales",
+    "text": "🧭 MODIS in Insightful Tales\nThis dataset powers multiple Insightful Tales stories, including:\n🪐  The Planet That Breathes — Tracking Earth’s Hidden Rhythms from Space \n\nFuture stories exploring:\n\ngreening vs browning regions\nwildfire rhythm changes\nurban thermal signatures\nwater cycles\nsnow pulse shortening"
   },
   {
-    "objectID": "data-science/genesis-of-data.html",
-    "href": "data-science/genesis-of-data.html",
-    "title": "The Genesis of Data — When Counting Became Knowing",
-    "section": "",
-    "text": "Where numbers first became mirrors of the world.\nWe like to imagine data as a modern concept — CSV files, databases, machine learning pipelines. But the truth is: data is as old as civilization itself. Before there were scientists, there were record-keepers. Before there were models, there were marks — clay scratches, tally sticks, and census scrolls — all born from the same instinct: to remember what mattered.\nThe Babylonians were counting grain before they were writing poems. Their cuneiform tablets, pressed by reeds into wet clay, weren’t stories — they were inventories. It was there, in those humble lists of barley and livestock, that data first became a language of power. Whoever held the counts held control — of taxes, of armies, of life itself.\nBy the time the Romans perfected their census, data had become governance. “Censere” meant “to assess,” and that act of assessment — of converting people into numbers — laid the foundation for everything from imperial logistics to modern public policy. The Census wasn’t invented by democracy; democracy was, in part, made possible because we learned to count ourselves."
+    "objectID": "datasets/nasa-modis-global-environmental-time-series.html#example-interpretations-conceptual",
+    "href": "datasets/nasa-modis-global-environmental-time-series.html#example-interpretations-conceptual",
+    "title": "🌍 NASA MODIS — Global Environmental Time Series",
+    "section": "📊 Example Interpretations (Conceptual)",
+    "text": "📊 Example Interpretations (Conceptual)\nEven without deep technical knowledge, MODIS can show:\n\nBreathing forests through annual NDVI waves\nSnow blink cycles — winter arriving and departing\nFire seasons emerging as predictable stripes\nHeat patterns distinguishing cities from nature\nCloud or dust “seasons” repeating each year\n\nMODIS data is not just scientific — it’s surprisingly story-shaped."
   },
   {
-    "objectID": "data-science/genesis-of-data.html#the-spiritual-act-of-counting",
-    "href": "data-science/genesis-of-data.html#the-spiritual-act-of-counting",
-    "title": "The Genesis of Data — When Counting Became Knowing",
-    "section": "️🔢 The Spiritual Act of Counting",
-    "text": "️🔢 The Spiritual Act of Counting\nI often think about counting not as a mechanical act, but a spiritual one — a human attempt to find order in chaos. Every tally is a quiet declaration that something exists, that it matters enough to be counted.\nFlorence Nightingale understood this profoundly. When she gathered data on deaths in the Crimean War, she wasn’t collecting for curiosity’s sake. She was fighting ignorance with numbers, transforming rows and columns into a moral argument — one so compelling that even the Queen could not ignore it. In that sense, she pioneered not just data visualization but data empathy."
+    "objectID": "datasets/nasa-modis-global-environmental-time-series.html#how-insightful-tales-processes-modis",
+    "href": "datasets/nasa-modis-global-environmental-time-series.html#how-insightful-tales-processes-modis",
+    "title": "🌍 NASA MODIS — Global Environmental Time Series",
+    "section": "🔍 How Insightful Tales Processes MODIS",
+    "text": "🔍 How Insightful Tales Processes MODIS\nFor each story, we typically:\n\nDownload selected MODIS products\nSimplify into easy-to-understand categories (snow/no snow, fire/no fire, etc.)\nSmooth using weekly or 8-day composites\nExtract rhythms (seasonal cycles, peaks/troughs, interruptions)\nVisualize with gentle colors and narrative annotations\nTranslate time-series into human language (“pulse”, “heartbeat”, “blink”)\n\nThe goal: make planetary-scale change emotionally legible."
   },
   {
-    "objectID": "data-science/genesis-of-data.html#when-the-world-scaled-up",
-    "href": "data-science/genesis-of-data.html#when-the-world-scaled-up",
-    "title": "The Genesis of Data — When Counting Became Knowing",
-    "section": "🌍 When the World Scaled Up",
-    "text": "🌍 When the World Scaled Up\nFast forward to the Victorian era: the world began to count everything. The first statistical societies formed, censuses became national events, and the idea of “objective truth through measurement” took hold. The machine age demanded data — and humanity obliged.\nThe story of data from then onward is exponential. By 1900, nearly every industrialized nation had institutionalized statistical offices. By 1950, computers were born to count faster than any human could. By 2000, data had multiplied to such a degree that it began describing us more than we described it."
+    "objectID": "datasets/nasa-modis-global-environmental-time-series.html#technical-details",
+    "href": "datasets/nasa-modis-global-environmental-time-series.html#technical-details",
+    "title": "🌍 NASA MODIS — Global Environmental Time Series",
+    "section": "🛠️ Technical Details",
+    "text": "🛠️ Technical Details\n\nResolution: 250m, 500m, or 1km depending on the product\nTemporal resolution: daily, 8-day, 16-day\nGlobal coverage\nRadiometric calibration maintained across decades\nBand coverage: 36 spectral bands (400–14,400 nm)"
   },
   {
-    "objectID": "data-science/genesis-of-data.html#the-data-of-data",
-    "href": "data-science/genesis-of-data.html#the-data-of-data",
-    "title": "The Genesis of Data — When Counting Became Knowing",
-    "section": "📊 The Data of Data",
-    "text": "📊 The Data of Data\nI find something poetic in tracing this lineage with modern tools. Using the World Bank’s historical population dataset, we can visualize how humanity’s capacity to count itself expanded almost in lockstep with its population.\n\n\n\n\n\n\nTip\n\n\n\n\n\nCode\nlibrary(tidyverse)\nlibrary(WDI)\nlibrary(janitor)\n\nowid &lt;- get_owid_world_pop()\n\n# --- WDI (1960+) ---\nwdi_raw &lt;- try(\n  WDI(indicator = \"SP.POP.TOTL\",\n      start = 1960,\n      end   = as.integer(format(Sys.Date(), \"%Y\"))),\n  silent = TRUE\n)\n\nif (inherits(wdi_raw, \"try-error\")) {\n  wdi_world &lt;- tibble(year = integer(), pop = numeric())\n} else {\n  # Filter to the global aggregate\n  wdi_world &lt;- wdi_raw %&gt;%\n    filter(iso2c == \"1W\" | country == \"World\") %&gt;%\n    select(year, pop = SP.POP.TOTL)\n}\n\n\n# --- OWID historical (ensure correct columns + units) ---\n\ntmp &lt;- owid %&gt;%\nclean_names() %&gt;%\nrename(pop = population)\n\nif (\"entity\" %in% names(tmp) && any(tolower(tmp$entity) == \"world\")) {\nowid_world &lt;- tmp %&gt;%\nfilter(tolower(entity) == \"world\", !is.na(year), !is.na(pop)) %&gt;%\ndistinct(year, .keep_all = TRUE)\n} else {\n\n# Fallback: aggregate across all entities per year\n\nowid_world &lt;- tmp %&gt;%\ngroup_by(year) %&gt;%\nsummarise(pop = sum(pop, na.rm = TRUE), .groups = \"drop\")\n}\n\n# Normalize OWID units if provided in millions\n\nif (max(owid_world$pop, na.rm = TRUE) &lt; 1e6) {\nowid_world &lt;- owid_world %&gt;% mutate(pop = pop * 1e6)\n}\n\nggplot() +\ngeom_area(data = owid_world, aes(year, pop / 1e9), alpha = 0.2) +\ngeom_line(data = wdi_world,  aes(year, pop / 1e9)) +\ngeom_vline(xintercept = 1960, linetype = \"dotted\") +\nannotate(\n\"text\",\nx = 1961,\ny = max(c(owid_world$pop, wdi_world$pop), na.rm = TRUE) / 1e9 * 0.9,\nlabel = \"Official WDI begins (1960)\",\nhjust = 0, size = 3\n) +\nlabs(\ntitle = \"World Population: 1800–present\",\nsubtitle = \"Historical (shaded, OWID/Maddison) with modern WDI overlay (solid line)\",\nx = NULL, y = \"Billions\"\n)\n\n\n\n\n\n\n\n\nFigure 1: World population since 1800, with modern WDI overlay\n\n\n\n\n\n\n\n\nMethods Note. Historical population is sourced from OWID/Maddison where available; modern population (1960–present) uses World Bank WDI SP.POP.TOTL. If the build environment lacks internet, a small offline fallback ensures the chart still renders.\n\nOverlay that with Our World in Data’s historical metrics, and you see an even deeper pattern: as soon as we can measure something, we seek to improve it. Counting life expectancy didn’t just describe longevity — it helped extend it. Tracking literacy didn’t just record education — it democratized it.\nThis is the unseen virtue of data: it doesn’t just observe reality, it amplifies intention."
-  },
-  {
-    "objectID": "data-science/genesis-of-data.html#when-counting-became-knowing",
-    "href": "data-science/genesis-of-data.html#when-counting-became-knowing",
-    "title": "The Genesis of Data — When Counting Became Knowing",
-    "section": "🔢 When Counting Became Knowing",
-    "text": "🔢 When Counting Became Knowing\nThe modern data scientist, in some sense, is a direct descendant of the temple scribe.\nWe still look for structure in chaos, still seek to compress the infinite world into finite symbols. The clay tablets became spreadsheets; the grain records became gigabytes. But the human motive remains unchanged: to understand, to predict, to improve.\nWe often hear that data is “the new oil.” I don’t think that’s true. Oil is extracted, consumed, and gone. Data, when treated properly, is more like light — it illuminates. The Babylonians’ grain counts, Nightingale’s diagrams, Tukey’s exploratory plots — all were small sparks in a long illumination that continues through every dataset we open today."
-  },
-  {
-    "objectID": "data-science/genesis-of-data.html#a-living-timeline",
-    "href": "data-science/genesis-of-data.html#a-living-timeline",
-    "title": "The Genesis of Data — When Counting Became Knowing",
-    "section": "🌱A Living Timeline",
-    "text": "🌱A Living Timeline\nI’m building an animated time-series visualization that traces this evolution: each point represents the earliest known record of a nation’s statistical data — census, agricultural, financial, environmental.\n\n\n\n\n\n\nNote\n\n\n\n\n\nCode\n# Example placeholder visualization\n\nset.seed(42)\ndf &lt;- tibble(\n        year = rep(1800:2020, each = 1),\n        countries_reporting = pmin(\n            200, round(5 + (year - 1800)^1.3 / 3000)\n        )\n    )\n\nggplot(df, aes(year, countries_reporting)) + \n    geom_line(linewidth = 1.2, color = \"#0072B2\") + \n    labs(title = \"A Living Timeline of Data\", subtitle = \"How measurement spread across nations (1800–2020)\",y = \"Countries with available data\", x = NULL)\n\n\n\n\n\n\n\n\nFigure 2: Data density over time — number of countries recording key statistics\n\n\n\n\n\n\n\nThe story the data tells is breathtaking: we are a species that counts because we care."
-  },
-  {
-    "objectID": "data-science/genesis-of-data.html#epilogue-the-infinite-ledger",
-    "href": "data-science/genesis-of-data.html#epilogue-the-infinite-ledger",
-    "title": "The Genesis of Data — When Counting Became Knowing",
-    "section": "♾️ Epilogue: The Infinite Ledger",
-    "text": "♾️ Epilogue: The Infinite Ledger\nWe are, each of us, a new line in the world’s oldest dataset — the ongoing attempt to make sense of being alive.\nThe Genesis of Data is not a past event; it’s a continuous present.\nEvery number we collect is a reflection of what we value, and every dataset we publish is a quiet hope that someone, somewhere, might find meaning in it.\nData, at its most human level, is not about numbers. It’s about noticing."
-  },
-  {
-    "objectID": "data-science/genesis-of-data.html#references",
-    "href": "data-science/genesis-of-data.html#references",
-    "title": "The Genesis of Data — When Counting Became Knowing",
-    "section": "📚 References",
-    "text": "📚 References\n\nWorld Bank Historical Population Data (1800–present)\nOur World in Data — History of Statistics\nUN Data Portal: National Census Records Archive"
+    "objectID": "datasets/nasa-modis-global-environmental-time-series.html#references-credits",
+    "href": "datasets/nasa-modis-global-environmental-time-series.html#references-credits",
+    "title": "🌍 NASA MODIS — Global Environmental Time Series",
+    "section": "📚 References & Credits",
+    "text": "📚 References & Credits\n\nPrimary Sources\n\nNASA MODIS Land Products\nhttps://modis.gsfc.nasa.gov\nNASA Earthdata\nhttps://earthdata.nasa.gov\nNASA LAADS DAAC\nhttps://ladsweb.modaps.eosdis.nasa.gov\nNSIDC MODIS Snow Products\nhttps://nsidc.org/data/modis\n\n\n\nScientific Documentation\n\n“MODIS Land Products Users’ Guide”\n“MODIS Land Surface Temperature Algorithm”\n“MODIS Vegetation Index User Guide”\n“MODIS Snow Cover Products Documentation”\n“MODIS Fire Products Overview”\n\n\n\nCredits\n\nNASA (Terra & Aqua missions)\nUSGS (Landsat, supplemental imagery)\nNSIDC (snow products)\nConceptual explanation & narrative: Insightful Tales\nAll visualizations: created in R using the tidyverse & terra packages"
   },
   {
     "objectID": "dataset-icon-language.html",
@@ -404,6 +376,97 @@
     "title": "The Insightful Tales Dataset Icon Language",
     "section": "🎨 How to Read and Use These Icons",
     "text": "🎨 How to Read and Use These Icons\n\nWhen you see a small badge next to a dataset name, it’s there to quickly signal the dataset’s “shape” — flights, cities, climate, economics, etc.\nWhen you see a large badge at the top of a dataset page, it’s a visual “cover” for that particular dataset, echoing the stories it can tell.\nWhen you see a small badge in a story footer (“Dataset: …”), it helps you connect the narrative you just read with the underlying dataset page, so you can explore further.\n\nOver time, this icon language is meant to feel familiar: even before you read a title, a quick glance at the symbol will tell you what kind of world you’re about to step into — flights, weather, cities, games, baseball, macroeconomics, Earth systems, and more."
+  },
+  {
+    "objectID": "data-science/genesis-of-data.html",
+    "href": "data-science/genesis-of-data.html",
+    "title": "The Genesis of Data — When Counting Became Knowing",
+    "section": "",
+    "text": "Where numbers first became mirrors of the world.\nWe like to imagine data as a modern concept — CSV files, databases, machine learning pipelines. But the truth is: data is as old as civilization itself. Before there were scientists, there were record-keepers. Before there were models, there were marks — clay scratches, tally sticks, and census scrolls — all born from the same instinct: to remember what mattered.\nThe Babylonians were counting grain before they were writing poems. Their cuneiform tablets, pressed by reeds into wet clay, weren’t stories — they were inventories. It was there, in those humble lists of barley and livestock, that data first became a language of power. Whoever held the counts held control — of taxes, of armies, of life itself.\nBy the time the Romans perfected their census, data had become governance. “Censere” meant “to assess,” and that act of assessment — of converting people into numbers — laid the foundation for everything from imperial logistics to modern public policy. The Census wasn’t invented by democracy; democracy was, in part, made possible because we learned to count ourselves."
+  },
+  {
+    "objectID": "data-science/genesis-of-data.html#the-spiritual-act-of-counting",
+    "href": "data-science/genesis-of-data.html#the-spiritual-act-of-counting",
+    "title": "The Genesis of Data — When Counting Became Knowing",
+    "section": "️🔢 The Spiritual Act of Counting",
+    "text": "️🔢 The Spiritual Act of Counting\nI often think about counting not as a mechanical act, but a spiritual one — a human attempt to find order in chaos. Every tally is a quiet declaration that something exists, that it matters enough to be counted.\nFlorence Nightingale understood this profoundly. When she gathered data on deaths in the Crimean War, she wasn’t collecting for curiosity’s sake. She was fighting ignorance with numbers, transforming rows and columns into a moral argument — one so compelling that even the Queen could not ignore it. In that sense, she pioneered not just data visualization but data empathy."
+  },
+  {
+    "objectID": "data-science/genesis-of-data.html#when-the-world-scaled-up",
+    "href": "data-science/genesis-of-data.html#when-the-world-scaled-up",
+    "title": "The Genesis of Data — When Counting Became Knowing",
+    "section": "🌍 When the World Scaled Up",
+    "text": "🌍 When the World Scaled Up\nFast forward to the Victorian era: the world began to count everything. The first statistical societies formed, censuses became national events, and the idea of “objective truth through measurement” took hold. The machine age demanded data — and humanity obliged.\nThe story of data from then onward is exponential. By 1900, nearly every industrialized nation had institutionalized statistical offices. By 1950, computers were born to count faster than any human could. By 2000, data had multiplied to such a degree that it began describing us more than we described it."
+  },
+  {
+    "objectID": "data-science/genesis-of-data.html#the-data-of-data",
+    "href": "data-science/genesis-of-data.html#the-data-of-data",
+    "title": "The Genesis of Data — When Counting Became Knowing",
+    "section": "📊 The Data of Data",
+    "text": "📊 The Data of Data\nI find something poetic in tracing this lineage with modern tools. Using the World Bank’s historical population dataset, we can visualize how humanity’s capacity to count itself expanded almost in lockstep with its population.\n\n\n\n\n\n\nTip\n\n\n\n\n\nCode\nlibrary(tidyverse)\nlibrary(WDI)\nlibrary(janitor)\n\nowid &lt;- get_owid_world_pop()\n\n# --- WDI (1960+) ---\nwdi_raw &lt;- try(\n  WDI(indicator = \"SP.POP.TOTL\",\n      start = 1960,\n      end   = as.integer(format(Sys.Date(), \"%Y\"))),\n  silent = TRUE\n)\n\nif (inherits(wdi_raw, \"try-error\")) {\n  wdi_world &lt;- tibble(year = integer(), pop = numeric())\n} else {\n  # Filter to the global aggregate\n  wdi_world &lt;- wdi_raw %&gt;%\n    filter(iso2c == \"1W\" | country == \"World\") %&gt;%\n    select(year, pop = SP.POP.TOTL)\n}\n\n\n# --- OWID historical (ensure correct columns + units) ---\n\ntmp &lt;- owid %&gt;%\nclean_names() %&gt;%\nrename(pop = population)\n\nif (\"entity\" %in% names(tmp) && any(tolower(tmp$entity) == \"world\")) {\nowid_world &lt;- tmp %&gt;%\nfilter(tolower(entity) == \"world\", !is.na(year), !is.na(pop)) %&gt;%\ndistinct(year, .keep_all = TRUE)\n} else {\n\n# Fallback: aggregate across all entities per year\n\nowid_world &lt;- tmp %&gt;%\ngroup_by(year) %&gt;%\nsummarise(pop = sum(pop, na.rm = TRUE), .groups = \"drop\")\n}\n\n# Normalize OWID units if provided in millions\n\nif (max(owid_world$pop, na.rm = TRUE) &lt; 1e6) {\nowid_world &lt;- owid_world %&gt;% mutate(pop = pop * 1e6)\n}\n\nggplot() +\ngeom_area(data = owid_world, aes(year, pop / 1e9), alpha = 0.2) +\ngeom_line(data = wdi_world,  aes(year, pop / 1e9)) +\ngeom_vline(xintercept = 1960, linetype = \"dotted\") +\nannotate(\n\"text\",\nx = 1961,\ny = max(c(owid_world$pop, wdi_world$pop), na.rm = TRUE) / 1e9 * 0.9,\nlabel = \"Official WDI begins (1960)\",\nhjust = 0, size = 3\n) +\nlabs(\ntitle = \"World Population: 1800–present\",\nsubtitle = \"Historical (shaded, OWID/Maddison) with modern WDI overlay (solid line)\",\nx = NULL, y = \"Billions\"\n)\n\n\n\n\n\n\n\n\nFigure 1: World population since 1800, with modern WDI overlay\n\n\n\n\n\n\n\n\nMethods Note. Historical population is sourced from OWID/Maddison where available; modern population (1960–present) uses World Bank WDI SP.POP.TOTL. If the build environment lacks internet, a small offline fallback ensures the chart still renders.\n\nOverlay that with Our World in Data’s historical metrics, and you see an even deeper pattern: as soon as we can measure something, we seek to improve it. Counting life expectancy didn’t just describe longevity — it helped extend it. Tracking literacy didn’t just record education — it democratized it.\nThis is the unseen virtue of data: it doesn’t just observe reality, it amplifies intention."
+  },
+  {
+    "objectID": "data-science/genesis-of-data.html#when-counting-became-knowing",
+    "href": "data-science/genesis-of-data.html#when-counting-became-knowing",
+    "title": "The Genesis of Data — When Counting Became Knowing",
+    "section": "🔢 When Counting Became Knowing",
+    "text": "🔢 When Counting Became Knowing\nThe modern data scientist, in some sense, is a direct descendant of the temple scribe.\nWe still look for structure in chaos, still seek to compress the infinite world into finite symbols. The clay tablets became spreadsheets; the grain records became gigabytes. But the human motive remains unchanged: to understand, to predict, to improve.\nWe often hear that data is “the new oil.” I don’t think that’s true. Oil is extracted, consumed, and gone. Data, when treated properly, is more like light — it illuminates. The Babylonians’ grain counts, Nightingale’s diagrams, Tukey’s exploratory plots — all were small sparks in a long illumination that continues through every dataset we open today."
+  },
+  {
+    "objectID": "data-science/genesis-of-data.html#a-living-timeline",
+    "href": "data-science/genesis-of-data.html#a-living-timeline",
+    "title": "The Genesis of Data — When Counting Became Knowing",
+    "section": "🌱A Living Timeline",
+    "text": "🌱A Living Timeline\nI’m building an animated time-series visualization that traces this evolution: each point represents the earliest known record of a nation’s statistical data — census, agricultural, financial, environmental.\n\n\n\n\n\n\nNote\n\n\n\n\n\nCode\n# Example placeholder visualization\n\nset.seed(42)\ndf &lt;- tibble(\n        year = rep(1800:2020, each = 1),\n        countries_reporting = pmin(\n            200, round(5 + (year - 1800)^1.3 / 3000)\n        )\n    )\n\nggplot(df, aes(year, countries_reporting)) + \n    geom_line(linewidth = 1.2, color = \"#0072B2\") + \n    labs(title = \"A Living Timeline of Data\", subtitle = \"How measurement spread across nations (1800–2020)\",y = \"Countries with available data\", x = NULL)\n\n\n\n\n\n\n\n\nFigure 2: Data density over time — number of countries recording key statistics\n\n\n\n\n\n\n\nThe story the data tells is breathtaking: we are a species that counts because we care."
+  },
+  {
+    "objectID": "data-science/genesis-of-data.html#epilogue-the-infinite-ledger",
+    "href": "data-science/genesis-of-data.html#epilogue-the-infinite-ledger",
+    "title": "The Genesis of Data — When Counting Became Knowing",
+    "section": "♾️ Epilogue: The Infinite Ledger",
+    "text": "♾️ Epilogue: The Infinite Ledger\nWe are, each of us, a new line in the world’s oldest dataset — the ongoing attempt to make sense of being alive.\nThe Genesis of Data is not a past event; it’s a continuous present.\nEvery number we collect is a reflection of what we value, and every dataset we publish is a quiet hope that someone, somewhere, might find meaning in it.\nData, at its most human level, is not about numbers. It’s about noticing."
+  },
+  {
+    "objectID": "data-science/genesis-of-data.html#references",
+    "href": "data-science/genesis-of-data.html#references",
+    "title": "The Genesis of Data — When Counting Became Knowing",
+    "section": "📚 References",
+    "text": "📚 References\n\nWorld Bank Historical Population Data (1800–present)\nOur World in Data — History of Statistics\nUN Data Portal: National Census Records Archive"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Insightful Tales",
+    "section": "",
+    "text": "🦋 Insightful Tales is a creative data storytelling project that transforms datasets into visual, narrative insights.\nEvery story is built from data — but told like literature, not statistics."
+  },
+  {
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Contact",
+    "section": "",
+    "text": "I’d love to hear from readers, researchers, or collaborators interested in data storytelling, visualization, or related projects.\n\n💡 Feedback or story ideas? Drop a note below.\n\n🧠 Collaboration inquiries? I’m open to cross-disciplinary data projects.\n\n👉 [LinkedIn Profile](https://www.linkedin.com/in/joseph-schaffer-a6270138\n👉 GitHub Repository\nOr email me directly: joseph [at] insightfultales [dot] com"
+  },
+  {
+    "objectID": "contact.html#get-in-touch",
+    "href": "contact.html#get-in-touch",
+    "title": "Contact",
+    "section": "",
+    "text": "I’d love to hear from readers, researchers, or collaborators interested in data storytelling, visualization, or related projects.\n\n💡 Feedback or story ideas? Drop a note below.\n\n🧠 Collaboration inquiries? I’m open to cross-disciplinary data projects.\n\n👉 [LinkedIn Profile](https://www.linkedin.com/in/joseph-schaffer-a6270138\n👉 GitHub Repository\nOr email me directly: joseph [at] insightfultales [dot] com"
+  },
+  {
+    "objectID": "data-science/index.html",
+    "href": "data-science/index.html",
+    "title": "Data Science Stories",
+    "section": "",
+    "text": "🧮 Data Science Stories\nThese are the analytical backbones of Insightful Tales —\nnotebooks that explore datasets, test ideas, and illuminate patterns that later become stories.\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "datasets/index.html",
+    "href": "datasets/index.html",
+    "title": "Featured Datasets",
+    "section": "",
+    "text": "📊 Featured Datasets — Where Stories Begin\nBehind every story lies a dataset waiting to be understood.\nExplore the origins, purpose, and structure of the datasets that fuel Insightful Tales.\nEach entry links to its background page — describing how the data was collected, why it matters, and what stories it can tell.\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "datasets/nycflights13-the-dataset-that-took-off.html",

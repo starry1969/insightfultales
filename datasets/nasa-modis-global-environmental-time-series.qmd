@@ -1,0 +1,211 @@
+---
+title: "🌍 NASA MODIS — Global Environmental Time Series"
+subtitle: "Earth’s rhythms through daily satellite eyes."
+description: >
+  MODIS has observed Earth continuously for more than two decades, recording global vegetation, snow, fire, land temperature, 
+  oceans, aerosols, and atmospheric signals. Together, these form the most complete environmental time series our species has ever created.
+keywords: ["NASA MODIS", "MODIS dataset", "satellite data", "Earth observation", "global environmental time series", "remote sensing", "land surface temperature", "vegetation indices", "NDVI", "aerosols", "snow cover", "wildfire detection", "ocean color", "climate monitoring", "global change data", "MODIS Terra", "MODIS Aqua", "environmental datasets", "Earth system dynamics", "satellite imaging"]
+categories: [earth-observation, climate-and-weather, global-trends, datasets]
+---
+
+<!-- Dataset Badge -->
+
+<p class="dataset-header-badge">
+
+<img src="../images/dataset-icons/nasa-modis.svg" class="dataset-icon-hero" aria-hidden="true"/>
+
+</p>
+
+<!-- Hero Section -->
+
+<section class="hero">
+
+<h1>[🛰️]{aria-hidden="true"} NASA MODIS — Global Environmental Time Series</h1>
+
+<h2 class="hero-subtitle">
+
+Earth’s rhythms through daily satellite eyes.
+
+</h2>
+
+<p class="hero-text">
+
+MODIS has watched Earth every single day since 1999. Its global measurements of vegetation, snow, fire, temperature, oceans, and atmosphere form one of the longest and richest environmental datasets ever created — a planetary diary of more than two decades.
+
+</p>
+
+</section>
+
+<p class="dataset-subnav">
+
+<a href="../dataset-icon-language.html" class="small-link"> What does this icon mean? </a>
+
+</p>
+
+## 🌐 What is MODIS?
+
+**MODIS** (Moderate Resolution Imaging Spectroradiometer) is an instrument aboard NASA’s **Terra** (1999-present) and **Aqua** (2002-present) satellites.\
+It scans the entire planet every 1–2 days in 36 spectral bands, capturing:
+
+-   vegetation
+-   snow
+-   ice
+-   fires
+-   clouds
+-   dust
+-   sea-surface temperatures
+-   land-surface temperatures
+-   atmospheric aerosols
+-   water vapor
+
+More than **26 years of continuous observations** make MODIS the most consistent environmental time series in Earth’s history.
+
+## 🧩 Why MODIS Is Special
+
+MODIS isn’t one dataset — it’s a **family** of global products that share:
+
+-   consistent processing
+-   long-term continuity
+-   global coverage
+-   stable calibration
+-   predictable update cycles
+-   multiple instruments (Terra + Aqua) for redundancy
+
+This creates the rare ability to observe:
+
+-   seasonal rhythms
+-   long-term trends
+-   sudden environmental interruptions
+-   ecological “pulse changes”
+-   fire season shifts
+-   snow melt timing
+-   land temperature behavior
+
+MODIS is essentially a **planetary vital signs monitor**.
+
+## 📦 Key MODIS Data Products Used in Insightful Tales
+
+### 🌱 Vegetation (NDVI / EVI)
+
+**MOD13** (Terra) • **MYD13** (Aqua)
+
+-   NDVI (Normalized Difference Vegetation Index)
+-   EVI (Enhanced Vegetation Index)
+-   16-day composites, global
+
+Used for:
+
+-   “Green pulse” seasonal cycles
+-   Long-term greening/browning trends
+
+### ❄️ Snow & Ice
+
+**MOD10** (Terra) • **MYD10** (Aqua)
+
+-   Daily or 8-day snow cover
+-   Snow persistence and melt timing
+
+Used for:
+
+-   Winter rhythm (“blink of snow”)
+-   Snow retreat mapping
+
+### 🔥 Active Fire / Burned Area
+
+**MOD14 / MYD14**
+
+-   Thermal anomaly detections
+-   Fire intensity & location
+
+Used for:
+
+-   Fire season “barcode” visualization
+-   Detecting rhythm shifts in fire timing
+
+### 🌡️ Land Surface Temperature
+
+**MOD11 / MYD11**
+
+-   Day/night land temperature
+-   Urban heat island structure
+
+Used for:
+
+-   City heat pulse
+-   Comparing natural vs built environments
+
+## 🧭 MODIS in Insightful Tales
+
+This dataset powers multiple Insightful Tales stories, including:
+
+<strong>🪐 <a href="/stories/the-planet-that-breathes-tracking-earths-hidden-rhythms-from-space.html" class="story-link"> The Planet That Breathes — Tracking Earth’s Hidden Rhythms from Space </a></strong>
+
+-   Future stories exploring:
+
+    -   greening vs browning regions
+    -   wildfire rhythm changes
+    -   urban thermal signatures
+    -   water cycles
+    -   snow pulse shortening
+
+## 📊 Example Interpretations (Conceptual)
+
+Even without deep technical knowledge, MODIS can show:
+
+-   **Breathing forests** through annual NDVI waves
+-   **Snow blink cycles** — winter arriving and departing
+-   **Fire seasons** emerging as predictable stripes
+-   **Heat patterns** distinguishing cities from nature
+-   **Cloud or dust “seasons”** repeating each year
+
+MODIS data is not just scientific — it’s surprisingly *story-shaped*.
+
+## 🔍 How Insightful Tales Processes MODIS
+
+For each story, we typically:
+
+1.  **Download selected MODIS products**
+2.  **Simplify** into easy-to-understand categories (snow/no snow, fire/no fire, etc.)
+3.  **Smooth** using weekly or 8-day composites
+4.  **Extract rhythms** (seasonal cycles, peaks/troughs, interruptions)
+5.  **Visualize** with gentle colors and narrative annotations
+6.  **Translate** time-series into human language (“pulse”, “heartbeat”, “blink”)
+
+The goal: make planetary-scale change emotionally legible.
+
+## 🛠️ Technical Details
+
+-   Resolution: **250m**, **500m**, or **1km** depending on the product
+-   Temporal resolution: **daily**, **8-day**, **16-day**
+-   Global coverage
+-   Radiometric calibration maintained across decades
+-   Band coverage: **36 spectral bands** (400–14,400 nm)
+
+## 📚 References & Credits
+
+### **Primary Sources**
+
+-   NASA MODIS Land Products\
+    <https://modis.gsfc.nasa.gov>
+-   NASA Earthdata\
+    <https://earthdata.nasa.gov>
+-   NASA LAADS DAAC\
+    <https://ladsweb.modaps.eosdis.nasa.gov>
+-   NSIDC MODIS Snow Products\
+    <https://nsidc.org/data/modis>
+
+### **Scientific Documentation**
+
+-   “MODIS Land Products Users’ Guide”
+-   “MODIS Land Surface Temperature Algorithm”
+-   “MODIS Vegetation Index User Guide”
+-   “MODIS Snow Cover Products Documentation”
+-   “MODIS Fire Products Overview”
+
+### **Credits**
+
+-   NASA (Terra & Aqua missions)
+-   USGS (Landsat, supplemental imagery)
+-   NSIDC (snow products)
+-   Conceptual explanation & narrative: **Insightful Tales**
+-   All visualizations: created in **R** using the tidyverse & terra packages
