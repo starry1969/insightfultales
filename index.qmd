@@ -31,7 +31,6 @@ categories:
   - "exploration"
 ---
 
-
 <section class="hero">
 
 <h1>[🌀]{aria-hidden="true"} Insightful Tales</h1>
@@ -153,7 +152,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary><img src="images/dataset-icons/nycflights13.svg" alt="" class="dataset-badge-icon" aria-hidden="true"> <a href="datasets/nycflights13-the-dataset-that-took-off.html"><strong>nycflights13</strong></a> — The DataSet That Took Off</summary>
+<summary><img src="images/dataset-icons/nycflights13.svg" class="dataset-badge-icon" aria-hidden="true"/> <a href="datasets/nycflights13-the-dataset-that-took-off.html"><strong>nycflights13</strong></a> — The DataSet That Took Off</summary>
 
 **What it is:** All flights departing NYC in 2013, linked to weather, airlines, and airports.\
 **Why it’s worthy:** Rich joins (flights ⇄ weather ⇄ carriers) + time series + networks.\
@@ -165,7 +164,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary><img src="images/dataset-icons/gapminder.svg" alt="" class="dataset-badge-icon" aria-hidden="true"> <a href="datasets/the-gapminder-dataset-a-history-of-human-progress-told-through-data.html"><strong>Gapminder Dataset</strong></a> — A History of Human Progress, Told Through Data</summary>
+<summary><img src="images/dataset-icons/gapminder.svg" class="dataset-badge-icon" aria-hidden="true"/> <a href="datasets/the-gapminder-dataset-a-history-of-human-progress-told-through-data.html"><strong>Gapminder Dataset</strong></a> — A History of Human Progress, Told Through Data</summary>
 
 **What it is:** Country-level health, wealth, and population over time.\
 **Why it’s worthy:** Long horizons + comparable units = clean cross-country narratives.\
@@ -177,7 +176,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary><img src="images/dataset-icons/lahman.svg" alt="" class="dataset-badge-icon" aria-hidden="true"><a href="datasets/the-lahman-baseball-database-a-chronicle-of-the-games-digital-memory.html"><strong>Lahman Baseball Database</strong></a> — A Chronicle of the Game’s Digital Memory</summary>
+<summary><img src="images/dataset-icons/lahman.svg" class="dataset-badge-icon" aria-hidden="true"/><a href="datasets/the-lahman-baseball-database-a-chronicle-of-the-games-digital-memory.html"><strong>Lahman Baseball Database</strong></a> — A Chronicle of the Game’s Digital Memory</summary>
 
 **What it is:** Player/team stats from the 19th century to now.\
 **Why it’s worthy:** Deep history, rule changes, moneyball eras—quant + culture.\
@@ -189,7 +188,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary><img src="images/dataset-icons/noaa-daily.svg" alt="" class="dataset-badge-icon" aria-hidden="true"> <a href="datasets/the-noaa-daily-weather-dataset.html"> <strong>NOAA Daily Weather</strong></a> — Memory of the Sky</summary>
+<summary><img src="images/dataset-icons/noaa-daily.svg" class="dataset-badge-icon" aria-hidden="true"/> <a href="datasets/the-noaa-daily-weather-dataset.html"> <strong>NOAA Daily Weather</strong></a> — Memory of the Sky</summary>
 
 **What it is:** Decades of daily observations for thousands of stations (GHCN).\
 **Why it’s worthy:** Local variability meets climate trends; perfect for “weather memory” ideas.\
@@ -201,7 +200,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary><img src="images/dataset-icons/tfl.svg" alt="" class="dataset-badge-icon" aria-hidden="true"> <a href="datasets/transport-for-london-tfl-the-pulse-beneath-the-city.html"><strong>Transport for London (TfL)</strong></a> — The Pulse Beneath the City</summary>
+<summary><img src="images/dataset-icons/tfl.svg" class="dataset-badge-icon" aria-hidden="true"/> <a href="datasets/transport-for-london-tfl-the-pulse-beneath-the-city.html"><strong>Transport for London (TfL)</strong></a> — The Pulse Beneath the City</summary>
 
 **What it is:** Open ridership, delays, closures, and more from London Underground.\
 **Why it’s worthy:** Network effects + peak waves = emergent patterns.\
@@ -213,7 +212,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary><img src="images/dataset-icons/uci-online-retail.svg" alt="" class="dataset-badge-icon" aria-hidden="true"> <a href="datasets/uci-online-retail-human-behavior-in-transactions.html"><strong>UCI Online Retail</strong></a> — Human Behavior in Transactions</summary>
+<summary><img src="images/dataset-icons/uci-online-retail.svg" class="dataset-badge-icon" aria-hidden="true"/> <a href="datasets/uci-online-retail-human-behavior-in-transactions.html"><strong>UCI Online Retail</strong></a> — Human Behavior in Transactions</summary>
 
 **What it is:** Line-item invoices for a UK e-commerce retailer (2010–2011).\
 **Why it’s worthy:** Basket analysis, seasonality, long-tail dynamics.\
@@ -225,7 +224,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary><img src="images/dataset-icons/fred.svg" alt="" class="dataset-badge-icon" aria-hidden="true"> <strong>FRED Economic Data</strong> — The Pulse of Economies</summary>
+<summary><img src="images/dataset-icons/fred.svg" class="dataset-badge-icon" aria-hidden="true"/> <strong>FRED Economic Data</strong> — The Pulse of Economies</summary>
 
 **What it is:** US/international macro time series (inflation, jobs, rates).\
 **Why it’s worthy:** High-frequency, consequential, and composable.\
@@ -237,7 +236,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary><img src="images/dataset-icons/nasa-modis.svg" alt="" class="dataset-badge-icon" aria-hidden="true"> <strong>NASA MODIS / Earth Observatory</strong> — A Planet in Pixels</summary>
+<summary><img src="images/dataset-icons/nasa-modis.svg" class="dataset-badge-icon" aria-hidden="true"/> <a href="datasets/nasa-modis-global-environmental-time-series.html"><strong>NASA MODIS / Earth Observatory</strong></a> — A Planet in Pixels</summary>
 
 **What it is:** Satellite observations (vegetation, fires, aerosols, ice).\
 **Why it’s worthy:** Visual storytelling + measurable change.\
@@ -249,7 +248,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary><img src="images/dataset-icons/steam-games.svg" alt="" class="dataset-badge-icon" aria-hidden="true"> <strong>Steam Games</strong> — Collective Taste in the Wild</summary>
+<summary><img src="images/dataset-icons/steam-games.svg" class="dataset-badge-icon" aria-hidden="true"/> <strong>Steam Games</strong> — Collective Taste in the Wild</summary>
 
 **What it is:** Game metadata, reviews, tags, and (often) playtime stats.\
 **Why it’s worthy:** Social proof, hype cycles, networked preference landscapes.\
@@ -261,7 +260,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary><img src="images/dataset-icons/global-urban-footprint.svg" alt="" class="dataset-badge-icon" aria-hidden="true"> <strong>Global Urban Footprint</strong> — Cities from Space</summary>
+<summary><img src="images/dataset-icons/global-urban-footprint.svg" class="dataset-badge-icon" aria-hidden="true"/> <strong>Global Urban Footprint</strong> — Cities from Space</summary>
 
 **What it is:** High-resolution, satellite-derived urban extent worldwide.\
 **Why it’s worthy:** Comparable geometry of cities across cultures and terrains.\
@@ -270,8 +269,9 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 </details>
 
 <!-- Refer to Dataset Icon Language -->
+
 <p class="icon-language-link">
-  <a href="dataset-icon-language.html">
-    Learn the meaning behind these dataset icons →
-  </a>
+
+<a href="dataset-icon-language.html"> Learn the meaning behind these dataset icons → </a>
+
 </p>

@@ -54,6 +54,8 @@ website:
             text: "🚇 Transport for London (TfL)"
           - href: datasets/uci-online-retail-human-behavior-in-transactions.qmd
             text: "🛒  UCI Online Retail"
+          - href: datasets/nasa-modis-global-environmental-time-series.qmd
+            text: "🛰️ NASA MODIS"
       - text: "<img src='/images/top-nav-icons/about-icon.png' alt='About Insightful Tales' loading='lazy' width='18' height='18' class='nav-icon'> About"
         menu: 
           - href: about.qmd
