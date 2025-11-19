@@ -616,3 +616,55 @@ p.keywords {
   vertical-align: middle;
   margin-right: 0.5rem;
 }
+
+/* =====================================================
+   FRONT PAGE DATASET LIST — ENFORCED ICON + ROW STYLE
+   ===================================================== */
+
+/* The <details class="dataset"> wrapper */
+details.dataset {
+  margin: 1.5rem 0;
+  padding: 1.25rem 1.5rem;
+  background: rgba(47, 57, 76, 0.08); /* subtle card feel */
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  border-radius: 1rem;
+}
+
+/* Summary row: icon + title consistent alignment */
+details.dataset > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  list-style: none;
+  cursor: pointer;
+  padding: 0.3rem 0;
+}
+
+/* =======================================
+   The front-page dataset badge icon
+   THIS is what’s blowing up — we fix it
+   ======================================= */
+.dataset-badge-icon {
+  width: 1.65rem;       /* original compact size */
+  height: auto;
+  display: inline-block;
+  flex-shrink: 0;       /* prevents stretching */
+  margin-right: 0.2rem;
+}
+
+/* Remove any global <img> overrides */
+details.dataset img.dataset-badge-icon {
+  max-width: 1.65rem !important;
+}
+
+/* Title text inside summary */
+details.dataset > summary strong {
+  font-weight: 700;
+  color: var(--color-brand-dark);
+  margin-right: 0.25rem;
+}
+
+/* Hover color on front page */
+details.dataset > summary:hover {
+  color: var(--color-brand-accent);
+}
