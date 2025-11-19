@@ -743,3 +743,69 @@ details.dataset > summary {
   font-style: normal;
   color: var(--color-brand-accent); /* cyan highlight */
 }
+
+/* ================================
+   Mobile TOC — always visible
+   ================================ */
+
+/* Adjust selectors to match yours:
+   - .quarto-sidebar-toc is Quarto's default
+   - .toc-sidebar / .page-toc / .it-toc are common custom names
+*/
+@media (max-width: 768px) {
+
+  .quarto-sidebar-toc,
+  .toc-sidebar,
+  .page-toc,
+  .it-toc {
+    display: block !important;      /* un-hide it on phones */
+    position: static;               /* no sticky on tiny screens */
+    max-height: none;
+    width: 100%;
+    margin: 1.5rem 0;
+    padding: 1rem 1.25rem;
+
+    background: rgba(15, 23, 42, 0.9);  /* var(--color-brand-dark) vibe */
+    border-radius: 1rem;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    overflow: visible;
+  }
+
+  /* TOC heading */
+  .quarto-sidebar-toc h2,
+  .toc-sidebar h2,
+  .page-toc h2,
+  .it-toc h2 {
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  /* TOC list items */
+  .quarto-sidebar-toc ul,
+  .toc-sidebar ul,
+  .page-toc ul,
+  .it-toc ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+
+  .quarto-sidebar-toc li,
+  .toc-sidebar li,
+  .page-toc li,
+  .it-toc li {
+    margin: 0.15rem 0;
+  }
+
+  .quarto-sidebar-toc a,
+  .toc-sidebar a,
+  .page-toc a,
+  .it-toc a {
+    text-decoration: none;
+    font-size: 0.92rem;
+    line-height: 1.4;
+    display: block;
+  }
+}
