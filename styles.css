@@ -26,18 +26,6 @@
   /* Backward-compat with old names (optional but handy) */
   --brand:  #2b5876;
   --brand2: #1f3b73;
-
-  /* TOC design tokens */
-  --it-toc-bg: radial-gradient(
-    circle at top left,
-    rgba(56, 189, 248, 0.18),
-    rgba(15, 23, 42, 0.96)
-  );
-  --it-toc-border: rgba(148, 163, 184, 0.45);
-  --it-toc-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
-  --it-toc-link: rgb(226, 232, 240);
-  --it-toc-link-soft: rgba(148, 163, 184, 0.9);
-  --it-toc-link-hover: rgb(125, 211, 252);
 }
 
 /* ===============
@@ -285,13 +273,14 @@ a:focus {
 
 @media (max-width: 768px) {
   :root {
-    --nav-logo-h: 2.5rem;              /* smaller logo on mobile */
-    --bs-navbar-brand-height: 4.5rem;
+    --nav-logo-h: 6rem;              /* smaller logo on mobile */
+    --bs-navbar-brand-height: 6rem;
   }
 }
 
 /* =======================================
    Stories / Datasets / Evolution Styling
+     Hide the browser's built-in marker
    ======================================= */
 
 details.story > summary::-webkit-details-marker,
@@ -300,7 +289,7 @@ details.evolution > summary::-webkit-details-marker {
   display: none;
 }
 
-/* Custom summary line */
+/* Add our custom arrow instead */
 details.story > summary,
 details.dataset > summary,
 details.evolution > summary {
@@ -309,15 +298,18 @@ details.evolution > summary {
   color: var(--color-brand-dark);
   padding: 0.25rem 0;
   list-style: none;
+  /* position: relative;
+  padding-left: 1.5rem; */
 }
 
 details.story > summary:hover,
 details.dataset > summary:hover,
 details.evolution > summary:hover {
   color: var(--color-brand-accent);
+  /* color: var(--brand2, #1f3b73); */
 }
 
-/* Open state — use secondary deep blue */
+/* Optional: open state — use secondary deep blue */
 details.story[open] > summary,
 details.dataset[open] > summary,
 details.evolution[open] > summary {
@@ -342,6 +334,7 @@ details.evolution[open] > summary {
   display: none !important;
 }
 
+
 /* ==============
    Hide Keywords
    ============== */
@@ -354,6 +347,7 @@ span.keyword,
 p.keywords {
   display: none !important;
 }
+
 
 /* =======================================
    Hides whole metadata block, if grouped
@@ -387,24 +381,37 @@ p.keywords {
   .navbar .navbar-nav .dropdown-menu {
     margin-left: 1.5rem !important; /* shift the whole block right */
     border-left: 3px solid var(--color-brand-accent);
-    background-color: var(--color-brand-dark2);
+    background-color: rgba(56, 189, 248, 0.08); /* TEMP debug tint */
   }
 
   /* Any link inside dropdown menus */
   .navbar .navbar-nav .dropdown-menu a,
   .navbar .navbar-nav .dropdown-menu .nav-link,
   .navbar .navbar-nav .dropdown-item {
-    padding-left: 1.25rem !important;
+    padding-left: 1.25rem !important;  /* extra padding inside the shifted menu */
     display: block;
   }
 }
 
 /* ===========================================================
-   Insightful Tales — TOC Styling
-   (works for body TOC and margin TOC)
+   Insightful Tales — Complete TOC Sidebar Styling
    =========================================================== */
 
-/* Core TOC card appearance */
+/* ---------- Variables ---------- */
+:root {
+  --it-toc-bg: radial-gradient(
+    circle at top left,
+    rgba(56, 189, 248, 0.18),
+    rgba(15, 23, 42, 0.96)
+  );
+  --it-toc-border: rgba(148, 163, 184, 0.45);
+  --it-toc-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+  --it-toc-link: rgb(226, 232, 240);
+  --it-toc-link-soft: rgba(148, 163, 184, 0.9);
+  --it-toc-link-hover: rgb(125, 211, 252);
+}
+
+/* ---------- Core TOC Card Appearance ---------- */
 #TOC,
 #quarto-sidebar-toc {
   font-size: 0.95rem;
@@ -421,9 +428,10 @@ p.keywords {
   backdrop-filter: blur(8px);
 }
 
-/* Desktop: sticky TOC in margin sidebar (when present) */
+/* ---------- Desktop Sticky Behavior + TOC Scroll ---------- */
 @media (min-width: 992px) {
 
+  /* The TOC card itself (one inner scrollbar only if needed) */
   #TOC,
   #quarto-sidebar-toc {
     position: sticky;
@@ -432,13 +440,14 @@ p.keywords {
     overflow-y: auto;                /* TOC scrolls inside */
   }
 
+  /* Prevent margin container from adding a second scrollbar */
   #quarto-margin-sidebar {
     max-height: none !important;
     overflow: visible !important;
   }
 }
 
-/* TOC title */
+/* ---------- Title ---------- */
 #TOC > h2#toc-title,
 #quarto-sidebar-toc > h2#toc-title {
   font-size: 0.78rem;
@@ -469,7 +478,7 @@ p.keywords {
   box-shadow: 0 0 0 1px var(--it-toc-border);
 }
 
-/* Lists */
+/* ---------- Lists ---------- */
 #TOC ul,
 #quarto-sidebar-toc ul {
   list-style: none;
@@ -487,7 +496,7 @@ p.keywords {
   margin-top: 0.35rem;
 }
 
-/* Link styling */
+/* ---------- Link Styling ---------- */
 #TOC a,
 #quarto-sidebar-toc a {
   text-decoration: none;
@@ -508,103 +517,93 @@ p.keywords {
 #TOC a:hover,
 #quarto-sidebar-toc a:hover {
   background: rgba(56, 189, 248, 0.18);
-  color
-
-/* ============================================
-   Global TOC behavior for entire site
-   - Desktop: margin TOC only
-   - Mobile:  body TOC only
-   ============================================ */
-
-/* 1. Desktop / large screens
-   Keep margin TOC, hide body TOC */
-@media (min-width: 992px) {
-
-  /* Hide the body column TOC */
-  #TOC {
-    display: none !important;
-  }
-
-  /* Margin sidebar remains visible */
-  #quarto-margin-sidebar {
-    display: block !important;
-  }
+  color: var(--it-toc-link-hover);
+  transform: translateX(2px);
 }
 
-/* 2. Mobile + small tablets
-   Hide margin TOC, show body TOC at top */
-@media (max-width: 991.98px) {
-
-  /* Hide margin TOC entirely */
-  #quarto-margin-sidebar {
-    display: none !important;
-  }
-
-  /* Display the body TOC card at top of content */
-  #TOC {
-    display: block !important;
-    margin-top: 1.25rem;
-  }
+/* ---------- Nested Levels ---------- */
+#TOC ul ul,
+#quarto-sidebar-toc ul ul {
+  padding-left: 0.9rem;
+  border-left: 1px dashed var(--it-toc-border);
+  margin-top: 0.15rem;
 }
 
-/* ============================================================
-   Dataset Icon Language — enforce card & icon sizing
-   ============================================================ */
-
-.icon-explainer {
-  display: grid;
-  grid-template-columns: 100px 1fr;  /* icon left, text right */
-  gap: 1.25rem;
-  align-items: start;
-  padding: 1.25rem 1.5rem;
-  margin: 1.5rem 0;
-  background: rgba(47, 57, 76, 0.8);
-  border: 1px solid rgba(56, 189, 248, 0.25);
-  border-radius: 1rem;
+#TOC ul ul a,
+#quarto-sidebar-toc ul ul a {
+  font-size: 0.9rem;
+  color: var(--it-toc-link-soft);
 }
 
-.icon-explainer img {
-  width: 80px;        /* prevent huge icons */
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
-}
-
-.icon-explainer-text {
-  font-size: 1rem;
-  line-height: 1.55;
-  color: var(--color-neutral-white, #FFFFFF);
-}
-
-.icon-explainer-text strong {
-  color: var(--color-brand-accent, #38BDF8);
+/* ---------- Active Section Highlight ---------- */
+.toc-active .nav-link.active,
+.toc-active .nav-link[aria-current],
+#TOC a.active,
+#TOC a[aria-current="true"],
+#quarto-sidebar-toc a.active,
+#quarto-sidebar-toc a[aria-current="true"] {
+  background: linear-gradient(
+    90deg,
+    rgba(56, 189, 248, 0.28),
+    rgba(59, 130, 246, 0.25)
+  );
+  color: #e0f2fe;
   font-weight: 600;
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.65);
+  border-radius: 0.4rem;
 }
 
-/* Mobile: stack icon above text */
-@media (max-width: 700px) {
-  .icon-explainer {
-    grid-template-columns: 1fr;
-    text-align: left;
-  }
-
-  .icon-explainer img {
-    margin: 0 auto 1rem auto;
-    width: 70px;
+/* ---------- Mobile Behavior ---------- */
+@media (max-width: 991px) {
+  #TOC,
+  #quarto-sidebar-toc {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.7);
+    margin-top: 1rem;
   }
 }
 
-/* Top-level dataset icons */
+.nav-icon {
+  height: 1.75rem;     /* adjust size here */
+  width: auto;
+  vertical-align: bottom;
+  margin-right: 0.4rem;
+}
+
 .dataset-icon {
   width: 80px;
   height: auto;
   display: block;
-  margin: 0 auto 1rem auto;
+  margin: 0 auto 1rem auto; /* centers above title */
+}
+
+/* Layout for dataset summaries on the front page */
+details.dataset > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;  /* allows title + subtitle to wrap nicely */
+}
+
+/* The badge icon inside the summary line */
+.dataset-badge-icon {
+  width: 1.4rem;
+  height: 1.4rem;
+  margin-right: 0.35rem;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.dataset-header-badge {
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .dataset-icon-hero {
-  width: 120px;
+  width: 120px;        /* hero size */
   height: auto;
   display: block;
   margin: 0 auto;
@@ -614,57 +613,133 @@ p.keywords {
   width: 36px;
   height: auto;
   vertical-align: middle;
-  margin-right: 0.5rem;
+  margin-right: .5rem;
 }
 
-/* =====================================================
-   FRONT PAGE DATASET LIST — ENFORCED ICON + ROW STYLE
-   ===================================================== */
-
-/* The <details class="dataset"> wrapper */
-details.dataset {
-  margin: 1.5rem 0;
-  padding: 1.25rem 1.5rem;
-  background: rgba(47, 57, 76, 0.08); /* subtle card feel */
-  border: 1px solid rgba(56, 189, 248, 0.18);
-  border-radius: 1rem;
-}
-
-/* Summary row: icon + title consistent alignment */
-details.dataset > summary {
+.dataset-source {
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-clarity-gray);
+  
+  /* Layout */
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  list-style: none;
-  cursor: pointer;
-  padding: 0.3rem 0;
+
+  /* Optional typography */
+  font-size: 0.95rem;
 }
 
-/* =======================================
-   The front-page dataset badge icon
-   THIS is what’s blowing up — we fix it
-   ======================================= */
-.dataset-badge-icon {
-  width: 1.65rem;       /* original compact size */
+/* ============================================================
+   Dataset Icon Language — Card + Two-Column Layout
+   ============================================================ */
+
+/* Wrapper for each dataset explanation block */
+.icon-explainer {
+  display: grid;
+  grid-template-columns: 100px 1fr;  /* icon left, text right */
+  gap: 1.25rem;                      /* spacing between icon + text */
+  align-items: start;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  background: rgba(47, 57, 76, 0.8); /* subtle card */
+  border: 1px solid rgba(56, 189, 248, 0.25); /* cyan tint border */
+  border-radius: 1rem;               /* soft card shape */
+}
+
+/* The icon in the left column */
+.icon-explainer img {
+  width: 80px;
   height: auto;
-  display: inline-block;
-  flex-shrink: 0;       /* prevents stretching */
-  margin-right: 0.2rem;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
 }
 
-/* Remove any global <img> overrides */
-details.dataset img.dataset-badge-icon {
-  max-width: 1.65rem !important;
+/* Text on the right column */
+.icon-explainer-text {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--color-neutral-white, #FFFFFF);
 }
 
-/* Title text inside summary */
-details.dataset > summary strong {
-  font-weight: 700;
-  color: var(--color-brand-dark);
-  margin-right: 0.25rem;
+/* Bold headings inside explanation */
+.icon-explainer-text strong {
+  color: var(--color-brand-accent, #38BDF8);
+  font-weight: 600;
 }
 
-/* Hover color on front page */
-details.dataset > summary:hover {
+/* Make lists clean and compact */
+.icon-explainer-text ul,
+.icon-explainer-text ol {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+/* ============================================================
+   Responsive Behavior
+   ============================================================ */
+
+@media (max-width: 700px) {
+  .icon-explainer {
+    grid-template-columns: 1fr;  /* stack icon above text */
+    text-align: left;
+  }
+
+  .icon-explainer img {
+    margin: 0 auto 1rem auto;     /* center icon on mobile */
+    width: 70px;
+  }
+}
+
+/* ================================================
+   Dataset Subnav — small contextual link
+   (Used under dataset hero badge)
+   ================================================ */
+
+.dataset-subnav {
+  margin-top: 0.25rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.95rem;
+  text-align: left;
+  opacity: 0.85;
+}
+
+.dataset-subnav a {
+  color: var(--color-brand-accent, #38BDF8);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.dataset-subnav a:hover {
   color: var(--color-brand-accent);
+  border-color: var(--color-brand-accent);
+  text-shadow: 0 0 6px rgba(56, 189, 248, 0.45);
+}
+
+/* ================================
+   Planetary Pulse — Figure Caption
+   ================================ */
+
+.figure-caption {
+  max-width: 720px;                 /* keeps captions readable */
+  margin: 0.75rem auto 1.5rem auto; /* centered under figure */
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--color-clarity-gray); /* your neutral narrative gray */
+  text-align: center;
+  font-style: italic;
+
+  /* Soft, elegant subtlety */
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Optional: stronger emphasis for the <strong> label inside */
+.figure-caption strong {
+  font-style: normal;
+  color: var(--color-brand-accent); /* cyan highlight */
 }
