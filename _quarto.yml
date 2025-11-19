@@ -77,7 +77,7 @@ format:
     css: styles.css
     toc: true
     toc-title: "Navigate"
-    toc-location: right
+    toc-location: right-body
     toc-depth: 3
     code-fold: show
     smooth-scroll: true

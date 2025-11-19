@@ -546,3 +546,73 @@ p.keywords {
     margin-top: 1.25rem;
   }
 }
+
+/* ============================================================
+   Dataset Icon Language — enforce card & icon sizing
+   ============================================================ */
+
+.icon-explainer {
+  display: grid;
+  grid-template-columns: 100px 1fr;  /* icon left, text right */
+  gap: 1.25rem;
+  align-items: start;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  background: rgba(47, 57, 76, 0.8);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 1rem;
+}
+
+.icon-explainer img {
+  width: 80px;        /* prevent huge icons */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
+}
+
+.icon-explainer-text {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--color-neutral-white, #FFFFFF);
+}
+
+.icon-explainer-text strong {
+  color: var(--color-brand-accent, #38BDF8);
+  font-weight: 600;
+}
+
+/* Mobile: stack icon above text */
+@media (max-width: 700px) {
+  .icon-explainer {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .icon-explainer img {
+    margin: 0 auto 1rem auto;
+    width: 70px;
+  }
+}
+
+/* Top-level dataset icons */
+.dataset-icon {
+  width: 80px;
+  height: auto;
+  display: block;
+  margin: 0 auto 1rem auto;
+}
+
+.dataset-icon-hero {
+  width: 120px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.dataset-icon-small {
+  width: 36px;
+  height: auto;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
