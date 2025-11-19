@@ -26,6 +26,18 @@
   /* Backward-compat with old names (optional but handy) */
   --brand:  #2b5876;
   --brand2: #1f3b73;
+
+  /* TOC design tokens */
+  --it-toc-bg: radial-gradient(
+    circle at top left,
+    rgba(56, 189, 248, 0.18),
+    rgba(15, 23, 42, 0.96)
+  );
+  --it-toc-border: rgba(148, 163, 184, 0.45);
+  --it-toc-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+  --it-toc-link: rgb(226, 232, 240);
+  --it-toc-link-soft: rgba(148, 163, 184, 0.9);
+  --it-toc-link-hover: rgb(125, 211, 252);
 }
 
 /* ===============
@@ -273,14 +285,13 @@ a:focus {
 
 @media (max-width: 768px) {
   :root {
-    --nav-logo-h: 6rem;              /* smaller logo on mobile */
-    --bs-navbar-brand-height: 6rem;
+    --nav-logo-h: 2.5rem;              /* smaller logo on mobile */
+    --bs-navbar-brand-height: 4.5rem;
   }
 }
 
 /* =======================================
    Stories / Datasets / Evolution Styling
-     Hide the browser's built-in marker
    ======================================= */
 
 details.story > summary::-webkit-details-marker,
@@ -289,7 +300,7 @@ details.evolution > summary::-webkit-details-marker {
   display: none;
 }
 
-/* Add our custom arrow instead */
+/* Custom summary line */
 details.story > summary,
 details.dataset > summary,
 details.evolution > summary {
@@ -298,18 +309,15 @@ details.evolution > summary {
   color: var(--color-brand-dark);
   padding: 0.25rem 0;
   list-style: none;
-  /* position: relative;
-  padding-left: 1.5rem; */
 }
 
 details.story > summary:hover,
 details.dataset > summary:hover,
 details.evolution > summary:hover {
   color: var(--color-brand-accent);
-  /* color: var(--brand2, #1f3b73); */
 }
 
-/* Optional: open state — use secondary deep blue */
+/* Open state — use secondary deep blue */
 details.story[open] > summary,
 details.dataset[open] > summary,
 details.evolution[open] > summary {
@@ -334,7 +342,6 @@ details.evolution[open] > summary {
   display: none !important;
 }
 
-
 /* ==============
    Hide Keywords
    ============== */
@@ -347,7 +354,6 @@ span.keyword,
 p.keywords {
   display: none !important;
 }
-
 
 /* =======================================
    Hides whole metadata block, if grouped
@@ -381,37 +387,24 @@ p.keywords {
   .navbar .navbar-nav .dropdown-menu {
     margin-left: 1.5rem !important; /* shift the whole block right */
     border-left: 3px solid var(--color-brand-accent);
-    background-color: rgba(56, 189, 248, 0.08); /* TEMP debug tint */
+    background-color: var(--color-brand-dark2);
   }
 
   /* Any link inside dropdown menus */
   .navbar .navbar-nav .dropdown-menu a,
   .navbar .navbar-nav .dropdown-menu .nav-link,
   .navbar .navbar-nav .dropdown-item {
-    padding-left: 1.25rem !important;  /* extra padding inside the shifted menu */
+    padding-left: 1.25rem !important;
     display: block;
   }
 }
 
 /* ===========================================================
-   Insightful Tales — Complete TOC Sidebar Styling
+   Insightful Tales — TOC Styling
+   (works for body TOC and margin TOC)
    =========================================================== */
 
-/* ---------- Variables ---------- */
-:root {
-  --it-toc-bg: radial-gradient(
-    circle at top left,
-    rgba(56, 189, 248, 0.18),
-    rgba(15, 23, 42, 0.96)
-  );
-  --it-toc-border: rgba(148, 163, 184, 0.45);
-  --it-toc-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
-  --it-toc-link: rgb(226, 232, 240);
-  --it-toc-link-soft: rgba(148, 163, 184, 0.9);
-  --it-toc-link-hover: rgb(125, 211, 252);
-}
-
-/* ---------- Core TOC Card Appearance ---------- */
+/* Core TOC card appearance */
 #TOC,
 #quarto-sidebar-toc {
   font-size: 0.95rem;
@@ -428,10 +421,9 @@ p.keywords {
   backdrop-filter: blur(8px);
 }
 
-/* ---------- Desktop Sticky Behavior + TOC Scroll ---------- */
+/* Desktop: sticky TOC in margin sidebar (when present) */
 @media (min-width: 992px) {
 
-  /* The TOC card itself (one inner scrollbar only if needed) */
   #TOC,
   #quarto-sidebar-toc {
     position: sticky;
@@ -440,14 +432,13 @@ p.keywords {
     overflow-y: auto;                /* TOC scrolls inside */
   }
 
-  /* Prevent margin container from adding a second scrollbar */
   #quarto-margin-sidebar {
     max-height: none !important;
     overflow: visible !important;
   }
 }
 
-/* ---------- Title ---------- */
+/* TOC title */
 #TOC > h2#toc-title,
 #quarto-sidebar-toc > h2#toc-title {
   font-size: 0.78rem;
@@ -478,7 +469,7 @@ p.keywords {
   box-shadow: 0 0 0 1px var(--it-toc-border);
 }
 
-/* ---------- Lists ---------- */
+/* Lists */
 #TOC ul,
 #quarto-sidebar-toc ul {
   list-style: none;
@@ -496,7 +487,7 @@ p.keywords {
   margin-top: 0.35rem;
 }
 
-/* ---------- Link Styling ---------- */
+/* Link styling */
 #TOC a,
 #quarto-sidebar-toc a {
   text-decoration: none;
@@ -517,419 +508,4 @@ p.keywords {
 #TOC a:hover,
 #quarto-sidebar-toc a:hover {
   background: rgba(56, 189, 248, 0.18);
-  color: var(--it-toc-link-hover);
-  transform: translateX(2px);
-}
-
-/* ---------- Nested Levels ---------- */
-#TOC ul ul,
-#quarto-sidebar-toc ul ul {
-  padding-left: 0.9rem;
-  border-left: 1px dashed var(--it-toc-border);
-  margin-top: 0.15rem;
-}
-
-#TOC ul ul a,
-#quarto-sidebar-toc ul ul a {
-  font-size: 0.9rem;
-  color: var(--it-toc-link-soft);
-}
-
-/* ---------- Active Section Highlight ---------- */
-.toc-active .nav-link.active,
-.toc-active .nav-link[aria-current],
-#TOC a.active,
-#TOC a[aria-current="true"],
-#quarto-sidebar-toc a.active,
-#quarto-sidebar-toc a[aria-current="true"] {
-  background: linear-gradient(
-    90deg,
-    rgba(56, 189, 248, 0.28),
-    rgba(59, 130, 246, 0.25)
-  );
-  color: #e0f2fe;
-  font-weight: 600;
-  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.65);
-  border-radius: 0.4rem;
-}
-
-/* ---------- Mobile Behavior ---------- */
-@media (max-width: 991px) {
-  #TOC,
-  #quarto-sidebar-toc {
-    position: static;
-    max-height: none;
-    overflow: visible;
-    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.7);
-    margin-top: 1rem;
-  }
-}
-
-.nav-icon {
-  height: 1.75rem;     /* adjust size here */
-  width: auto;
-  vertical-align: bottom;
-  margin-right: 0.4rem;
-}
-
-.dataset-icon {
-  width: 80px;
-  height: auto;
-  display: block;
-  margin: 0 auto 1rem auto; /* centers above title */
-}
-
-/* Layout for dataset summaries on the front page */
-details.dataset > summary {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  flex-wrap: wrap;  /* allows title + subtitle to wrap nicely */
-}
-
-/* The badge icon inside the summary line */
-.dataset-badge-icon {
-  width: 1.4rem;
-  height: 1.4rem;
-  margin-right: 0.35rem;
-  vertical-align: middle;
-  flex-shrink: 0;
-}
-
-.dataset-header-badge {
-  text-align: center;
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.dataset-icon-hero {
-  width: 120px;        /* hero size */
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-.dataset-icon-small {
-  width: 36px;
-  height: auto;
-  vertical-align: middle;
-  margin-right: .5rem;
-}
-
-.dataset-source {
-  margin-top: 2rem;
-  margin-bottom: 1.5rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--color-clarity-gray);
-  
-  /* Layout */
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-
-  /* Optional typography */
-  font-size: 0.95rem;
-}
-
-/* ============================================================
-   Dataset Icon Language — Card + Two-Column Layout
-   ============================================================ */
-
-/* Wrapper for each dataset explanation block */
-.icon-explainer {
-  display: grid;
-  grid-template-columns: 100px 1fr;  /* icon left, text right */
-  gap: 1.25rem;                      /* spacing between icon + text */
-  align-items: start;
-  padding: 1.25rem 1.5rem;
-  margin: 1.5rem 0;
-  background: rgba(47, 57, 76, 0.8); /* subtle card */
-  border: 1px solid rgba(56, 189, 248, 0.25); /* cyan tint border */
-  border-radius: 1rem;               /* soft card shape */
-}
-
-/* The icon in the left column */
-.icon-explainer img {
-  width: 80px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
-}
-
-/* Text on the right column */
-.icon-explainer-text {
-  font-size: 1rem;
-  line-height: 1.55;
-  color: var(--color-neutral-white, #FFFFFF);
-}
-
-/* Bold headings inside explanation */
-.icon-explainer-text strong {
-  color: var(--color-brand-accent, #38BDF8);
-  font-weight: 600;
-}
-
-/* Make lists clean and compact */
-.icon-explainer-text ul,
-.icon-explainer-text ol {
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
-}
-
-/* ============================================================
-   Responsive Behavior
-   ============================================================ */
-
-@media (max-width: 700px) {
-  .icon-explainer {
-    grid-template-columns: 1fr;  /* stack icon above text */
-    text-align: left;
-  }
-
-  .icon-explainer img {
-    margin: 0 auto 1rem auto;     /* center icon on mobile */
-    width: 70px;
-  }
-}
-
-/* ================================================
-   Dataset Subnav — small contextual link
-   (Used under dataset hero badge)
-   ================================================ */
-
-.dataset-subnav {
-  margin-top: 0.25rem;
-  margin-bottom: 1.25rem;
-  font-size: 0.95rem;
-  text-align: left;
-  opacity: 0.85;
-}
-
-.dataset-subnav a {
-  color: var(--color-brand-accent, #38BDF8);
-  text-decoration: none;
-  font-weight: 500;
-  border-bottom: 1px solid transparent;
-  transition: color 0.2s ease, border-color 0.2s ease;
-}
-
-.dataset-subnav a:hover {
-  color: var(--color-brand-accent);
-  border-color: var(--color-brand-accent);
-  text-shadow: 0 0 6px rgba(56, 189, 248, 0.45);
-}
-
-/* ================================
-   Planetary Pulse — Figure Caption
-   ================================ */
-
-.figure-caption {
-  max-width: 720px;                 /* keeps captions readable */
-  margin: 0.75rem auto 1.5rem auto; /* centered under figure */
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
-  line-height: 1.45;
-  color: var(--color-clarity-gray); /* your neutral narrative gray */
-  text-align: center;
-  font-style: italic;
-
-  /* Soft, elegant subtlety */
-  border-top: 1px solid rgba(255,255,255,0.08);
-}
-
-/* Optional: stronger emphasis for the <strong> label inside */
-.figure-caption strong {
-  font-style: normal;
-  color: var(--color-brand-accent); /* cyan highlight */
-}
-
-/* ================================
-   Mobile TOC — always visible
-   ================================ */
-
-/* Adjust selectors to match yours:
-   - .quarto-sidebar-toc is Quarto's default
-   - .toc-sidebar / .page-toc / .it-toc are common custom names
-*/
-@media (max-width: 768px) {
-
-  .quarto-sidebar-toc,
-  .toc-sidebar,
-  .page-toc,
-  .it-toc {
-    display: block !important;      /* un-hide it on phones */
-    position: static;               /* no sticky on tiny screens */
-    max-height: none;
-    width: 100%;
-    margin: 1.5rem 0;
-    padding: 1rem 1.25rem;
-
-    background: rgba(15, 23, 42, 0.9);  /* var(--color-brand-dark) vibe */
-    border-radius: 1rem;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-    overflow: visible;
-  }
-
-  /* TOC heading */
-  .quarto-sidebar-toc h2,
-  .toc-sidebar h2,
-  .page-toc h2,
-  .it-toc h2 {
-    font-size: 0.95rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-  }
-
-  /* TOC list items */
-  .quarto-sidebar-toc ul,
-  .toc-sidebar ul,
-  .page-toc ul,
-  .it-toc ul {
-    list-style: none;
-    padding-left: 0;
-    margin: 0;
-  }
-
-  .quarto-sidebar-toc li,
-  .toc-sidebar li,
-  .page-toc li,
-  .it-toc li {
-    margin: 0.15rem 0;
-  }
-
-  .quarto-sidebar-toc a,
-  .toc-sidebar a,
-  .page-toc a,
-  .it-toc a {
-    text-decoration: none;
-    font-size: 0.92rem;
-    line-height: 1.4;
-    display: block;
-  }
-}
-
-/* ================================
-   Force TOC visible on phones
-   ================================ */
-
-@media (max-width: 991px) {
-
-  /* Make Quarto's margin sidebar visible on small screens */
-  #quarto-margin-sidebar {
-    display: block !important;
-    position: static;
-    max-width: 70ch;
-    margin: 1rem auto 2rem;
-    padding: 0 1.25rem;
-  }
-
-  /* Style the TOC card itself on mobile */
-  #TOC,
-  #quarto-sidebar-toc {
-    display: block !important;      /* un-hide it on phones */
-    position: static;               /* no sticky on tiny screens */
-    max-height: none;
-    width: 100%;
-    margin: 0;
-    margin-top: 0.5rem;
-
-    background: rgba(15, 23, 42, 0.9);  /* var(--color-brand-dark) vibe */
-    border-radius: 1rem;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-    overflow: visible;
-  }
-
-  #TOC h2#toc-title,
-  #quarto-sidebar-toc h2#toc-title {
-    font-size: 0.95rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-  }
-
-  #TOC ul,
-  #quarto-sidebar-toc ul {
-    list-style: none;
-    padding-left: 0;
-    margin: 0;
-  }
-
-  #TOC li,
-  #quarto-sidebar-toc li {
-    margin: 0.15rem 0;
-  }
-
-  #TOC a,
-  #quarto-sidebar-toc a {
-    text-decoration: none;
-    font-size: 0.92rem;
-    line-height: 1.4;
-    display: block;
-  }
-}
-
-/* ============================================
-   Force Quarto margin TOC visible on phones
-   ============================================ */
-
-@media (max-width: 991px) {
-
-  /* Quarto often adds d-none d-lg-block to the margin sidebar */
-  #quarto-margin-sidebar.d-none,
-  #quarto-margin-sidebar.d-none.d-lg-block,
-  .sidebar.margin-sidebar.d-none,
-  .sidebar.margin-sidebar.d-none.d-lg-block {
-    display: block !important;
-  }
-
-  /* Make it look like a full-width card under the navbar */
-  #quarto-margin-sidebar {
-    position: static;
-    max-width: 70ch;
-    margin: 1rem auto 2rem;
-    padding: 0 1.25rem;
-  }
-
-  #TOC,
-  #quarto-sidebar-toc {
-    display: block !important;
-    position: static;
-    max-height: none;
-    width: 100%;
-    margin: 0.5rem 0 1.5rem 0;
-    background: rgba(15, 23, 42, 0.9);
-    border-radius: 1rem;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-    overflow: visible;
-  }
-
-  #TOC h2#toc-title,
-  #quarto-sidebar-toc h2#toc-title {
-    font-size: 0.95rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-  }
-
-  #TOC ul,
-  #quarto-sidebar-toc ul {
-    list-style: none;
-    padding-left: 0;
-    margin: 0;
-  }
-
-  #TOC li,
-  #quarto-sidebar-toc li {
-    margin: 0.15rem 0;
-  }
-
-  #TOC a,
-  #quarto-sidebar-toc a {
-    text-decoration: none;
-    font-size: 0.92rem;
-    line-height: 1.4;
-    display: block;
-  }
-}
+  color
