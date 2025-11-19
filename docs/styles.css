@@ -809,3 +809,63 @@ details.dataset > summary {
     display: block;
   }
 }
+
+/* ================================
+   Force TOC visible on phones
+   ================================ */
+
+@media (max-width: 991px) {
+
+  /* Make Quarto's margin sidebar visible on small screens */
+  #quarto-margin-sidebar {
+    display: block !important;
+    position: static;
+    max-width: 70ch;
+    margin: 1rem auto 2rem;
+    padding: 0 1.25rem;
+  }
+
+  /* Style the TOC card itself on mobile */
+  #TOC,
+  #quarto-sidebar-toc {
+    display: block !important;      /* un-hide it on phones */
+    position: static;               /* no sticky on tiny screens */
+    max-height: none;
+    width: 100%;
+    margin: 0;
+    margin-top: 0.5rem;
+
+    background: rgba(15, 23, 42, 0.9);  /* var(--color-brand-dark) vibe */
+    border-radius: 1rem;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    overflow: visible;
+  }
+
+  #TOC h2#toc-title,
+  #quarto-sidebar-toc h2#toc-title {
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  #TOC ul,
+  #quarto-sidebar-toc ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+
+  #TOC li,
+  #quarto-sidebar-toc li {
+    margin: 0.15rem 0;
+  }
+
+  #TOC a,
+  #quarto-sidebar-toc a {
+    text-decoration: none;
+    font-size: 0.92rem;
+    line-height: 1.4;
+    display: block;
+  }
+}
