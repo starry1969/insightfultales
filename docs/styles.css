@@ -509,3 +509,40 @@ p.keywords {
 #quarto-sidebar-toc a:hover {
   background: rgba(56, 189, 248, 0.18);
   color
+
+/* ============================================
+   Global TOC behavior for entire site
+   - Desktop: margin TOC only
+   - Mobile:  body TOC only
+   ============================================ */
+
+/* 1. Desktop / large screens
+   Keep margin TOC, hide body TOC */
+@media (min-width: 992px) {
+
+  /* Hide the body column TOC */
+  #TOC {
+    display: none !important;
+  }
+
+  /* Margin sidebar remains visible */
+  #quarto-margin-sidebar {
+    display: block !important;
+  }
+}
+
+/* 2. Mobile + small tablets
+   Hide margin TOC, show body TOC at top */
+@media (max-width: 991.98px) {
+
+  /* Hide margin TOC entirely */
+  #quarto-margin-sidebar {
+    display: none !important;
+  }
+
+  /* Display the body TOC card at top of content */
+  #TOC {
+    display: block !important;
+    margin-top: 1.25rem;
+  }
+}
