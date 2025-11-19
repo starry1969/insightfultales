@@ -89,6 +89,196 @@ When we compute this rhythm for locations across Earth, patterns emerge:
 This gives us a completely new lens:\
 **Is a region’s natural heartbeat stable or changing?**
 
+# ❄️ **Rhythm 2: Blink of Winter — Eight-Day Snow in a Single Breath**
+
+Even winter has a heartbeat.
+
+Every eight days, NASA’s MODIS instrument takes a fresh snapshot of where snow covers the land. On their own, those images look static — pale tiles of white over dark land. But when we stitch them together, they reveal something more like a breath: snow advancing, settling, and retreating in waves.
+
+::: {.planetary-pulse-figure}
+![](images/planetary-pulse/snow-blink-hdf.gif){alt="Animated loop of eight-day MODIS snow cover showing the seasonal advance and retreat of snow."}
+
+<div class="figure-caption">
+<strong>Figure — Blink of Winter.</strong> An eight-day rolling view of MODIS snow cover, compressed into a short loop. 
+High latitudes flare bright as snow races south in autumn, then slowly retreats as spring light returns.
+</div>
+:::
+
+From a distance, the planet looks almost mechanical: snow appears on schedule, especially in the high latitudes. But look closely and the rhythm is not perfectly regular. Some years snow lingers longer into spring. Some years it arrives earlier, or the pattern of expansion and retreat becomes patchy.
+
+As Rhythm 2 in this story, this simple animation becomes one of our “pulse traces” — a way to watch the seasonal heartbeat of the cryosphere. Alongside the other rhythms on this page, it helps us see where Earth’s pulses are steady, where they are drifting, and where the beat is starting to skip.
+
+### How we built the Blink of Winter GIF
+
+Below is the R code used to construct the animation from raw MODIS HDF files. It:
+
+1. Reads all `MOD10A2.061` HDF files from `data/snow-raw/`  
+2. Extracts the **Eight_Day_Snow_Cover** subdataset  
+3. Converts each raster to a data frame for plotting  
+4. Renders each time slice as a PNG using `ggplot2`  
+5. Stitches them into a looping GIF with `{magick}` and saves it as  
+   `images/planetary-pulse/snow-blink-hdf.gif`
+
+```{r}
+#| label: build-snow-blink-gif
+#| eval: false
+#| echo: true
+#| message: true
+#| warning: true
+
+###############################################
+# Blink of Winter – MODIS HDF Snow GIF       #
+# Dataset: MOD10A2.061 (Eight_Day_Snow_Cover)#
+###############################################
+
+library(terra)    # raster handling
+library(ggplot2)  # plotting
+library(dplyr)    # data wrangling
+library(magick)   # GIF creation
+
+# 1. List HDF files ------------------------------------------------------------
+
+# Assumes project root contains: data/snow-raw/*.hdf
+# If your files truly live at an absolute path like "/data/snow-raw/",
+# change this to hdf_dir <- "/data/snow-raw".
+hdf_dir <- "data/snow-raw"
+
+files <- list.files(hdf_dir, pattern = "\\.hdf$", full.names = TRUE)
+files <- sort(files)  # sort by name => chronological for MOD10A2
+
+cat("Found", length(files), "HDF files:\n")
+print(files)
+
+if (length(files) == 0) {
+  stop("No .hdf files found in ", hdf_dir, ". Check the folder and filenames.")
+}
+
+# 2. Function to extract Eight_Day_Snow_Cover from one HDF --------------------
+
+get_eightday_snow <- function(hdf_file) {
+  cat("\n--- Processing:", hdf_file, "\n")
+  
+  d <- describe(hdf_file)
+  
+  # Find the SUBDATASET_2_NAME line = Eight_Day_Snow_Cover in MOD10A2
+  s2_line <- d[grep("SUBDATASET_2_NAME", d)]
+  if (length(s2_line) == 0) {
+    warning("No SUBDATASET_2_NAME found in ", hdf_file, " – skipping.")
+    return(NULL)
+  }
+  
+  s2_name <- sub("  SUBDATASET_2_NAME=", "", s2_line)
+  cat("  Using subdataset:", s2_name, "\n")
+  
+  r <- rast(s2_name)
+  
+  # Quick sanity check: sample some pixels without loading the whole raster
+  vals <- tryCatch(
+    terra::spatSample(r, size = 500, method = "random")[, 1],
+    error = function(e) NA
+  )
+  
+  if (all(is.na(vals))) {
+    warning("  All sampled values are NA in ", hdf_file, " – skipping this file.")
+    return(NULL)
+  }
+  
+  r
+}
+
+# 3. Read all HDFs into a list of rasters -------------------------------------
+
+snow_list <- lapply(files, get_eightday_snow)
+
+# Remove any NULLs (files that failed)
+snow_list <- Filter(Negate(is.null), snow_list)
+
+cat("\nKept", length(snow_list), "HDF files with valid snow data.\n")
+
+if (length(snow_list) == 0) {
+  stop("All HDF rasters were empty or unreadable. Cannot build GIF.")
+}
+
+# 4. Stack into a SpatRaster (time series) ------------------------------------
+
+snow_stack <- rast(snow_list)
+cat("\nSnow stack:\n")
+print(snow_stack)
+
+# 5. Convert to data frame for ggplot -----------------------------------------
+
+cat("\nConverting raster stack to long data frame for plotting...\n")
+
+snow_df_list <- lapply(1:nlyr(snow_stack), function(i) {
+  r  <- snow_stack[[i]]
+  df <- as.data.frame(r, xy = TRUE, na.rm = TRUE)
+  names(df)[3] <- "snow"
+  df$frame <- i
+  df
+})
+
+snow_df <- bind_rows(snow_df_list)
+
+cat("Data frame has", nrow(snow_df), "rows across",
+    length(unique(snow_df$frame)), "frames.\n")
+
+# 6. Create PNG frames --------------------------------------------------------
+
+out_dir <- "frames/snow_blink_hdf"
+dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
+
+cat("\nSaving PNG frames to", out_dir, "...\n")
+
+for (f in sort(unique(snow_df$frame))) {
+  df_f <- dplyr::filter(snow_df, frame == f)
+  
+  p <- ggplot(df_f, aes(x, y, fill = snow)) +
+    geom_raster() +
+    # Strong contrast: darker background, brighter snow
+    scale_fill_gradient(low = "grey10", high = "white") +
+    coord_equal() +
+    labs(title = paste("Eight-Day Snow Cover — Frame", f)) +
+    theme_void() +
+    theme(
+      plot.title = element_text(hjust = 0.5, size = 14)
+    )
+  
+  ggsave(
+    filename = sprintf("%s/frame_%03d.png", out_dir, f),
+    plot   = p,
+    width  = 6,
+    height = 4,
+    dpi    = 150
+  )
+}
+
+cat("PNG frames written.\n")
+
+# 7. Stitch PNGs into animated GIF --------------------------------------------
+
+cat("\nBuilding GIF from PNG frames...\n")
+
+png_files <- list.files(out_dir, pattern = "^frame_.*\\.png$", full.names = TRUE)
+png_files <- sort(png_files)
+
+if (length(png_files) == 0) {
+  stop("No PNG frames found in ", out_dir, ". Cannot create GIF.")
+}
+
+img_list  <- lapply(png_files, image_read)
+animation <- image_animate(do.call(c, img_list), fps = 4, loop = 0)
+
+gif_dir  <- "images/planetary-pulse"
+dir.create(gif_dir, showWarnings = FALSE, recursive = TRUE)
+
+gif_path <- file.path(gif_dir, "snow-blink-hdf.gif")
+image_write(animation, gif_path)
+
+cat("\nGIF written to:", gif_path, "\n")
+cat("Done. ❄️\n")
+```
+
+
 # 🔥 **Rhythm 3: The Fire Pulse — Earth’s Flickers**
 
 Fire activity has a rhythm too — annual fire seasons.
