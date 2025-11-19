@@ -743,3 +743,17 @@ details.dataset > summary {
   font-style: normal;
   color: var(--color-brand-accent); /* cyan highlight */
 }
+
+/* ===========================================
+   Dataset Icons — Global Size Enforcement
+   =========================================== */
+
+/* Catch ANY dataset icon, regardless of classes */
+img[src*="images/dataset-icons/"] {
+  width: 1.75rem !important;
+  max-width: 1.75rem !important;
+  height: auto !important;
+  vertical-align: middle;
+  display: inline-block;
+}
+
