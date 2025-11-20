@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="keywords" content="steam, game lifecycles, hype curve, player counts, digital culture, nostalgia, attention, time series, retention, virality">
+<meta name="description" content="Every game on Steam has a heartbeat. Some explode and vanish in weeks. Others smolder for years before catching fire. A few never die. In this story, we use Steam-style player-count data to reveal the secret shapes of digital life — hype spikes, slow burns, collapses, and miraculous revivals that behave more like ecosystems than products.">
+
+<title>🕹️ The Hype Curve — Life and Death of a Game – Insightful Tales</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-ffa9a6279353761231ec249df0a7fdd3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-J2NWNXP0DY"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-J2NWNXP0DY', { 'anonymize_ip': true});
+</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<link href="../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+
+<script src="../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="🕹️ The Hype Curve — Life and Death of a Game – Insightful Tales">
+<meta property="og:description" content="Every game on Steam has a heartbeat. Some explode and vanish in weeks. Others smolder for years before catching fire. A few never die. In this story, we use Steam-style player-count data to reveal the secret shapes of digital life — hype spikes, slow burns, collapses, and miraculous revivals that behave more like ecosystems than products.">
+<meta property="og:image" content="https://www.insightfultales.com/stories/the-hype-curve-life-and-death-of-a-game_files/figure-html/unnamed-chunk-2-1.png">
+<meta property="og:site_name" content="Insightful Tales">
+<meta property="og:image:height" content="960">
+<meta property="og:image:width" content="1344">
+<meta name="twitter:title" content="🕹️ The Hype Curve — Life and Death of a Game – Insightful Tales">
+<meta name="twitter:description" content="Every game on Steam has a heartbeat. Some explode and vanish in weeks. Others smolder for years before catching fire. A few never die. In this story, we use Steam-style player-count data to reveal the secret shapes of digital life — hype spikes, slow burns, collapses, and miraculous revivals that behave more like ecosystems than products.">
+<meta name="twitter:image" content="https://www.insightfultales.com/stories/the-hype-curve-life-and-death-of-a-game_files/figure-html/unnamed-chunk-2-1.png">
+<meta name="twitter:image-height" content="960">
+<meta name="twitter:image-width" content="1344">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.insightfultales.com/stories/the-hype-curve-life-and-death-of-a-game.html">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/logo.png" alt="" class="navbar-logo light-content">
+    <img src="../images/logo.png" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Insightful Tales</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text"><img src="../images/top-nav-icons/home-icon.png" alt="Home — Insightful Tales" loading="lazy" width="18" height="18" class="nav-icon"> Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-img-srcimagestop-nav-iconsstories-icon.png-altstories-at-insightful-tales-loadinglazy-width18-height18-classnav-icon-stories" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text"><img src="../images/top-nav-icons/stories-icon.png" alt="Stories at Insightful Tales" loading="lazy" width="18" height="18" class="nav-icon"> Stories</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-img-srcimagestop-nav-iconsstories-icon.png-altstories-at-insightful-tales-loadinglazy-width18-height18-classnav-icon-stories">    
+        <li>
+    <a class="dropdown-item" href="../stories/geography-of-luck.html">
+ <span class="dropdown-text">🧭 Geography of Luck</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stories/butterfly-morning-delays.html">
+ <span class="dropdown-text">🦋 Butterfly Effect</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stories/weather-memory.html">
+ <span class="dropdown-text">🌦️ Weather Memory</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stories/the-hidden-rhythm-of-baseball.html">
+ <span class="dropdown-text">⚾️ The Hidden Rhythm of Baseball</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stories/when-growth-forgot-happiness-the-hidden-curve-of-human-progress.html">
+ <span class="dropdown-text">🌏 When Growth Forgot Happiness</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../stories/the-planet-that-breathes-tracking-earths-hidden-rhythms-from-space.html">
+ <span class="dropdown-text">🪐 The Planet That Breathes</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-img-srcimagestop-nav-iconshistorical-icon.png-althistorical-stories-at-insightful-tales-loadinglazy-width18-height18-classnav-icon-historical" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text"><img src="../images/top-nav-icons/historical-icon.png" alt="Historical stories at Insightful Tales" loading="lazy" width="18" height="18" class="nav-icon"> Historical</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-img-srcimagestop-nav-iconshistorical-icon.png-althistorical-stories-at-insightful-tales-loadinglazy-width18-height18-classnav-icon-historical">    
+        <li>
+    <a class="dropdown-item" href="../data-science/genesis-of-data.html">
+ <span class="dropdown-text">🧮 Genesis of Data</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-img-srcimagestop-nav-iconsdatasets-icon.png-altdatasets-at-insightful-tales-loadinglazy-width18-height18-classnav-icon-datasets" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text"><img src="../images/top-nav-icons/datasets-icon.png" alt="Datasets at Insightful Tales" loading="lazy" width="18" height="18" class="nav-icon"> Datasets</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-img-srcimagestop-nav-iconsdatasets-icon.png-altdatasets-at-insightful-tales-loadinglazy-width18-height18-classnav-icon-datasets">    
+        <li>
+    <a class="dropdown-item" href="../dataset-icon-language.html">
+ <span class="dropdown-text"><img src="../images/top-nav-icons/data-icon-language-icon.png" alt="The Dataset Icon Language" loading="lazy" width="18" height="18" class="nav-icon"> The Dataset Icon Language ← logical!</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../datasets/nycflights13-the-dataset-that-took-off.html">
+ <span class="dropdown-text">✈️ nycflights13</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../datasets/the-gapminder-dataset-a-history-of-human-progress-told-through-data.html">
+ <span class="dropdown-text">🌍 The Gapminder Dataset</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../datasets/the-lahman-baseball-database-a-chronicle-of-the-games-digital-memory.html">
+ <span class="dropdown-text">⚾ The Lahman Baseball Database</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../datasets/the-noaa-daily-weather-dataset.html">
+ <span class="dropdown-text">🌦 NOAA Daily Weather Dataset</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../datasets/transport-for-london-tfl-the-pulse-beneath-the-city.html">
+ <span class="dropdown-text">🚇 Transport for London (TfL)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../datasets/uci-online-retail-human-behavior-in-transactions.html">
+ <span class="dropdown-text">🛒 UCI Online Retail</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../datasets/nasa-modis-global-environmental-time-series.html">
+ <span class="dropdown-text">🛰️ NASA MODIS</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-img-srcimagestop-nav-iconsabout-icon.png-altabout-insightful-tales-loadinglazy-width18-height18-classnav-icon-about" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text"><img src="../images/top-nav-icons/about-icon.png" alt="About Insightful Tales" loading="lazy" width="18" height="18" class="nav-icon"> About</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-img-srcimagestop-nav-iconsabout-icon.png-altabout-insightful-tales-loadinglazy-width18-height18-classnav-icon-about">    
+        <li>
+    <a class="dropdown-item" href="../about.html">
+ <span class="dropdown-text"><img src="../images/top-nav-icons/about-icon.png" alt="What is Insightful Tales" loading="lazy" width="18" height="18" class="nav-icon"> What is Insightful Tales?</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../dataset-icon-language.html">
+ <span class="dropdown-text"><img src="../images/top-nav-icons/data-icon-language-icon.png" alt="The Dataset Icon Language" loading="lazy" width="18" height="18" class="nav-icon"> The Dataset Icon Language</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contact.html">
+ <span class="dropdown-text"><img src="../images/top-nav-icons/contact-icon.png" alt="Contact Insightful Tales" loading="lazy" width="18" height="18" class="nav-icon"> Contact</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Navigate</h2>
+   
+  <ul>
+  <li><a href="#the-pulse-of-a-digital-planet" id="toc-the-pulse-of-a-digital-planet" class="nav-link active" data-scroll-target="#the-pulse-of-a-digital-planet">🌍 1. The Pulse of a Digital Planet</a></li>
+  <li><a href="#the-hype-curve-archetypes" id="toc-the-hype-curve-archetypes" class="nav-link" data-scroll-target="#the-hype-curve-archetypes">🧬 2. The Hype Curve Archetypes</a>
+  <ul class="collapse">
+  <li><a href="#how-to-read-this-chart" id="toc-how-to-read-this-chart" class="nav-link" data-scroll-target="#how-to-read-this-chart">🔭 How to read this chart</a></li>
+  </ul></li>
+  <li><a href="#slow-death-vs.-sudden-death" id="toc-slow-death-vs.-sudden-death" class="nav-link" data-scroll-target="#slow-death-vs.-sudden-death">⚰️ 3. Slow Death vs.&nbsp;Sudden Death</a>
+  <ul class="collapse">
+  <li><a href="#what-this-tells-us" id="toc-what-this-tells-us" class="nav-link" data-scroll-target="#what-this-tells-us">What this tells us</a></li>
+  </ul></li>
+  <li><a href="#nostalgia-events-when-the-dead-rise" id="toc-nostalgia-events-when-the-dead-rise" class="nav-link" data-scroll-target="#nostalgia-events-when-the-dead-rise">🔥 4. Nostalgia Events — When the Dead Rise</a>
+  <ul class="collapse">
+  <li><a href="#why-this-matters" id="toc-why-this-matters" class="nav-link" data-scroll-target="#why-this-matters">Why this matters</a></li>
+  </ul></li>
+  <li><a href="#the-cultural-half-life-of-fun" id="toc-the-cultural-half-life-of-fun" class="nav-link" data-scroll-target="#the-cultural-half-life-of-fun">⏳ 5. The Cultural Half-Life of Fun</a>
+  <ul class="collapse">
+  <li><a href="#how-to-interpret-this" id="toc-how-to-interpret-this" class="nav-link" data-scroll-target="#how-to-interpret-this">How to interpret this</a></li>
+  </ul></li>
+  <li><a href="#revelations-hidden-in-the-curves" id="toc-revelations-hidden-in-the-curves" class="nav-link" data-scroll-target="#revelations-hidden-in-the-curves">💡 6. Revelations Hidden in the Curves</a>
+  <ul class="collapse">
+  <li><a href="#revelation-1-communities-outlive-content" id="toc-revelation-1-communities-outlive-content" class="nav-link" data-scroll-target="#revelation-1-communities-outlive-content">🧷 Revelation 1 — Communities outlive content</a></li>
+  <li><a href="#revelation-2-hype-is-predictable-longevity-is-not" id="toc-revelation-2-hype-is-predictable-longevity-is-not" class="nav-link" data-scroll-target="#revelation-2-hype-is-predictable-longevity-is-not">📉 Revelation 2 — Hype is predictable, longevity is not</a></li>
+  <li><a href="#revelation-3-the-half-life-of-hype-is-shrinking" id="toc-revelation-3-the-half-life-of-hype-is-shrinking" class="nav-link" data-scroll-target="#revelation-3-the-half-life-of-hype-is-shrinking">🕒 Revelation 3 — The half-life of hype is shrinking</a></li>
+  <li><a href="#revelation-4-nothing-really-dies" id="toc-revelation-4-nothing-really-dies" class="nav-link" data-scroll-target="#revelation-4-nothing-really-dies">🪦 Revelation 4 — Nothing really dies</a></li>
+  </ul></li>
+  <li><a href="#beyond-games-a-template-for-modern-attention" id="toc-beyond-games-a-template-for-modern-attention" class="nav-link" data-scroll-target="#beyond-games-a-template-for-modern-attention">🌐 7. Beyond Games — A Template for Modern Attention</a></li>
+  <li><a href="#references-credits" id="toc-references-credits" class="nav-link" data-scroll-target="#references-credits">📚 <strong>References &amp; Credits</strong></a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">🕹️ The Hype Curve — Life and Death of a Game</h1>
+<p class="subtitle lead">Steam data visualized as cultural heartbeat: how trends surge, communities form, and nostalgia revives titles long thought dormant.</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">data-science</div>
+    <div class="quarto-category">culture-and-history</div>
+    <div class="quarto-category">visual-analytics</div>
+    <div class="quarto-category">games</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Every game on Steam has a heartbeat. Some explode and vanish in weeks. Others smolder for years before catching fire. A few never die. In this story, we use Steam-style player-count data to reveal the secret shapes of digital life — hype spikes, slow burns, collapses, and miraculous revivals that behave more like ecosystems than products.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>steam, game lifecycles, hype curve, player counts, digital culture, nostalgia, attention, time series, retention, virality</p>
+  </div>
+</div>
+
+</header>
+
+
+<section class="hero">
+<h1>
+<span aria-hidden="true">🕹</span> The Hype Curve — Life and Death of a Gam
+</h1>
+<h2 class="hero-subtitle anchored">
+<p>Steam data visualized as cultural heartbeat: how trends surge, communities form, and nostalgia revives titles long thought dormant.</p>
+</h2>
+<p class="hero-text">
+</p><p>Every game on Steam has a heartbeat. Some explode and vanish in weeks. Others smolder for years before catching fire. A few never die. In this story, we use Steam-style player-count data to reveal the secret shapes of digital life — hype spikes, slow burns, collapses, and miraculous revivals that behave more like ecosystems than products.</p>
+<p></p>
+</section>
+<blockquote class="blockquote">
+<p><em>Every game is born with a heartbeat.</em><br>
+<em>Steam records that heartbeat every hour of every day.</em><br>
+<em>Look closely — and you’ll see entire civilizations flicker into existence, flourish, collapse, and sometimes… rise again.</em></p>
+</blockquote>
+<p>This story is built around a simple idea:</p>
+<blockquote class="blockquote">
+<p><strong>The <em>shape</em> of a game’s player-count curve tells you more than any review ever could.</strong></p>
+</blockquote>
+<p>We’ll use simulated data with a “Steam-like” structure to show how:</p>
+<ul>
+<li>hype spikes look like supernovas,<br>
+</li>
+<li>word-of-mouth looks like a slow sunrise,<br>
+</li>
+<li>nostalgia looks like a flatline suddenly jolting back to life,<br>
+</li>
+<li>and some games never really “die” at all.</li>
+</ul>
+<p>Later, you can plug in your own Steam dataset and watch these shapes emerge from the real world.</p>
+<hr>
+<section id="the-pulse-of-a-digital-planet" class="level2">
+<h2 class="anchored" data-anchor-id="the-pulse-of-a-digital-planet">🌍 1. The Pulse of a Digital Planet</h2>
+<p>Steam is not just a store. It is a <strong>seismograph of global attention.</strong></p>
+<p>Every hour, thousands of tiny signals ripple through its servers:</p>
+<ul>
+<li>players logging in and out<br>
+</li>
+<li>peaks during weekends and holidays<br>
+</li>
+<li>review bursts after major patches<br>
+</li>
+<li>“flash floods” of players from big streamers<br>
+</li>
+<li>long, slow declines as communities age</li>
+</ul>
+<p>At the level of a single game, these look like noisy time series.<br>
+At the level of thousands of games, they look like <strong>a living ecosystem.</strong></p>
+<p>Below, we’ll build a <strong>toy version</strong> of a Steam-like dataset to explore the basic shapes of game life.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code behind these visualizations</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>n_points <span class="ot">&lt;-</span> <span class="dv">120</span>  <span class="co"># "days" since launch for each synthetic curve</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>time <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">119</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># helper functions to generate archetype shapes</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>supernova_curve <span class="ot">&lt;-</span> <span class="cf">function</span>(t) {</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  peak_day <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  peak <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(t, <span class="at">mean =</span> peak_day, <span class="at">sd =</span> <span class="dv">3</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  tail <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(t, <span class="at">mean =</span> peak_day <span class="sc">+</span> <span class="dv">7</span>, <span class="at">sd =</span> <span class="dv">15</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  (peak <span class="sc">+</span> <span class="fl">0.4</span> <span class="sc">*</span> tail) <span class="sc">/</span> <span class="fu">max</span>(peak <span class="sc">+</span> <span class="fl">0.4</span> <span class="sc">*</span> tail)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>slowburn_curve <span class="ot">&lt;-</span> <span class="cf">function</span>(t) {</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  growth <span class="ot">&lt;-</span> <span class="fu">plogis</span>((t <span class="sc">-</span> <span class="dv">40</span>) <span class="sc">/</span> <span class="dv">6</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  decay <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="sc">-</span>(t <span class="sc">-</span> <span class="dv">40</span>) <span class="sc">/</span> <span class="dv">80</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  curve <span class="ot">&lt;-</span> growth <span class="sc">*</span> decay</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  curve <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(t <span class="sc">&lt;</span> <span class="dv">5</span>, <span class="dv">0</span>, curve)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  curve <span class="sc">/</span> <span class="fu">max</span>(curve)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>undying_curve <span class="ot">&lt;-</span> <span class="cf">function</span>(t) {</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  base <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="sc">+</span> <span class="fl">0.1</span> <span class="sc">*</span> <span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> t <span class="sc">/</span> <span class="dv">7</span>) <span class="sc">+</span> <span class="fl">0.15</span> <span class="sc">*</span> <span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> t <span class="sc">/</span> <span class="dv">30</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  trend <span class="ot">&lt;-</span> <span class="fl">0.3</span> <span class="sc">+</span> <span class="fl">0.3</span> <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>(t <span class="sc">-</span> <span class="dv">30</span>) <span class="sc">/</span> <span class="dv">300</span>)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  curve <span class="ot">&lt;-</span> <span class="fu">pmax</span>(base <span class="sc">*</span> trend, <span class="dv">0</span>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  curve <span class="sc">/</span> <span class="fu">max</span>(curve)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>dormant_revival_curve <span class="ot">&lt;-</span> <span class="cf">function</span>(t) {</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  base <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fl">0.02</span>, <span class="fu">length</span>(t))</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  revival <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(t, <span class="at">mean =</span> <span class="dv">80</span>, <span class="at">sd =</span> <span class="dv">5</span>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  curve <span class="ot">&lt;-</span> base <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> revival</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  curve <span class="sc">/</span> <span class="fu">max</span>(curve)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>archetypes_df <span class="ot">&lt;-</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">day =</span> <span class="fu">rep</span>(time, <span class="at">times =</span> <span class="dv">4</span>),</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">archetype =</span> <span class="fu">factor</span>(</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>      <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Supernova"</span>, <span class="st">"Slow Burn → Wildfire"</span>, <span class="st">"Undying Live Service"</span>, <span class="st">"Dormant Revival"</span>),</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>          <span class="at">each =</span> <span class="fu">length</span>(time)),</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Supernova"</span>, <span class="st">"Slow Burn → Wildfire"</span>,</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"Undying Live Service"</span>, <span class="st">"Dormant Revival"</span>)</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">relative_players =</span> <span class="fu">case_when</span>(</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>      archetype <span class="sc">==</span> <span class="st">"Supernova"</span> <span class="sc">~</span> <span class="fu">supernova_curve</span>(day),</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>      archetype <span class="sc">==</span> <span class="st">"Slow Burn → Wildfire"</span> <span class="sc">~</span> <span class="fu">slowburn_curve</span>(day),</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>      archetype <span class="sc">==</span> <span class="st">"Undying Live Service"</span> <span class="sc">~</span> <span class="fu">undying_curve</span>(day),</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>      archetype <span class="sc">==</span> <span class="st">"Dormant Revival"</span> <span class="sc">~</span> <span class="fu">dormant_revival_curve</span>(day),</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_real_</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    <span class="co"># scale to "concurrent players"</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">players =</span> <span class="fu">round</span>(relative_players <span class="sc">*</span> <span class="fu">case_when</span>(</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>      archetype <span class="sc">==</span> <span class="st">"Supernova"</span> <span class="sc">~</span> <span class="dv">120000</span>,</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>      archetype <span class="sc">==</span> <span class="st">"Slow Burn → Wildfire"</span> <span class="sc">~</span> <span class="dv">40000</span>,</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>      archetype <span class="sc">==</span> <span class="st">"Undying Live Service"</span> <span class="sc">~</span> <span class="dv">80000</span>,</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>      archetype <span class="sc">==</span> <span class="st">"Dormant Revival"</span> <span class="sc">~</span> <span class="dv">20000</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>archetypes_df <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["day"],"name":[1],"type":["int"],"align":["right"]},{"label":["archetype"],"name":[2],"type":["fct"],"align":["left"]},{"label":["relative_players"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["players"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"0","2":"Supernova","3":"0.2868628","4":"34424"},{"1":"1","2":"Supernova","3":"0.4406365","4":"52876"},{"1":"2","2":"Supernova","3":"0.6256981","4":"75084"},{"1":"3","2":"Supernova","3":"0.8094816","4":"97138"},{"1":"4","2":"Supernova","3":"0.9473825","4":"113686"},{"1":"5","2":"Supernova","3":"1.0000000","4":"120000"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>This isn’t real Steam data — but it <strong>behaves like it</strong>:</p>
+<ul>
+<li><p>one game explodes and crashes,</p></li>
+<li><p>one quietly grows then erupts,</p></li>
+<li><p>one oscillates indefinitely,</p></li>
+<li><p>one lies “dead” until a surprise revival.</p></li>
+</ul>
+</section>
+<section id="the-hype-curve-archetypes" class="level2">
+<h2 class="anchored" data-anchor-id="the-hype-curve-archetypes">🧬 2. The Hype Curve Archetypes</h2>
+<p>Let’s visualize these four archetypes side by side.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code behind these visualizations</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>archetypes_df <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> day, <span class="at">y =</span> players)) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">facet_wrap</span>(<span class="sc">~</span> archetype, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="at">title =</span> <span class="st">"The Hype Curve Archetypes"</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="at">subtitle =</span> <span class="st">"Synthetic Steam-style player counts over time for four types of game lifecycles"</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="at">x =</span> <span class="st">"Days since launch"</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="at">y =</span> <span class="st">"Concurrent players (simulated)"</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="the-hype-curve-life-and-death-of-a-game_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="how-to-read-this-chart" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-read-this-chart">🔭 How to read this chart</h3>
+<p>Each panel is a <strong>story shape</strong>:</p>
+<ol type="1">
+<li><p><strong>Supernova</strong></p>
+<ul>
+<li><p>Huge launch.</p></li>
+<li><p>Massive spike.</p></li>
+<li><p>Collapse almost as fast.<br>
+This is hype-driven, marketing-heavy, and often paired with rough launches.</p></li>
+</ul></li>
+<li><p><strong>Slow Burn → Wildfire</strong></p>
+<ul>
+<li><p>Modest launch.</p></li>
+<li><p>Gradual word-of-mouth growth.</p></li>
+<li><p>A delayed explosion once communities, streamers, and friends kick in.<br>
+This is <em>trust</em> made visible.</p></li>
+</ul></li>
+<li><p><strong>Undying Live Service</strong></p>
+<ul>
+<li><p>Never truly dies.</p></li>
+<li><p>Weekly cycles (weekend spikes), monthly arcs, seasonal events.</p></li>
+<li><p>The game behaves like a <strong>living ecosystem</strong>.</p></li>
+</ul></li>
+<li><p><strong>Dormant Revival</strong></p>
+<ul>
+<li><p>Flatline for a long time.</p></li>
+<li><p>A sudden resurgence years later.</p></li>
+<li><p>Often triggered by a YouTube documentary, a big streamer, a meme, or an anniversary sale.</p></li>
+</ul></li>
+</ol>
+<p>These shapes appear again and again in real Steam game data.<br>
+Once you see them, it’s hard to unsee them.</p>
+</section>
+</section>
+<section id="slow-death-vs.-sudden-death" class="level2">
+<h2 class="anchored" data-anchor-id="slow-death-vs.-sudden-death">⚰️ 3. Slow Death vs.&nbsp;Sudden Death</h2>
+<p>Not every game decays the same way.<br>
+Some <strong>fall off a cliff</strong>. Others <strong>fade like a sunset.</strong></p>
+<p>Let’s zoom into the <strong>Supernova</strong> archetype and fit a simple “decay” model.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code behind these visualizations</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>supernova_df <span class="ot">&lt;-</span> archetypes_df <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(archetype <span class="sc">==</span> <span class="st">"Supernova"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(day <span class="sc">&gt;=</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span>  <span class="co"># post-peak</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">day_since_peak =</span> day <span class="sc">-</span> <span class="fu">min</span>(day))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>supernova_df <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["day"],"name":[1],"type":["int"],"align":["right"]},{"label":["archetype"],"name":[2],"type":["fct"],"align":["left"]},{"label":["relative_players"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["players"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["day_since_peak"],"name":[5],"type":["int"],"align":["right"]}],"data":[{"1":"5","2":"Supernova","3":"1.0000000","4":"120000","5":"0"},{"1":"6","2":"Supernova","3":"0.9515393","4":"114185","5":"1"},{"1":"7","2":"Supernova","3":"0.8177440","4":"98129","5":"2"},{"1":"8","2":"Supernova","3":"0.6379645","4":"76556","5":"3"},{"1":"9","2":"Supernova","3":"0.4567575","4":"54811","5":"4"},{"1":"10","2":"Supernova","3":"0.3066437","4":"36797","5":"5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>For illustration, we can treat the decay as roughly exponential: <span class="math display">\[
+\text{players}(t) \approx N_0 e^{-\lambda t}
+\]</span></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code behind these visualizations</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>decay_model <span class="ot">&lt;-</span> <span class="fu">nls</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>players <span class="sc">~</span> N0 <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>lambda <span class="sc">*</span> day_since_peak),</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">data =</span> supernova_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(players <span class="sc">&gt;</span> <span class="dv">0</span>),</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="at">start =</span> <span class="fu">list</span>(<span class="at">N0 =</span> <span class="fu">max</span>(supernova_df<span class="sc">$</span>players), <span class="at">lambda =</span> <span class="fl">0.05</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(decay_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>          N0       lambda 
+1.337889e+05 2.330013e-01 </code></pre>
+</div>
+</div>
+<p>Now we overlay the fitted decay curve on the observed values.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code behind these visualizations</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>supernova_df_pred <span class="ot">&lt;-</span> supernova_df <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="at">fitted =</span> <span class="fu">predict</span>(decay_model, <span class="at">newdata =</span> supernova_df)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>supernova_df_pred <span class="sc">%&gt;%</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> day_since_peak)) <span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> players), <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> fitted), <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="at">title =</span> <span class="st">"Sudden Death: Exponential Decay After a Hype Supernova"</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="at">subtitle =</span> <span class="st">"A cliff-shaped collapse after a massive launch peak"</span>,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="at">x =</span> <span class="st">"Days since peak"</span>,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="at">y =</span> <span class="st">"Concurrent players (simulated)"</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="the-hype-curve-life-and-death-of-a-game_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="what-this-tells-us" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-tells-us">What this tells us</h3>
+<ul>
+<li><p>A tight fit suggests a <strong>predictable collapse</strong>.</p></li>
+<li><p>Marketing drove the spike; disappointment drove the fall.</p></li>
+<li><p>Studios can use this shape to ask:</p>
+<ul>
+<li><p><em>Did we earn this launch?</em></p></li>
+<li><p><em>Did players stick, or did we simply rent their attention for a weekend?</em></p></li>
+</ul></li>
+</ul>
+<p>In contrast, a <strong>slow death</strong> game would show:</p>
+<ul>
+<li><p>a smaller, gentler slope,</p></li>
+<li><p>decay over many half-lives,</p></li>
+<li><p>periodic bumps as updates land.</p></li>
+</ul>
+<p>You don’t just see revenue here.<br>
+You see <strong>trust</strong>, <strong>patience</strong>, and <strong>forgiveness</strong> — or the lack of them.</p>
+</section>
+</section>
+<section id="nostalgia-events-when-the-dead-rise" class="level2">
+<h2 class="anchored" data-anchor-id="nostalgia-events-when-the-dead-rise">🔥 4. Nostalgia Events — When the Dead Rise</h2>
+<p>Now for the most magical shape in Steam data: <strong>the resurrection.</strong></p>
+<p>Let’s isolate the <strong>Dormant Revival</strong> archetype and highlight the “event” that wakes it up.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code behind these visualizations</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>revival_df <span class="ot">&lt;-</span> archetypes_df <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(archetype <span class="sc">==</span> <span class="st">"Dormant Revival"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="at">event_flag =</span> <span class="fu">if_else</span>(day <span class="sc">&gt;=</span> <span class="dv">75</span> <span class="sc">&amp;</span> day <span class="sc">&lt;=</span> <span class="dv">85</span>, <span class="st">"Revival window"</span>, <span class="st">"Baseline"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>revival_df <span class="sc">%&gt;%</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> day, <span class="at">y =</span> players)) <span class="sc">+</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_rect</span>(</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="at">xmin =</span> <span class="dv">75</span>, <span class="at">xmax =</span> <span class="dv">85</span>,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="at">ymin =</span> <span class="sc">-</span><span class="cn">Inf</span>, <span class="at">ymax =</span> <span class="cn">Inf</span>,</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="at">alpha =</span> <span class="fl">0.1</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="at">title =</span> <span class="st">"Nostalgia Event: A Dormant Game Suddenly Awakens"</span>,</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="at">subtitle =</span> <span class="st">"Years of near-zero activity followed by a dramatic spike"</span>,</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="at">x =</span> <span class="st">"Days since launch (proxy for years)"</span>,</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="at">y =</span> <span class="st">"Concurrent players (simulated)"</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="the-hype-curve-life-and-death-of-a-game_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In real data, this rectangle might correspond to:</p>
+<ul>
+<li><p>a major streamer discovering the game,</p></li>
+<li><p>a fan-made documentary on YouTube,</p></li>
+<li><p>a big sale or anniversary,</p></li>
+<li><p>a TikTok meme that suddenly makes the game “fresh” again.</p></li>
+</ul>
+<section id="why-this-matters" class="level3">
+<h3 class="anchored" data-anchor-id="why-this-matters">Why this matters</h3>
+<blockquote class="blockquote">
+<p><strong>Nostalgia spikes prove that “dead” games are often just sleeping.</strong></p>
+</blockquote>
+<p>For developers and publishers, this shape is a <strong>business opportunity</strong>:</p>
+<ul>
+<li><p>re-release or remaster timing,</p></li>
+<li><p>cross-promotions with new titles,</p></li>
+<li><p>curated “back from the dead” sales,</p></li>
+<li><p>re-engaging old communities with updates or events.</p></li>
+</ul>
+<p>For cultural historians, it’s a <strong>memory graph</strong>:</p>
+<ul>
+<li><p>how long it takes for a childhood game to resurface,</p></li>
+<li><p>how strong the emotional pull remains,</p></li>
+<li><p>which titles become comfort food for entire generations.</p></li>
+</ul>
+</section>
+</section>
+<section id="the-cultural-half-life-of-fun" class="level2">
+<h2 class="anchored" data-anchor-id="the-cultural-half-life-of-fun">⏳ 5. The Cultural Half-Life of Fun</h2>
+<p>One of the most powerful ways to summarize a game’s lifespan is its <strong>half-life of attention</strong>:</p>
+<blockquote class="blockquote">
+<p>The time it takes for concurrent players to fall to <strong>half</strong> of their peak.</p>
+</blockquote>
+<p>We’ll compute a rough half-life for each archetype.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code behind these visualizations</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute peak info per archetype</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>half_life_df <span class="ot">&lt;-</span> archetypes_df <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">group_by</span>(archetype) <span class="sc">%&gt;%</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="at">peak_players =</span> <span class="fu">max</span>(players),</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="at">peak_day =</span> day[<span class="fu">which.max</span>(players)],</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="at">half_threshold =</span> peak_players <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co"># For each archetype, find the first day after the peak</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co"># where players fall to or below half of the peak</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>half_life_df <span class="ot">&lt;-</span> half_life_df <span class="sc">%&gt;%</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="at">half_life_day =</span> purrr<span class="sc">::</span><span class="fu">pmap_dbl</span>(</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(archetype, peak_day, half_threshold),</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(arch, pday, hthresh) {</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> archetypes_df <span class="sc">%&gt;%</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">filter</span>(archetype <span class="sc">==</span> arch, day <span class="sc">&gt;=</span> pday) <span class="sc">%&gt;%</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">arrange</span>(day)</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    idx <span class="ot">&lt;-</span> <span class="fu">which</span>(df<span class="sc">$</span>players <span class="sc">&lt;=</span> hthresh)[<span class="dv">1</span>]</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.na</span>(idx)) {</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>      <span class="cn">NA_real_</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>      df<span class="sc">$</span>day[idx]</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>),</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="at">half_life_length =</span> half_life_day <span class="sc">-</span> peak_day</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>half_life_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["archetype"],"name":[1],"type":["fct"],"align":["left"]},{"label":["peak_players"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["peak_day"],"name":[3],"type":["int"],"align":["right"]},{"label":["half_threshold"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["half_life_day"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["half_life_length"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"Supernova","2":"120000","3":"5","4":"60000","5":"9","6":"4"},{"1":"Slow Burn → Wildfire","2":"40000","3":"55","4":"20000","5":"117","6":"62"},{"1":"Undying Live Service","2":"80000","3":"9","4":"40000","5":"18","6":"9"},{"1":"Dormant Revival","2":"20000","3":"80","4":"10000","5":"87","6":"7"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Let’s visualize these half-lives.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code behind these visualizations</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>half_life_df <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> archetype, <span class="at">y =</span> half_life_length)) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="at">title =</span> <span class="st">"The Cultural Half-Life of Fun (Simulated)"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="at">subtitle =</span> <span class="st">"How long each archetype takes to lose half of its peak concurrent players"</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="at">y =</span> <span class="st">"Days to fall to half of peak players"</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="the-hype-curve-life-and-death-of-a-game_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="how-to-interpret-this" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-interpret-this">How to interpret this</h3>
+<ul>
+<li><p><strong>Supernova:</strong> very short half-life.</p>
+<ul>
+<li><p>Attention is explosive but fragile.</p></li>
+<li><p>Players leave once the hype fog clears.</p></li>
+</ul></li>
+<li><p><strong>Slow Burn → Wildfire:</strong> longer half-life.</p>
+<ul>
+<li><p>Communities stick because the game <em>earned</em> its growth.</p></li>
+<li><p>Word-of-mouth builds resilience.</p></li>
+</ul></li>
+<li><p><strong>Undying Live Service:</strong> half-life may be extremely long or not well-defined.</p>
+<ul>
+<li>The game oscillates around a stable core community.</li>
+</ul></li>
+<li><p><strong>Dormant Revival:</strong> might show <strong>multiple half-lives</strong>:</p>
+<ul>
+<li><p>one after the original launch,</p></li>
+<li><p>another after the revival.</p></li>
+</ul></li>
+</ul>
+<p>The beauty of this metric is that it compresses an entire lifecycle curve into a <strong>single, intuitive number</strong> — a kind of “decay constant” for cultural attention.</p>
+</section>
+</section>
+<section id="revelations-hidden-in-the-curves" class="level2">
+<h2 class="anchored" data-anchor-id="revelations-hidden-in-the-curves">💡 6. Revelations Hidden in the Curves</h2>
+<p>When you stare at thousands of these curves (for real games), certain patterns begin to feel like <strong>laws of nature</strong> for digital worlds.</p>
+<section id="revelation-1-communities-outlive-content" class="level3">
+<h3 class="anchored" data-anchor-id="revelation-1-communities-outlive-content">🧷 Revelation 1 — Communities outlive content</h3>
+<p>Games with:</p>
+<ul>
+<li><p>mod support,</p></li>
+<li><p>dedicated servers,</p></li>
+<li><p>strong social structures (guilds, clans, roleplay communities),</p></li>
+</ul>
+<p>often keep pulsing <strong>long after</strong> official content stops.<br>
+The curve decouples from the studio’s roadmap — and attaches itself to the players.</p>
+</section>
+<section id="revelation-2-hype-is-predictable-longevity-is-not" class="level3">
+<h3 class="anchored" data-anchor-id="revelation-2-hype-is-predictable-longevity-is-not">📉 Revelation 2 — Hype is predictable, longevity is not</h3>
+<p>You can <strong>buy</strong> a big spike with marketing.<br>
+You cannot buy a long, graceful tail.</p>
+<p>Longevity seems to depend on:</p>
+<ul>
+<li><p>mechanical depth,</p></li>
+<li><p>replayability,</p></li>
+<li><p>social stickiness,</p></li>
+<li><p>creator ecosystems (mods, maps, skins, custom modes).</p></li>
+</ul>
+</section>
+<section id="revelation-3-the-half-life-of-hype-is-shrinking" class="level3">
+<h3 class="anchored" data-anchor-id="revelation-3-the-half-life-of-hype-is-shrinking">🕒 Revelation 3 — The half-life of hype is shrinking</h3>
+<p>As the digital world becomes more crowded:</p>
+<ul>
+<li><p>spikes get sharper,</p></li>
+<li><p>cliffs get steeper,</p></li>
+<li><p>patience gets shorter.</p></li>
+</ul>
+<p>The <strong>Supernova</strong> shape becomes more common.<br>
+We rush in faster — and leave earlier.</p>
+</section>
+<section id="revelation-4-nothing-really-dies" class="level3">
+<h3 class="anchored" data-anchor-id="revelation-4-nothing-really-dies">🪦 Revelation 4 — Nothing really dies</h3>
+<p>Back-catalog games:</p>
+<ul>
+<li><p>reappear with movie tie-ins,</p></li>
+<li><p>resurface through influencer nostalgia,</p></li>
+<li><p>suddenly spike when a new generation discovers them.</p></li>
+</ul>
+<p>Steam’s long memory means the <strong>past is always available</strong>, just waiting for a spark.</p>
+</section>
+</section>
+<section id="beyond-games-a-template-for-modern-attention" class="level2">
+<h2 class="anchored" data-anchor-id="beyond-games-a-template-for-modern-attention">🌐 7. Beyond Games — A Template for Modern Attention</h2>
+<p>The shapes we’ve explored here don’t just describe games.<br>
+They reappear across digital culture:</p>
+<ul>
+<li><p><strong>Music</strong> on Spotify: viral hits with short half-lives vs.&nbsp;catalog songs with long, flat tails.</p></li>
+<li><p><strong>TV series</strong> on streaming platforms: intense binge peaks followed by cliffs or “comfort-watch” plateaus.</p></li>
+<li><p><strong>Memes</strong> on social media: Supernovas by default.</p></li>
+<li><p><strong>News cycles:</strong> outrage spikes, rapid decay.</p></li>
+</ul>
+<p>What Steam gives us is a <strong>clean, high-resolution laboratory</strong> for studying attention:</p>
+<ul>
+<li><p>the <strong>physics of hype</strong>,</p></li>
+<li><p>the <strong>ecology of communities</strong>,</p></li>
+<li><p>the <strong>thermodynamics of nostalgia</strong>.</p></li>
+</ul>
+<p>Once you know how to read these curves, you can look at almost any digital system and ask:</p>
+<ul>
+<li><p><em>Is this a Supernova or a Slow Burn?</em></p></li>
+<li><p><em>Has it really died, or is it just dormant?</em></p></li>
+<li><p><em>What is the cultural half-life of this phenomenon?</em></p></li>
+</ul>
+</section>
+<section id="references-credits" class="level1">
+<h1>📚 <strong>References &amp; Credits</strong></h1>
+<p><strong>Steam Data &amp; Ecosystem Insights</strong></p>
+<ul>
+<li><p>Valve Corporation. <em>Steam Web API Documentation.</em></p></li>
+<li><p>SteamCharts (steamcharts.com) — hourly player counts, peak history, trend comparisons.</p></li>
+<li><p>SteamDB (steamdb.info) — historical app metadata, price changes, patch logs.</p></li>
+<li><p>Kaggle: <em>Steam Games Dataset</em> — community-maintained snapshots of player counts, tags, and reviews.</p></li>
+<li><p>Video Game Insights communities (GitHub, Reddit, YouTube) analyzing Steam telemetry and lifecycle trends.</p></li>
+</ul>
+<p><strong>Lifecycle Modeling &amp; Data Visualization Techniques</strong></p>
+<ul>
+<li><p>Bass, F. M. (1969). <em>A New Product Growth Model for Consumer Durables.</em><br>
+The foundational model behind slow-burn vs.&nbsp;supernova diffusion curves.</p></li>
+<li><p>Rogers, Everett M. (2003). <em>Diffusion of Innovations.</em><br>
+Explains word-of-mouth growth trajectories reflected in slow-burn curves.</p></li>
+<li><p>Sornette, Didier. (2004). <em>Why Stock Markets Crash.</em><br>
+Useful for understanding hype spikes, super-exponential rises, and collapse patterns.</p></li>
+<li><p>Barabási, Albert-László. (2016). <em>The Universal Laws of Success.</em><br>
+The mathematics of attention, longevity, and digital fame.</p></li>
+</ul>
+<p><strong>Cultural &amp; Attention Dynamics</strong></p>
+<ul>
+<li><p>Wu, F. &amp; Huberman, B. (2007). <em>Novelty and Collective Attention.</em><br>
+Shows how digital phenomena decay in predictable power-law or exponential forms.</p></li>
+<li><p>Salganik, M. (2006). <em>Experimental Study of Inequality and Unpredictability in Cultural Markets.</em><br>
+A key insight for why slow-burn → wildfire games emerge unpredictably.</p></li>
+</ul>
+<p><strong>Inspiration for Nostalgia &amp; Revival Analysis</strong></p>
+<ul>
+<li><p>YouTube documentaries and retrospectives (Jacob Geller, NoClip, Summoning Salt).</p></li>
+<li><p>Twitch &amp; TikTok influencer effects on dormant games.</p></li>
+<li><p>Community-led revivals (e.g., <em>Titanfall 2</em>, <em>Among Us</em>, <em>Deep Rock Galactic</em>).</p></li>
+</ul>
+<p><strong>Data Storytelling Style &amp; Visualization</strong></p>
+<ul>
+<li><p>Edward Tufte. <em>Beautiful Evidence</em> (2006).</p></li>
+<li><p>Alberto Cairo. <em>The Truthful Art</em> (2016).</p></li>
+<li><p>Hadley Wickham. <em>The Grammar of Graphics</em> foundation through ggplot2.</p></li>
+<li><p>Quarto team (quarto.org) — enabling declarative, reproducible storytelling.</p></li>
+</ul>
+<p><strong>Acknowledgments</strong><br>
+This story is built in the spirit of <strong>Insightful Tales</strong>:<br>
+bringing datasets to life as narratives, revealing patterns in human behavior, digital culture, and the strange ecosystems of modern attention.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script>
+
+window.addEventListener("DOMContentLoaded", () => {
+
+  // Find the TOC container (sidebar or top)
+
+  const toc = document.querySelector("#TOC, #quarto-sidebar-toc");
+
+  if (!toc) return;
+
+
+
+  // All TOC links that point to sections on the page
+
+  const tocLinks = Array.from(
+
+    toc.querySelectorAll('a[data-scroll-target], a[href^="#"]')
+
+  );
+
+  if (!tocLinks.length) return;
+
+
+
+  // Map links -> section elements
+
+  let sections = tocLinks
+
+    .map(link => {
+
+      let target = link.getAttribute("data-scroll-target");
+
+      if (target && target.startsWith("#")) {
+
+        return document.querySelector(target);
+
+      }
+
+
+
+      const href = link.getAttribute("href");
+
+      if (href && href.startsWith("#") && href.length > 1) {
+
+        return document.querySelector(href);
+
+      }
+
+
+
+      return null;
+
+    })
+
+    .filter(Boolean);
+
+
+
+  if (!sections.length) return;
+
+
+
+  // Sort sections by vertical position, top to bottom
+
+  sections.sort((a, b) => a.offsetTop - b.offsetTop);
+
+
+
+  const clearActive = () => {
+
+    tocLinks.forEach(link => {
+
+      link.classList.remove("active");
+
+      link.removeAttribute("aria-current");
+
+    });
+
+  };
+
+
+
+  const setActiveForId = (id) => {
+
+    if (!id) return;
+
+
+
+    const link = tocLinks.find(l => {
+
+      const ds = l.getAttribute("data-scroll-target");
+
+      if (ds && ds === `#${id}`) return true;
+
+      const href = l.getAttribute("href");
+
+      if (href && href === `#${id}`) return true;
+
+      return false;
+
+    });
+
+
+
+    if (!link) return;
+
+
+
+    clearActive();
+
+    link.classList.add("active");
+
+    link.setAttribute("aria-current", "location");
+
+  };
+
+
+
+  // Update active link based on scroll position
+
+  const updateActiveOnScroll = () => {
+
+    const scrollPos =
+
+      window.scrollY || document.documentElement.scrollTop || 0;
+
+
+
+    // Adjust for fixed navbar / padding at top (tweak if needed)
+
+    const offset = 140;
+
+
+
+    let currentId = sections[0].id;
+
+
+
+    for (const sec of sections) {
+
+      if (sec.offsetTop - offset <= scrollPos) {
+
+        currentId = sec.id;
+
+      } else {
+
+        break;
+
+      }
+
+    }
+
+
+
+    setActiveForId(currentId);
+
+  };
+
+
+
+  // Run on load
+
+  updateActiveOnScroll();
+
+
+
+  // Update on scroll and resize
+
+  window.addEventListener("scroll", () => {
+
+    window.requestAnimationFrame(updateActiveOnScroll);
+
+  });
+
+
+
+  window.addEventListener("resize", () => {
+
+    // Recompute positions on resize (optional but safe)
+
+    sections.sort((a, b) => a.offsetTop - b.offsetTop);
+
+    updateActiveOnScroll();
+
+  });
+
+
+
+  // Also handle clicking TOC links (so it highlights immediately on click)
+
+  tocLinks.forEach(link => {
+
+    link.addEventListener("click", () => {
+
+      const ds = link.getAttribute("data-scroll-target");
+
+      const href = link.getAttribute("href");
+
+
+
+      let id = null;
+
+      if (ds && ds.startsWith("#")) id = ds.slice(1);
+
+      else if (href && href.startsWith("#")) id = href.slice(1);
+
+
+
+      if (id) setActiveForId(id);
+
+    });
+
+  });
+
+});
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/www\.insightfultales\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2025 Insightful Tales<br>
+<small>🦋 Uses <a href="https://analytics.google.com/" target="_blank" rel="noopener" style="color:#2b5876;text-decoration:underline;">Google Analytics</a> (IP anonymization enabled; no personal data stored)</small></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Made with ❤️ and Quarto</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
