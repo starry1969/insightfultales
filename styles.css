@@ -757,3 +757,26 @@ details.dataset > summary {
   display: inline-block;
 }*/
 
+/* ============================================
+   Mobile TOC — show margin TOC as page-level
+   ============================================ */
+
+@media (max-width: 991.98px) {
+
+  /* 1) Make sure the margin sidebar is not hidden on small screens */
+  #quarto-margin-sidebar,
+  #quarto-margin-sidebar[class*="d-none"],
+  .sidebar.margin-sidebar,
+  .sidebar.margin-sidebar[class*="d-none"] {
+    display: block !important;
+  }
+
+  /* 2) Turn it into a normal full-width block above the content */
+  #quarto-margin-sidebar {
+    position: static;
+    width: 100%;
+    max-width: 70ch;
+    margin: 1rem auto 1.5rem;
+    padding: 0 1.25rem;
+  }
+}
