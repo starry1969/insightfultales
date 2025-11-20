@@ -21,7 +21,7 @@ format:
 
 <section class="hero">
 
-<h1>[🕹]{aria-hidden="true"} The Hype Curve — Life and Death of a Gam</h1>
+<h1><span aria-hidden="true">🕹️</span> The Hype Curve — Life and Death of a Game</h1>
 
 <h2 class="hero-subtitle">
 
