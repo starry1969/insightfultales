@@ -11,35 +11,29 @@ categories: [earth-observation, climate-and-weather, global-trends, datasets]
 <!-- Dataset Badge -->
 
 <p class="dataset-header-badge">
-
-<img src="../images/dataset-icons/nasa-modis.svg" class="dataset-icon-hero" aria-hidden="true"/>
-
+  <img src="../images/dataset-icons/nasa-modis.svg"
+    alt="" 
+    class="dataset-icon-hero" 
+    aria-hidden="true"/>
 </p>
 
 <!-- Hero Section -->
 
 <section class="hero">
 
-<h1>[🛰️]{aria-hidden="true"} NASA MODIS — Global Environmental Time Series</h1>
-
-<h2 class="hero-subtitle">
-
-Earth’s rhythms through daily satellite eyes.
-
-</h2>
-
-<p class="hero-text">
-
-MODIS has watched Earth every single day since 1999. Its global measurements of vegetation, snow, fire, temperature, oceans, and atmosphere form one of the longest and richest environmental datasets ever created — a planetary diary of more than two decades.
-
-</p>
-
+<h1><span aria-hidden="true">🛰</span> NASA MODIS — Global Environmental Time Series</h1>
+  <h2 class="hero-subtitle">
+    Earth’s rhythms through daily satellite eyes.
+  </h2>
+  <p class="hero-text">
+    MODIS has watched Earth every single day since 1999. Its global measurements of vegetation, snow, fire, temperature, oceans, and atmosphere form one of the longest and richest environmental datasets ever created — a planetary diary of more than two decades.
+  </p>
 </section>
 
 <p class="dataset-subnav">
-
-<a href="../dataset-icon-language.html" class="small-link"> What does this icon mean? </a>
-
+  <a href="../dataset-icon-language.html" class="small-link">
+    What does this icon mean?
+  </a>
 </p>
 
 ## 🌐 What is MODIS?
