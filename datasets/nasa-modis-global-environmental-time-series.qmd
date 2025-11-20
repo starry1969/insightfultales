@@ -20,8 +20,8 @@ categories: [earth-observation, climate-and-weather, global-trends, datasets]
 <!-- Hero Section -->
 
 <section class="hero">
-
-<h1><span aria-hidden="true">🛰</span> NASA MODIS — Global Environmental Time Series</h1>
+  <h1><span aria-hidden="true">🛰</span> NASA MODIS — Global Environmental Time Series
+  </h1>
   <h2 class="hero-subtitle">
     Earth’s rhythms through daily satellite eyes.
   </h2>

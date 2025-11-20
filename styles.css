@@ -749,11 +749,11 @@ details.dataset > summary {
    =========================================== */
 
 /* Catch ANY dataset icon, regardless of classes */
-img[src*="images/dataset-icons/"] {
+/*img[src*="images/dataset-icons/"] {
   width: 1.75rem !important;
   max-width: 1.75rem !important;
   height: auto !important;
   vertical-align: middle;
   display: inline-block;
-}
+}*/
 
