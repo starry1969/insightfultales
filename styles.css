@@ -780,3 +780,27 @@ details.dataset > summary {
     padding: 0 1.25rem;
   }
 }
+
+/* ============================================
+   Mobile TOC — unhide margin column on phones
+   ============================================ */
+
+@media (max-width: 991.98px) {
+
+  /* 1) Unhide the margin column Quarto uses for the TOC */
+  .column-margin,
+  .column-margin.column,
+  #quarto-margin-sidebar {
+    display: block !important;
+  }
+
+  /* 2) Make that TOC column behave like a full-width block above content */
+  .column-margin,
+  #quarto-margin-sidebar {
+    position: static;
+    width: 100%;
+    max-width: 70ch;
+    margin: 1rem auto 1.5rem;
+    padding: 0 1.25rem;
+  }
+}
