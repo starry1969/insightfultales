@@ -537,6 +537,22 @@ Once you know how to read these curves, you can look at almost any digital syste
 
 -   *What is the cultural half-life of this phenomenon?*
 
+<section class="dataset-source">
+  <img src="../images/dataset-icons/steam-games.svg"
+       class="dataset-icon-small"
+       alt=""
+       aria-hidden="true">
+  <span><strong>Dataset:</strong> 
+    <a href="../datasets/steam-games-collective-taste-in-the-wild.html">NASA Modis</a>
+  </span>
+</section>
+
+<p class="dataset-subnav">
+  <a href="../dataset-icon-language.html" class="small-link">
+    What do these icons mean?
+  </a>
+</p>
+
 # 📚 **References & Credits**
 
 **Steam Data & Ecosystem Insights**

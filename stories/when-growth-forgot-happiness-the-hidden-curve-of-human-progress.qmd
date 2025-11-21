@@ -194,7 +194,7 @@ Our mission: turn data into empathy, and statistics into stories that feel *aliv
        alt=""
        aria-hidden="true">
   <span><strong>Dataset:</strong> 
-    <a href="../datasets/gapminder.html">Gapminder</a>
+    <a href="../datasets/the-gapminder-dataset-a-history-of-human-progress-told-through-data.html">Gapminder</a>
   </span>
 </section>
 
