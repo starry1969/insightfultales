@@ -1,0 +1,404 @@
+---
+title: "🌆 Lights and Lives — Cities from Space"
+subtitle: "Night-light data reveals how urban sprawl, inequality, and energy intersect."
+description: "At night, Earth turns into a map of human presence. Street grids, ports, industrial belts,and unlit gaps sketch a world where energy, wealth, and opportunity are unevenly distributed. This story reads night-light data as a living atlas of cities — where luminosity becomes a proxy for power, access, and the shape of urban sprawl."
+categories: ["urban-life", "climate-and-weather", "data-science", "global-trends"]
+keywords: ["night lights", "VIIRS", "DMSP-OLS", "urban sprawl", "inequality", "energy use", "luminosity", "remote sensing", "city lights", "global cities"]
+execute:
+  eval: false
+---
+
+<section class="hero">
+
+<h1>🌆 Lights and Lives — Cities from Space</h1>
+
+<h2 class="hero-subtitle">
+
+Night-light data reveals how urban sprawl, inequality, and energy intersect.
+
+</h2>
+
+<p class="hero-text">
+
+At night, Earth turns into a map of human presence. Street grids, ports, industrial belts,and unlit gaps sketch a world where energy, wealth, and opportunity are unevenly distributed. This story reads night-light data as a living atlas of cities — where luminosity becomes a proxy for power, access, and the shape of urban sprawl.
+
+</p>
+
+</section>
+
+::: {.callout-note appearance="minimal"}
+**How to read this page:**\
+We treat night-time lights as a proxy for human activity — not a perfect measure, but a powerful lens. Each chart is fully reproducible: adjust filters, swap cities, or plug in your own preprocessed night-light data.
+:::
+
+## 🌍 1. A planet that glows unevenly
+
+From orbit, the Earth at night is both beautiful and unsettling.
+
+Coastlines trace themselves in neon. Highways appear as filament veins. Some regions blaze so brightly that their urban boundaries blur; others — home to millions — barely register at all.
+
+Night-time satellite imagery turns one simple question into a complex one:
+
+> **Where do we put light, and what does that say about how we share energy, wealth, and space?**
+
+In this story, we use processed night-light data to look at cities as luminous organisms:
+
+-   How bright are different cities relative to their population?
+-   How unevenly is light distributed within a metropolitan area?
+-   What does the **shape** of light — tight and compact vs diffuse and sprawling — reveal about urban form?
+-   Where are cities brightening, dimming, or fracturing into new luminous islands?
+
+------------------------------------------------------------------------
+
+## 💡 2. What night-light data actually measures
+
+### 2.1 From radiance to a human-readable signal
+
+Night-light datasets typically come from sensors like:
+
+-   **DMSP-OLS** (historic, coarser data, 1990s–2013)
+-   **VIIRS Day/Night Band (DNB)** (finer resolution, ongoing)
+
+These sensors measure **radiance** — roughly, how much visible/near-visible light is emitted or reflected from each patch of the Earth.
+
+But raw radiance is messy:
+
+-   Gas flares are extremely bright and not “city life.”
+-   Snow, clouds, and moonlight can contaminate readings.
+-   Not all lights mean prosperity: prisons, industrial zones, and isolated highways glare without necessarily improving lives.
+
+So we usually work with **processed composites**:
+
+-   Cloud-masked
+-   Averaged over months or years
+-   With ephemeral or non-urban light sources suppressed where possible
+
+### 2.2 The dataset we’ll use in this story
+
+For this story, we imagine you’ve prepared two tidy datasets:
+
+1.  **City-year summary**
+
+```{r}
+library(tidyverse)
+library(lubridate)
+
+night_cities <- readr::read_csv("data/nightlights_city_year.csv")
+glimpse(night_cities)
+```
+
+```         
+Expected columns (one row per city-year):
+
+- `city` — City name (e.g., "Lagos", "Chicago")
+- `country` — Country name
+- `region` — Broad region (e.g., "Africa", "Europe", "Asia")
+- `year` — Year of observation (numeric)
+- `population_millions` — Estimated metro population (millions)
+- `gdp_per_capita` — GDP per capita (constant USD, optional)
+- `mean_radiance` — Mean night-light radiance within a metro footprint
+- `total_radiance` — Sum of radiance across the metro area
+- `lit_area_km2` — Area above a brightness threshold (sq km)
+- `core_share` — Share of radiance in the brightest 20% of pixels (compactness vs sprawl)
+- `coast_distance_km` — Distance of city center to nearest coastline (optional)
+```
+
+2.  **Radial profiles for sprawl**
+
+```{r}
+night_radial <- readr::read_csv("data/nightlights_radial_profiles.csv")
+glimpse(night_radial)
+```
+
+Expected columns (multiple rings per city-year):
+
+-   `city`, `country`, `year`
+-   `distance_km` — Distance from city center (e.g., 0–5 km, 5–10 km, …)
+-   `mean_radiance_ring` — Mean radiance in that ring
+-   `population_ring` — Estimated population in that ring (optional)
+
+These structures let us ask three big questions:
+
+1.  **How bright are cities, given their size?**
+2.  **How uneven is the distribution of light within a city?**
+3.  **How far does the glow of a city extend into the dark?**
+
+------------------------------------------------------------------------
+
+## 🏙️ 3. Brightness vs size: are big cities always brighter?
+
+If night-time lights correlate with economic activity, we might expect a simple relationship:
+
+> Bigger city → more people → more light.
+
+In practice, the relationship is noisy. Let’s look at how mean brightness scales with population across regions.
+
+```{r}
+library(ggplot2)
+
+# Focus on a recent snapshot
+recent_year <- max(night_cities$year, na.rm = TRUE)
+
+city_recent <- night_cities |>
+  filter(year == recent_year,
+         population_millions > 0.5) |>  # avoid tiny settlements
+  mutate(region = forcats::fct_reorder(region, mean_radiance, .fun = median))
+
+ggplot(city_recent,
+       aes(x = population_millions, y = mean_radiance)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = FALSE, linewidth = 0.6) +
+  scale_x_log10() +
+  scale_y_log10() +
+  facet_wrap(~ region) +
+  labs(
+    title = glue::glue("How Bright Are Big Cities? ({recent_year})"),
+    subtitle = "Log–log relationship between population and mean night-time radiance, by region.",
+    x = "Metro population (millions, log scale)",
+    y = "Mean night-time radiance (log scale)",
+    caption = "Each point is a metro area; lines show simple linear fits on log–log scales."
+  ) +
+  theme_minimal(base_size = 13)
+```
+
+We typically see:
+
+-   **Europe & East Asia**: Large cities with high, relatively consistent brightness.
+-   **South Asia & Africa**: Rapidly growing cities where population outpaces luminous infrastructure.
+-   **North America**: Bright, sprawling metros with high radiance even at modest population sizes.
+
+In some regions, being a **big city** doesn’t guarantee a bright, evenly lit urban fabric. Light becomes a measure of **how much infrastructure accompanies growth**, not just growth itself.
+
+## ⚖️ 4. Unequal light, unequal lives
+
+One of the most revealing questions we can ask is:
+
+> Within a city, how much of the light belongs to how few of the people?
+
+We can approximate this by comparing cumulative population and cumulative radiance across neighborhoods or pixels.
+
+Assume we’ve precomputed a **“light Lorenz”** summary per city:
+
+```{r}
+light_lorenz <- readr::read_csv("data/nightlights_lorenz_city.csv")
+glimpse(light_lorenz)
+```
+
+Expected columns:
+
+-   `city`, `country`, `year`
+-   `cum_pop_share` — Cumulative share of population (0 → 1)
+-   `cum_light_share` — Cumulative share of radiance (0 → 1)
+-   `region`
+
+Let’s compare a few cities with distinct urban stories:
+
+```{r}
+cities_focus <- c("Lagos", "Paris", "Los Angeles", "Mumbai")
+
+lorenz_focus <- light_lorenz |>
+  filter(year == recent_year,
+         city %in% cities_focus)
+
+ggplot(lorenz_focus,
+       aes(x = cum_pop_share, y = cum_light_share, color = city)) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  geom_line(linewidth = 1.1) +
+  coord_equal() +
+  labs(
+    title = glue::glue("Unequal Light Within Cities ({recent_year})"),
+    subtitle = "Cumulative share of night-time light vs cumulative share of population.",
+    x = "Cumulative share of population",
+    y = "Cumulative share of night-time light",
+    caption = "The farther a curve bows below the diagonal, the more concentrated the light is in a small share of space/people."
+  ) +
+  theme_minimal(base_size = 13)
+```
+
+Reading this chart:
+
+-   A city whose curve stays **close to the diagonal** has a more even distribution of light.
+-   A city with a curve that **bows sharply** indicates that a small fraction of space holds most of the light — dense, concentrated cores and dark peripheries.
+-   Comparing multiple cities becomes a way of comparing **infrastructural inequality**, not just income inequality.
+
+Night-time lights can’t tell us everything about welfare. But they can reveal where the urban fabric is **visibly uneven**.
+
+## 🌐 5. The shape of sprawl: how far does a city’s glow reach?
+
+Some cities are tight clusters of light with a sharp edge. Others dissolve gradually into faint, far-reaching halos of suburbia and exurban development.
+
+We can visualize this using **radial profiles** — how brightness decays with distance from the city center.
+
+```{r}
+cities_sprawl <- c("Los Angeles", "Paris", "Shanghai", "Johannesburg")
+
+radial_recent <- night_radial |>
+  filter(year == recent_year,
+         city %in% cities_sprawl)
+
+ggplot(radial_recent,
+       aes(x = distance_km, y = mean_radiance_ring, color = city)) +
+  geom_line(linewidth = 1.1) +
+  labs(
+    title = glue::glue("The Glow Radius of Cities ({recent_year})"),
+    subtitle = "Average night-time radiance as a function of distance from city center.",
+    x = "Distance from city center (km)",
+    y = "Mean radiance in radial ring",
+    caption = "Long, shallow tails suggest extensive sprawl; sharp drop-offs indicate more compact light footprints."
+  ) +
+  theme_minimal(base_size = 13)
+```
+
+Interpretation:
+
+-   A **slow decay** curve indicates a long, fuzzy urban edge — the light keeps going.
+-   A **steep drop-off** suggests a clear urban boundary, perhaps due to planning, geography, or policy.
+-   Two cities with similar populations can have radically different **spatial energy signatures**.
+
+If we overlay population by ring, we can even ask: *Where is the mismatch between where people live and where the light is?*
+
+## 📈 6. Cities that brighten, cities that dim
+
+Lights don’t just show space — they show **change over time**.
+
+Some cities brighten steadily as the grid extends and incomes rise. Others brighten at the edges while their cores dim, hinting at shifting activity patterns, suburbanization, or deindustrialization.
+
+Let’s look at trajectories for a diverse set of cities:
+
+```{r}
+cities_time <- c("Lagos", "Dhaka", "Chicago", "Berlin", "São Paulo")
+
+city_trends <- night_cities |>
+  filter(city %in% cities_time)
+
+ggplot(city_trends,
+       aes(x = year, y = mean_radiance, color = city)) +
+  geom_line(linewidth = 1.1) +
+  geom_point(size = 1.3) +
+  labs(
+    title = "Brightening and Dimming Cities Over Time",
+    subtitle = "Mean night-time radiance for selected metros, across years.",
+    x = "Year",
+    y = "Mean radiance",
+    caption = "Upward trends often reflect electrification and economic growth; plateaus or declines may signal saturation, efficiency gains, or changing land use."
+  ) +
+  theme_minimal(base_size = 13)
+```
+
+We might see:
+
+-   **Explosive brightening** in emerging megacities.
+-   **Smoother, slower growth** in already wealthy metros.
+-   **Flat or declining trends** where industries have moved, or where cities are densifying without increasing light.
+
+You can extend this to GDP per capita, electrification rates, or emissions — using light as a visual companion to conventional indicators.
+
+## 🔌 7. Light per person: a rough currency of energy access
+
+If we divide total radiance by population, we get a rough metric:
+
+> **Light per person** = total_radiance / population
+
+It’s far from perfect, but as a comparative index it can be revealing.
+
+```{r}
+intensity_recent <- city_recent |>
+  mutate(light_per_person = total_radiance / (population_millions * 1e6))
+
+ggplot(intensity_recent,
+       aes(x = gdp_per_capita, y = light_per_person, color = region)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(method = "loess", se = FALSE, linewidth = 0.7) +
+  scale_x_log10() +
+  scale_y_log10() +
+  labs(
+    title = glue::glue("Light per Person vs Income ({recent_year})"),
+    subtitle = "A rough proxy for the intersection of energy, infrastructure, and economic status.",
+    x = "GDP per capita (log scale)",
+    y = "Estimated light per person (log scale)",
+    caption = "Higher values suggest more luminous infrastructure per resident; interpretation requires care around efficiency and patterns of land use."
+  ) +
+  theme_minimal(base_size = 13)
+```
+
+Patterns to watch:
+
+-   Regions where income rises faster than light: efficiency gains, dense housing, stricter lighting policies.
+-   Regions where light explodes with modest income gains: rapid grid expansion, car-oriented sprawl, or energy-intensive industries.
+
+Light here becomes a crude but evocative **currency of visibility and access**.
+
+## 🚫 8. What lights can’t see (and why that matters)
+
+The seduction of night-time imagery is its simplicity: bright means “developed”, dark means “left behind.” Reality is messier.
+
+Night lights **cannot** directly see:
+
+-   The quality of housing or labor conditions.
+-   Whether energy is clean or fossil-derived.
+-   Whether bright light is freedom (safe streets) or surveillance (floodlit walls).
+-   Quiet forms of wealth — digital economies, services, and high-value work in dim offices.
+
+What they *do* capture extraordinarily well is **the footprint of energy-intensive infrastructure** — roads, ports, factories, malls, and dense residential grids.
+
+So the right question becomes:
+
+> Not “Is this place developed?” but “What **kind** of development does this luminous footprint suggest?”
+
+## ✨ 9. Lights as a vocabulary of urban form
+
+Satellite night lights give us a new vocabulary for cities:
+
+-   **Sharp-edged cores** vs **soft halos**
+-   **Single dominant cluster** vs **polycentric constellations**
+-   **Linear corridors** of light along rivers, coasts, or highways
+-   **Isolated flares** of industrial complexes and ports
+
+You can imagine a future where cities are described not just by population and GDP, but by their:
+
+-   **Luminous compactness**
+-   **Sprawl tail length**
+-   **Light–population inequality index**
+-   **Temporal brightening profile**
+
+Each of these becomes a way to compare cities as living systems.
+
+## ➡️ 10. Where to go from here
+
+This story barely scratches the surface of what’s possible with night-light data.
+
+Ideas for further exploration:
+
+-   **Resilience:** How do lights flicker and recover around disasters, blackouts, or conflicts?
+-   **Seasonality:** How do festive periods or monsoon seasons change the luminous texture of regions?
+-   **Policy impacts:** Before/after analyses of electrification programs, zoning reforms, or efficiency standards.
+-   **Climate:** Linking luminous sprawl to commuting patterns, vehicle miles traveled, or emissions.
+
+Night-time lights are not a perfect proxy for human well-being. But they are one of the few global, consistent, high-frequency measures we have of **how we inhabit the dark**.
+
+<p class="dataset-subnav">
+  <a href="../dataset-icon-language.html" class="small-link">
+    What do these icons mean?
+  </a>
+</p>
+
+## 📚 References and credits
+
+-   **NASA / NOAA VIIRS Night-time Lights** — Day/Night Band composites processed for cloud masking and stray-light filtering.
+-   **DMSP-OLS Night-time Lights** — Historic low-light imaging of Earth at night, 1990s–2013.
+-   Various research efforts on night lights and development, including studies on:
+    -   Mapping electrification progress.
+    -   Estimating economic activity in data-sparse regions.
+    -   Quantifying urban sprawl and land-use change.
+
+Data pre-processing steps — including cloud masking, monthly-to-annual compositing, thresholding of gas flares, and city footprint definitions — should be documented in your site’s dataset page for **NASA / NOAA Night Lights**.
+
+## 🔗 See also on Insightful Tales
+
+-   🌍 **Geography of Luck** — On the accidents of latitude, climate, and opportunity.
+-   🌏 **When Growth Forgot Happiness** — A Gapminder journey through wealth and well-being.
+-   🛰️ **Planetary Pulse** — Satellite time series of Earth’s rhythms in vegetation, snow, and fire.
+
+Together, these stories form a quiet thesis:
+
+> From orbit, the world’s inequalities are visible not just in charts, but in where the light falls — and where it does not.

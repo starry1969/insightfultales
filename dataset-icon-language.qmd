@@ -249,24 +249,26 @@ This icon hints at **remote sensing and swaths of imagery**, where each pixel is
 
 ------------------------------------------------------------------------
 
-## 🌆 Global Urban Footprint — Where the World Is Built
+## 🌃 NASA / NOAA Night-Time Lights — Earth’s Nocturnal Footprint
 
 :::: icon-explainer
-<img src="images/dataset-icons/global-urban-footprint.svg" class="dataset-badge-icon" aria-hidden="true"/>
+<img src="images/dataset-icons/night-lights.svg" class="dataset-badge-icon" aria-hidden="true"/>
 
 ::: icon-explainer-text
 **What you see**
 
--   A gently faceted “ground” shape.
--   Several small, blocky rectangles sitting on top of it.
+- A cyan circle frame, like all Insightful Tales dataset icons.  
+- A sweeping, diagonal arc — a band of glow across the circle.  
+- Two tight clusters of small dots, plus scattered dots toward the edges.
 
 **What it represents**
 
--   The **ground patch** is land — a slice of the Earth’s surface.
--   The **blocks** are built-up areas: urban clusters and structures.
--   The **circle** is the global coverage of the dataset.
+- The **arc** is the luminous belt of cities: dense corridors of artificial light seen from orbit.  
+- The **clusters of dots** are bright metropolitan cores and polycentric city regions.  
+- The **sparser dots** at the periphery hint at sprawl, small towns, and uneven access to light.  
+- The **circle** is the global coverage of the night-lights dataset — a planetary view of energy use, infrastructure, and urban form.
 
-The icon expresses GUF as a map of **where humanity has concretized the landscape**.
+This icon says: **a dataset about where the world glows after dark** — how light, cities, and inequality map onto the Earth’s surface.
 :::
 ::::
 

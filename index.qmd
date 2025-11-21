@@ -125,7 +125,7 @@ how trends surge, communities form, and nostalgia revives titles long thought do
 
 <details class="story">
 
-<summary>[🌆]{aria-hidden="true"} <strong>Lights and Lives</strong> — Cities from Space</summary>
+<summary>[🌆]{aria-hidden="true"} <a href="stories/lights-and-lives-cities-from-space.html"><strong>Lights and Lives</strong></a> — Cities from Space</summary>
 
 Night-light data reveals how urban sprawl, inequality, and energy intersect.\
 A story told not in words but in luminous patterns across the Earth’s surface.
@@ -260,11 +260,11 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary><img src="images/dataset-icons/global-urban-footprint.svg" class="dataset-badge-icon" aria-hidden="true"/> <strong>Global Urban Footprint</strong> — Cities from Space</summary>
+<summary><img src="images/dataset-icons/night-lights.svg" class="dataset-badge-icon" aria-hidden="true"/> <strong>NASA / NOAA Night-Time Lights Dataset</strong> — Earth’s Nocturnal Footprint, Seen from Space</summary>
 
-**What it is:** High-resolution, satellite-derived urban extent worldwide.\
-**Why it’s worthy:** Comparable geometry of cities across cultures and terrains.\
-**Story sparks:** Edge growth vs. infill; coastal constraints; night-lights vs. census discrepancies.
+**What it is:** Global night-light radiance from VIIRS (500 m) and historic DMSP-OLS (1 km), capturing human presence, energy use, and urban form through the glow of artificial illumination.\
+**Why it’s worthy:** Night lights bypass missing statistics — revealing electrification, urbanization, inequality, and economic shifts in places where traditional data is sparse or outdated. One of the few globally consistent measures of human activity across both space and time.\
+**Story sparks:** Urban sprawl “glow radius”; brightening vs. dimming cities; luminous inequality; coastal metro chains; blackouts as economic fingerprints; polycentric city clusters; the rise of megacities.
 
 </details>
 
