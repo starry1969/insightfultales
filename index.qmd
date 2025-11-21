@@ -248,7 +248,7 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 <details class="dataset">
 
-<summary><img src="images/dataset-icons/steam-games.svg" class="dataset-badge-icon" aria-hidden="true"/> <strong>Steam Games</strong> — Collective Taste in the Wild</summary>
+<summary><img src="images/dataset-icons/steam-games.svg" class="dataset-badge-icon" aria-hidden="true"/> <a href="datasets/steam-games-collective-taste-in-the-wild.html"><strong>Steam Games</strong></a> — Collective Taste in the Wild</summary>
 
 **What it is:** Game metadata, reviews, tags, and (often) playtime stats.\
 **Why it’s worthy:** Social proof, hype cycles, networked preference landscapes.\

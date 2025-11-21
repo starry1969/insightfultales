@@ -901,5 +901,61 @@
     "title": "Weather Memory",
     "section": "🕊️ Gentle call to curiosity",
     "text": "🕊️ Gentle call to curiosity\nWhat other forms of memory might our systems hold?"
+  },
+  {
+    "objectID": "datasets/steam-games-collective-taste-in-the-wild.html",
+    "href": "datasets/steam-games-collective-taste-in-the-wild.html",
+    "title": "🎮 Steam Games — Collective Taste in the Wild",
+    "section": "",
+    "text": "What does this icon mean?"
+  },
+  {
+    "objectID": "datasets/steam-games-collective-taste-in-the-wild.html#what-this-dataset-is",
+    "href": "datasets/steam-games-collective-taste-in-the-wild.html#what-this-dataset-is",
+    "title": "🎮 Steam Games — Collective Taste in the Wild",
+    "section": "🌐 What This Dataset Is",
+    "text": "🌐 What This Dataset Is\nThe Steam dataset is a living atlas of the gaming universe, blending:\n\ngame metadata\n\ngenre + tag networks\n\nuser reviews with sentiment patterns\n\npricing and discount histories\n\nplaytime distributions\n\npopularity and wishlist signals\n\nSteam looks like a storefront, but behaves like a global preference engine.\nEvery row reflects what millions of people choose to play, love, and recommend — often obsessively."
+  },
+  {
+    "objectID": "datasets/steam-games-collective-taste-in-the-wild.html#why-this-dataset-matters",
+    "href": "datasets/steam-games-collective-taste-in-the-wild.html#why-this-dataset-matters",
+    "title": "🎮 Steam Games — Collective Taste in the Wild",
+    "section": "⭐ Why This Dataset Matters",
+    "text": "⭐ Why This Dataset Matters\nMost datasets describe behavior.\nThis one describes desire.\nIt merges:\n\nattention (hours played)\n\naffect (sentiment + reviews)\n\neconomics (pricing, discounts, elasticity)\n\nculture (tags, themes, trends)\n\nnetwork effects (community + discovery)\n\nSteam becomes a natural laboratory for:\n\nbehavioral economics\n\ncultural analytics\n\nnetwork science\n\nhype-cycle modeling\n\ncomputational sociology\n\nIt is a rare dataset where emotion, culture, markets, and communities intersect."
+  },
+  {
+    "objectID": "datasets/steam-games-collective-taste-in-the-wild.html#genre-constellations",
+    "href": "datasets/steam-games-collective-taste-in-the-wild.html#genre-constellations",
+    "title": "🎮 Steam Games — Collective Taste in the Wild",
+    "section": "🌌 1. Genre Constellations",
+    "text": "🌌 1. Genre Constellations\nCreate network graphs where:\n\nRPGs form bright galaxies\n\ncozy games cluster near the cultural warm-core\n\npixel-art indies disperse like a shimmer of stars\n\nsurvival-crafting titles form tectonic ridges\n\nSteam becomes a celestial chart of taste."
+  },
+  {
+    "objectID": "datasets/steam-games-collective-taste-in-the-wild.html#life-cycle-of-a-hit",
+    "href": "datasets/steam-games-collective-taste-in-the-wild.html#life-cycle-of-a-hit",
+    "title": "🎮 Steam Games — Collective Taste in the Wild",
+    "section": "🕰️ 2. Life Cycle of a Hit",
+    "text": "🕰️ 2. Life Cycle of a Hit\nGames can be categorized by their popularity curves:\n\nThe Meteor — viral spike, fast fade (Among Us)\n\nThe Slow Bloom — quiet growth, strong resilience (RimWorld)\n\nThe Eternal Flame — never dies (CS:GO, Skyrim)\n\nThe Long Burn — stable plateau for years (Stardew Valley)\n\nPopularity becomes ecological."
+  },
+  {
+    "objectID": "datasets/steam-games-collective-taste-in-the-wild.html#price-elasticity-vs.-review-sentiment",
+    "href": "datasets/steam-games-collective-taste-in-the-wild.html#price-elasticity-vs.-review-sentiment",
+    "title": "🎮 Steam Games — Collective Taste in the Wild",
+    "section": "💸 3. Price Elasticity vs. Review Sentiment",
+    "text": "💸 3. Price Elasticity vs. Review Sentiment\nA natural experiment in digital economics:\n\nDo discounts increase sentiment?\n\nDo premium titles attract more positive reviews?\n\nAre negative reviews concentrated at full price?\n\nHow quickly do players respond to 30%, 50%, 75% sales?\n\nPlotting price vs. sentiment creates a value plane:\n\nhigh value / low cost\n\nprestige premium\n\noverpriced tension\n\nbeloved bargains"
+  },
+  {
+    "objectID": "datasets/steam-games-collective-taste-in-the-wild.html#related-research-inspiration",
+    "href": "datasets/steam-games-collective-taste-in-the-wild.html#related-research-inspiration",
+    "title": "🎮 Steam Games — Collective Taste in the Wild",
+    "section": "Related Research & Inspiration",
+    "text": "Related Research & Inspiration\n\nAnderson et al. (2020), The Dynamics of Digital Attention\n\nCultural Analytics Lab — genre mapping methodologies\n\nValve Corporation — discovery queue mechanics\n\nNetwork science literature on clustering & semantic drift"
+  },
+  {
+    "objectID": "datasets/steam-games-collective-taste-in-the-wild.html#attribution",
+    "href": "datasets/steam-games-collective-taste-in-the-wild.html#attribution",
+    "title": "🎮 Steam Games — Collective Taste in the Wild",
+    "section": "Attribution",
+    "text": "Attribution\nThis dataset interpretation and narrative created for\nInsightful Tales — Data Stories That See the World Differently.\n© 2025 Insightful Tales. All rights reserved."
   }
 ]

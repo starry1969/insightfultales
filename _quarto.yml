@@ -58,6 +58,8 @@ website:
             text: "🛒  UCI Online Retail"
           - href: datasets/nasa-modis-global-environmental-time-series.qmd
             text: "🛰️ NASA MODIS"
+          - href: datasets/steam-games-collective-taste-in-the-wild.qmd
+            text: "🎮 Steam Games"
       - text: "<img src='/images/top-nav-icons/about-icon.png' alt='About Insightful Tales' loading='lazy' width='18' height='18' class='nav-icon'> About"
         menu: 
           - href: about.qmd
@@ -78,7 +80,7 @@ format:
     theme: flatly
     css: styles.css
     toc: true
-    toc-title: "Navigate"
+    toc-title: "🧭 Navigate"
     toc-location: right
     toc-depth: 3
     code-fold: show

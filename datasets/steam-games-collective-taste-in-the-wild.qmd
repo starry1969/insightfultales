@@ -1,0 +1,253 @@
+---
+title: "🎮 Steam Games — Collective Taste in the Wild"
+subtitle: "How millions of players reveal the physics of digital desire."
+description: "Steam game metadata, user reviews, tags, prices, and playtime create one of the richest behavioral datasets in the digital world — revealing patterns of taste, hype, emotion, and cultural drift across millions of players."
+categories: ["digital-culture", "behavioral-data", "gaming", "data-science"]
+keywords: ["Steam dataset", "game metadata", "reviews", "user sentiment", "hype cycles", "preference landscapes", "genre clustering", "price elasticity", "playtime analysis", "digital culture", "collective taste"]
+format:
+  html:
+    number-sections: false
+---
+
+<!-- Dataset Badge -->
+
+<p class="dataset-header-badge">
+
+<img src="../images/dataset-icons/steam-games.svg" class="dataset-icon-hero" aria-hidden="true"/>
+
+</p>
+
+<!-- Hero Section -->
+
+<section class="hero">
+
+<h1>[🎮]{aria-hidden="true"} Steam Games — Collective Taste in the Wild</h1>
+
+<h2 class="hero-subtitle">
+
+How millions of players reveal the physics of digital desire.
+
+</h2>
+
+<p class="hero-text">
+
+Steam game metadata, user reviews, tags, prices, and playtime create one of the richest behavioral datasets in the digital world — revealing patterns of taste, hype, emotion, and cultural drift across millions of players.
+
+</p>
+
+</section>
+
+<p class="dataset-subnav">
+
+<a href="../dataset-icon-language.html" class="small-link"> What does this icon mean? </a>
+
+</p>
+
+## 🌐 What This Dataset Is
+
+The Steam dataset is a living atlas of the gaming universe, blending:
+
+-   **game metadata**\
+-   **genre + tag networks**\
+-   **user reviews with sentiment patterns**\
+-   **pricing and discount histories**\
+-   **playtime distributions**\
+-   **popularity and wishlist signals**
+
+Steam looks like a storefront, but behaves like a global **preference engine**.
+
+Every row reflects **what millions of people choose to play, love, and recommend** — often obsessively.
+
+------------------------------------------------------------------------
+
+## ⭐ Why This Dataset Matters
+
+Most datasets describe *behavior*.\
+This one describes *desire*.
+
+It merges:
+
+-   **attention (hours played)**\
+-   **affect (sentiment + reviews)**\
+-   **economics (pricing, discounts, elasticity)**\
+-   **culture (tags, themes, trends)**\
+-   **network effects (community + discovery)**
+
+Steam becomes a natural laboratory for:
+
+-   behavioral economics\
+-   cultural analytics\
+-   network science\
+-   hype-cycle modeling\
+-   computational sociology
+
+It is a rare dataset where **emotion, culture, markets, and communities intersect.**
+
+------------------------------------------------------------------------
+
+# 🧭 A Conceptual Map of the Dataset
+
+Think of this dataset as a **3-dimensional physics engine of taste**.
+
+### 1. **Topography of Taste**
+
+Genres form mountain ranges.\
+Tags create river deltas.\
+Communities cluster into small cultural islands.
+
+### 2. **Physics of Popularity**
+
+Hit games evolve like cosmic events:
+
+-   **Launch ignition**\
+-   **Viral boom**\
+-   **Plateau equilibrium**\
+-   **Long-tail sustain**\
+-   **Decay + revival (sales, updates, mods)**
+
+Failures behave like dim stars: briefly visible, then fading.
+
+### 3. **Price Elasticity & Emotion**
+
+Steam lets us quantify the intersection of:
+
+-   perceived value\
+-   sentiment trajectory\
+-   economic incentives\
+-   discount shockwaves
+
+A game is not priced in dollars —\
+**it's priced in hours.**
+
+------------------------------------------------------------------------
+
+# 🔭 What You Can Explore With This Dataset
+
+## 🌌 1. Genre Constellations
+
+Create network graphs where:
+
+-   RPGs form bright galaxies\
+-   cozy games cluster near the cultural warm-core\
+-   pixel-art indies disperse like a shimmer of stars\
+-   survival-crafting titles form tectonic ridges
+
+Steam becomes a **celestial chart of taste**.
+
+------------------------------------------------------------------------
+
+## 🕰️ 2. Life Cycle of a Hit
+
+Games can be categorized by their popularity curves:
+
+-   **The Meteor** — viral spike, fast fade (*Among Us*)\
+-   **The Slow Bloom** — quiet growth, strong resilience (*RimWorld*)\
+-   **The Eternal Flame** — never dies (*CS:GO*, *Skyrim*)\
+-   **The Long Burn** — stable plateau for years (*Stardew Valley*)
+
+Popularity becomes ecological.
+
+------------------------------------------------------------------------
+
+## 💸 3. Price Elasticity vs. Review Sentiment
+
+A natural experiment in digital economics:
+
+-   Do discounts increase sentiment?\
+-   Do premium titles attract more positive reviews?\
+-   Are negative reviews concentrated at full price?\
+-   How quickly do players respond to 30%, 50%, 75% sales?
+
+Plotting price vs. sentiment creates a **value plane**:
+
+-   high value / low cost\
+-   prestige premium\
+-   overpriced tension\
+-   beloved bargains
+
+------------------------------------------------------------------------
+
+# 🎨 A Human-Centric Peek at the Schema
+
+``` text
+game_id:        The fingerprint of a digital world  
+title:          Its name in our shared cultural mind  
+genres:         Coordinates in taste space  
+tags:           Emotional descriptors assigned by players  
+price:          Its economic gravity  
+discounts:      Shockwaves of purchasing behavior  
+reviews:        Collective emotional voice  
+positive_pct:   Approval energy  
+playtime:       Devotion, measured in hours  
+release_date:   Cultural entry point
+```
+
+This is not a table.\
+This is a story engine.
+
+# 🌱 Story Sparks
+
+### Potential Insightful Tales stories:
+
+-   **Genre Constellations** — a cosmic map of taste\
+-   **Life Cycle of Hits** — modeling cultural lifetimes\
+-   **Price Elasticity vs Sentiment** — the economics of satisfaction\
+-   **The Cozy Game Renaissance** — comfort as counterculture\
+-   **The Nostalgia Effect** — why retro art styles pull us back\
+-   **The Update Paradox** — can patches resurrect fading games?\
+-   **Taste Drift Over Time** — youth vs. late Gen X vs. Millennials vs. Gen Z
+
+Each spark is a doorway to an entirely new universe.
+
+# 🧑‍💻 How to Use This Dataset
+
+### You can use this dataset to:
+
+-   cluster genres using graph theory\
+-   model long-term engagement patterns\
+-   detect hype cycles\
+-   forecast review sentiment\
+-   compare AAA giants vs micro-indies\
+-   study pricing psychology\
+-   analyze the sociology of online communities\
+-   examine taste drift across years
+
+Steam is one of the richest datasets for understanding digital culture at scale.
+
+# 🪞 Philosophical Note
+
+> Steam is not just a marketplace\
+> — it is a mirror.
+
+Every review, wishlist, refund, and hour logged is a tiny signal of:
+
+-   curiosity\
+-   identity\
+-   escapism\
+-   community\
+-   emotion
+
+This dataset captures not just games,\
+but the emotional signature of how humans explore digital worlds.
+
+# 📚 Credits & References Primary Data Sources
+
+-   **Steam Web API** — official metadata, ownership indicators\
+-   **SteamSpy** — aggregate player counts and demographic traces\
+-   **SteamCharts** — concurrent player over-time data\
+-   **Kaggle: Steam Games Dataset** — community-curated supplemental tables\
+-   **Steam Storefront Pages** — pricing, discounts, tags, reviews\
+-   **Steam Reviews API** — user sentiment + text reviews
+
+## Related Research & Inspiration
+
+-   Anderson et al. (2020), The Dynamics of Digital Attention\
+-   Cultural Analytics Lab — genre mapping methodologies\
+-   Valve Corporation — discovery queue mechanics\
+-   Network science literature on clustering & semantic drift
+
+## Attribution
+
+This dataset interpretation and narrative created for\
+Insightful Tales — Data Stories That See the World Differently.\
+© 2025 Insightful Tales. All rights reserved.
