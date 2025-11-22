@@ -641,11 +641,25 @@ details.dataset > summary {
   grid-template-columns: 100px 1fr;  /* icon left, text right */
   gap: 1.25rem;                      /* spacing between icon + text */
   align-items: start;
-  padding: 1.25rem 1.5rem;
-  margin: 1.5rem 0;
-  background: rgba(47, 57, 76, 0.8); /* subtle card */
-  border: 1px solid rgba(56, 189, 248, 0.25); /* cyan tint border */
-  border-radius: 1rem;               /* soft card shape */
+  /*padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;*/
+  /*background: rgba(47, 57, 76, 0.8);*/ /* subtle card */
+  /*border: 1px solid rgba(56, 189, 248, 0.25);*/ /* cyan tint border */
+  /*border-radius: 1rem;*/               /* soft card shape */
+  background-image: url("images/hero-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  padding: 1.5rem 2rem;
+  border-radius: 1.5rem;
+  color: white;
+  margin-bottom: 2.5rem;
+  text-align: left;
+
+  /* This prevents the hero from bleeding outside its own section */
+  position: relative;
+  overflow: hidden;
 }
 
 /* The icon in the left column */
@@ -666,7 +680,7 @@ details.dataset > summary {
 
 /* Bold headings inside explanation */
 .icon-explainer-text strong {
-  color: var(--color-brand-accent, #38BDF8);
+  color: var(--color-brand-dark, #0F172A);
   font-weight: 600;
 }
 
