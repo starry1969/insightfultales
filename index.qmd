@@ -256,11 +256,11 @@ Each of these datasets offers more than numbers—they’re story engines. Click
 
 </details>
 
-<!-- Global Urban Footprint -->
+<!-- NASA / NOAA Night-Time Lights -->
 
 <details class="dataset">
 
-<summary><img src="images/dataset-icons/night-lights.svg" class="dataset-badge-icon" aria-hidden="true"/> <strong>NASA / NOAA Night-Time Lights Dataset</strong> — Earth’s Nocturnal Footprint, Seen from Space</summary>
+<summary><img src="images/dataset-icons/night-lights.svg" class="dataset-badge-icon" aria-hidden="true"/> <a href="datasets/nasa-noaa-night-time-lights-earths-nocturnal-footprint-seen-from-space.html"><strong>NASA / NOAA Night-Time Lights Dataset</strong></a> — Earth’s Nocturnal Footprint, Seen from Space</summary>
 
 **What it is:** Global night-light radiance from VIIRS (500 m) and historic DMSP-OLS (1 km), capturing human presence, energy use, and urban form through the glow of artificial illumination.\
 **Why it’s worthy:** Night lights bypass missing statistics — revealing electrification, urbanization, inequality, and economic shifts in places where traditional data is sparse or outdated. One of the few globally consistent measures of human activity across both space and time.\

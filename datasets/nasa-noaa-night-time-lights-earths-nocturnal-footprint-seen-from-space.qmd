@@ -1,0 +1,373 @@
+---
+title: "🌌 NASA / NOAA Night-Time Lights — Earth’s Nocturnal Footprint, Seen from Space"
+subtitle: "Global human activity traced by the glow of artificial light."
+description: >
+  Global night-light radiance from VIIRS (500 m) and historic DMSP-OLS (1 km), capturing human presence,
+  energy use, and urban form through the glow of artificial illumination — one of the few globally consistent
+  measures of human activity across both space and time.
+categories: [datasets, remote-sensing, urban-life, global-trends, human-progress]
+keywords: [
+  night-time lights,
+  VIIRS,
+  DMSP-OLS,
+  remote sensing,
+  urbanization,
+  electrification,
+  inequality,
+  global development,
+  NASA,
+  NOAA
+]
+---
+
+<!-- Dataset Badge -->
+
+<p class="dataset-header-badge">
+
+<img src="../images/dataset-icons/night-lights.svg" class="dataset-icon-hero" aria-hidden="true"/>
+
+</p>
+
+<!-- Hero Header -->
+
+<section class="hero">
+
+<h1>[🌌️]{aria-hidden="true"}NASA / NOAA Night-Time Lights — Earth’s Nocturnal Footprint, Seen from Space</h1>
+
+<h2 class="hero-subtitle">
+
+Global human activity traced by the glow of artificial light.
+
+</h2>
+
+<p class="hero-text">
+
+Global night-light radiance from VIIRS (500 m) and historic DMSP-OLS (1 km), capturing human presence, energy use, and urban form through the glow of artificial illumination — one of the few globally consistent measures of human activity across both space and time.
+
+</p>
+
+</section>
+
+<!-- Refer to Dataset Icon Language -->
+
+<p class="dataset-subnav">
+
+<a href="../dataset-icon-language.html" class="small-link"> What does this icon mean? </a>
+
+</p>
+
+------------------------------------------------------------------------
+
+## 🌍 What This Dataset Is
+
+**Short version:**\
+Global night-light radiance from **VIIRS (500 m)** and historic **DMSP-OLS (1 km)**, capturing the luminous fingerprint of human presence — electricity, settlement, economic activity, and the glowing skin of cities across the planet.
+
+**Why it exists:**\
+Satellites don’t sleep. As the Earth turns into night, sensors like VIIRS and DMSP-OLS watch the world light up — cities, roads, fishing fleets, gas flares, industrial sites. Those photons are turned into gridded data products, pixel by pixel, year after year.
+
+**Why it’s special:**
+
+-   It covers **almost the entire planet**, **consistently**, for **decades**.\
+-   It works especially well where **censuses are infrequent** or **economic statistics are unreliable**.\
+-   It directly visualizes **electrification**, **urbanization**, and **inequality** without needing a survey form.
+
+Night lights are one of the rare datasets where the first glance is already a story.
+
+------------------------------------------------------------------------
+
+## 💡 Why It’s Worthy
+
+Traditional data answers questions like:\
+\> “What is the GDP of this region?”\
+\> “How many people live here?”
+
+Night-time lights let us ask questions like:\
+\> “Where does the world actually glow?”\
+\> “Who is being left in the dark?”\
+\> “Which cities are brightening, fading, or merging together?”
+
+They are worthy because they:
+
+-   **Bypass missing statistics.** In regions with weak statistical systems, night lights still tell us who has power (literally).\
+-   **Reveal inequality.** The contrast between bright cores and dark peripheries is a visceral picture of uneven development.\
+-   **Capture transitions.** Electrification, urban expansion, post-disaster recovery — all leave radiance fingerprints.\
+-   **Provide a long time series.** DMSP-OLS reaches back to the early 1990s; VIIRS continues the story from the 2010s.
+
+This dataset is a lantern in places where conventional numbers go missing.
+
+------------------------------------------------------------------------
+
+## 🔭 Story Sparks
+
+These are the kinds of storylines that Night-Time Lights make unusually vivid:
+
+### 1. Urban Sprawl and the “Glow Radius”
+
+Cities don’t just grow; they *leak light* into the hinterlands.
+
+-   Track the **radius of detectable glow** around a city over time.\
+-   See the difference between **compact** vs **sprawling** urban growth.\
+-   Detect **leapfrog development** — distant bright patches appearing before the official maps are updated.
+
+------------------------------------------------------------------------
+
+### 2. Brightening vs Dimming Cities
+
+Compare radiance traces for different cities:
+
+-   Who is **brightening rapidly** (industrialization, new infrastructure)?\
+-   Who is **stagnant** (plateaued brightness)?\
+-   Who is **dimming** (conflict, economic crisis, depopulation)?
+
+Night lights give you a kind of **“economic ECG”** for cities.
+
+------------------------------------------------------------------------
+
+### 3. Luminous Inequality
+
+Place a bright city core next to a dark rural region:
+
+-   The gradient between them is a map of **access to electricity**, **infrastructure**, and **opportunity**.\
+-   Within a single city, radiance can reflect **neighborhood-level inequality** — some districts blaze, others barely glow.
+
+------------------------------------------------------------------------
+
+### 4. Coastal Metro Chains
+
+From high altitude, metro regions merge into **continuous light corridors**:
+
+-   The Eastern Seaboard of the US, the Pearl River Delta, the Tokyo–Osaka corridor, the Lagos coastline — all visible as **linked constellations**.\
+-   These **polycentric megaregions** are easier to see in light than on political maps.
+
+------------------------------------------------------------------------
+
+### 5. Blackouts as Economic Fingerprints
+
+Sudden drops in light reveal something went wrong:
+
+-   Hurricanes, war, drought-driven power shortages, economic collapse.\
+-   You can measure **how far** the darkness spreads and **how long** it takes the lights to return.
+
+------------------------------------------------------------------------
+
+### 6. The Rise of Megacities
+
+Over decades, neighboring cities brighten and gradually merge into **continuous luminous blobs**:
+
+-   Night lights make the transition to *“mega-urban”* forms **visually obvious**.\
+-   They allow us to map when and where **true megacities** emerge.
+
+------------------------------------------------------------------------
+
+## 🧱 Dataset Structure
+
+Night-time lights are provided as gridded rasters. Two families matter most:
+
+### 🛰️ VIIRS Day/Night Band (DNB)
+
+-   **Provider:** NASA / NOAA\
+-   **Coverage:** Global, from 2012 onward\
+-   **Spatial resolution:** \~500 m at nadir (DNB products often distributed at this scale)\
+-   **Temporal resolution:**
+    -   Daily (with weather, moon, cloud effects)\
+    -   Monthly and annual **composites** for analysis\
+-   **Measured quantity:** Top-of-atmosphere radiance
+    -   Typically in **nW/cm²/sr**
+
+**Strengths:**
+
+-   Finer detail than DMSP-OLS\
+-   Better calibration and dynamic range\
+-   Designed with night-light science as a core use case
+
+------------------------------------------------------------------------
+
+### 🛰️ DMSP-OLS Night-Time Lights
+
+-   **Provider:** U.S. Air Force / NOAA NGDC (now NCEI)\
+-   **Coverage:** Global, \~1992–2013\
+-   **Spatial resolution:** \~1 km\
+-   **Temporal resolution:** Annual composites\
+-   **Measured quantity:** “Digital number” 0–63 (relative brightness)
+
+**Strengths:**
+
+-   Long historical record — the backbone of early night-lights research\
+-   Enables pre-VIIRS studies of urbanization and electrification
+
+**Key limitation:**\
+Bright city cores saturate at the maximum digital number, losing contrast inside very bright regions.
+
+------------------------------------------------------------------------
+
+## 🧪 How Analysts Actually Use Night-Time Lights
+
+Here are some common analysis patterns:
+
+### 1. Urban Footprint Maps
+
+-   Threshold radiance to identify **“lit” pixels**.\
+-   Group connected lit pixels into **urban polygons**.\
+-   Track **growth, fragmentation, and densification** of these footprints over time.
+
+------------------------------------------------------------------------
+
+### 2. Economic and Demographic Proxies
+
+Use brightness as a proxy for:
+
+-   Local **GDP** or **income**\
+-   **Population** density (especially where census is missing or outdated)\
+-   **Electrification** and infrastructure access
+
+Researchers often fit models like:
+
+-   *brightness → log(GDP)*\
+-   *brightness per capita → energy usage*
+
+Then they **project** these relationships into data-poor regions.
+
+------------------------------------------------------------------------
+
+### 3. Disaster, Conflict, and Recovery
+
+Compare **before/after** composites:
+
+-   Identify blackout regions after hurricanes, earthquakes, war.\
+-   Measure **time to recovery** by tracking radiance trajectory.\
+-   Distinguish **temporary outages** from longer-term economic damage.
+
+------------------------------------------------------------------------
+
+### 4. Environmental and Ecological Studies
+
+-   Map **light pollution** near sensitive ecosystems.\
+-   Study correlations with **bird migration**, **insect decline**, or **sea turtle nesting**.\
+-   Explore how human illumination spreads into previously dark environments.
+
+------------------------------------------------------------------------
+
+### 5. Infrastructure and “Phantom” Roads
+
+New roads and industrial corridors can appear in night-lights data **before** they show up in official maps:
+
+-   Faint linear features = **traffic and settlements** along new infrastructure.\
+-   Analysts use this to track **informal development** and **frontier expansion**.
+
+------------------------------------------------------------------------
+
+## ⚠️ Limitations and Caveats
+
+Night lights are powerful — but not perfect. Important caveats:
+
+-   **Saturation in bright cores**
+    -   DMSP-OLS especially compresses the brightest cities into the same top brightness bin.\
+-   **Sensor differences over time**
+    -   Different DMSP satellites, then VIIRS — calibration and cross-sensor harmonization are non-trivial.\
+-   **Clouds, snow, and atmosphere**
+    -   Cloud cover, snow, and atmospheric conditions change apparent brightness.\
+    -   Composites try to filter this out, but some artifacts remain.\
+-   **Non-city light sources**
+    -   Gas flares, fishing fleets, ships, and isolated industrial sites can look “city-like” if not masked.\
+-   **Cultural and policy factors**
+    -   Two regions with similar economic activity can differ in brightness due to lighting norms, efficiency, or regulations.
+
+The guiding principle:  
+> Night lights should be treated as **a noisy but invaluable proxy**, not a perfect measurement.
+
+------------------------------------------------------------------------
+
+## 🧰 Practical Tips for Working With Night Lights
+
+If you’re using this dataset inside an Insightful Tales analysis (or any analysis), a few habits help:
+
+1.  **Prefer composites**
+    -   Use monthly or annual composites rather than raw daily data for most stories.
+2.  **Mask out non-urban sources**
+    -   Use gas flare masks, water masks, and known fishing regions where possible.
+3.  **Normalize across years and sensors**
+    -   For long-term studies, use harmonized products or apply cross-sensor scaling.
+4.  **Log-scale brightness**
+    -   When visualizing, log-transform radiance to avoid a few bright cities dominating the map.
+5.  **Combine with other layers**
+    -   Pair with population grids, administrative boundaries, roads, or climate data to deepen interpretation.
+6.  **Tell the uncertainty story too**
+    -   Explicitly mention limitations; it builds trust and better stories.
+
+------------------------------------------------------------------------
+
+## 🔗 Used in Insightful Tales
+
+Night-time lights are a natural backbone for several Insightful Tales stories. This dataset is:
+
+-   **Planned to power**
+    -   **🌌 Cities as Constellations — Mapping the World’s Luminous Megaregions**\
+        *(planned story — night lights as a map of polycentric urban corridors)*
+        -   `/stories/cities-as-constellations.html`\
+    -   **⚡ Luminous Inequality — Who Gets the Night, Who Stays in the Dark?**\
+        *(planned story — radiance gradients as a proxy for inequality)*
+        -   `/stories/luminous-inequality.html`\
+    -   **🛰️ The Planet That Glows — A Time-Lapse of Civilization at Night**\
+        *(planned story — long-term animation of global night lights)*
+        -   `/stories/the-planet-that-glows.html`
+
+------------------------------------------------------------------------
+
+## 🎨 Why This Dataset Matters
+
+Night-time lights are almost a **manifesto in data form**:
+
+-   They turn **abstract development** into **visible glow**.\
+-   They compress the world’s economic and social geography into a single shimmering canvas.\
+-   They embody the idea that **data can be both analytical and poetic**.
+
+This dataset is a bridge between **hard measurement** and **visual storytelling** — a way to show the world we live in, as it actually shines.
+
+------------------------------------------------------------------------
+
+## 📚 References and Credits {#references-and-credits}
+
+### Official Sources
+
+-   **NOAA Earth Observation Group (EOG) – Nighttime Lights Data**
+    -   Main portal for VIIRS and DMSP-OLS night lights products.\
+    -   <https://eogdata.mines.edu/>
+-   **NASA VIIRS Day/Night Band (DNB)**
+    -   NASA Earthdata portal for VIIRS night-time products and documentation.\
+    -   <https://earthdata.nasa.gov/learn/find-data/near-real-time/viirs>
+-   **DMSP-OLS Nighttime Lights Time Series**
+    -   Historical night-time lights composites, 1990s–2013.\
+    -   <https://ngdc.noaa.gov/eog/dmsp.html>
+
+------------------------------------------------------------------------
+
+### Key Research and Methodology
+
+-   Elvidge, C. D., et al. (2017).\
+    *VIIRS Night-Time Lights in Global Urban Studies and Development Monitoring.*
+
+-   Henderson, J. V., Storeygard, A., & Weil, D. N. (2012).\
+    *Measuring Economic Growth from Outer Space.*\
+    American Economic Review, 102(2): 994–1028.
+
+-   Sutton, P. C., Elvidge, C. D., & Ghosh, T. (2007).\
+    *Estimation of Gross Domestic Product at Sub-National Scales Using Nighttime Satellite Imagery.*
+
+-   Li, X., & Zhou, Y. (2017).\
+    *Urban Mapping Using DMSP/OLS and VIIRS Night-Time Light Data: A Review.*
+
+------------------------------------------------------------------------
+
+### Credits
+
+-   **Data providers:**
+    -   NASA\
+    -   NOAA National Centers for Environmental Information (NCEI)\
+    -   Earth Observation Group (Mines Research Center)
+-   **Processing and composites:**
+    -   NOAA EOG Nighttime Lights products team.
+-   **Page design and narrative:**
+    -   “Night-Time Lights” icon from the Insightful Tales Dataset Icon Language.
+
+------------------------------------------------------------------------

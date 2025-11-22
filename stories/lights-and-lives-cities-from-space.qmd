@@ -376,6 +376,16 @@ Ideas for further exploration:
 
 Night-time lights are not a perfect proxy for human well-being. But they are one of the few global, consistent, high-frequency measures we have of **how we inhabit the dark**.
 
+<section class="dataset-source">
+  <img src="../images/dataset-icons/night-lights.svg"
+       class="dataset-icon-small"
+       alt=""
+       aria-hidden="true">
+  <span><strong>Dataset:</strong> 
+    <a href="../datasets/nasa-noaa-night-time-lights-earths-nocturnal-footprint-seen-from-space.html">NASA / NOAA Night-Time Lights</a>
+  </span>
+</section>
+
 <p class="dataset-subnav">
   <a href="../dataset-icon-language.html" class="small-link">
     What do these icons mean?

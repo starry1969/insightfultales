@@ -378,95 +378,67 @@
     "text": "📚 References\n\nWickham, H. (2014). nycflights13: Flights that departed NYC in 2013. R package version 0.1.\nCRAN R Project. nycflights13 package documentation. https://cran.r-project.org/web/packages/nycflights13/\nBureau of Transportation Statistics (BTS). On-Time Performance Data. https://transtats.bts.gov/DL_SelectFields.asp?T able_ID=236\nNOAA National Centers for Environmental Information. Integrated Surface Database (ISD).\nWickham, H., & Grolemund, G. (2017). R for Data Science. O’Reilly Media.\nTidyverse Team. nycflights13 source code repository. https://github.com/tidyverse/nycflights13"
   },
   {
-    "objectID": "datasets/index.html",
-    "href": "datasets/index.html",
-    "title": "Featured Datasets",
+    "objectID": "datasets/nasa-modis-global-environmental-time-series.html",
+    "href": "datasets/nasa-modis-global-environmental-time-series.html",
+    "title": "🌍 NASA MODIS — Global Environmental Time Series",
     "section": "",
-    "text": "📊 Featured Datasets — Where Stories Begin\nBehind every story lies a dataset waiting to be understood.\nExplore the origins, purpose, and structure of the datasets that fuel Insightful Tales.\nEach entry links to its background page — describing how the data was collected, why it matters, and what stories it can tell.\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "What does this icon mean?"
   },
   {
-    "objectID": "data-science/index.html",
-    "href": "data-science/index.html",
-    "title": "Data Science Stories",
-    "section": "",
-    "text": "🧮 Data Science Stories\nThese are the analytical backbones of Insightful Tales —\nnotebooks that explore datasets, test ideas, and illuminate patterns that later become stories.\n\n\n\n\n\n\n\n\nNo matching items"
+    "objectID": "datasets/nasa-modis-global-environmental-time-series.html#what-is-modis",
+    "href": "datasets/nasa-modis-global-environmental-time-series.html#what-is-modis",
+    "title": "🌍 NASA MODIS — Global Environmental Time Series",
+    "section": "🌐 What is MODIS?",
+    "text": "🌐 What is MODIS?\nMODIS (Moderate Resolution Imaging Spectroradiometer) is an instrument aboard NASA’s Terra (1999-present) and Aqua (2002-present) satellites.\nIt scans the entire planet every 1–2 days in 36 spectral bands, capturing:\n\nvegetation\nsnow\nice\nfires\nclouds\ndust\nsea-surface temperatures\nland-surface temperatures\natmospheric aerosols\nwater vapor\n\nMore than 26 years of continuous observations make MODIS the most consistent environmental time series in Earth’s history."
   },
   {
-    "objectID": "contact.html",
-    "href": "contact.html",
-    "title": "Contact",
-    "section": "",
-    "text": "I’d love to hear from readers, researchers, or collaborators interested in data storytelling, visualization, or related projects.\n\n💡 Feedback or story ideas? Drop a note below.\n\n🧠 Collaboration inquiries? I’m open to cross-disciplinary data projects.\n\n👉 [LinkedIn Profile](https://www.linkedin.com/in/joseph-schaffer-a6270138\n👉 GitHub Repository\nOr email me directly: joseph [at] insightfultales [dot] com"
+    "objectID": "datasets/nasa-modis-global-environmental-time-series.html#why-modis-is-special",
+    "href": "datasets/nasa-modis-global-environmental-time-series.html#why-modis-is-special",
+    "title": "🌍 NASA MODIS — Global Environmental Time Series",
+    "section": "🧩 Why MODIS Is Special",
+    "text": "🧩 Why MODIS Is Special\nMODIS isn’t one dataset — it’s a family of global products that share:\n\nconsistent processing\nlong-term continuity\nglobal coverage\nstable calibration\npredictable update cycles\nmultiple instruments (Terra + Aqua) for redundancy\n\nThis creates the rare ability to observe:\n\nseasonal rhythms\nlong-term trends\nsudden environmental interruptions\necological “pulse changes”\nfire season shifts\nsnow melt timing\nland temperature behavior\n\nMODIS is essentially a planetary vital signs monitor."
   },
   {
-    "objectID": "contact.html#get-in-touch",
-    "href": "contact.html#get-in-touch",
-    "title": "Contact",
-    "section": "",
-    "text": "I’d love to hear from readers, researchers, or collaborators interested in data storytelling, visualization, or related projects.\n\n💡 Feedback or story ideas? Drop a note below.\n\n🧠 Collaboration inquiries? I’m open to cross-disciplinary data projects.\n\n👉 [LinkedIn Profile](https://www.linkedin.com/in/joseph-schaffer-a6270138\n👉 GitHub Repository\nOr email me directly: joseph [at] insightfultales [dot] com"
+    "objectID": "datasets/nasa-modis-global-environmental-time-series.html#key-modis-data-products-used-in-insightful-tales",
+    "href": "datasets/nasa-modis-global-environmental-time-series.html#key-modis-data-products-used-in-insightful-tales",
+    "title": "🌍 NASA MODIS — Global Environmental Time Series",
+    "section": "📦 Key MODIS Data Products Used in Insightful Tales",
+    "text": "📦 Key MODIS Data Products Used in Insightful Tales\n\n🌱 Vegetation (NDVI / EVI)\nMOD13 (Terra) • MYD13 (Aqua)\n\nNDVI (Normalized Difference Vegetation Index)\nEVI (Enhanced Vegetation Index)\n16-day composites, global\n\nUsed for:\n\n“Green pulse” seasonal cycles\nLong-term greening/browning trends\n\n\n\n❄️ Snow & Ice\nMOD10 (Terra) • MYD10 (Aqua)\n\nDaily or 8-day snow cover\nSnow persistence and melt timing\n\nUsed for:\n\nWinter rhythm (“blink of snow”)\nSnow retreat mapping\n\n\n\n🔥 Active Fire / Burned Area\nMOD14 / MYD14\n\nThermal anomaly detections\nFire intensity & location\n\nUsed for:\n\nFire season “barcode” visualization\nDetecting rhythm shifts in fire timing\n\n\n\n🌡️ Land Surface Temperature\nMOD11 / MYD11\n\nDay/night land temperature\nUrban heat island structure\n\nUsed for:\n\nCity heat pulse\nComparing natural vs built environments"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About Insightful Tales",
-    "section": "",
-    "text": "🦋 Insightful Tales is a creative data storytelling project that transforms datasets into visual, narrative insights.\nEvery story is built from data — but told like literature, not statistics."
+    "objectID": "datasets/nasa-modis-global-environmental-time-series.html#modis-in-insightful-tales",
+    "href": "datasets/nasa-modis-global-environmental-time-series.html#modis-in-insightful-tales",
+    "title": "🌍 NASA MODIS — Global Environmental Time Series",
+    "section": "🧭 MODIS in Insightful Tales",
+    "text": "🧭 MODIS in Insightful Tales\nThis dataset powers multiple Insightful Tales stories, including:\n🪐  The Planet That Breathes — Tracking Earth’s Hidden Rhythms from Space \n\nFuture stories exploring:\n\ngreening vs browning regions\nwildfire rhythm changes\nurban thermal signatures\nwater cycles\nsnow pulse shortening"
   },
   {
-    "objectID": "data-science/genesis-of-data.html",
-    "href": "data-science/genesis-of-data.html",
-    "title": "The Genesis of Data — When Counting Became Knowing",
-    "section": "",
-    "text": "Where numbers first became mirrors of the world.\nWe like to imagine data as a modern concept — CSV files, databases, machine learning pipelines. But the truth is: data is as old as civilization itself. Before there were scientists, there were record-keepers. Before there were models, there were marks — clay scratches, tally sticks, and census scrolls — all born from the same instinct: to remember what mattered.\nThe Babylonians were counting grain before they were writing poems. Their cuneiform tablets, pressed by reeds into wet clay, weren’t stories — they were inventories. It was there, in those humble lists of barley and livestock, that data first became a language of power. Whoever held the counts held control — of taxes, of armies, of life itself.\nBy the time the Romans perfected their census, data had become governance. “Censere” meant “to assess,” and that act of assessment — of converting people into numbers — laid the foundation for everything from imperial logistics to modern public policy. The Census wasn’t invented by democracy; democracy was, in part, made possible because we learned to count ourselves."
+    "objectID": "datasets/nasa-modis-global-environmental-time-series.html#example-interpretations-conceptual",
+    "href": "datasets/nasa-modis-global-environmental-time-series.html#example-interpretations-conceptual",
+    "title": "🌍 NASA MODIS — Global Environmental Time Series",
+    "section": "📊 Example Interpretations (Conceptual)",
+    "text": "📊 Example Interpretations (Conceptual)\nEven without deep technical knowledge, MODIS can show:\n\nBreathing forests through annual NDVI waves\nSnow blink cycles — winter arriving and departing\nFire seasons emerging as predictable stripes\nHeat patterns distinguishing cities from nature\nCloud or dust “seasons” repeating each year\n\nMODIS data is not just scientific — it’s surprisingly story-shaped."
   },
   {
-    "objectID": "data-science/genesis-of-data.html#the-spiritual-act-of-counting",
-    "href": "data-science/genesis-of-data.html#the-spiritual-act-of-counting",
-    "title": "The Genesis of Data — When Counting Became Knowing",
-    "section": "️🔢 The Spiritual Act of Counting",
-    "text": "️🔢 The Spiritual Act of Counting\nI often think about counting not as a mechanical act, but a spiritual one — a human attempt to find order in chaos. Every tally is a quiet declaration that something exists, that it matters enough to be counted.\nFlorence Nightingale understood this profoundly. When she gathered data on deaths in the Crimean War, she wasn’t collecting for curiosity’s sake. She was fighting ignorance with numbers, transforming rows and columns into a moral argument — one so compelling that even the Queen could not ignore it. In that sense, she pioneered not just data visualization but data empathy."
+    "objectID": "datasets/nasa-modis-global-environmental-time-series.html#how-insightful-tales-processes-modis",
+    "href": "datasets/nasa-modis-global-environmental-time-series.html#how-insightful-tales-processes-modis",
+    "title": "🌍 NASA MODIS — Global Environmental Time Series",
+    "section": "🔍 How Insightful Tales Processes MODIS",
+    "text": "🔍 How Insightful Tales Processes MODIS\nFor each story, we typically:\n\nDownload selected MODIS products\nSimplify into easy-to-understand categories (snow/no snow, fire/no fire, etc.)\nSmooth using weekly or 8-day composites\nExtract rhythms (seasonal cycles, peaks/troughs, interruptions)\nVisualize with gentle colors and narrative annotations\nTranslate time-series into human language (“pulse”, “heartbeat”, “blink”)\n\nThe goal: make planetary-scale change emotionally legible."
   },
   {
-    "objectID": "data-science/genesis-of-data.html#when-the-world-scaled-up",
-    "href": "data-science/genesis-of-data.html#when-the-world-scaled-up",
-    "title": "The Genesis of Data — When Counting Became Knowing",
-    "section": "🌍 When the World Scaled Up",
-    "text": "🌍 When the World Scaled Up\nFast forward to the Victorian era: the world began to count everything. The first statistical societies formed, censuses became national events, and the idea of “objective truth through measurement” took hold. The machine age demanded data — and humanity obliged.\nThe story of data from then onward is exponential. By 1900, nearly every industrialized nation had institutionalized statistical offices. By 1950, computers were born to count faster than any human could. By 2000, data had multiplied to such a degree that it began describing us more than we described it."
+    "objectID": "datasets/nasa-modis-global-environmental-time-series.html#technical-details",
+    "href": "datasets/nasa-modis-global-environmental-time-series.html#technical-details",
+    "title": "🌍 NASA MODIS — Global Environmental Time Series",
+    "section": "🛠️ Technical Details",
+    "text": "🛠️ Technical Details\n\nResolution: 250m, 500m, or 1km depending on the product\nTemporal resolution: daily, 8-day, 16-day\nGlobal coverage\nRadiometric calibration maintained across decades\nBand coverage: 36 spectral bands (400–14,400 nm)"
   },
   {
-    "objectID": "data-science/genesis-of-data.html#the-data-of-data",
-    "href": "data-science/genesis-of-data.html#the-data-of-data",
-    "title": "The Genesis of Data — When Counting Became Knowing",
-    "section": "📊 The Data of Data",
-    "text": "📊 The Data of Data\nI find something poetic in tracing this lineage with modern tools. Using the World Bank’s historical population dataset, we can visualize how humanity’s capacity to count itself expanded almost in lockstep with its population.\n\n\n\n\n\n\nTip\n\n\n\n\n\nCode\nlibrary(tidyverse)\nlibrary(WDI)\nlibrary(janitor)\n\nowid &lt;- get_owid_world_pop()\n\n# --- WDI (1960+) ---\nwdi_raw &lt;- try(\n  WDI(indicator = \"SP.POP.TOTL\",\n      start = 1960,\n      end   = as.integer(format(Sys.Date(), \"%Y\"))),\n  silent = TRUE\n)\n\nif (inherits(wdi_raw, \"try-error\")) {\n  wdi_world &lt;- tibble(year = integer(), pop = numeric())\n} else {\n  # Filter to the global aggregate\n  wdi_world &lt;- wdi_raw %&gt;%\n    filter(iso2c == \"1W\" | country == \"World\") %&gt;%\n    select(year, pop = SP.POP.TOTL)\n}\n\n\n# --- OWID historical (ensure correct columns + units) ---\n\ntmp &lt;- owid %&gt;%\nclean_names() %&gt;%\nrename(pop = population)\n\nif (\"entity\" %in% names(tmp) && any(tolower(tmp$entity) == \"world\")) {\nowid_world &lt;- tmp %&gt;%\nfilter(tolower(entity) == \"world\", !is.na(year), !is.na(pop)) %&gt;%\ndistinct(year, .keep_all = TRUE)\n} else {\n\n# Fallback: aggregate across all entities per year\n\nowid_world &lt;- tmp %&gt;%\ngroup_by(year) %&gt;%\nsummarise(pop = sum(pop, na.rm = TRUE), .groups = \"drop\")\n}\n\n# Normalize OWID units if provided in millions\n\nif (max(owid_world$pop, na.rm = TRUE) &lt; 1e6) {\nowid_world &lt;- owid_world %&gt;% mutate(pop = pop * 1e6)\n}\n\nggplot() +\ngeom_area(data = owid_world, aes(year, pop / 1e9), alpha = 0.2) +\ngeom_line(data = wdi_world,  aes(year, pop / 1e9)) +\ngeom_vline(xintercept = 1960, linetype = \"dotted\") +\nannotate(\n\"text\",\nx = 1961,\ny = max(c(owid_world$pop, wdi_world$pop), na.rm = TRUE) / 1e9 * 0.9,\nlabel = \"Official WDI begins (1960)\",\nhjust = 0, size = 3\n) +\nlabs(\ntitle = \"World Population: 1800–present\",\nsubtitle = \"Historical (shaded, OWID/Maddison) with modern WDI overlay (solid line)\",\nx = NULL, y = \"Billions\"\n)\n\n\n\n\n\n\n\n\nFigure 1: World population since 1800, with modern WDI overlay\n\n\n\n\n\n\n\n\nMethods Note. Historical population is sourced from OWID/Maddison where available; modern population (1960–present) uses World Bank WDI SP.POP.TOTL. If the build environment lacks internet, a small offline fallback ensures the chart still renders.\n\nOverlay that with Our World in Data’s historical metrics, and you see an even deeper pattern: as soon as we can measure something, we seek to improve it. Counting life expectancy didn’t just describe longevity — it helped extend it. Tracking literacy didn’t just record education — it democratized it.\nThis is the unseen virtue of data: it doesn’t just observe reality, it amplifies intention."
-  },
-  {
-    "objectID": "data-science/genesis-of-data.html#when-counting-became-knowing",
-    "href": "data-science/genesis-of-data.html#when-counting-became-knowing",
-    "title": "The Genesis of Data — When Counting Became Knowing",
-    "section": "🔢 When Counting Became Knowing",
-    "text": "🔢 When Counting Became Knowing\nThe modern data scientist, in some sense, is a direct descendant of the temple scribe.\nWe still look for structure in chaos, still seek to compress the infinite world into finite symbols. The clay tablets became spreadsheets; the grain records became gigabytes. But the human motive remains unchanged: to understand, to predict, to improve.\nWe often hear that data is “the new oil.” I don’t think that’s true. Oil is extracted, consumed, and gone. Data, when treated properly, is more like light — it illuminates. The Babylonians’ grain counts, Nightingale’s diagrams, Tukey’s exploratory plots — all were small sparks in a long illumination that continues through every dataset we open today."
-  },
-  {
-    "objectID": "data-science/genesis-of-data.html#a-living-timeline",
-    "href": "data-science/genesis-of-data.html#a-living-timeline",
-    "title": "The Genesis of Data — When Counting Became Knowing",
-    "section": "🌱A Living Timeline",
-    "text": "🌱A Living Timeline\nI’m building an animated time-series visualization that traces this evolution: each point represents the earliest known record of a nation’s statistical data — census, agricultural, financial, environmental.\n\n\n\n\n\n\nNote\n\n\n\n\n\nCode\n# Example placeholder visualization\n\nset.seed(42)\ndf &lt;- tibble(\n        year = rep(1800:2020, each = 1),\n        countries_reporting = pmin(\n            200, round(5 + (year - 1800)^1.3 / 3000)\n        )\n    )\n\nggplot(df, aes(year, countries_reporting)) + \n    geom_line(linewidth = 1.2, color = \"#0072B2\") + \n    labs(title = \"A Living Timeline of Data\", subtitle = \"How measurement spread across nations (1800–2020)\",y = \"Countries with available data\", x = NULL)\n\n\n\n\n\n\n\n\nFigure 2: Data density over time — number of countries recording key statistics\n\n\n\n\n\n\n\nThe story the data tells is breathtaking: we are a species that counts because we care."
-  },
-  {
-    "objectID": "data-science/genesis-of-data.html#epilogue-the-infinite-ledger",
-    "href": "data-science/genesis-of-data.html#epilogue-the-infinite-ledger",
-    "title": "The Genesis of Data — When Counting Became Knowing",
-    "section": "♾️ Epilogue: The Infinite Ledger",
-    "text": "♾️ Epilogue: The Infinite Ledger\nWe are, each of us, a new line in the world’s oldest dataset — the ongoing attempt to make sense of being alive.\nThe Genesis of Data is not a past event; it’s a continuous present.\nEvery number we collect is a reflection of what we value, and every dataset we publish is a quiet hope that someone, somewhere, might find meaning in it.\nData, at its most human level, is not about numbers. It’s about noticing."
-  },
-  {
-    "objectID": "data-science/genesis-of-data.html#references",
-    "href": "data-science/genesis-of-data.html#references",
-    "title": "The Genesis of Data — When Counting Became Knowing",
-    "section": "📚 References",
-    "text": "📚 References\n\nWorld Bank Historical Population Data (1800–present)\nOur World in Data — History of Statistics\nUN Data Portal: National Census Records Archive"
+    "objectID": "datasets/nasa-modis-global-environmental-time-series.html#references-credits",
+    "href": "datasets/nasa-modis-global-environmental-time-series.html#references-credits",
+    "title": "🌍 NASA MODIS — Global Environmental Time Series",
+    "section": "📚 References & Credits",
+    "text": "📚 References & Credits\n\nPrimary Sources\n\nNASA MODIS Land Products\nhttps://modis.gsfc.nasa.gov\nNASA Earthdata\nhttps://earthdata.nasa.gov\nNASA LAADS DAAC\nhttps://ladsweb.modaps.eosdis.nasa.gov\nNSIDC MODIS Snow Products\nhttps://nsidc.org/data/modis\n\n\n\nScientific Documentation\n\n“MODIS Land Products Users’ Guide”\n“MODIS Land Surface Temperature Algorithm”\n“MODIS Vegetation Index User Guide”\n“MODIS Snow Cover Products Documentation”\n“MODIS Fire Products Overview”\n\n\n\nCredits\n\nNASA (Terra & Aqua missions)\nUSGS (Landsat, supplemental imagery)\nNSIDC (snow products)\nConceptual explanation & narrative: Insightful Tales\nAll visualizations: created in R using the tidyverse & terra packages"
   },
   {
     "objectID": "dataset-icon-language.html",
@@ -560,67 +532,172 @@
     "text": "🎨 How to Read and Use These Icons\n\nWhen you see a small badge next to a dataset name, it’s there to quickly signal the dataset’s “shape” — flights, cities, climate, economics, etc.\nWhen you see a large badge at the top of a dataset page, it’s a visual “cover” for that particular dataset, echoing the stories it can tell.\nWhen you see a small badge in a story footer (“Dataset: …”), it helps you connect the narrative you just read with the underlying dataset page, so you can explore further.\n\nOver time, this icon language is meant to feel familiar: even before you read a title, a quick glance at the symbol will tell you what kind of world you’re about to step into — flights, weather, cities, games, baseball, macroeconomics, Earth systems, and more."
   },
   {
-    "objectID": "datasets/nasa-modis-global-environmental-time-series.html",
-    "href": "datasets/nasa-modis-global-environmental-time-series.html",
-    "title": "🌍 NASA MODIS — Global Environmental Time Series",
+    "objectID": "data-science/genesis-of-data.html",
+    "href": "data-science/genesis-of-data.html",
+    "title": "The Genesis of Data — When Counting Became Knowing",
+    "section": "",
+    "text": "Where numbers first became mirrors of the world.\nWe like to imagine data as a modern concept — CSV files, databases, machine learning pipelines. But the truth is: data is as old as civilization itself. Before there were scientists, there were record-keepers. Before there were models, there were marks — clay scratches, tally sticks, and census scrolls — all born from the same instinct: to remember what mattered.\nThe Babylonians were counting grain before they were writing poems. Their cuneiform tablets, pressed by reeds into wet clay, weren’t stories — they were inventories. It was there, in those humble lists of barley and livestock, that data first became a language of power. Whoever held the counts held control — of taxes, of armies, of life itself.\nBy the time the Romans perfected their census, data had become governance. “Censere” meant “to assess,” and that act of assessment — of converting people into numbers — laid the foundation for everything from imperial logistics to modern public policy. The Census wasn’t invented by democracy; democracy was, in part, made possible because we learned to count ourselves."
+  },
+  {
+    "objectID": "data-science/genesis-of-data.html#the-spiritual-act-of-counting",
+    "href": "data-science/genesis-of-data.html#the-spiritual-act-of-counting",
+    "title": "The Genesis of Data — When Counting Became Knowing",
+    "section": "️🔢 The Spiritual Act of Counting",
+    "text": "️🔢 The Spiritual Act of Counting\nI often think about counting not as a mechanical act, but a spiritual one — a human attempt to find order in chaos. Every tally is a quiet declaration that something exists, that it matters enough to be counted.\nFlorence Nightingale understood this profoundly. When she gathered data on deaths in the Crimean War, she wasn’t collecting for curiosity’s sake. She was fighting ignorance with numbers, transforming rows and columns into a moral argument — one so compelling that even the Queen could not ignore it. In that sense, she pioneered not just data visualization but data empathy."
+  },
+  {
+    "objectID": "data-science/genesis-of-data.html#when-the-world-scaled-up",
+    "href": "data-science/genesis-of-data.html#when-the-world-scaled-up",
+    "title": "The Genesis of Data — When Counting Became Knowing",
+    "section": "🌍 When the World Scaled Up",
+    "text": "🌍 When the World Scaled Up\nFast forward to the Victorian era: the world began to count everything. The first statistical societies formed, censuses became national events, and the idea of “objective truth through measurement” took hold. The machine age demanded data — and humanity obliged.\nThe story of data from then onward is exponential. By 1900, nearly every industrialized nation had institutionalized statistical offices. By 1950, computers were born to count faster than any human could. By 2000, data had multiplied to such a degree that it began describing us more than we described it."
+  },
+  {
+    "objectID": "data-science/genesis-of-data.html#the-data-of-data",
+    "href": "data-science/genesis-of-data.html#the-data-of-data",
+    "title": "The Genesis of Data — When Counting Became Knowing",
+    "section": "📊 The Data of Data",
+    "text": "📊 The Data of Data\nI find something poetic in tracing this lineage with modern tools. Using the World Bank’s historical population dataset, we can visualize how humanity’s capacity to count itself expanded almost in lockstep with its population.\n\n\n\n\n\n\nTip\n\n\n\n\n\nCode\nlibrary(tidyverse)\nlibrary(WDI)\nlibrary(janitor)\n\nowid &lt;- get_owid_world_pop()\n\n# --- WDI (1960+) ---\nwdi_raw &lt;- try(\n  WDI(indicator = \"SP.POP.TOTL\",\n      start = 1960,\n      end   = as.integer(format(Sys.Date(), \"%Y\"))),\n  silent = TRUE\n)\n\nif (inherits(wdi_raw, \"try-error\")) {\n  wdi_world &lt;- tibble(year = integer(), pop = numeric())\n} else {\n  # Filter to the global aggregate\n  wdi_world &lt;- wdi_raw %&gt;%\n    filter(iso2c == \"1W\" | country == \"World\") %&gt;%\n    select(year, pop = SP.POP.TOTL)\n}\n\n\n# --- OWID historical (ensure correct columns + units) ---\n\ntmp &lt;- owid %&gt;%\nclean_names() %&gt;%\nrename(pop = population)\n\nif (\"entity\" %in% names(tmp) && any(tolower(tmp$entity) == \"world\")) {\nowid_world &lt;- tmp %&gt;%\nfilter(tolower(entity) == \"world\", !is.na(year), !is.na(pop)) %&gt;%\ndistinct(year, .keep_all = TRUE)\n} else {\n\n# Fallback: aggregate across all entities per year\n\nowid_world &lt;- tmp %&gt;%\ngroup_by(year) %&gt;%\nsummarise(pop = sum(pop, na.rm = TRUE), .groups = \"drop\")\n}\n\n# Normalize OWID units if provided in millions\n\nif (max(owid_world$pop, na.rm = TRUE) &lt; 1e6) {\nowid_world &lt;- owid_world %&gt;% mutate(pop = pop * 1e6)\n}\n\nggplot() +\ngeom_area(data = owid_world, aes(year, pop / 1e9), alpha = 0.2) +\ngeom_line(data = wdi_world,  aes(year, pop / 1e9)) +\ngeom_vline(xintercept = 1960, linetype = \"dotted\") +\nannotate(\n\"text\",\nx = 1961,\ny = max(c(owid_world$pop, wdi_world$pop), na.rm = TRUE) / 1e9 * 0.9,\nlabel = \"Official WDI begins (1960)\",\nhjust = 0, size = 3\n) +\nlabs(\ntitle = \"World Population: 1800–present\",\nsubtitle = \"Historical (shaded, OWID/Maddison) with modern WDI overlay (solid line)\",\nx = NULL, y = \"Billions\"\n)\n\n\n\n\n\n\n\n\nFigure 1: World population since 1800, with modern WDI overlay\n\n\n\n\n\n\n\n\nMethods Note. Historical population is sourced from OWID/Maddison where available; modern population (1960–present) uses World Bank WDI SP.POP.TOTL. If the build environment lacks internet, a small offline fallback ensures the chart still renders.\n\nOverlay that with Our World in Data’s historical metrics, and you see an even deeper pattern: as soon as we can measure something, we seek to improve it. Counting life expectancy didn’t just describe longevity — it helped extend it. Tracking literacy didn’t just record education — it democratized it.\nThis is the unseen virtue of data: it doesn’t just observe reality, it amplifies intention."
+  },
+  {
+    "objectID": "data-science/genesis-of-data.html#when-counting-became-knowing",
+    "href": "data-science/genesis-of-data.html#when-counting-became-knowing",
+    "title": "The Genesis of Data — When Counting Became Knowing",
+    "section": "🔢 When Counting Became Knowing",
+    "text": "🔢 When Counting Became Knowing\nThe modern data scientist, in some sense, is a direct descendant of the temple scribe.\nWe still look for structure in chaos, still seek to compress the infinite world into finite symbols. The clay tablets became spreadsheets; the grain records became gigabytes. But the human motive remains unchanged: to understand, to predict, to improve.\nWe often hear that data is “the new oil.” I don’t think that’s true. Oil is extracted, consumed, and gone. Data, when treated properly, is more like light — it illuminates. The Babylonians’ grain counts, Nightingale’s diagrams, Tukey’s exploratory plots — all were small sparks in a long illumination that continues through every dataset we open today."
+  },
+  {
+    "objectID": "data-science/genesis-of-data.html#a-living-timeline",
+    "href": "data-science/genesis-of-data.html#a-living-timeline",
+    "title": "The Genesis of Data — When Counting Became Knowing",
+    "section": "🌱A Living Timeline",
+    "text": "🌱A Living Timeline\nI’m building an animated time-series visualization that traces this evolution: each point represents the earliest known record of a nation’s statistical data — census, agricultural, financial, environmental.\n\n\n\n\n\n\nNote\n\n\n\n\n\nCode\n# Example placeholder visualization\n\nset.seed(42)\ndf &lt;- tibble(\n        year = rep(1800:2020, each = 1),\n        countries_reporting = pmin(\n            200, round(5 + (year - 1800)^1.3 / 3000)\n        )\n    )\n\nggplot(df, aes(year, countries_reporting)) + \n    geom_line(linewidth = 1.2, color = \"#0072B2\") + \n    labs(title = \"A Living Timeline of Data\", subtitle = \"How measurement spread across nations (1800–2020)\",y = \"Countries with available data\", x = NULL)\n\n\n\n\n\n\n\n\nFigure 2: Data density over time — number of countries recording key statistics\n\n\n\n\n\n\n\nThe story the data tells is breathtaking: we are a species that counts because we care."
+  },
+  {
+    "objectID": "data-science/genesis-of-data.html#epilogue-the-infinite-ledger",
+    "href": "data-science/genesis-of-data.html#epilogue-the-infinite-ledger",
+    "title": "The Genesis of Data — When Counting Became Knowing",
+    "section": "♾️ Epilogue: The Infinite Ledger",
+    "text": "♾️ Epilogue: The Infinite Ledger\nWe are, each of us, a new line in the world’s oldest dataset — the ongoing attempt to make sense of being alive.\nThe Genesis of Data is not a past event; it’s a continuous present.\nEvery number we collect is a reflection of what we value, and every dataset we publish is a quiet hope that someone, somewhere, might find meaning in it.\nData, at its most human level, is not about numbers. It’s about noticing."
+  },
+  {
+    "objectID": "data-science/genesis-of-data.html#references",
+    "href": "data-science/genesis-of-data.html#references",
+    "title": "The Genesis of Data — When Counting Became Knowing",
+    "section": "📚 References",
+    "text": "📚 References\n\nWorld Bank Historical Population Data (1800–present)\nOur World in Data — History of Statistics\nUN Data Portal: National Census Records Archive"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Insightful Tales",
+    "section": "",
+    "text": "🦋 Insightful Tales is a creative data storytelling project that transforms datasets into visual, narrative insights.\nEvery story is built from data — but told like literature, not statistics."
+  },
+  {
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Contact",
+    "section": "",
+    "text": "I’d love to hear from readers, researchers, or collaborators interested in data storytelling, visualization, or related projects.\n\n💡 Feedback or story ideas? Drop a note below.\n\n🧠 Collaboration inquiries? I’m open to cross-disciplinary data projects.\n\n👉 [LinkedIn Profile](https://www.linkedin.com/in/joseph-schaffer-a6270138\n👉 GitHub Repository\nOr email me directly: joseph [at] insightfultales [dot] com"
+  },
+  {
+    "objectID": "contact.html#get-in-touch",
+    "href": "contact.html#get-in-touch",
+    "title": "Contact",
+    "section": "",
+    "text": "I’d love to hear from readers, researchers, or collaborators interested in data storytelling, visualization, or related projects.\n\n💡 Feedback or story ideas? Drop a note below.\n\n🧠 Collaboration inquiries? I’m open to cross-disciplinary data projects.\n\n👉 [LinkedIn Profile](https://www.linkedin.com/in/joseph-schaffer-a6270138\n👉 GitHub Repository\nOr email me directly: joseph [at] insightfultales [dot] com"
+  },
+  {
+    "objectID": "data-science/index.html",
+    "href": "data-science/index.html",
+    "title": "Data Science Stories",
+    "section": "",
+    "text": "🧮 Data Science Stories\nThese are the analytical backbones of Insightful Tales —\nnotebooks that explore datasets, test ideas, and illuminate patterns that later become stories.\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "datasets/index.html",
+    "href": "datasets/index.html",
+    "title": "Featured Datasets",
+    "section": "",
+    "text": "📊 Featured Datasets — Where Stories Begin\nBehind every story lies a dataset waiting to be understood.\nExplore the origins, purpose, and structure of the datasets that fuel Insightful Tales.\nEach entry links to its background page — describing how the data was collected, why it matters, and what stories it can tell.\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "datasets/nasa-noaa-night-time-lights-earths-nocturnal-footprint-seen-from-space.html",
+    "href": "datasets/nasa-noaa-night-time-lights-earths-nocturnal-footprint-seen-from-space.html",
+    "title": "🌌 NASA / NOAA Night-Time Lights — Earth’s Nocturnal Footprint, Seen from Space",
     "section": "",
     "text": "What does this icon mean?"
   },
   {
-    "objectID": "datasets/nasa-modis-global-environmental-time-series.html#what-is-modis",
-    "href": "datasets/nasa-modis-global-environmental-time-series.html#what-is-modis",
-    "title": "🌍 NASA MODIS — Global Environmental Time Series",
-    "section": "🌐 What is MODIS?",
-    "text": "🌐 What is MODIS?\nMODIS (Moderate Resolution Imaging Spectroradiometer) is an instrument aboard NASA’s Terra (1999-present) and Aqua (2002-present) satellites.\nIt scans the entire planet every 1–2 days in 36 spectral bands, capturing:\n\nvegetation\nsnow\nice\nfires\nclouds\ndust\nsea-surface temperatures\nland-surface temperatures\natmospheric aerosols\nwater vapor\n\nMore than 26 years of continuous observations make MODIS the most consistent environmental time series in Earth’s history."
+    "objectID": "datasets/nasa-noaa-night-time-lights-earths-nocturnal-footprint-seen-from-space.html#what-this-dataset-is",
+    "href": "datasets/nasa-noaa-night-time-lights-earths-nocturnal-footprint-seen-from-space.html#what-this-dataset-is",
+    "title": "🌌 NASA / NOAA Night-Time Lights — Earth’s Nocturnal Footprint, Seen from Space",
+    "section": "🌍 What This Dataset Is",
+    "text": "🌍 What This Dataset Is\nShort version:\nGlobal night-light radiance from VIIRS (500 m) and historic DMSP-OLS (1 km), capturing the luminous fingerprint of human presence — electricity, settlement, economic activity, and the glowing skin of cities across the planet.\nWhy it exists:\nSatellites don’t sleep. As the Earth turns into night, sensors like VIIRS and DMSP-OLS watch the world light up — cities, roads, fishing fleets, gas flares, industrial sites. Those photons are turned into gridded data products, pixel by pixel, year after year.\nWhy it’s special:\n\nIt covers almost the entire planet, consistently, for decades.\n\nIt works especially well where censuses are infrequent or economic statistics are unreliable.\n\nIt directly visualizes electrification, urbanization, and inequality without needing a survey form.\n\nNight lights are one of the rare datasets where the first glance is already a story."
   },
   {
-    "objectID": "datasets/nasa-modis-global-environmental-time-series.html#why-modis-is-special",
-    "href": "datasets/nasa-modis-global-environmental-time-series.html#why-modis-is-special",
-    "title": "🌍 NASA MODIS — Global Environmental Time Series",
-    "section": "🧩 Why MODIS Is Special",
-    "text": "🧩 Why MODIS Is Special\nMODIS isn’t one dataset — it’s a family of global products that share:\n\nconsistent processing\nlong-term continuity\nglobal coverage\nstable calibration\npredictable update cycles\nmultiple instruments (Terra + Aqua) for redundancy\n\nThis creates the rare ability to observe:\n\nseasonal rhythms\nlong-term trends\nsudden environmental interruptions\necological “pulse changes”\nfire season shifts\nsnow melt timing\nland temperature behavior\n\nMODIS is essentially a planetary vital signs monitor."
+    "objectID": "datasets/nasa-noaa-night-time-lights-earths-nocturnal-footprint-seen-from-space.html#why-its-worthy",
+    "href": "datasets/nasa-noaa-night-time-lights-earths-nocturnal-footprint-seen-from-space.html#why-its-worthy",
+    "title": "🌌 NASA / NOAA Night-Time Lights — Earth’s Nocturnal Footprint, Seen from Space",
+    "section": "💡 Why It’s Worthy",
+    "text": "💡 Why It’s Worthy\nTraditional data answers questions like:\n&gt; “What is the GDP of this region?”\n&gt; “How many people live here?”\nNight-time lights let us ask questions like:\n&gt; “Where does the world actually glow?”\n&gt; “Who is being left in the dark?”\n&gt; “Which cities are brightening, fading, or merging together?”\nThey are worthy because they:\n\nBypass missing statistics. In regions with weak statistical systems, night lights still tell us who has power (literally).\n\nReveal inequality. The contrast between bright cores and dark peripheries is a visceral picture of uneven development.\n\nCapture transitions. Electrification, urban expansion, post-disaster recovery — all leave radiance fingerprints.\n\nProvide a long time series. DMSP-OLS reaches back to the early 1990s; VIIRS continues the story from the 2010s.\n\nThis dataset is a lantern in places where conventional numbers go missing."
   },
   {
-    "objectID": "datasets/nasa-modis-global-environmental-time-series.html#key-modis-data-products-used-in-insightful-tales",
-    "href": "datasets/nasa-modis-global-environmental-time-series.html#key-modis-data-products-used-in-insightful-tales",
-    "title": "🌍 NASA MODIS — Global Environmental Time Series",
-    "section": "📦 Key MODIS Data Products Used in Insightful Tales",
-    "text": "📦 Key MODIS Data Products Used in Insightful Tales\n\n🌱 Vegetation (NDVI / EVI)\nMOD13 (Terra) • MYD13 (Aqua)\n\nNDVI (Normalized Difference Vegetation Index)\nEVI (Enhanced Vegetation Index)\n16-day composites, global\n\nUsed for:\n\n“Green pulse” seasonal cycles\nLong-term greening/browning trends\n\n\n\n❄️ Snow & Ice\nMOD10 (Terra) • MYD10 (Aqua)\n\nDaily or 8-day snow cover\nSnow persistence and melt timing\n\nUsed for:\n\nWinter rhythm (“blink of snow”)\nSnow retreat mapping\n\n\n\n🔥 Active Fire / Burned Area\nMOD14 / MYD14\n\nThermal anomaly detections\nFire intensity & location\n\nUsed for:\n\nFire season “barcode” visualization\nDetecting rhythm shifts in fire timing\n\n\n\n🌡️ Land Surface Temperature\nMOD11 / MYD11\n\nDay/night land temperature\nUrban heat island structure\n\nUsed for:\n\nCity heat pulse\nComparing natural vs built environments"
+    "objectID": "datasets/nasa-noaa-night-time-lights-earths-nocturnal-footprint-seen-from-space.html#story-sparks",
+    "href": "datasets/nasa-noaa-night-time-lights-earths-nocturnal-footprint-seen-from-space.html#story-sparks",
+    "title": "🌌 NASA / NOAA Night-Time Lights — Earth’s Nocturnal Footprint, Seen from Space",
+    "section": "🔭 Story Sparks",
+    "text": "🔭 Story Sparks\nThese are the kinds of storylines that Night-Time Lights make unusually vivid:\n\n1. Urban Sprawl and the “Glow Radius”\nCities don’t just grow; they leak light into the hinterlands.\n\nTrack the radius of detectable glow around a city over time.\n\nSee the difference between compact vs sprawling urban growth.\n\nDetect leapfrog development — distant bright patches appearing before the official maps are updated.\n\n\n\n\n2. Brightening vs Dimming Cities\nCompare radiance traces for different cities:\n\nWho is brightening rapidly (industrialization, new infrastructure)?\n\nWho is stagnant (plateaued brightness)?\n\nWho is dimming (conflict, economic crisis, depopulation)?\n\nNight lights give you a kind of “economic ECG” for cities.\n\n\n\n3. Luminous Inequality\nPlace a bright city core next to a dark rural region:\n\nThe gradient between them is a map of access to electricity, infrastructure, and opportunity.\n\nWithin a single city, radiance can reflect neighborhood-level inequality — some districts blaze, others barely glow.\n\n\n\n\n4. Coastal Metro Chains\nFrom high altitude, metro regions merge into continuous light corridors:\n\nThe Eastern Seaboard of the US, the Pearl River Delta, the Tokyo–Osaka corridor, the Lagos coastline — all visible as linked constellations.\n\nThese polycentric megaregions are easier to see in light than on political maps.\n\n\n\n\n5. Blackouts as Economic Fingerprints\nSudden drops in light reveal something went wrong:\n\nHurricanes, war, drought-driven power shortages, economic collapse.\n\nYou can measure how far the darkness spreads and how long it takes the lights to return.\n\n\n\n\n6. The Rise of Megacities\nOver decades, neighboring cities brighten and gradually merge into continuous luminous blobs:\n\nNight lights make the transition to “mega-urban” forms visually obvious.\n\nThey allow us to map when and where true megacities emerge."
   },
   {
-    "objectID": "datasets/nasa-modis-global-environmental-time-series.html#modis-in-insightful-tales",
-    "href": "datasets/nasa-modis-global-environmental-time-series.html#modis-in-insightful-tales",
-    "title": "🌍 NASA MODIS — Global Environmental Time Series",
-    "section": "🧭 MODIS in Insightful Tales",
-    "text": "🧭 MODIS in Insightful Tales\nThis dataset powers multiple Insightful Tales stories, including:\n🪐  The Planet That Breathes — Tracking Earth’s Hidden Rhythms from Space \n\nFuture stories exploring:\n\ngreening vs browning regions\nwildfire rhythm changes\nurban thermal signatures\nwater cycles\nsnow pulse shortening"
+    "objectID": "datasets/nasa-noaa-night-time-lights-earths-nocturnal-footprint-seen-from-space.html#dataset-structure",
+    "href": "datasets/nasa-noaa-night-time-lights-earths-nocturnal-footprint-seen-from-space.html#dataset-structure",
+    "title": "🌌 NASA / NOAA Night-Time Lights — Earth’s Nocturnal Footprint, Seen from Space",
+    "section": "🧱 Dataset Structure",
+    "text": "🧱 Dataset Structure\nNight-time lights are provided as gridded rasters. Two families matter most:\n\n🛰️ VIIRS Day/Night Band (DNB)\n\nProvider: NASA / NOAA\n\nCoverage: Global, from 2012 onward\n\nSpatial resolution: ~500 m at nadir (DNB products often distributed at this scale)\n\nTemporal resolution:\n\nDaily (with weather, moon, cloud effects)\n\nMonthly and annual composites for analysis\n\n\nMeasured quantity: Top-of-atmosphere radiance\n\nTypically in nW/cm²/sr\n\n\nStrengths:\n\nFiner detail than DMSP-OLS\n\nBetter calibration and dynamic range\n\nDesigned with night-light science as a core use case\n\n\n\n\n🛰️ DMSP-OLS Night-Time Lights\n\nProvider: U.S. Air Force / NOAA NGDC (now NCEI)\n\nCoverage: Global, ~1992–2013\n\nSpatial resolution: ~1 km\n\nTemporal resolution: Annual composites\n\nMeasured quantity: “Digital number” 0–63 (relative brightness)\n\nStrengths:\n\nLong historical record — the backbone of early night-lights research\n\nEnables pre-VIIRS studies of urbanization and electrification\n\nKey limitation:\nBright city cores saturate at the maximum digital number, losing contrast inside very bright regions."
   },
   {
-    "objectID": "datasets/nasa-modis-global-environmental-time-series.html#example-interpretations-conceptual",
-    "href": "datasets/nasa-modis-global-environmental-time-series.html#example-interpretations-conceptual",
-    "title": "🌍 NASA MODIS — Global Environmental Time Series",
-    "section": "📊 Example Interpretations (Conceptual)",
-    "text": "📊 Example Interpretations (Conceptual)\nEven without deep technical knowledge, MODIS can show:\n\nBreathing forests through annual NDVI waves\nSnow blink cycles — winter arriving and departing\nFire seasons emerging as predictable stripes\nHeat patterns distinguishing cities from nature\nCloud or dust “seasons” repeating each year\n\nMODIS data is not just scientific — it’s surprisingly story-shaped."
+    "objectID": "datasets/nasa-noaa-night-time-lights-earths-nocturnal-footprint-seen-from-space.html#how-analysts-actually-use-night-time-lights",
+    "href": "datasets/nasa-noaa-night-time-lights-earths-nocturnal-footprint-seen-from-space.html#how-analysts-actually-use-night-time-lights",
+    "title": "🌌 NASA / NOAA Night-Time Lights — Earth’s Nocturnal Footprint, Seen from Space",
+    "section": "🧪 How Analysts Actually Use Night-Time Lights",
+    "text": "🧪 How Analysts Actually Use Night-Time Lights\nHere are some common analysis patterns:\n\n1. Urban Footprint Maps\n\nThreshold radiance to identify “lit” pixels.\n\nGroup connected lit pixels into urban polygons.\n\nTrack growth, fragmentation, and densification of these footprints over time.\n\n\n\n\n2. Economic and Demographic Proxies\nUse brightness as a proxy for:\n\nLocal GDP or income\n\nPopulation density (especially where census is missing or outdated)\n\nElectrification and infrastructure access\n\nResearchers often fit models like:\n\nbrightness → log(GDP)\n\nbrightness per capita → energy usage\n\nThen they project these relationships into data-poor regions.\n\n\n\n3. Disaster, Conflict, and Recovery\nCompare before/after composites:\n\nIdentify blackout regions after hurricanes, earthquakes, war.\n\nMeasure time to recovery by tracking radiance trajectory.\n\nDistinguish temporary outages from longer-term economic damage.\n\n\n\n\n4. Environmental and Ecological Studies\n\nMap light pollution near sensitive ecosystems.\n\nStudy correlations with bird migration, insect decline, or sea turtle nesting.\n\nExplore how human illumination spreads into previously dark environments.\n\n\n\n\n5. Infrastructure and “Phantom” Roads\nNew roads and industrial corridors can appear in night-lights data before they show up in official maps:\n\nFaint linear features = traffic and settlements along new infrastructure.\n\nAnalysts use this to track informal development and frontier expansion."
   },
   {
-    "objectID": "datasets/nasa-modis-global-environmental-time-series.html#how-insightful-tales-processes-modis",
-    "href": "datasets/nasa-modis-global-environmental-time-series.html#how-insightful-tales-processes-modis",
-    "title": "🌍 NASA MODIS — Global Environmental Time Series",
-    "section": "🔍 How Insightful Tales Processes MODIS",
-    "text": "🔍 How Insightful Tales Processes MODIS\nFor each story, we typically:\n\nDownload selected MODIS products\nSimplify into easy-to-understand categories (snow/no snow, fire/no fire, etc.)\nSmooth using weekly or 8-day composites\nExtract rhythms (seasonal cycles, peaks/troughs, interruptions)\nVisualize with gentle colors and narrative annotations\nTranslate time-series into human language (“pulse”, “heartbeat”, “blink”)\n\nThe goal: make planetary-scale change emotionally legible."
+    "objectID": "datasets/nasa-noaa-night-time-lights-earths-nocturnal-footprint-seen-from-space.html#limitations-and-caveats",
+    "href": "datasets/nasa-noaa-night-time-lights-earths-nocturnal-footprint-seen-from-space.html#limitations-and-caveats",
+    "title": "🌌 NASA / NOAA Night-Time Lights — Earth’s Nocturnal Footprint, Seen from Space",
+    "section": "⚠️ Limitations and Caveats",
+    "text": "⚠️ Limitations and Caveats\nNight lights are powerful — but not perfect. Important caveats:\n\nSaturation in bright cores\n\nDMSP-OLS especially compresses the brightest cities into the same top brightness bin.\n\n\nSensor differences over time\n\nDifferent DMSP satellites, then VIIRS — calibration and cross-sensor harmonization are non-trivial.\n\n\nClouds, snow, and atmosphere\n\nCloud cover, snow, and atmospheric conditions change apparent brightness.\n\nComposites try to filter this out, but some artifacts remain.\n\n\nNon-city light sources\n\nGas flares, fishing fleets, ships, and isolated industrial sites can look “city-like” if not masked.\n\n\nCultural and policy factors\n\nTwo regions with similar economic activity can differ in brightness due to lighting norms, efficiency, or regulations.\n\n\nThe guiding principle:\n&gt; Night lights should be treated as a noisy but invaluable proxy, not a perfect measurement."
   },
   {
-    "objectID": "datasets/nasa-modis-global-environmental-time-series.html#technical-details",
-    "href": "datasets/nasa-modis-global-environmental-time-series.html#technical-details",
-    "title": "🌍 NASA MODIS — Global Environmental Time Series",
-    "section": "🛠️ Technical Details",
-    "text": "🛠️ Technical Details\n\nResolution: 250m, 500m, or 1km depending on the product\nTemporal resolution: daily, 8-day, 16-day\nGlobal coverage\nRadiometric calibration maintained across decades\nBand coverage: 36 spectral bands (400–14,400 nm)"
+    "objectID": "datasets/nasa-noaa-night-time-lights-earths-nocturnal-footprint-seen-from-space.html#practical-tips-for-working-with-night-lights",
+    "href": "datasets/nasa-noaa-night-time-lights-earths-nocturnal-footprint-seen-from-space.html#practical-tips-for-working-with-night-lights",
+    "title": "🌌 NASA / NOAA Night-Time Lights — Earth’s Nocturnal Footprint, Seen from Space",
+    "section": "🧰 Practical Tips for Working With Night Lights",
+    "text": "🧰 Practical Tips for Working With Night Lights\nIf you’re using this dataset inside an Insightful Tales analysis (or any analysis), a few habits help:\n\nPrefer composites\n\nUse monthly or annual composites rather than raw daily data for most stories.\n\nMask out non-urban sources\n\nUse gas flare masks, water masks, and known fishing regions where possible.\n\nNormalize across years and sensors\n\nFor long-term studies, use harmonized products or apply cross-sensor scaling.\n\nLog-scale brightness\n\nWhen visualizing, log-transform radiance to avoid a few bright cities dominating the map.\n\nCombine with other layers\n\nPair with population grids, administrative boundaries, roads, or climate data to deepen interpretation.\n\nTell the uncertainty story too\n\nExplicitly mention limitations; it builds trust and better stories."
   },
   {
-    "objectID": "datasets/nasa-modis-global-environmental-time-series.html#references-credits",
-    "href": "datasets/nasa-modis-global-environmental-time-series.html#references-credits",
-    "title": "🌍 NASA MODIS — Global Environmental Time Series",
-    "section": "📚 References & Credits",
-    "text": "📚 References & Credits\n\nPrimary Sources\n\nNASA MODIS Land Products\nhttps://modis.gsfc.nasa.gov\nNASA Earthdata\nhttps://earthdata.nasa.gov\nNASA LAADS DAAC\nhttps://ladsweb.modaps.eosdis.nasa.gov\nNSIDC MODIS Snow Products\nhttps://nsidc.org/data/modis\n\n\n\nScientific Documentation\n\n“MODIS Land Products Users’ Guide”\n“MODIS Land Surface Temperature Algorithm”\n“MODIS Vegetation Index User Guide”\n“MODIS Snow Cover Products Documentation”\n“MODIS Fire Products Overview”\n\n\n\nCredits\n\nNASA (Terra & Aqua missions)\nUSGS (Landsat, supplemental imagery)\nNSIDC (snow products)\nConceptual explanation & narrative: Insightful Tales\nAll visualizations: created in R using the tidyverse & terra packages"
+    "objectID": "datasets/nasa-noaa-night-time-lights-earths-nocturnal-footprint-seen-from-space.html#used-in-insightful-tales",
+    "href": "datasets/nasa-noaa-night-time-lights-earths-nocturnal-footprint-seen-from-space.html#used-in-insightful-tales",
+    "title": "🌌 NASA / NOAA Night-Time Lights — Earth’s Nocturnal Footprint, Seen from Space",
+    "section": "🔗 Used in Insightful Tales",
+    "text": "🔗 Used in Insightful Tales\nNight-time lights are a natural backbone for several Insightful Tales stories. This dataset is:\n\nPlanned to power\n\n🌌 Cities as Constellations — Mapping the World’s Luminous Megaregions\n(planned story — night lights as a map of polycentric urban corridors)\n\n/stories/cities-as-constellations.html\n\n\n⚡ Luminous Inequality — Who Gets the Night, Who Stays in the Dark?\n(planned story — radiance gradients as a proxy for inequality)\n\n/stories/luminous-inequality.html\n\n\n🛰️ The Planet That Glows — A Time-Lapse of Civilization at Night\n(planned story — long-term animation of global night lights)\n\n/stories/the-planet-that-glows.html"
+  },
+  {
+    "objectID": "datasets/nasa-noaa-night-time-lights-earths-nocturnal-footprint-seen-from-space.html#why-this-dataset-matters",
+    "href": "datasets/nasa-noaa-night-time-lights-earths-nocturnal-footprint-seen-from-space.html#why-this-dataset-matters",
+    "title": "🌌 NASA / NOAA Night-Time Lights — Earth’s Nocturnal Footprint, Seen from Space",
+    "section": "🎨 Why This Dataset Matters",
+    "text": "🎨 Why This Dataset Matters\nNight-time lights are almost a manifesto in data form:\n\nThey turn abstract development into visible glow.\n\nThey compress the world’s economic and social geography into a single shimmering canvas.\n\nThey embody the idea that data can be both analytical and poetic.\n\nThis dataset is a bridge between hard measurement and visual storytelling — a way to show the world we live in, as it actually shines."
+  },
+  {
+    "objectID": "datasets/nasa-noaa-night-time-lights-earths-nocturnal-footprint-seen-from-space.html#references-and-credits",
+    "href": "datasets/nasa-noaa-night-time-lights-earths-nocturnal-footprint-seen-from-space.html#references-and-credits",
+    "title": "🌌 NASA / NOAA Night-Time Lights — Earth’s Nocturnal Footprint, Seen from Space",
+    "section": "📚 References and Credits",
+    "text": "📚 References and Credits\n\nOfficial Sources\n\nNOAA Earth Observation Group (EOG) – Nighttime Lights Data\n\nMain portal for VIIRS and DMSP-OLS night lights products.\n\nhttps://eogdata.mines.edu/\n\nNASA VIIRS Day/Night Band (DNB)\n\nNASA Earthdata portal for VIIRS night-time products and documentation.\n\nhttps://earthdata.nasa.gov/learn/find-data/near-real-time/viirs\n\nDMSP-OLS Nighttime Lights Time Series\n\nHistorical night-time lights composites, 1990s–2013.\n\nhttps://ngdc.noaa.gov/eog/dmsp.html\n\n\n\n\n\nKey Research and Methodology\n\nElvidge, C. D., et al. (2017).\nVIIRS Night-Time Lights in Global Urban Studies and Development Monitoring.\nHenderson, J. V., Storeygard, A., & Weil, D. N. (2012).\nMeasuring Economic Growth from Outer Space.\nAmerican Economic Review, 102(2): 994–1028.\nSutton, P. C., Elvidge, C. D., & Ghosh, T. (2007).\nEstimation of Gross Domestic Product at Sub-National Scales Using Nighttime Satellite Imagery.\nLi, X., & Zhou, Y. (2017).\nUrban Mapping Using DMSP/OLS and VIIRS Night-Time Light Data: A Review.\n\n\n\n\nCredits\n\nData providers:\n\nNASA\n\nNOAA National Centers for Environmental Information (NCEI)\n\nEarth Observation Group (Mines Research Center)\n\nProcessing and composites:\n\nNOAA EOG Nighttime Lights products team.\n\nPage design and narrative:\n\n“Night-Time Lights” icon from the Insightful Tales Dataset Icon Language."
   },
   {
     "objectID": "datasets/steam-games-collective-taste-in-the-wild.html",
@@ -872,7 +949,7 @@
     "href": "stories/lights-and-lives-cities-from-space.html#where-to-go-from-here",
     "title": "🌆 Lights and Lives — Cities from Space",
     "section": "➡️ 10. Where to go from here",
-    "text": "➡️ 10. Where to go from here\nThis story barely scratches the surface of what’s possible with night-light data.\nIdeas for further exploration:\n\nResilience: How do lights flicker and recover around disasters, blackouts, or conflicts?\nSeasonality: How do festive periods or monsoon seasons change the luminous texture of regions?\nPolicy impacts: Before/after analyses of electrification programs, zoning reforms, or efficiency standards.\nClimate: Linking luminous sprawl to commuting patterns, vehicle miles traveled, or emissions.\n\nNight-time lights are not a perfect proxy for human well-being. But they are one of the few global, consistent, high-frequency measures we have of how we inhabit the dark.\n\n What do these icons mean?"
+    "text": "➡️ 10. Where to go from here\nThis story barely scratches the surface of what’s possible with night-light data.\nIdeas for further exploration:\n\nResilience: How do lights flicker and recover around disasters, blackouts, or conflicts?\nSeasonality: How do festive periods or monsoon seasons change the luminous texture of regions?\nPolicy impacts: Before/after analyses of electrification programs, zoning reforms, or efficiency standards.\nClimate: Linking luminous sprawl to commuting patterns, vehicle miles traveled, or emissions.\n\nNight-time lights are not a perfect proxy for human well-being. But they are one of the few global, consistent, high-frequency measures we have of how we inhabit the dark.\n\n Dataset: NASA / NOAA Night-Time Lights \n\n\n What do these icons mean?"
   },
   {
     "objectID": "stories/lights-and-lives-cities-from-space.html#references-and-credits",
