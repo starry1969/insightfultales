@@ -53,7 +53,7 @@ website:
           - href: datasets/the-lahman-baseball-database-a-chronicle-of-the-games-digital-memory.qmd
             text: "⚾ The Lahman Baseball Database" 
           - href: datasets/the-noaa-daily-weather-dataset.qmd
-            text: "🌦 NOAA Daily Weather Dataset"
+            text: "🌦️ The NOAA Daily Weather Dataset"
           - href: datasets/transport-for-london-tfl-the-pulse-beneath-the-city.qmd
             text: "🚇 Transport for London (TfL)"
           - href: datasets/uci-online-retail-human-behavior-in-transactions.qmd
